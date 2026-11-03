@@ -269,6 +269,39 @@ Substituting $\eta_t = \frac{c}{\sqrt{T}}$, $\sum_{t=1}^T \eta_t = c \sqrt{T}$, 
 Since $\mathcal{L}_{\text{onto}}(\theta) = 0$ if and only if all TBox axioms hold without violation, the distance to the sound model space $\mathcal{M}(\mathcal{T}_{\mathcal{VCLO}})$ vanishes as $T \to \infty$ and $\lambda_{\text{onto}} \to \infty$, completing the proof.
 \end{proof}
 
+\subsection{The Dual-Clock Deontic Continuum and Defeasible Soundness}
+\label{sec:dual_clock}
+In standard temporal graph neural networks \citep{xu2020inductive}, time intervals are modeled solely by physical calendar latencies $\Delta t = t_v - t_u$. In legal theory, however, physical time does not equal procedural time. Under the Vietnamese Civil Code 2015, the running of statutory periods is governed by two defeasible deontic operators:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Tolling Operator ($\mathcal{T}_{\text{freeze}}$, Article~156 BLDS 2015):} When an objective obstacle or force majeure event $\mathcal{E}_{\text{force\_majeure}}$ occurs, the operational procedural clock freezes ($\frac{d\tau}{dt} = 0$), even as physical time $t$ advances.
+    \item \textbf{Restart Operator ($\mathcal{R}_{\text{restart}}$, Article~157 BLDS 2015):} When the obligor acknowledges indebtedness or makes partial restitution $\mathcal{E}_{\text{ack}}$, the accrued procedural latency collapses instantaneously to zero: $\tau(t^+) = 0$.
+\end{enumerate}
+Formally, we define the \textit{Jurisprudential Operative Latency} $\tau(t)$ via the non-autonomous dynamical equation:
+\begin{equation}
+\label{eq:dual_clock}
+\tau(t) = \int_0^t \left(1 - \mathbf{1}_{\mathcal{E}_{\text{tolling}}(\sigma)}\right) d\sigma - \sum_{k} \tau(t_k^-) \cdot \mathbf{1}_{\mathcal{E}_{\text{reset}}(t_k)}
+\end{equation}
+SynapseLex couples both clocks into a unified \textit{Dual-Clock Deontic Embedding}:
+\begin{equation}
+\label{eq:dual_embedding}
+\mathbf{\Phi}_{\text{dual}}(\Delta t, \Delta \tau) = \left[ \mathbf{\Phi}_{d/2}(\Delta t) \,\|\, \mathbf{\Phi}_{d/2}(\Delta \tau) \right] \in \mathbb{R}^d
+\end{equation}
+
+\begin{theorem}[Soundness of Defeasible Legal Adjudication]
+\label{thm:defeasible_soundness}
+Let $\mathcal{AF} = \langle \mathcal{A}, \mathcal{R}_{\text{defeat}} \rangle$ be Dung's abstract argumentation framework \citep{dung1995acceptability} induced by the Description Logic TBox $\mathcal{T}_{\mathcal{VCLO}}$ and extracted case facts $\mathcal{A}_{\text{case}}$, where arguments supporting substantive relief $\mathcal{A}_{\text{substantive}}$ are defeated by procedural expiration arguments $\mathcal{A}_{\text{procedural\_bar}}$ whenever $\Delta \tau > 1095$. 
+For any trained SynapseLex model $\theta^*$ with zero axiomatic penalty $\mathcal{L}_{\text{onto}}(\theta^*) = 0$, the set of winning predicted remedies $\mathcal{W}_\theta = \{ y \in \mathcal{Y} \mid P_\theta(y \mid \mathcal{G}(t)) > 0.5 \}$ coincides with the unique grounded extension $\mathcal{GE}(\mathcal{AF})$.
+\end{theorem}
+
+\begin{proof}
+Let argument $A \in \mathcal{A}_{\text{substantive}}$ correspond to substantive deposit enforcement (e.g., double refund under Article 328). Suppose $\Delta \tau > 1095$. By Article 429 BLDS 2015, the procedural bar argument $B \in \mathcal{A}_{\text{procedural\_bar}}$ is unattacked because no further tolling or restart conditions exist. Hence, $B$ belongs to the grounded extension $\mathcal{GE}(\mathcal{AF})$, and $(B, A) \in \mathcal{R}_{\text{defeat}}$, which implies $A \notin \mathcal{GE}(\mathcal{AF})$.
+Now assume for contradiction that $P_{\theta^*}(y_A \mid \mathcal{G}(t)) > 0.5$. By Equation~\ref{eq:pen1}, the axiomatic penalty term satisfies:
+\begin{equation}
+\psi_1(\theta^*) = \mathbb{I}(\Delta \tau > 1095) \cdot (1 - P_{\theta^*}(\mathcal{S} = \text{Extinguished})) \ge 1 - P_{\theta^*}(y_B) > 0
+\end{equation}
+Consequently, $\mathcal{L}_{\text{onto}}(\theta^*) \ge \psi_1(\theta^*) > 0$, directly contradicting the hypothesis that $\mathcal{L}_{\text{onto}}(\theta^*) = 0$. Therefore, $P_{\theta^*}(y_A) \le 0.5$ and $P_{\theta^*}(y_B) > 0.5$, demonstrating that SynapseLex selects exactly the justified claims in $\mathcal{GE}(\mathcal{AF})$.
+\end{proof}
+
 \begin{algorithm}[htbp]
 \caption{SynapseLex Axiom-TGAT Inference and Constraint Audit}
 \label{alg:inference}

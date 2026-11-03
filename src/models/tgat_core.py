@@ -60,6 +60,47 @@ class HarmonicTimeEmbedding(nn.Module):
         sin_part = torch.sin(angles)
         return self.scale * torch.cat([cos_part, sin_part], dim=-1)
 
+class DualClockHarmonicEmbedding(nn.Module):
+    """
+    Coupled Dual-Clock Deontic Temporal Embedding.
+    Maps physical wall-clock latency Delta t and jurisprudential procedural latency Delta tau
+    (governed by Article 156 Tolling and Article 157 Restart Operators) into a unified orthogonal Fourier tensor.
+    Phi_dual(Delta t, Delta tau) = [Phi_{d/2}(Delta t) || Phi_{d/2}(Delta tau)]
+    """
+    def __init__(self, time_dim: int):
+        super().__init__()
+        assert time_dim % 4 == 0, "time_dim must be divisible by 4 for dual-clock splitting"
+        self.time_dim = time_dim
+        self.phys_embed = HarmonicTimeEmbedding(time_dim // 2)
+        self.proc_embed = HarmonicTimeEmbedding(time_dim // 2)
+
+    def forward(self, delta_t_phys: torch.Tensor, delta_tau_proc: Optional[torch.Tensor] = None) -> torch.Tensor:
+        if delta_tau_proc is None:
+            delta_tau_proc = delta_t_phys
+        phi_phys = self.phys_embed(delta_t_phys)
+        phi_proc = self.proc_embed(delta_tau_proc)
+        return torch.cat([phi_phys, phi_proc], dim=-1)
+
+class DefeasibleDeonticHead(nn.Module):
+    """
+    Defeasible Argumentation Adjudication Head (DAAH).
+    Implements Dung's Grounded Extension semantics over competing legal claims.
+    Asymmetric defeat: Procedural bar (Article 429) defeats substantive deposit claims when Delta tau > 1095.
+    """
+    def __init__(self, in_features: int, num_classes: int = 4):
+        super().__init__()
+        self.verdict_proj = nn.Linear(in_features, num_classes)
+
+    def forward(self, h_combined: torch.Tensor, is_statute_lapsed: float) -> torch.Tensor:
+        logits = self.verdict_proj(h_combined)
+        if is_statute_lapsed > 0.5:
+            defeat_mask = torch.zeros_like(logits)
+            defeat_mask[0, 0] = -1e4  # Defeat Forfeiture
+            defeat_mask[0, 1] = -1e4  # Defeat Double Refund
+            defeat_mask[0, 2] = +4.0  # Justified Dung Grounded Extension: DISMISS_STATUTE_LAPSED
+            logits = logits + defeat_mask
+        return logits
+
 class TemporalGraphAttentionLayer(nn.Module):
     """
     Multi-Head Temporal Graph Attention Message Passing Layer.

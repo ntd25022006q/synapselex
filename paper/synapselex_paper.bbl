@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,6 +43,13 @@ Artur d'Avila Garcez, Marco Gori, Pascal Hitzler, Lu{\'\i}s~C. Lamb, Luciano
 \newblock Neural-symbolic computing: An effective methodology for principled
   ai.
 \newblock \emph{Frontiers in Big Data}, 2:\penalty0 38, 2019.
+
+\bibitem[Dung(1995)]{dung1995acceptability}
+Phan~Minh Dung.
+\newblock On the acceptability of arguments and its fundamental role in
+  nonmonotonic reasoning, logic programming and n-person games.
+\newblock \emph{Artificial Intelligence}, 77\penalty0 (2):\penalty0 321--357,
+  1995.
 
 \bibitem[Fan et~al.(2026)Fan, Zhou, Zhang, Weng, Hu, Zheng, Xu, Li, Yang, Li,
   and Song]{fan2026legalsearch}
