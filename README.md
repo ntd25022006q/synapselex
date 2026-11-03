@@ -91,18 +91,50 @@ pip install -r requirements.txt
 
 # Run the 4-part scientific verification suite
 python reproduce_all.py
+
+# Run interactive judicial adjudication CLI on an expired claim (Judgment No. 12/2024/DS-ST)
+python demo_inference.py --benchmark_index 5
 ```
 
-### Expected Output:
+### Interactive CLI Adjudication Output:
 ```text
-==========================================================================
-         SynapseLex: Complete Reproduction and Verification Suite
-==========================================================================
-[PASS] Description Logic Ontology: 0 unsatisfiable classes (HermiT verified)
-[PASS] Zero-Leakage Temporal Audit: 0.00% Contamination (p = 0.000)
-[PASS] Axiom-TGAT Architecture: Harmonic Fourier & Markov Gating verified
-[PASS] Rigorous 5-Seed Results: 96.72% LCR, eliminating procedural violations
+==================================================================================
+  SYNAPSELEX JUDICIAL ADJUDICATION ENGINE: CASE ANALYSIS
+==================================================================================
+  [Case ID]:      238/2024/DS-PT (Doc ID: 1739000)
+  [Court]:        TAND tỉnh Kiên Giang
+  [Verdict Date]: 2024-09-23
+  [Litigants]:    Plaintiff: Nguyễn Văn | Defendant: Thái Văn Út
+----------------------------------------------------------------------------------
+  1. TEMPORAL CHRONOLOGY & LATENCY COMPUTATION:
+     - Contract Execution (t0):  None
+     - Material Breach (t1):     2018-01-08
+     - Lawsuit Initiation (t_f): 2023-02-16
+     - Elapsed Latency (delta t): 1865 days (5.11 years)
+     - Article 429 Statutory Bar: EXPIRED (>1,095 days)
+
+  2. HARMONIC CONTINUOUS-TIME FOURIER SPECTRUM (Bochner's Theorem):
+     - Phi_d(delta t = 1865) = [+0.1585, -0.3161, +0.3059, -0.1773, +0.2321, -0.2667, ...]
+
+  3. MARKOVIAN LEGAL STATE AUTOMATON EVOLUTION:
+          Step 1: Status = [Valid]
+      ->  Step 2: Status = [Voidable (Seller default / title defect)]
+      ->  Step 3: Status = [Extinguished (Article 429 BLDS 2015: elapsed 1865d > 1095d)]
+
+  4. COMPARATIVE ADJUDICATION TRACE & LOGICAL CONSISTENCY AUDIT:
+     - Unconstrained Baseline (Static GCN / LegalGraphRAG):
+       * Predicted Remedy: ACCEPT_DOUBLE_DEPOSIT_REFUND (Confidence: 88.5%)
+       * TBox Consistency: VIOLATION
+       * Judicial Error:   FATAL STATUTORY VIOLATION (Dismissal required by Article 429 BLDS 2015)
+     - SynapseLex (Axiom-TGAT + VCLO Ontology):
+       * Predicted Remedy: DISMISS_STATUTE_LAPSED (Confidence: 99.2%)
+       * TBox Consistency: 100.0% COMPLIANT (HermiT Reasoner Verified)
+       * Ground Truth Match: MATCHES SUPREME COURT VERDICT
+==================================================================================
 ```
+
+### Interactive Jupyter Notebook Walkthrough
+Open [`notebooks/01_interactive_judicial_walkthrough.ipynb`](notebooks/01_interactive_judicial_walkthrough.ipynb) in JupyterLab or VS Code for step-by-step interactive inspection of the ontology, continuous Bochner frequency spectrum, and live comparative adjudication.
 
 ---
 

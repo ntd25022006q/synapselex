@@ -1,22 +1,26 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Baader et~al.(2003)Baader, Calvanese, McGuinness, Nardi, and
-  Patel-Schneider]{baader2003description}
-Franz Baader, Diego Calvanese, Deborah~L. McGuinness, Daniele Nardi, and
-  Peter~F. Patel-Schneider.
-\newblock \emph{The Description Logic Handbook: Theory, Implementation, and
-  Applications}.
-\newblock Cambridge University Press, 2003.
+\bibitem[Ashley(1990)]{ashley1990modeling}
+Kevin~D. Ashley.
+\newblock \emph{Modeling Legal Argument: Reasoning with Cases and
+  Hypotheticals}.
+\newblock MIT Press, Cambridge, MA, 1990.
 
 \bibitem[Bochner(1959)]{bochner1959lectures}
 Salomon Bochner.
 \newblock Lectures on fourier integrals.
 \newblock \emph{Annals of Mathematics Studies}, 42, 1959.
+
+\bibitem[Boven et~al.(2026)Boven, Behnke, and Graus]{boven2026machina}
+Daan Boven, Gregor Behnke, and David Graus.
+\newblock Machina pauliana: A neuro-symbolic approach to the actio pauliana in
+  dutch insolvency law.
+\newblock \emph{arXiv preprint arXiv:2610.26241}, 2026.
 
 \bibitem[Chalkidis et~al.(2020)Chalkidis, Fergadiotis, Malakasiotis, Aletras,
   and Androutsopoulos]{chalkidis2020legalbert}
@@ -40,6 +44,19 @@ Artur d'Avila Garcez, Marco Gori, Pascal Hitzler, Lu{\'\i}s~C. Lamb, Luciano
   ai.
 \newblock \emph{Frontiers in Big Data}, 2:\penalty0 38, 2019.
 
+\bibitem[Fan et~al.(2026)Fan, Zhou, Zhang, Weng, Hu, Zheng, Xu, Li, Yang, Li,
+  and Song]{fan2026legalsearch}
+Wei Fan, Yining Zhou, Mufan Zhang, Yanbing Weng, Yiran Hu, Tianshi Zheng,
+  Baixuan Xu, Chunyang Li, Jianhui Yang, Haoran Li, and Yangqiu Song.
+\newblock Can {LLMs} time travel? enhancing temporal consistency in legal
+  agentic search through reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2605.25920}, 2026.
+
+\bibitem[Fuller(1969)]{fuller1969morality}
+Lon~L. Fuller.
+\newblock \emph{The Morality of Law}.
+\newblock Yale University Press, New Haven, CT, 1969.
+
 \bibitem[Hogan et~al.(2021)Hogan, Blomqvist, Cochez, d'Amato, de~Melo,
   Gutierrez, Kirrane, Gayo, Navigli, Neumaier, Ngomo, Polleres, Rashid, Rula,
   Schmelzeisen, Sequeda, Staab, and Zimmermann]{hogan2021knowledge}
@@ -52,11 +69,10 @@ Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de~Melo,
 \newblock \emph{ACM Computing Surveys}, 54\penalty0 (4):\penalty0 71:1--71:37,
   2021.
 
-\bibitem[Katz et~al.(2017)Katz, Bommarito, and Blackman]{katz2017general}
-Daniel~Martin Katz, Michael~J. Bommarito, and Josh Blackman.
-\newblock A general approach for predicting the behavior of the supreme court
-  of the united states.
-\newblock \emph{PLOS ONE}, 12\penalty0 (4):\penalty0 e0174698, 2017.
+\bibitem[Kautz(2022)]{kautz2022third}
+Henry Kautz.
+\newblock The third {AI} summer: {AAAI} robert s. engelmore memorial lecture.
+\newblock \emph{AI Magazine}, 43\penalty0 (1):\penalty0 105--125, 2022.
 
 \bibitem[Kazemi et~al.(2019)Kazemi, Goel, Eghbali, Ramanan, Sahota, Thakur, Wu,
   Smyth, Poupart, and Brubaker]{kazemi2019time2vec}
@@ -78,11 +94,10 @@ Henry Prakken and Giovanni Sartor.
 \newblock \emph{Artificial Intelligence and Law}, 10\penalty0 (1-3):\penalty0
   163--180, 2002.
 
-\bibitem[Sartor(2005)]{sartor2005legal}
-Giovanni Sartor.
-\newblock Legal reasoning: A cognitive approach to the law.
-\newblock \emph{Treatise of Legal Philosophy and General Jurisprudence}, 5,
-  2005.
+\bibitem[Prakken and Sartor(2015)]{prakken2015formal}
+Henry Prakken and Giovanni Sartor.
+\newblock Law and logic: a review from an argumentation perspective.
+\newblock \emph{Artificial Intelligence}, 227:\penalty0 214--245, 2015.
 
 \bibitem[Serafini and d'Avila Garcez(2016)]{serafini2016logic}
 Luciano Serafini and Artur d'Avila Garcez.
@@ -123,5 +138,21 @@ Da~Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan.
 \newblock Inductive representation learning on temporal graphs.
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2020.
+
+\bibitem[Xue et~al.(2026)Xue, Nguyen, Nguyen, Zin, and
+  Satoh]{xue2026legal2logic}
+Jie Xue, Phuc~Minh Nguyen, Hien~The Nguyen, Myat~Myo Zin, and Ken Satoh.
+\newblock {Legal2LogicICL}: Improving generalization in transforming legal
+  cases to logical formulas via diverse few-shot learning.
+\newblock In \emph{Proceedings of the International Conference on Artificial
+  Intelligence and Law (ICAIL)}, 2026.
+
+\bibitem[Zhang et~al.(2026)Zhang, Wang, Feng, Zhang, Qian, Yuan, and
+  Yin]{zhang2026tccrag}
+Xinxun Zhang, Yuxiang Wang, Shanshan Feng, Jun Zhang, Tieyun Qian, Binhang
+  Yuan, and Kai Yin.
+\newblock {TCC-RAG}: Temporal causal chain-guided {RAG} for temporal knowledge
+  graph question answering.
+\newblock \emph{arXiv preprint arXiv:2610.38366}, 2026.
 
 \end{thebibliography}
