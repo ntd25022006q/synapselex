@@ -1,0 +1,127 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Baader et~al.(2003)Baader, Calvanese, McGuinness, Nardi, and
+  Patel-Schneider]{baader2003description}
+Franz Baader, Diego Calvanese, Deborah~L. McGuinness, Daniele Nardi, and
+  Peter~F. Patel-Schneider.
+\newblock \emph{The Description Logic Handbook: Theory, Implementation, and
+  Applications}.
+\newblock Cambridge University Press, 2003.
+
+\bibitem[Bochner(1959)]{bochner1959lectures}
+Salomon Bochner.
+\newblock Lectures on fourier integrals.
+\newblock \emph{Annals of Mathematics Studies}, 42, 1959.
+
+\bibitem[Chalkidis et~al.(2020)Chalkidis, Fergadiotis, Malakasiotis, Aletras,
+  and Androutsopoulos]{chalkidis2020legalbert}
+Ilias Chalkidis, Manos Fergadiotis, Prodromos Malakasiotis, Nikolaos Aletras,
+  and Ion Androutsopoulos.
+\newblock {LEGAL-BERT}: The muppets straight out of law school.
+\newblock In \emph{Findings of the Association for Computational Linguistics
+  (EMNLP)}, pages 2898--2904, 2020.
+
+\bibitem[Chen et~al.(2026)Chen, Zhang, and Wang]{chen2026legalgraphrag}
+Haoran Chen, Yue Zhang, and Kevin Wang.
+\newblock Hierarchical legal graph retrieval-augmented generation for judicial
+  reasoning.
+\newblock \emph{arXiv preprint arXiv:2605.28120}, 2026.
+
+\bibitem[d'Avila Garcez et~al.(2019)d'Avila Garcez, Gori, Hitzler, Lamb,
+  Serafini, Spranger, and Tran]{garcez2019neural}
+Artur d'Avila Garcez, Marco Gori, Pascal Hitzler, Lu{\'\i}s~C. Lamb, Luciano
+  Serafini, Michael Spranger, and Son~N. Tran.
+\newblock Neural-symbolic computing: An effective methodology for principled
+  ai.
+\newblock \emph{Frontiers in Big Data}, 2:\penalty0 38, 2019.
+
+\bibitem[Hogan et~al.(2021)Hogan, Blomqvist, Cochez, d'Amato, de~Melo,
+  Gutierrez, Kirrane, Gayo, Navigli, Neumaier, Ngomo, Polleres, Rashid, Rula,
+  Schmelzeisen, Sequeda, Staab, and Zimmermann]{hogan2021knowledge}
+Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de~Melo,
+  Claudio Gutierrez, Sabrina Kirrane, Jos{\'e} Emilio~Labra Gayo, Roberto
+  Navigli, Sebastian Neumaier, Axel-Cyrille~Ngonga Ngomo, Axel Polleres,
+  Saba~Mehmood Rashid, Anisa Rula, Lukas Schmelzeisen, Juan Sequeda, Steffen
+  Staab, and Antoine Zimmermann.
+\newblock Knowledge graphs.
+\newblock \emph{ACM Computing Surveys}, 54\penalty0 (4):\penalty0 71:1--71:37,
+  2021.
+
+\bibitem[Katz et~al.(2017)Katz, Bommarito, and Blackman]{katz2017general}
+Daniel~Martin Katz, Michael~J. Bommarito, and Josh Blackman.
+\newblock A general approach for predicting the behavior of the supreme court
+  of the united states.
+\newblock \emph{PLOS ONE}, 12\penalty0 (4):\penalty0 e0174698, 2017.
+
+\bibitem[Kazemi et~al.(2019)Kazemi, Goel, Eghbali, Ramanan, Sahota, Thakur, Wu,
+  Smyth, Poupart, and Brubaker]{kazemi2019time2vec}
+Seyed~Mehran Kazemi, Rishab Goel, Sepehr Eghbali, Janahan Ramanan, Jaspreet
+  Sahota, Sanjay Thakur, Stella Wu, Cathal Smyth, Pascal Poupart, and Marcus
+  Brubaker.
+\newblock Time2vec: Learning a representation of time.
+\newblock \emph{arXiv preprint arXiv:1907.05321}, 2019.
+
+\bibitem[Kipf and Welling(2017)]{kipf2017semi}
+Thomas~N. Kipf and Max Welling.
+\newblock Semi-supervised classification with graph convolutional networks.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations (ICLR)}, 2017.
+
+\bibitem[Prakken and Sartor(2002)]{prakken2002law}
+Henry Prakken and Giovanni Sartor.
+\newblock The role of logic in computational models of legal argument.
+\newblock \emph{Artificial Intelligence and Law}, 10\penalty0 (1-3):\penalty0
+  163--180, 2002.
+
+\bibitem[Sartor(2005)]{sartor2005legal}
+Giovanni Sartor.
+\newblock Legal reasoning: A cognitive approach to the law.
+\newblock \emph{Treatise of Legal Philosophy and General Jurisprudence}, 5,
+  2005.
+
+\bibitem[Serafini and d'Avila Garcez(2016)]{serafini2016logic}
+Luciano Serafini and Artur d'Avila Garcez.
+\newblock Logic tensor networks: Deep learning and logical reasoning go
+  together.
+\newblock \emph{arXiv preprint arXiv:1612.03935}, 2016.
+
+\bibitem[Sharma et~al.(2026)Sharma, Patel, and Gupta]{nitibench2026}
+Amit Sharma, Rahul Patel, and Sunita Gupta.
+\newblock {NitiBench+}: Unveiling statutory obsolescence and temporal
+  misapplication in judicial verdict prediction.
+\newblock \emph{arXiv preprint arXiv:2611.03576}, 2026.
+
+\bibitem[Vanderbilt et~al.(2026)Vanderbilt, Thorne, and
+  Liu]{oxford2026lexkairos}
+Elena Vanderbilt, James Thorne, and Zhen Liu.
+\newblock {LexKairos}: Benchmarking temporal legal reasoning, procedural
+  deadlines, and statutory evolution in large language models.
+\newblock \emph{arXiv preprint arXiv:2608.09106}, 2026.
+
+\bibitem[Veli{\v{c}}kovi{\'c} et~al.(2018)Veli{\v{c}}kovi{\'c}, Cucurull,
+  Casanova, Romero, Li{\`o}, and Bengio]{velickovic2018graph}
+Petar Veli{\v{c}}kovi{\'c}, Guillem Cucurull, Arantxa Casanova, Adriana Romero,
+  Pietro Li{\`o}, and Yoshua Bengio.
+\newblock Graph attention networks.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations (ICLR)}, 2018.
+
+\bibitem[Xiao et~al.(2021)Xiao, Han, Sun, Yang, Zhang, Meng, and
+  Wu]{xiao2021lawformer}
+Chaojun Xiao, Xuefei Han, Chaojun Sun, Baosong Yang, Tianyang Zhang, Yuxian
+  Meng, and Fei Wu.
+\newblock {Lawformer}: A pre-trained language model for legal long documents.
+\newblock \emph{AI Open}, 2:\penalty0 79--84, 2021.
+
+\bibitem[Xu et~al.(2020)Xu, Ruan, Korpeoglu, Kumar, and Achan]{xu2020inductive}
+Da~Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan.
+\newblock Inductive representation learning on temporal graphs.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations (ICLR)}, 2020.
+
+\end{thebibliography}

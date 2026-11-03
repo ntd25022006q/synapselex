@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#CivilCode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Bộ luật Dân sự</rdfs:label>
+    <rdfs:comment xml:lang="en">General primary civil statute (Rank 2).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#SpecializedLaw"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#SubLawDecree"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#ValidState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Trạng thái Có hiệu lực</rdfs:label>
+    <rdfs:comment xml:lang="en">Contract fulfills all statutory validity conditions (Article 117).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalState"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#VoidAbInitioState"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#ExtinguishedState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#LegalState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Trạng thái Hiệu lực Pháp lý</rdfs:label>
+    <rdfs:comment xml:lang="en">Validity state of contracts and claims.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#Plaintiff">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Nguyên đơn</rdfs:label>
+    <rdfs:comment xml:lang="en">The party initiating lawsuit alleging infringed civil rights.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#ProceduralRole"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#Defendant"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#Intervener"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#CivilTransaction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Giao dịch Dân sự</rdfs:label>
+    <rdfs:comment xml:lang="en">Contracts or unilateral legal acts under Article 116 BLDS 2015.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalAct"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#AcceptDepositForfeiture">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Chấp nhận Phạt cọc</rdfs:label>
+    <rdfs:comment xml:lang="en">Ruling ordering forfeiture of deposit to innocent party.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#resolvesContract">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">resolves disputed contract</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#Contract">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hợp đồng Dân sự</rdfs:label>
+    <rdfs:comment xml:lang="en">Agreement between parties under Article 385 BLDS 2015.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#CivilTransaction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#SubLawDecree">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Nghị định / Thông tư</rdfs:label>
+    <rdfs:comment xml:lang="en">Executive subordinate regulatory decrees (Rank 3).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#SpecializedLaw">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Luật Chuyên ngành</rdfs:label>
+    <rdfs:comment xml:lang="en">Specialized statutory acts overriding general law (Rank 2.5).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#SubLawDecree"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#DeclareContractVoid">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Tuyên bố Hợp đồng Vô hiệu</rdfs:label>
+    <rdfs:comment xml:lang="en">Ruling declaring contract void and ordering restitution of original status.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#hasProceduralRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has procedural role</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LegalEntity"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#ProceduralRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#hasTemporalInterval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has active temporal interval</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LegalAct"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#TemporalInterval"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#JudicialOrgan">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Cơ quan Tố tụng</rdfs:label>
+    <rdfs:comment xml:lang="en">Courts and procuracies adjudicating civil disputes.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#Statute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Văn bản Quy phạm Pháp luật</rdfs:label>
+    <rdfs:comment xml:lang="en">Legal document enacted by competent state bodies.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#normativeRank">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">hierarchical statutory rank (1 supreme, 4 subordinate)</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#TemporalInterval">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Khoảng Thời gian Pháp lý</rdfs:label>
+    <rdfs:comment xml:lang="en">Interval with definite start and end dates.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#StatutoryRegime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hệ thống Quy phạm Pháp luật</rdfs:label>
+    <rdfs:comment xml:lang="en">Hierarchical body of legal norms.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#caseIdentificationNumber">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">case number ID</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#NaturalPerson">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Cá nhân / Thể nhân</rdfs:label>
+    <rdfs:comment xml:lang="en">A human being possessing legal capacity and civil act capacity.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#JudicialPrecedent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Án lệ / Nghị quyết HĐTP</rdfs:label>
+    <rdfs:comment xml:lang="en">Binding Supreme People's Court interpretations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#BreachOfContract">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hành vi Vi phạm Hợp đồng</rdfs:label>
+    <rdfs:comment xml:lang="en">Failure to perform or improper performance of contractual obligations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalAct"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#LawsuitFiling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hành vi Khởi kiện</rdfs:label>
+    <rdfs:comment xml:lang="en">Formal submission of civil petition to court.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalAct"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#hasValidityState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has current validity state</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#LegalState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#ExtinguishedState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Trạng thái Hết hiệu lực / Hết thời hiệu</rdfs:label>
+    <rdfs:comment xml:lang="en">Claim extinguished due to statute of limitations lapse.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#agreedTransferPriceVND">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">total agreed real estate price</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LandUseRightTransferContract"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#statuteOfLimitationsDays">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">statutory limitation days (1095 days for CC 2015 Art. 429)</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#StatuteOfLimitations"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#VoidAbInitioState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Trạng thái Vô hiệu Tuyệt đối</rdfs:label>
+    <rdfs:comment xml:lang="en">Contract void from inception due to statutory prohibition (Article 123).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalState"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#ExtinguishedState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#DepositSecuresRestriction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://synapselex.org/ontology/vclo#securesObligation"/>
+    <owl:someValuesFrom rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#DepositContract">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hợp đồng Đặt cọc</rdfs:label>
+    <rdfs:comment xml:lang="en">Measure to secure obligation under Article 328 BLDS 2015.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#DepositSecuresRestriction"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#LandUseRightTransferContract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#DismissDueToLapsedLimitation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Đình chỉ / Bác đơn do Hết thời hiệu</rdfs:label>
+    <rdfs:comment xml:lang="en">Ruling dismissing claims because statute of limitations expired.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#initiatesCivilDispute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">initiates civil dispute</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LawsuitFiling"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#hasLandUseRightCertificate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">land possesses Red/Pink Book Certificate</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LandUseRightTransferContract"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#AcceptDoubleDepositRefund">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Chấp nhận Phạt cọc Gấp đôi</rdfs:label>
+    <rdfs:comment xml:lang="en">Ruling requiring breaching deposit-taker to return deposit + equal penalty.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#LandUseRightTransferContract">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hợp đồng Chuyển nhượng QSDĐ</rdfs:label>
+    <rdfs:comment xml:lang="en">Real estate transfer contract under Land Law &amp; BLDS.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#triggersStateTransition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">triggers state transition to</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LegalAct"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#LegalState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#Constitution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hiến pháp</rdfs:label>
+    <rdfs:comment xml:lang="en">Supreme law of Vietnam (Rank 1).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#CivilCode"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#SpecializedLaw"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#SubLawDecree"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#Defendant">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Bị đơn</rdfs:label>
+    <rdfs:comment xml:lang="en">The party against whom civil claims are filed.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#ProceduralRole"/>
+    <owl:disjointWith rdf:resource="http://synapselex.org/ontology/vclo#Intervener"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#depositAmountVND">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">monetary deposit value in VND</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#DepositContract"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#CourtVerdict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Phán quyết của Tòa án</rdfs:label>
+    <rdfs:comment xml:lang="en">Binding judicial resolution of the civil dispute.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#violatesStatutoryArticle">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">violates statutory article</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LegalAct"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#LegalAct">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Hành vi Pháp lý</rdfs:label>
+    <rdfs:comment xml:lang="en">Lawful or unlawful act creating, modifying, or terminating civil relations.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#Intervener">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Người có quyền lợi nghĩa vụ liên quan</rdfs:label>
+    <rdfs:comment xml:lang="en">Third party having independent claims or related obligations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#ProceduralRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#adjudicationDate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">date verdict was rendered</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#JuridicalPerson">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Pháp nhân / Tổ chức</rdfs:label>
+    <rdfs:comment xml:lang="en">An organization established lawfully with independent assets.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalEntity"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#governedByStatute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">governed by statutory act</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LegalAct"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#Statute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#isNotarizedByNotaryPublic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">has official public notarization</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#StatuteOfLimitations">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Thời hiệu Khởi kiện</rdfs:label>
+    <rdfs:comment xml:lang="en">Statutory time window to request judicial remedy (Article 429).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#securesObligation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">secures obligation for</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#DepositContract"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#LandUseRightTransferContract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#isPartyToContract">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">is party to contract</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LegalEntity"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#Contract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#ProceduralRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Vai trò Tố tụng</rdfs:label>
+    <rdfs:comment xml:lang="en">Procedural legal status in civil proceedings.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#elapsedDaysSinceInfringement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">elapsed calendar days from breach to filing</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#LawsuitFiling"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#adjudicatesVerdict">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">adjudicates final verdict</rdfs:label>
+    <rdfs:domain rdf:resource="http://synapselex.org/ontology/vclo#CourtInstance"/>
+    <rdfs:range rdf:resource="http://synapselex.org/ontology/vclo#CourtVerdict"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#LegalEntity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Thực thể Pháp lý</rdfs:label>
+    <rdfs:comment xml:lang="en">Base class for all legal persons, organizations and judicial organs.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en">Vietnamese Civil Law Ontology (VCLO Core)</rdfs:label>
+    <rdfs:label xml:lang="vi">Bản thể học Pháp luật Dân sự Việt Nam (VCLO)</rdfs:label>
+    <rdfs:comment xml:lang="en">Formal OWL 2 DL ontology for Vietnamese Civil Adjudication on real estate and deposit disputes under Civil Code 2015 and Land Law 2024.</rdfs:comment>
+    <owl:versionInfo>1.0.0 (Axiomatic Release)</owl:versionInfo>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#VoidableState">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Trạng thái Vô hiệu Tương đối</rdfs:label>
+    <rdfs:comment xml:lang="en">Contract may be declared void upon petition (mistake, deception).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#LegalState"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://synapselex.org/ontology/vclo#CourtInstance">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="vi">Cấp Tòa án Xét xử</rdfs:label>
+    <rdfs:comment xml:lang="en">First instance or appellate judicial court.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://synapselex.org/ontology/vclo#JudicialOrgan"/>
+  </rdf:Description>
+</rdf:RDF>

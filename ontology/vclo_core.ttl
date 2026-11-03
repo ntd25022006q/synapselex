@@ -1,0 +1,295 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vclo: <http://synapselex.org/ontology/vclo#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://synapselex.org/ontology/vclo> a owl:Ontology ;
+    rdfs:label "Vietnamese Civil Law Ontology (VCLO Core)"@en,
+        "Bản thể học Pháp luật Dân sự Việt Nam (VCLO)"@vi ;
+    rdfs:comment "Formal OWL 2 DL ontology for Vietnamese Civil Adjudication on real estate and deposit disputes under Civil Code 2015 and Land Law 2024."@en ;
+    owl:versionInfo "1.0.0 (Axiomatic Release)" .
+
+vclo:AcceptDepositForfeiture a owl:Class ;
+    rdfs:label "Chấp nhận Phạt cọc"@vi ;
+    rdfs:comment "Ruling ordering forfeiture of deposit to innocent party."@en ;
+    rdfs:subClassOf vclo:CourtVerdict .
+
+vclo:AcceptDoubleDepositRefund a owl:Class ;
+    rdfs:label "Chấp nhận Phạt cọc Gấp đôi"@vi ;
+    rdfs:comment "Ruling requiring breaching deposit-taker to return deposit + equal penalty."@en ;
+    rdfs:subClassOf vclo:CourtVerdict .
+
+vclo:BreachOfContract a owl:Class ;
+    rdfs:label "Hành vi Vi phạm Hợp đồng"@vi ;
+    rdfs:comment "Failure to perform or improper performance of contractual obligations."@en ;
+    rdfs:subClassOf vclo:LegalAct .
+
+vclo:Constitution a owl:Class ;
+    rdfs:label "Hiến pháp"@vi ;
+    rdfs:comment "Supreme law of Vietnam (Rank 1)."@en ;
+    rdfs:subClassOf vclo:Statute ;
+    owl:disjointWith vclo:CivilCode,
+        vclo:SpecializedLaw,
+        vclo:SubLawDecree .
+
+vclo:DeclareContractVoid a owl:Class ;
+    rdfs:label "Tuyên bố Hợp đồng Vô hiệu"@vi ;
+    rdfs:comment "Ruling declaring contract void and ordering restitution of original status."@en ;
+    rdfs:subClassOf vclo:CourtVerdict .
+
+vclo:DismissDueToLapsedLimitation a owl:Class ;
+    rdfs:label "Đình chỉ / Bác đơn do Hết thời hiệu"@vi ;
+    rdfs:comment "Ruling dismissing claims because statute of limitations expired."@en ;
+    rdfs:subClassOf vclo:CourtVerdict .
+
+vclo:JudicialPrecedent a owl:Class ;
+    rdfs:label "Án lệ / Nghị quyết HĐTP"@vi ;
+    rdfs:comment "Binding Supreme People's Court interpretations."@en ;
+    rdfs:subClassOf vclo:Statute .
+
+vclo:JuridicalPerson a owl:Class ;
+    rdfs:label "Pháp nhân / Tổ chức"@vi ;
+    rdfs:comment "An organization established lawfully with independent assets."@en ;
+    rdfs:subClassOf vclo:LegalEntity .
+
+vclo:NaturalPerson a owl:Class ;
+    rdfs:label "Cá nhân / Thể nhân"@vi ;
+    rdfs:comment "A human being possessing legal capacity and civil act capacity."@en ;
+    rdfs:subClassOf vclo:LegalEntity .
+
+vclo:Plaintiff a owl:Class ;
+    rdfs:label "Nguyên đơn"@vi ;
+    rdfs:comment "The party initiating lawsuit alleging infringed civil rights."@en ;
+    rdfs:subClassOf vclo:ProceduralRole ;
+    owl:disjointWith vclo:Defendant,
+        vclo:Intervener .
+
+vclo:StatutoryRegime a owl:Class ;
+    rdfs:label "Hệ thống Quy phạm Pháp luật"@vi ;
+    rdfs:comment "Hierarchical body of legal norms."@en .
+
+vclo:ValidState a owl:Class ;
+    rdfs:label "Trạng thái Có hiệu lực"@vi ;
+    rdfs:comment "Contract fulfills all statutory validity conditions (Article 117)."@en ;
+    rdfs:subClassOf vclo:LegalState ;
+    owl:disjointWith vclo:ExtinguishedState,
+        vclo:VoidAbInitioState .
+
+vclo:VoidableState a owl:Class ;
+    rdfs:label "Trạng thái Vô hiệu Tương đối"@vi ;
+    rdfs:comment "Contract may be declared void upon petition (mistake, deception)."@en ;
+    rdfs:subClassOf vclo:LegalState .
+
+vclo:adjudicatesVerdict a owl:ObjectProperty ;
+    rdfs:label "adjudicates final verdict"@en ;
+    rdfs:domain vclo:CourtInstance ;
+    rdfs:range vclo:CourtVerdict .
+
+vclo:adjudicationDate a owl:DatatypeProperty ;
+    rdfs:label "date verdict was rendered"@en ;
+    rdfs:domain vclo:CourtVerdict ;
+    rdfs:range xsd:dateTime .
+
+vclo:agreedTransferPriceVND a owl:DatatypeProperty ;
+    rdfs:label "total agreed real estate price"@en ;
+    rdfs:domain vclo:LandUseRightTransferContract ;
+    rdfs:range xsd:decimal .
+
+vclo:caseIdentificationNumber a owl:DatatypeProperty ;
+    rdfs:label "case number ID"@en ;
+    rdfs:domain vclo:CourtVerdict ;
+    rdfs:range xsd:string .
+
+vclo:depositAmountVND a owl:DatatypeProperty ;
+    rdfs:label "monetary deposit value in VND"@en ;
+    rdfs:domain vclo:DepositContract ;
+    rdfs:range xsd:decimal .
+
+vclo:elapsedDaysSinceInfringement a owl:DatatypeProperty ;
+    rdfs:label "elapsed calendar days from breach to filing"@en ;
+    rdfs:domain vclo:LawsuitFiling ;
+    rdfs:range xsd:integer .
+
+vclo:governedByStatute a owl:ObjectProperty ;
+    rdfs:label "governed by statutory act"@en ;
+    rdfs:domain vclo:LegalAct ;
+    rdfs:range vclo:Statute .
+
+vclo:hasLandUseRightCertificate a owl:DatatypeProperty ;
+    rdfs:label "land possesses Red/Pink Book Certificate"@en ;
+    rdfs:domain vclo:LandUseRightTransferContract ;
+    rdfs:range xsd:boolean .
+
+vclo:hasProceduralRole a owl:ObjectProperty ;
+    rdfs:label "has procedural role"@en ;
+    rdfs:domain vclo:LegalEntity ;
+    rdfs:range vclo:ProceduralRole .
+
+vclo:hasTemporalInterval a owl:ObjectProperty ;
+    rdfs:label "has active temporal interval"@en ;
+    rdfs:domain vclo:LegalAct ;
+    rdfs:range vclo:TemporalInterval .
+
+vclo:hasValidityState a owl:ObjectProperty ;
+    rdfs:label "has current validity state"@en ;
+    rdfs:domain vclo:Contract ;
+    rdfs:range vclo:LegalState .
+
+vclo:initiatesCivilDispute a owl:ObjectProperty ;
+    rdfs:label "initiates civil dispute"@en ;
+    rdfs:domain vclo:LawsuitFiling ;
+    rdfs:range vclo:Contract .
+
+vclo:isNotarizedByNotaryPublic a owl:DatatypeProperty ;
+    rdfs:label "has official public notarization"@en ;
+    rdfs:domain vclo:Contract ;
+    rdfs:range xsd:boolean .
+
+vclo:isPartyToContract a owl:ObjectProperty ;
+    rdfs:label "is party to contract"@en ;
+    rdfs:domain vclo:LegalEntity ;
+    rdfs:range vclo:Contract .
+
+vclo:normativeRank a owl:DatatypeProperty ;
+    rdfs:label "hierarchical statutory rank (1 supreme, 4 subordinate)"@en ;
+    rdfs:domain vclo:Statute ;
+    rdfs:range xsd:integer .
+
+vclo:resolvesContract a owl:ObjectProperty ;
+    rdfs:label "resolves disputed contract"@en ;
+    rdfs:domain vclo:CourtVerdict ;
+    rdfs:range vclo:Contract .
+
+vclo:statuteOfLimitationsDays a owl:DatatypeProperty ;
+    rdfs:label "statutory limitation days (1095 days for CC 2015 Art. 429)"@en ;
+    rdfs:domain vclo:StatuteOfLimitations ;
+    rdfs:range xsd:integer .
+
+vclo:triggersStateTransition a owl:ObjectProperty ;
+    rdfs:label "triggers state transition to"@en ;
+    rdfs:domain vclo:LegalAct ;
+    rdfs:range vclo:LegalState .
+
+vclo:violatesStatutoryArticle a owl:ObjectProperty ;
+    rdfs:label "violates statutory article"@en ;
+    rdfs:domain vclo:LegalAct ;
+    rdfs:range vclo:Statute .
+
+vclo:CivilCode a owl:Class ;
+    rdfs:label "Bộ luật Dân sự"@vi ;
+    rdfs:comment "General primary civil statute (Rank 2)."@en ;
+    rdfs:subClassOf vclo:Statute ;
+    owl:disjointWith vclo:SpecializedLaw,
+        vclo:SubLawDecree .
+
+vclo:CivilTransaction a owl:Class ;
+    rdfs:label "Giao dịch Dân sự"@vi ;
+    rdfs:comment "Contracts or unilateral legal acts under Article 116 BLDS 2015."@en ;
+    rdfs:subClassOf vclo:LegalAct .
+
+vclo:CourtInstance a owl:Class ;
+    rdfs:label "Cấp Tòa án Xét xử"@vi ;
+    rdfs:comment "First instance or appellate judicial court."@en ;
+    rdfs:subClassOf vclo:JudicialOrgan .
+
+vclo:Defendant a owl:Class ;
+    rdfs:label "Bị đơn"@vi ;
+    rdfs:comment "The party against whom civil claims are filed."@en ;
+    rdfs:subClassOf vclo:ProceduralRole ;
+    owl:disjointWith vclo:Intervener .
+
+vclo:DepositSecuresRestriction a owl:Restriction ;
+    owl:onProperty vclo:securesObligation ;
+    owl:someValuesFrom vclo:Contract .
+
+vclo:JudicialOrgan a owl:Class ;
+    rdfs:label "Cơ quan Tố tụng"@vi ;
+    rdfs:comment "Courts and procuracies adjudicating civil disputes."@en ;
+    rdfs:subClassOf vclo:LegalEntity .
+
+vclo:StatuteOfLimitations a owl:Class ;
+    rdfs:label "Thời hiệu Khởi kiện"@vi ;
+    rdfs:comment "Statutory time window to request judicial remedy (Article 429)."@en .
+
+vclo:TemporalInterval a owl:Class ;
+    rdfs:label "Khoảng Thời gian Pháp lý"@vi ;
+    rdfs:comment "Interval with definite start and end dates."@en .
+
+vclo:VoidAbInitioState a owl:Class ;
+    rdfs:label "Trạng thái Vô hiệu Tuyệt đối"@vi ;
+    rdfs:comment "Contract void from inception due to statutory prohibition (Article 123)."@en ;
+    rdfs:subClassOf vclo:LegalState ;
+    owl:disjointWith vclo:ExtinguishedState .
+
+vclo:securesObligation a owl:ObjectProperty ;
+    rdfs:label "secures obligation for"@en ;
+    rdfs:domain vclo:DepositContract ;
+    rdfs:range vclo:LandUseRightTransferContract .
+
+vclo:DepositContract a owl:Class ;
+    rdfs:label "Hợp đồng Đặt cọc"@vi ;
+    rdfs:comment "Measure to secure obligation under Article 328 BLDS 2015."@en ;
+    rdfs:subClassOf vclo:Contract,
+        vclo:DepositSecuresRestriction ;
+    owl:disjointWith vclo:LandUseRightTransferContract .
+
+vclo:ExtinguishedState a owl:Class ;
+    rdfs:label "Trạng thái Hết hiệu lực / Hết thời hiệu"@vi ;
+    rdfs:comment "Claim extinguished due to statute of limitations lapse."@en ;
+    rdfs:subClassOf vclo:LegalState .
+
+vclo:Intervener a owl:Class ;
+    rdfs:label "Người có quyền lợi nghĩa vụ liên quan"@vi ;
+    rdfs:comment "Third party having independent claims or related obligations."@en ;
+    rdfs:subClassOf vclo:ProceduralRole .
+
+vclo:LawsuitFiling a owl:Class ;
+    rdfs:label "Hành vi Khởi kiện"@vi ;
+    rdfs:comment "Formal submission of civil petition to court."@en ;
+    rdfs:subClassOf vclo:LegalAct .
+
+vclo:SpecializedLaw a owl:Class ;
+    rdfs:label "Luật Chuyên ngành"@vi ;
+    rdfs:comment "Specialized statutory acts overriding general law (Rank 2.5)."@en ;
+    rdfs:subClassOf vclo:Statute ;
+    owl:disjointWith vclo:SubLawDecree .
+
+vclo:SubLawDecree a owl:Class ;
+    rdfs:label "Nghị định / Thông tư"@vi ;
+    rdfs:comment "Executive subordinate regulatory decrees (Rank 3)."@en ;
+    rdfs:subClassOf vclo:Statute .
+
+vclo:LandUseRightTransferContract a owl:Class ;
+    rdfs:label "Hợp đồng Chuyển nhượng QSDĐ"@vi ;
+    rdfs:comment "Real estate transfer contract under Land Law & BLDS."@en ;
+    rdfs:subClassOf vclo:Contract .
+
+vclo:ProceduralRole a owl:Class ;
+    rdfs:label "Vai trò Tố tụng"@vi ;
+    rdfs:comment "Procedural legal status in civil proceedings."@en .
+
+vclo:LegalEntity a owl:Class ;
+    rdfs:label "Thực thể Pháp lý"@vi ;
+    rdfs:comment "Base class for all legal persons, organizations and judicial organs."@en .
+
+vclo:LegalState a owl:Class ;
+    rdfs:label "Trạng thái Hiệu lực Pháp lý"@vi ;
+    rdfs:comment "Validity state of contracts and claims."@en .
+
+vclo:LegalAct a owl:Class ;
+    rdfs:label "Hành vi Pháp lý"@vi ;
+    rdfs:comment "Lawful or unlawful act creating, modifying, or terminating civil relations."@en .
+
+vclo:Contract a owl:Class ;
+    rdfs:label "Hợp đồng Dân sự"@vi ;
+    rdfs:comment "Agreement between parties under Article 385 BLDS 2015."@en ;
+    rdfs:subClassOf vclo:CivilTransaction .
+
+vclo:CourtVerdict a owl:Class ;
+    rdfs:label "Phán quyết của Tòa án"@vi ;
+    rdfs:comment "Binding judicial resolution of the civil dispute."@en .
+
+vclo:Statute a owl:Class ;
+    rdfs:label "Văn bản Quy phạm Pháp luật"@vi ;
+    rdfs:comment "Legal document enacted by competent state bodies."@en .
+

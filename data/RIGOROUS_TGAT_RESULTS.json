@@ -1,0 +1,321 @@
+{
+  "M0_SynapseLex_Full": {
+    "name": "SynapseLex (Axiom-TGAT + VCLO Ontology)",
+    "seed_runs": [
+      {
+        "hits@1": 60.2,
+        "hits@3": 94.98,
+        "macro_f1": 27.02,
+        "micro_f1": 60.2,
+        "lcr": 94.98
+      },
+      {
+        "hits@1": 67.89,
+        "hits@3": 97.32,
+        "macro_f1": 29.49,
+        "micro_f1": 67.89,
+        "lcr": 100.0
+      },
+      {
+        "hits@1": 72.58,
+        "hits@3": 87.29,
+        "macro_f1": 22.06,
+        "micro_f1": 72.58,
+        "lcr": 94.65
+      },
+      {
+        "hits@1": 72.91,
+        "hits@3": 99.0,
+        "macro_f1": 24.68,
+        "micro_f1": 72.91,
+        "lcr": 96.32
+      },
+      {
+        "hits@1": 71.24,
+        "hits@3": 99.0,
+        "macro_f1": 26.35,
+        "micro_f1": 71.24,
+        "lcr": 97.66
+      }
+    ],
+    "mean": {
+      "hits@1": 68.96,
+      "hits@3": 95.52,
+      "macro_f1": 25.92,
+      "lcr": 96.72
+    },
+    "std": {
+      "hits@1": 4.73,
+      "hits@3": 4.37,
+      "macro_f1": 2.47,
+      "lcr": 1.96
+    }
+  },
+  "M1_Ablation_NoOntology": {
+    "name": "Ablation M1 (No Ontology, lambda_onto = 0)",
+    "seed_runs": [
+      {
+        "hits@1": 73.91,
+        "hits@3": 99.33,
+        "macro_f1": 23.04,
+        "micro_f1": 73.91,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 74.25,
+        "hits@3": 99.33,
+        "macro_f1": 23.12,
+        "micro_f1": 74.25,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 69.23,
+        "hits@3": 99.33,
+        "macro_f1": 28.34,
+        "micro_f1": 69.23,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 70.9,
+        "hits@3": 99.33,
+        "macro_f1": 23.61,
+        "micro_f1": 70.9,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 67.22,
+        "hits@3": 99.33,
+        "macro_f1": 28.07,
+        "micro_f1": 67.22,
+        "lcr": 92.31
+      }
+    ],
+    "mean": {
+      "hits@1": 71.1,
+      "hits@3": 99.33,
+      "macro_f1": 25.24,
+      "lcr": 92.31
+    },
+    "std": {
+      "hits@1": 2.7,
+      "hits@3": 0.0,
+      "macro_f1": 2.43,
+      "lcr": 0.0
+    }
+  },
+  "M2_Ablation_NoTemporal": {
+    "name": "Ablation M2 (No Temporal Dynamics, Static GAT)",
+    "seed_runs": [
+      {
+        "hits@1": 74.92,
+        "hits@3": 99.0,
+        "macro_f1": 21.46,
+        "micro_f1": 74.92,
+        "lcr": 93.65
+      },
+      {
+        "hits@1": 74.58,
+        "hits@3": 95.65,
+        "macro_f1": 21.44,
+        "micro_f1": 74.58,
+        "lcr": 93.98
+      },
+      {
+        "hits@1": 74.25,
+        "hits@3": 88.63,
+        "macro_f1": 21.35,
+        "micro_f1": 74.25,
+        "lcr": 94.31
+      },
+      {
+        "hits@1": 71.24,
+        "hits@3": 98.33,
+        "macro_f1": 29.25,
+        "micro_f1": 71.24,
+        "lcr": 98.33
+      },
+      {
+        "hits@1": 74.25,
+        "hits@3": 99.0,
+        "macro_f1": 26.33,
+        "micro_f1": 74.25,
+        "lcr": 94.98
+      }
+    ],
+    "mean": {
+      "hits@1": 73.85,
+      "hits@3": 96.12,
+      "macro_f1": 23.97,
+      "lcr": 95.05
+    },
+    "std": {
+      "hits@1": 1.33,
+      "hits@3": 3.94,
+      "macro_f1": 3.26,
+      "lcr": 1.7
+    }
+  },
+  "M3_Ablation_NoStateGating": {
+    "name": "Ablation M3 (No State Gating, lambda_state = 0)",
+    "seed_runs": [
+      {
+        "hits@1": 64.21,
+        "hits@3": 97.32,
+        "macro_f1": 29.92,
+        "micro_f1": 64.21,
+        "lcr": 99.67
+      },
+      {
+        "hits@1": 73.24,
+        "hits@3": 84.28,
+        "macro_f1": 21.18,
+        "micro_f1": 73.24,
+        "lcr": 95.32
+      },
+      {
+        "hits@1": 75.92,
+        "hits@3": 98.66,
+        "macro_f1": 34.06,
+        "micro_f1": 75.92,
+        "lcr": 92.98
+      },
+      {
+        "hits@1": 73.91,
+        "hits@3": 84.95,
+        "macro_f1": 25.82,
+        "micro_f1": 73.91,
+        "lcr": 95.32
+      },
+      {
+        "hits@1": 73.24,
+        "hits@3": 99.0,
+        "macro_f1": 28.91,
+        "micro_f1": 73.24,
+        "lcr": 96.66
+      }
+    ],
+    "mean": {
+      "hits@1": 72.1,
+      "hits@3": 92.84,
+      "macro_f1": 27.98,
+      "lcr": 95.99
+    },
+    "std": {
+      "hits@1": 4.07,
+      "hits@3": 6.74,
+      "macro_f1": 4.3,
+      "lcr": 2.19
+    }
+  },
+  "B1_Static_GCN": {
+    "name": "Baseline B1 (Static GCN - Kipf & Welling)",
+    "seed_runs": [
+      {
+        "hits@1": 73.91,
+        "hits@3": 99.33,
+        "macro_f1": 25.72,
+        "micro_f1": 73.91,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 75.92,
+        "hits@3": 99.33,
+        "macro_f1": 21.58,
+        "micro_f1": 75.92,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 75.25,
+        "hits@3": 99.33,
+        "macro_f1": 22.52,
+        "micro_f1": 75.25,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 73.91,
+        "hits@3": 99.33,
+        "macro_f1": 23.79,
+        "micro_f1": 73.91,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 74.92,
+        "hits@3": 99.33,
+        "macro_f1": 23.3,
+        "micro_f1": 74.92,
+        "lcr": 92.31
+      }
+    ],
+    "mean": {
+      "hits@1": 74.78,
+      "hits@3": 99.33,
+      "macro_f1": 23.38,
+      "lcr": 92.31
+    },
+    "std": {
+      "hits@1": 0.78,
+      "hits@3": 0.0,
+      "macro_f1": 1.39,
+      "lcr": 0.0
+    }
+  },
+  "B2_LegalGraphRAG": {
+    "name": "Baseline B2 (LegalGraphRAG Retrieval Baseline)",
+    "seed_runs": [
+      {
+        "hits@1": 74.92,
+        "hits@3": 99.33,
+        "macro_f1": 23.31,
+        "micro_f1": 74.92,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 75.92,
+        "hits@3": 99.33,
+        "macro_f1": 21.58,
+        "micro_f1": 75.92,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 75.92,
+        "hits@3": 99.33,
+        "macro_f1": 21.66,
+        "micro_f1": 75.92,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 63.55,
+        "hits@3": 99.33,
+        "macro_f1": 27.73,
+        "micro_f1": 63.55,
+        "lcr": 92.31
+      },
+      {
+        "hits@1": 75.92,
+        "hits@3": 99.33,
+        "macro_f1": 21.58,
+        "micro_f1": 75.92,
+        "lcr": 92.31
+      }
+    ],
+    "mean": {
+      "hits@1": 73.25,
+      "hits@3": 99.33,
+      "macro_f1": 23.17,
+      "lcr": 92.31
+    },
+    "std": {
+      "hits@1": 4.86,
+      "hits@3": 0.0,
+      "macro_f1": 2.37,
+      "lcr": 0.0
+    }
+  },
+  "significance_tests": {
+    "M1_Ablation_NoOntology": 0.40625,
+    "M2_Ablation_NoTemporal": 0.15625,
+    "M3_Ablation_NoStateGating": 0.84375,
+    "B1_Static_GCN": 0.0625,
+    "B2_LegalGraphRAG": 0.09375
+  }
+}
