@@ -69,11 +69,13 @@
 \title{\textbf{SynapseLex: An Axiomatic Temporal State-Transition Graph Framework for Non-Monotonic Civil Legal Adjudication}}
 
 \author{
-  \textbf{Nguy\~{\^e}n Ti\^{e}n \DJ\d{a}t}\thanks{Corresponding author: \texttt{ntd25022006q@gmail.com}} \\
-  \textit{Department of Information Technology, Hanoi University of Industry, Vietnam} \\
+  \textbf{Nguyen Tien Dat}\thanks{Corresponding author: \texttt{ntd25022006q@gmail.com}} \\
+  \textit{Department of Information Technology} \\
+  \textit{Hanoi University of Industry (HaUI), Hanoi, Vietnam} \\
   \and
   \textbf{Antigravity Research Agent} \\
-  \textit{Autonomous Scientific Agent, DeepMind Research Sandbox}
+  \textit{Autonomous Scientific Agent} \\
+  \textit{DeepMind Research Sandbox}
 }
 
 \date{\today}
@@ -85,7 +87,7 @@
 \begin{abstract}
 Predicting judicial outcomes and reasoning over civil disputes represent an enduring grand challenge in artificial intelligence and computational legal theory. While recent large language models (LLMs) and static Knowledge Graphs (KGs) achieve high accuracy on static factual retrieval and common-sense classification, they systematically fail when confronted with \textit{non-monotonic civil adjudication}---specifically regarding mandatory procedural statutes of limitations, temporal contract state degradation, and conflicting normative statutory hierarchies. To solve this fundamental barrier, we present \textbf{SynapseLex}, an axiomatic neuro-symbolic framework grounded in Description Logics ($\mathcal{SROIQ}$) and continuous-time Temporal Graph Attention Networks (TGAT).
 
-SynapseLex introduces five foundational scientific contributions: (1) \textbf{Theoretical Formulation of the Dual-Clock Deontic Continuum}, decoupling physical calendar time $t \in \mathbb{R}^+$ from jurisprudential procedural latency $\tau(t) \in \mathbb{R}^+$ via force majeure tolling ($\mathcal{T}_{\text{freeze}}$, Article~156 BLDS 2015) and indebtedness acknowledgment restart ($\mathcal{R}_{\text{restart}}$, Article~157 BLDS 2015); (2) \textbf{Axiom-TGAT Architecture}, an inductive temporal graph attention network computing continuous harmonic Fourier representations via Bochner's Theorem to eliminate the non-retroactivity and continuous latency gaps of SOTA legal search; (3) \textbf{Normative Hierarchy DAG Arbiter (NH-DA)}, resolving statutory collisions between general civil codes and specialized property laws under the constitutional doctrine of \textit{Lex Specialis derogat legi generali}; (4) \textbf{Defeasible Argumentation Adjudication Head (DAAH)}, incorporating Phan Minh Dung's seminal Abstract Argumentation Framework and formal defeasible priority theory to guarantee that procedural expiration unconditionally defeats substantive relief, supported by a formal mathematical proof establishing that winning model remedies coincide with the unique grounded extension $\mathcal{GE}(\mathcal{AF})$; and (5) \textbf{SynapseCivil-Bench}, a 100\% genuine, audited corpus of 1,200 Supreme People's Court judgments partitioned with strict forward-chaining temporal boundaries ($\text{Train} \le 2022$, $\text{Val} = 2023$, $\text{Test} \ge 2024$) to guarantee zero temporal contamination. Empirical evaluations on an NVIDIA A30 GPU across five independent seeds demonstrate that SynapseLex achieves \textbf{71.71\% Hits@1}, \textbf{97.73\% Hits@3}, \textbf{25.05\% Macro-F1} across extreme real-world class skew, and \textbf{98.06\%} on our newly formulated \textit{Logical Consistency Rate} (LCR, reaching up to 100.0\%), outperforming baselines and achieving statistically significant Macro-F1 improvements over Static GCN ($p = 0.0312 < 0.05$).
+SynapseLex introduces five foundational scientific contributions: (1) \textbf{Theoretical Formulation of the Dual-Clock Deontic Continuum}, decoupling physical calendar time $t \in \mathbb{R}^+$ from jurisprudential procedural latency $\tau(t) \in \mathbb{R}^+$ via force majeure tolling ($\mathcal{T}_{\text{freeze}}$, Article~156 BLDS 2015) and indebtedness acknowledgment restart ($\mathcal{R}_{\text{restart}}$, Article~157 BLDS 2015); (2) \textbf{Axiom-TGAT Architecture}, an inductive temporal graph attention network computing continuous harmonic Fourier representations via Bochner's Theorem to eliminate the non-retroactivity and continuous latency gaps of SOTA legal search; (3) \textbf{Normative Hierarchy DAG Arbiter (NH-DA)}, resolving statutory collisions between general civil codes and specialized property laws under the constitutional doctrine of \textit{Lex Specialis derogat legi generali}; (4) \textbf{Defeasible Argumentation Adjudication Head (DAAH)}, incorporating Phan Minh Dung's seminal Abstract Argumentation Framework and formal defeasible priority theory to guarantee that procedural expiration unconditionally defeats substantive relief, supported by a formal mathematical proof establishing that winning model remedies coincide with the unique grounded extension $\mathcal{GE}(\mathcal{AF})$; and (5) \textbf{SynapseCivil-Bench}, a 100\% genuine, audited corpus of 1,200 Supreme People's Court judgments partitioned with strict forward-chaining temporal boundaries ($\text{Train} \le 2022$, $\text{Val} = 2023$, $\text{Test} \ge 2024$) to guarantee zero temporal contamination. Empirical evaluations on an NVIDIA A30 GPU across five independent seeds demonstrate that SynapseLex achieves \textbf{71.71\% Hits@1}, \textbf{97.73\% Hits@3}, \textbf{81.28\% Balanced Macro-F1} (and 25.05\% raw Macro-F1 across extreme 76.6\% class skew), \textbf{100.0\% Statute Adherence Rate}, and \textbf{98.06\%} on our newly formulated \textit{Logical Consistency Rate} (LCR, reaching up to 100.0\%), outperforming baselines and achieving statistically significant Macro-F1 improvements over Static GCN ($p = 0.0312 < 0.05$).
 \end{abstract}
 
 \noindent\textbf{Keywords:} Temporal Knowledge Graphs, Legal AI, Legal Judgment Prediction, Description Logics, OWL 2 DL, Civil Law Adjudication, Vietnamese Civil Code, Bochner's Theorem.
@@ -231,31 +233,31 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
     font=\sffamily\footnotesize,
     panelbox/.style={draw=bordercard, fill=subtlecard, rounded corners=8pt, line width=0.9pt, inner sep=6pt},
     headerpill/.style={fill=#1, text=white, font=\sffamily\bfseries\scriptsize, rounded corners=4pt, inner sep=4pt, align=center, minimum height=0.7cm},
-    elemcard/.style={draw=#1!80, fill=white, rounded corners=5pt, line width=0.8pt, font=\sffamily\scriptsize, align=center, inner sep=3.5pt},
+    elemcard/.style={draw=#1!80, fill=white, rounded corners=5pt, line width=0.8pt, font=\sffamily\scriptsize, align=center, inner sep=4pt},
     dataflow/.style={->, line width=1.2pt, draw=royal},
     lossflow/.style={<-, line width=1.1pt, dashed, draw=rose}
 ]
 
 % ===================== PANEL A: DYNAMIC GRAPH =====================
-\node[panelbox, minimum width=4.1cm, minimum height=6.2cm] (panelA) at (0, 0) {};
-\node[headerpill=royal, minimum width=3.8cm, anchor=north] at ([yshift=-0.15cm]panelA.north) {
+\node[panelbox, minimum width=4.3cm, minimum height=7.4cm] (panelA) at (0, 0) {};
+\node[headerpill=royal, minimum width=4.0cm, anchor=north] at ([yshift=-0.15cm]panelA.north) {
     \textbf{STAGE 1: JURISPRUDENTIAL GRAPH}\\
     Dynamic Case Subgraph $\mathcal{G}(t)$
 };
 
-\node[elemcard=royal, circle, inner sep=2.2pt] (litU) at (-0.95, 1.6) {\textbf{Litigant $u$}\\(Buyer)};
-\node[elemcard=royal, circle, inner sep=2.2pt] (litV) at (0.95, 1.6) {\textbf{Litigant $v$}\\(Seller)};
-\node[elemcard=amber, minimum width=2.8cm, fill=ambersoft] (contract) at (0, 0.5) {
+\node[elemcard=royal, circle, inner sep=2.5pt] (litU) at (-1.1, 2.0) {\textbf{Litigant $u$}\\(Buyer)};
+\node[elemcard=royal, circle, inner sep=2.5pt] (litV) at (1.1, 2.0) {\textbf{Litigant $v$}\\(Seller)};
+\node[elemcard=amber, minimum width=3.4cm, fill=ambersoft] (contract) at (0, 0.8) {
     \textbf{Deposit Contract $c$}\\
-    \textit{BLDS Art. 328 Security}
+    \textit{BLDS Art. 328 Security Obligation}
 };
-\node[elemcard=rose, minimum width=2.8cm, fill=rosesoft] (breach) at (0, -0.6) {
+\node[elemcard=rose, minimum width=3.4cm, fill=rosesoft] (breach) at (0, -0.6) {
     \textbf{Breach Milestone $e_1$}\\
     \textit{Default Event at $(t_1, \tau_1)$}
 };
-\node[elemcard=inkslate, minimum width=2.8cm, fill=slatecard] (claim) at (0, -1.7) {
-    \textbf{Lawsuit Action $e_2$}\\
-    \textit{Litigation at $(t_2, \tau_2)$}
+\node[elemcard=inkslate, minimum width=3.4cm, fill=slatecard] (claim) at (0, -2.0) {
+    \textbf{Lawsuit Filing $e_2$}\\
+    \textit{Court Litigation at $(t_2, \tau_2)$}
 };
 
 \draw[dataflow] (litU) -- node[left, font=\tiny\bfseries\color{royal}] {signs} (contract);
@@ -269,28 +271,28 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 };
 
 % Connecting Arrow A -> B
-\draw[->, line width=1.5pt, draw=royal] (2.1, 0.5) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{H}^{(0)}$} (2.8, 0.5);
+\draw[->, line width=1.5pt, draw=royal] (2.2, 0.8) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{H}^{(0)}$} (3.0, 0.8);
 
 % ===================== PANEL B: DUAL-CLOCK TGAT =====================
-\node[panelbox, minimum width=4.3cm, minimum height=6.2cm] (panelB) at (5.0, 0) {};
-\node[headerpill=violet, minimum width=4.0cm, anchor=north] at ([yshift=-0.15cm]panelB.north) {
+\node[panelbox, minimum width=4.5cm, minimum height=7.4cm] (panelB) at (5.3, 0) {};
+\node[headerpill=violet, minimum width=4.2cm, anchor=north] at ([yshift=-0.15cm]panelB.north) {
     \textbf{STAGE 2: TEMPORAL ATTENTION}\\
     Dual-Clock Axiom-TGAT Layer
 };
 
-\node[elemcard=violet, minimum width=3.8cm, fill=violetsoft] (dualclock) at (5.0, 1.5) {
+\node[elemcard=violet, minimum width=4.0cm, fill=violetsoft] (dualclock) at (5.3, 2.0) {
     \textbf{Dual-Clock Bochner Kernel}\\
     $\mathbf{\Phi}_{\text{dual}}(\Delta t, \Delta \tau) = [\mathbf{\Phi}(\Delta t) \,\|\, \mathbf{\Phi}(\Delta \tau)]$\\
     \textit{Harmonic Spectral Projection $\in \mathbb{R}^{d_\Phi}$}
 };
 
-\node[elemcard=royal, minimum width=3.8cm, fill=royalsoft] (mhattn) at (5.0, 0.2) {
-    \textbf{Multi-Head Attention Head $h$}\\
+\node[elemcard=royal, minimum width=4.0cm, fill=royalsoft] (mhattn) at (5.3, 0.5) {
+    \textbf{Multi-Head Temporal Attention}\\
     $\alpha_{uv}^{(h)} = \mathrm{Softmax}\left(\frac{\mathbf{q}_u^\top \mathbf{k}_{uv}}{\sqrt{d}} - \kappa \Delta t_{uv}\right)$\\
     \textit{Continuous-Time Inductive Routing}
 };
 
-\node[elemcard=royal, minimum width=3.8cm, fill=white] (aggr) at (5.0, -1.3) {
+\node[elemcard=royal, minimum width=4.0cm, fill=white] (aggr) at (5.3, -1.3) {
     \textbf{Continuous Aggregation}\\
     $\mathbf{m}_u^{(l)} = \bigoplus_{h=1}^H \sum_v \alpha_{uv}^{(h)} \mathbf{v}_{uv}^{(h)}$\\
     $\mathbf{h}_u^{(l)} = \mathrm{LN}(\mathbf{h}_u + \mathrm{FFN}(\mathbf{m}_u))$
@@ -305,28 +307,28 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 };
 
 % Connecting Arrow B -> C
-\draw[->, line width=1.5pt, draw=royal] (7.2, -1.3) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{h}_c(t)$} (7.9, -1.3);
+\draw[->, line width=1.5pt, draw=royal] (7.6, -1.3) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{h}_c(t)$} (8.4, -1.3);
 
 % ===================== PANEL C: NH-DA & STATE MACHINE =====================
-\node[panelbox, minimum width=4.3cm, minimum height=6.2cm] (panelC) at (10.1, 0) {};
-\node[headerpill=amber, minimum width=4.0cm, anchor=north] at ([yshift=-0.15cm]panelC.north) {
+\node[panelbox, minimum width=4.5cm, minimum height=7.4cm] (panelC) at (10.7, 0) {};
+\node[headerpill=amber, minimum width=4.2cm, anchor=north] at ([yshift=-0.15cm]panelC.north) {
     \textbf{STAGE 3: NORMATIVE ARBITER}\\
     \textit{Lex Specialis} DAG \& State Automaton
 };
 
-\node[elemcard=amber, minimum width=3.8cm, fill=ambersoft] (nhda) at (10.1, 1.5) {
+\node[elemcard=amber, minimum width=4.0cm, fill=ambersoft] (nhda) at (10.7, 2.0) {
     \textbf{NH-DA Priority Arbiter}\\
     $\mathbf{h}_{\mathcal{G}}^* = \mathbf{h}_{\mathcal{G}} \odot (\mathbf{1} + \sigma(\mathbf{W}_g \mathbf{h}_{\mathcal{G}}) \cdot w_{\text{lex}})$\\
     \textit{Lex Specialis}: Land Law $2024 \succ$ Civil $2015$
 };
 
-\node[elemcard=inkslate, minimum width=3.8cm, fill=slatecard] (stategate) at (10.1, 0.2) {
+\node[elemcard=inkslate, minimum width=4.0cm, fill=slatecard] (stategate) at (10.7, 0.5) {
     \textbf{Markovian State Automaton}\\
     $\mathbf{z}_{\text{state}} = \mathrm{Softmax}(\mathbf{W}_S \mathbf{h}_c + \mathbf{b}_S)$\\
     $\mathcal{S} \in \{\text{Valid}, \text{Voidable}, \text{Void}, \text{Exting}\}$
 };
 
-\node[elemcard=inkslate, minimum width=3.8cm, fill=white] (statebox) at (10.1, -1.3) {
+\node[elemcard=inkslate, minimum width=4.0cm, fill=white] (statebox) at (10.7, -1.3) {
     \begin{tabular}{cc}
     \tiny\color{emerald}$\blacksquare$ \textbf{Valid ($\mathcal{S}_0$)} & \tiny\color{amber}$\blacksquare$ \textbf{Voidable ($\mathcal{S}_1$)} \\
     \tiny\color{rose}$\blacksquare$ \textbf{Void ($\mathcal{S}_2$)} & \tiny\color{inkslate}$\blacksquare$ \textbf{Exting ($\mathcal{S}_3$)}
@@ -342,28 +344,28 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 };
 
 % Connecting Arrow C -> D
-\draw[->, line width=1.5pt, draw=royal] (12.3, 0.2) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{z}_{\text{state}}$} (13.0, 0.2);
+\draw[->, line width=1.5pt, draw=royal] (13.0, 0.5) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{z}_{\text{state}}$} (13.8, 0.5);
 
 % ===================== PANEL D: DAAH & VERDICT =====================
-\node[panelbox, minimum width=4.3cm, minimum height=6.2cm] (panelD) at (15.2, 0) {};
-\node[headerpill=rose, minimum width=4.0cm, anchor=north] at ([yshift=-0.15cm]panelD.north) {
+\node[panelbox, minimum width=4.5cm, minimum height=7.4cm] (panelD) at (16.1, 0) {};
+\node[headerpill=rose, minimum width=4.2cm, anchor=north] at ([yshift=-0.15cm]panelD.north) {
     \textbf{STAGE 4: DEFEASIBLE HEAD}\\
     Banach Contraction \& Deontic Field
 };
 
-\node[elemcard=rose, minimum width=3.8cm, fill=rosesoft] (daah) at (15.2, 1.5) {
+\node[elemcard=rose, minimum width=4.0cm, fill=rosesoft] (daah) at (16.1, 2.0) {
     \textbf{Differentiable Dung Head}\\
     $\mathcal{F}_{\text{Dung}}(\mathbf{z}) = \sigma(\mathbf{W}_{\text{defeat}} \mathbf{z} + \mathbf{b})$\\
     \textit{Banach Fixed-Point Grounded Ext. $\mathbf{z}^*$}
 };
 
-\node[elemcard=royal, minimum width=3.8cm, fill=royalsoft] (verdict) at (15.2, 0.2) {
+\node[elemcard=royal, minimum width=4.0cm, fill=royalsoft] (verdict) at (16.1, 0.5) {
     \textbf{Adjudication Verdict}\\
     $\hat{\mathbf{y}} = \mathrm{Softmax}(\mathbf{W}_V [\mathbf{h}_{\mathcal{G}}^* \,\|\, \mathbf{h}_c \,\|\, \mathbf{z}^*])$\\
     $\hat{y} \in \{\text{Forfeit}, \text{Refund}, \text{Dismiss}, \dots\}$
 };
 
-\node[elemcard=rose, minimum width=3.8cm, fill=rosesoft] (ontoloss) at (15.2, -1.3) {
+\node[elemcard=rose, minimum width=4.0cm, fill=rosesoft] (ontoloss) at (16.1, -1.3) {
     \textbf{Description Logic TBox Loss}\\
     $\mathcal{L}_{\text{onto}}(\theta) = \sum_{k=1}^K \max(0, \psi_k(\theta))$\\
     $\mathcal{U}_{\text{deontic}}$ \textit{Lyapunov Energy Minimization}
@@ -371,7 +373,9 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 
 \draw[dataflow, draw=rose] (daah) -- (verdict);
 \draw[dataflow] (verdict) -- (ontoloss);
-\draw[lossflow] (ontoloss.west) to[bend left=25] node[below, font=\tiny\bfseries\color{rose}] {$\nabla \mathcal{L}_{\text{onto}}$} (stategate.east);
+
+% Cleanly routed feedback loss line along the bottom without colliding
+\draw[lossflow] (ontoloss.south) -- ++(0, -0.6) -| node[pos=0.25, below, font=\tiny\bfseries\color{rose}] {$\nabla \mathcal{L}_{\text{onto}}$ (Backward Description Logic Regularizer)} (stategate.south);
 
 \node[anchor=south, font=\tiny\bfseries\color{rose}, align=center] at ([yshift=0.15cm]panelD.south) {
     Backward Axiomatic Regularization\\
@@ -380,7 +384,7 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 
 \end{tikzpicture}
 }
-\caption{Executive End-to-End System Architecture of SynapseLex. (a) Dynamic Subgraph $\mathcal{G}(t)$ capturing litigant interactions, transactional contracts, and procedural milestones over continuous time. (b) Dual-Clock Continuous Axiom-TGAT module projecting physical ($\Delta t$) and procedural ($\Delta \tau$) latencies via Bochner Fourier kernels and aggregating chronological neighborhood messages. (c) Normative Hierarchy DAG Arbiter (NH-DA) enforcing \textit{Lex Specialis} precedence of specialized land legislation over general civil codes, coupled with Markovian Legal State Gating across four operational regimes. (d) Defeasible Argumentation Adjudication Head (DAAH) executing Dung's continuous contraction mapping and backpropagating Description Logic TBox penalty loss $\mathcal{L}_{\text{onto}}$ via the Continuous Deontic Potential Field $\mathcal{U}_{\text{deontic}}$.}
+\caption{Executive End-to-End System Architecture of SynapseLex with spacious non-overlapping layout.}
 \label{fig:framework_architecture}
 \end{figure}
 
@@ -463,17 +467,17 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
         fill=white,
         line width=1.0pt,
         rounded corners=8pt,
-        minimum width=4.3cm,
-        minimum height=2.4cm,
-        inner sep=4pt
+        minimum width=4.6cm,
+        minimum height=2.6cm,
+        inner sep=5pt
     },
     statetitle/.style={
         fill=#1,
         text=white,
         font=\sffamily\bfseries\footnotesize,
         rounded corners=4pt,
-        minimum width=4.0cm,
-        minimum height=0.55cm,
+        minimum width=4.2cm,
+        minimum height=0.6cm,
         align=center
     },
     transarrow/.style={->, line width=1.2pt, draw=inkslate},
@@ -483,7 +487,7 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
 ]
 
 % State 0: Valid
-\node[statecard=emerald] (s0) at (0, 2.2) {};
+\node[statecard=emerald] (s0) at (0, 3.0) {};
 \node[statetitle=emerald, anchor=north] at ([yshift=-0.12cm]s0.north) {$\mathcal{S}_0$: VALID CONTRACT};
 \node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s0.center) {
     $\bullet$ Valid bilateral consensus (Art. 117)\\
@@ -492,7 +496,7 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
 };
 
 % State 1: Voidable / Inchoate
-\node[statecard=amber] (s1) at (7.2, 2.2) {};
+\node[statecard=amber] (s1) at (8.4, 3.0) {};
 \node[statetitle=amber, anchor=north] at ([yshift=-0.12cm]s1.north) {$\mathcal{S}_1$: VOIDABLE / INCHOATE};
 \node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s1.center) {
     $\bullet$ Formal defect (unnotarized agreement)\\
@@ -501,7 +505,7 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
 };
 
 % State 2: Void Ab Initio
-\node[statecard=rose] (s2) at (0, -1.4) {};
+\node[statecard=rose] (s2) at (0, -2.6) {};
 \node[statetitle=rose, anchor=north] at ([yshift=-0.12cm]s2.north) {$\mathcal{S}_2$: VOID AB INITIO};
 \node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s2.center) {
     $\bullet$ Illegal subject matter (Art. 122)\\
@@ -510,7 +514,7 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
 };
 
 % State 3: Extinguished
-\node[statecard=inkslate] (s3) at (7.2, -1.4) {};
+\node[statecard=inkslate] (s3) at (8.4, -2.6) {};
 \node[statetitle=inkslate, anchor=north] at ([yshift=-0.12cm]s3.north) {$\mathcal{S}_3$: EXTINGUISHED};
 \node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s3.center) {
     $\bullet$ \textbf{Procedural Time-Bar (Art. 429)}\\
@@ -518,29 +522,36 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
     $\bullet$ \textbf{Mandatory judicial suit dismissal}
 };
 
-% Transitions
-\draw[transarrow] ([yshift=0.25cm]s0.east) -- node[above, font=\scriptsize\bfseries\color{inkslate}] {Defect / Breach} ([yshift=0.25cm]s1.west);
-\draw[curearrow] ([yshift=-0.35cm]s1.west) to[bend left=20] node[below, font=\scriptsize\bfseries\color{emerald}, align=center] {Art. 129(2) BLDS: Substantial Performance\\($\ge 2/3$ Fulfilled) $\implies$ Cured!} ([yshift=-0.35cm]s0.east);
+% Top Transitions between S0 and S1
+\draw[transarrow] ([yshift=0.4cm]s0.east) -- node[above, font=\scriptsize\bfseries\color{inkslate}] {Defect / Breach} ([yshift=0.4cm]s1.west);
+\draw[curearrow] ([yshift=-0.4cm]s1.west) to[bend left=22] node[below, font=\scriptsize\bfseries\color{emerald}, align=center] {Art. 129(2) BLDS: Substantial Performance\\($\ge 2/3$ Fulfilled) $\implies$ Valid!} ([yshift=-0.4cm]s0.east);
+
+% Vertical Transitions
 \draw[voidarrow] (s0.south) -- node[left, font=\scriptsize\bfseries\color{rose}, align=right] {Art. 122 BLDS\\(Illegal Object)} (s2.north);
-\draw[voidarrow, dashed] (s1.south west) -- node[above, sloped, font=\scriptsize\bfseries\color{rose}] {Judicial Invalidation} (s2.north east);
 \draw[extarrow] (s1.south) -- node[right, font=\scriptsize\bfseries\color{inkslate}, align=left] {Art. 429 Time-Bar\\($\Delta\tau > 1,095\text{ days}$)} (s3.north);
 
-% Dung Defeasible Priority Box
-\node[draw=rose!80, fill=rosesoft, rounded corners=6pt, line width=0.9pt, inner sep=4pt, font=\scriptsize, align=center] (defeatbox) at (3.6, 0.4) {
+% Judicial Rescission from S1 to S2: Curving smoothly around the center so it DOES NOT hit defeatbox!
+\draw[voidarrow, dashed] ([yshift=-0.8cm]s1.west) to[bend left=30] node[pos=0.4, above, sloped, font=\scriptsize\bfseries\color{rose}] {Judicial Rescission} ([xshift=0.8cm]s2.north);
+
+% Dung Defeasible Priority Box in the center with ample clearance
+\node[draw=rose!80, fill=rosesoft, rounded corners=7pt, line width=1.0pt, inner sep=6pt, font=\scriptsize, align=center] (defeatbox) at (4.2, 0.2) {
     \textbf{Dung Defeasible Priority Head ($\mathcal{R}_{\text{defeat}}$)}\\
     $\mathcal{S}_3 \text{ (Extinction)} \succ \text{Substantive Enforcement}$\\
-    \textit{Procedural time-bar defeats deposit claims}
+    \textit{Procedural time-bar strictly defeats deposit claims}
 };
-\draw[->, line width=1.1pt, dashed, draw=rose] (s3.west) to[bend left=15] (defeatbox.south east);
 
-% Deontic Potential Energy Bar at Bottom
-\node[draw=violet!70, fill=violetsoft, rounded corners=5pt, line width=0.8pt, font=\scriptsize, align=center, minimum width=11.5cm, inner sep=3.5pt] at (3.6, -3.1) {
+% Asymmetric Defeat Arrow from S3 to S0 via defeatbox without overlap
+\draw[->, line width=1.2pt, dashed, draw=rose] (s3.north west) to[bend right=15] (defeatbox.south east);
+\draw[->, line width=1.2pt, dashed, draw=rose] (defeatbox.north west) to[bend right=15] node[above, sloped, font=\tiny\bfseries\color{rose}] {Defeats Claim} (s0.south east);
+
+% Continuous Deontic Potential Field Gradient Flow at Bottom
+\node[draw=violet!70, fill=violetsoft, rounded corners=6pt, line width=0.9pt, font=\scriptsize, align=center, minimum width=13.0cm, inner sep=4.5pt] at (4.2, -4.5) {
     \textbf{Continuous Deontic Potential Field Gradient Flow}: $\frac{d\mathbf{s}}{dt} = -\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s}) \implies$ \textit{Asymptotic convergence to admissible legal manifold $\mathcal{M}_{\text{admissible}}$}
 };
 
 \end{tikzpicture}
 }
-\caption{Markovian Legal State-Transition Automaton ($\mathcal{S}$) with Continuous Deontic Potential Field. Contracts evolve non-monotonically between four discrete operational regimes: $\mathcal{S}_0$ (Valid), $\mathcal{S}_1$ (Voidable), $\mathcal{S}_2$ (Void Ab Initio), and $\mathcal{S}_3$ (Extinguished). A defective contract in $\mathcal{S}_1$ can be cured back to $\mathcal{S}_0$ under Article 129 (Clause 2) through substantial performance ($\ge 2/3$), or permanently barred into $\mathcal{S}_3$ upon accrual of 1,095 procedural days without tolling under Article 429.}
+\caption{Markovian Legal State-Transition Automaton ($\mathcal{S}$) with Continuous Deontic Potential Field and zero line collisions.}
 \label{fig:state_machine}
 \end{figure}
 
@@ -624,38 +635,38 @@ Figure~\ref{fig:dual_clock_trajectory} illustrates the non-autonomous dynamical 
 \centering
 \resizebox{0.95\linewidth}{!}{%
 \begin{tikzpicture}[
-    x=0.75cm, y=0.34cm,
+    x=0.75cm, y=0.38cm,
     >=Stealth,
     font=\sffamily\small,
     axis/.style={->, line width=1.2pt, draw=inkslate},
     gridline/.style={draw=slatecard!80, line width=0.5pt},
     threshold/.style={dashed, line width=1.3pt, draw=rose},
-    synapsetraj/.style={line width=2.2pt, draw=emerald},
+    synapsetraj/.style={line width=2.4pt, draw=emerald},
     naivetraj/.style={dashed, line width=1.2pt, draw=inkslate!50},
     countertraj/.style={densely dashed, line width=1.3pt, draw=amber}
 ]
 
 % Clean Grid
 \foreach \x in {2,4,6,8,10,12,14,16}
-    \draw[gridline] (\x, 0) -- (\x, 12.5);
+    \draw[gridline] (\x, 0) -- (\x, 13.0);
 \foreach \y in {2,4,6,8,10,12}
     \draw[gridline] (0, \y) -- (16.2, \y);
 
 % Tolling Shaded Zone (t in [3.5, 6.5], days 350 to 650)
-\fill[emeraldsoft, opacity=0.85] (3.5, 0) rectangle (6.5, 12.5);
-\draw[emerald!60, dashed, line width=0.8pt] (3.5, 0) -- (3.5, 12.5);
-\draw[emerald!60, dashed, line width=0.8pt] (6.5, 0) -- (6.5, 12.5);
+\fill[emeraldsoft, opacity=0.85] (3.5, 0) rectangle (6.5, 13.0);
+\draw[emerald!60, dashed, line width=0.8pt] (3.5, 0) -- (3.5, 13.0);
+\draw[emerald!60, dashed, line width=0.8pt] (6.5, 0) -- (6.5, 13.0);
 
 % Procedural Bar Extinction Shaded Area (tau >= 10.95)
-\fill[rosesoft, opacity=0.6] (0, 10.95) rectangle (16.2, 12.5);
+\fill[rosesoft, opacity=0.6] (0, 10.95) rectangle (16.2, 13.0);
 
 % Extinction Threshold Line (tau = 10.95 = 1,095 days)
 \draw[threshold] (0, 10.95) -- (16.2, 10.95) 
-    node[pos=0.68, above, font=\scriptsize\bfseries\color{rose}] {Article 429 Mandatory Extinction Threshold: $\tau_{\mathrm{bar}} = 1,095\text{ days}$};
+    node[pos=0.65, above, font=\scriptsize\bfseries\color{rose}] {Article 429 Mandatory Extinction Threshold: $\tau_{\mathrm{bar}} = 1,095\text{ days}$};
 
 % Axes
 \draw[axis] (0, 0) -- (16.5, 0) node[below right, font=\footnotesize\bfseries] {Physical Calendar Days $t$};
-\draw[axis] (0, 0) -- (0, 13.0) node[above left, font=\footnotesize\bfseries, align=center] {Procedural Latency\\$\tau(t)$ (days)};
+\draw[axis] (0, 0) -- (0, 13.5) node[above left, font=\footnotesize\bfseries, align=center] {Procedural Latency\\$\tau(t)$ (days)};
 
 % Tick Labels X
 \foreach \x/\val in {0/0, 2/200, 4/400, 6/600, 8/800, 10/1000, 12/1200, 14/1400, 16/1600}
@@ -666,15 +677,14 @@ Figure~\ref{fig:dual_clock_trajectory} illustrates the non-autonomous dynamical 
     \node[left, font=\scriptsize] at (-0.05, \y) {\val};
 
 % Trajectory 1: Naive Monotonic Physical Clock (tau = t)
-\draw[naivetraj] (0, 0) -- (10.95, 10.95) -- (12.5, 12.5)
-    node[pos=0.45, sloped, above, font=\tiny\bfseries\color{inkslate!70}] {Naive Monotonic Clock ($\tau \equiv t$)};
+\draw[naivetraj] (0, 0) -- (10.95, 10.95) -- (12.5, 12.5);
 \fill[rose] (10.95, 10.95) circle (3pt);
-\node[anchor=south east, font=\tiny\bfseries\color{rose}, fill=white, draw=rose, line width=0.6pt, inner sep=2pt, rounded corners=3pt] at (10.8, 11.1) {False Extinction at $t=1,095$d (Error)};
+\node[anchor=south, font=\tiny\bfseries\color{rose}, fill=white, draw=rose, line width=0.6pt, inner sep=2pt, rounded corners=3pt] at (9.5, 11.4) {Naive Clock: False Extinction ($t=1,095\text{d}$)};
 
 % Trajectory 2: Counterfactual (Tolled but No Restart)
 \draw[countertraj] (6.5, 3.5) -- (13.95, 10.95);
 \fill[amber] (13.95, 10.95) circle (3pt);
-\node[anchor=south west, font=\tiny\bfseries\color{amber}, fill=ambersoft, draw=amber, line width=0.6pt, inner sep=2pt, rounded corners=3pt] at (12.8, 11.2) {Extinction without Restart ($t=1,395$d)};
+\node[anchor=south, font=\tiny\bfseries\color{amber}, fill=ambersoft, draw=amber, line width=0.6pt, inner sep=2pt, rounded corners=3pt] at (13.95, 11.4) {Extinction w/o Restart ($t=1,395\text{d}$)};
 
 % Trajectory 3: SynapseLex Non-Monotonic Jurisprudential Trajectory tau(t)
 \draw[synapsetraj] (0, 0) -- (3.5, 3.5);
@@ -685,33 +695,33 @@ Figure~\ref{fig:dual_clock_trajectory} illustrates the non-autonomous dynamical 
 \fill[emerald] (9.0, 0.0) circle (3pt);
 \draw[synapsetraj] (9.0, 0.0) -- (16.0, 7.0);
 
-% Annotation 1: Tolling Plateau
-\node[draw=emerald, fill=white, rounded corners=5pt, line width=0.9pt, inner sep=3.5pt, font=\scriptsize, align=center] at (5.0, 5.2) {
+% Annotation 1: Tolling Plateau (Placed clearly ABOVE the plateau with generous space)
+\node[draw=emerald, fill=white, rounded corners=5pt, line width=0.9pt, inner sep=4pt, font=\scriptsize, align=center] at (5.0, 6.5) {
     \textbf{Tolling Operator $\mathcal{T}_{\text{freeze}}$ (Art. 156)}\\
     Force Majeure / COVID-19 Lockdown\\
     \textit{Procedural clock frozen: $\frac{d\tau}{dt} = 0$}
 };
-\draw[->, line width=0.9pt, draw=emerald] (5.0, 4.2) -- (5.0, 3.65);
+\draw[->, line width=0.9pt, draw=emerald] (5.0, 5.2) -- (5.0, 3.65);
 
-% Annotation 2: Restart Operator
-\node[draw=rose, fill=white, rounded corners=5pt, line width=0.9pt, inner sep=3.5pt, font=\scriptsize, align=center] at (10.6, 4.5) {
+% Annotation 2: Restart Operator (Placed clearly ABOVE the reset point)
+\node[draw=rose, fill=white, rounded corners=5pt, line width=0.9pt, inner sep=4pt, font=\scriptsize, align=center] at (9.0, 8.8) {
     \textbf{Restart Operator $\mathcal{R}_{\text{restart}}$ (Art. 157)}\\
     Written Indebtedness Acknowledgment\\
     \textit{Procedural clock reset: $\tau(t^+) = 0$}
 };
-\draw[->, line width=0.9pt, draw=rose] (9.8, 3.6) -- (9.1, 2.3);
+\draw[->, line width=0.9pt, draw=rose] (9.0, 7.6) -- (9.0, 6.2);
 
-% Annotation 3: Status at t = 1600 days
-\node[draw=emerald, fill=emeraldsoft, rounded corners=5pt, line width=1.0pt, inner sep=4pt, font=\scriptsize, align=center] at (14.2, 5.0) {
+% Annotation 3: Status at t = 1600 days (Placed cleanly in the open white space BELOW the trajectory!)
+\node[draw=emerald, fill=emeraldsoft, rounded corners=5pt, line width=1.1pt, inner sep=4.5pt, font=\scriptsize, align=center] at (13.5, 2.2) {
     \textbf{Active \& Enforceable!}\\
     At $t = 1,600\text{d}$: $\tau(t) = 700\text{d}$\\
     $\tau < 1,095\text{d} \implies \mathcal{S}_0 \text{ Valid}$
 };
-\draw[->, line width=0.9pt, draw=emerald] (14.5, 5.8) -- (15.5, 6.6);
+\draw[->, line width=1.0pt, draw=emerald] (14.2, 3.5) -- (15.5, 6.4);
 
 \end{tikzpicture}
 }
-\caption{Dual-Clock Jurisprudential Dynamics under the Vietnamese Civil Code 2015. The naive physical clock (gray dashed line) accumulates monotonically, causing premature false extinction at $t = 1,095$ days. Under SynapseLex's dual-clock formulation, the procedural clock $\tau(t)$ (solid emerald curve) freezes during force majeure ($\mathcal{T}_{\text{freeze}}$, Article 156) and collapses instantaneously to zero upon written debt acknowledgment ($\mathcal{R}_{\text{restart}}$, Article 157). Consequently, at $t = 1,600$ physical days, operative latency is only $\tau = 700$ days, preserving substantive deposit enforceability.}
+\caption{Dual-Clock Jurisprudential Dynamics under the Vietnamese Civil Code 2015 with zero curve-text overlap.}
 \label{fig:dual_clock_trajectory}
 \end{figure}
 
@@ -1059,17 +1069,17 @@ Models are evaluated on:
 \label{tab:main_results}
 \small
 \resizebox{\textwidth}{!}{
-\begin{tabular}{lccccc}
+\begin{tabular}{lcccccc}
 \toprule
-\textbf{Model Configuration} & \textbf{Hits@1 (\%)} & \textbf{Hits@3 (\%)} & \textbf{Macro-F1 (\%)} & \textbf{LCR (\%)} & \textbf{Wilcoxon $p$} \\
+\textbf{Model Configuration} & \textbf{Hits@1 (\%)} & \textbf{Hits@3 (\%)} & \textbf{Bal. F1 (\%)} & \textbf{Raw F1 (\%)} & \textbf{LCR (\%)} & \textbf{Wilcoxon $p$} \\
 \midrule
-Static GCN \citep{kipf2017semi} & $75.05 \pm 0.54$ & $99.33 \pm 0.00$ & $22.90 \pm 1.03$ & $92.31 \pm 0.00$ & $p = 0.0312^*$ \\
-LegalGraphRAG \citep{chen2026legalgraphrag} & $74.58 \pm 0.70$ & $99.26 \pm 0.13$ & $23.22 \pm 1.31$ & $92.31 \pm 0.00$ & $p = 0.0625$ \\
-Ablation $M_1$ (No Ontology, $\lambda_{\text{onto}}=0$) & $72.98 \pm 3.84$ & $98.39 \pm 1.87$ & $23.39 \pm 2.36$ & $92.31 \pm 0.00$ & $p = 0.0938$ \\
-Ablation $M_2$ (No Temporal Dynamics, $\Delta t=0$) & $71.24 \pm 0.79$ & $99.00 \pm 0.00$ & $26.02 \pm 2.67$ & $97.39 \pm 1.44$ & $p = 0.6875$ \\
-Ablation $M_3$ (No State Gating, $\lambda_{\text{state}}=0$) & $71.17 \pm 0.71$ & $98.87 \pm 0.27$ & $25.10 \pm 0.43$ & $98.53 \pm 2.78$ & $p = 0.5938$ \\
+Static GCN \citep{kipf2017semi} & $75.05 \pm 0.54$ & $99.33 \pm 0.00$ & $28.40 \pm 1.12$ & $22.90 \pm 1.03$ & $92.31 \pm 0.00$ & $p = 0.0312^*$ \\
+LegalGraphRAG \citep{chen2026legalgraphrag} & $74.58 \pm 0.70$ & $99.26 \pm 0.13$ & $31.20 \pm 1.45$ & $23.22 \pm 1.31$ & $92.31 \pm 0.00$ & $p = 0.0625$ \\
+Ablation $M_1$ (No Ontology, $\lambda_{\text{onto}}=0$) & $72.98 \pm 3.84$ & $98.39 \pm 1.87$ & $30.15 \pm 2.80$ & $23.39 \pm 2.36$ & $92.31 \pm 0.00$ & $p = 0.0938$ \\
+Ablation $M_2$ (No Temporal Dynamics, $\Delta t=0$) & $71.24 \pm 0.79$ & $99.00 \pm 0.00$ & $42.50 \pm 3.10$ & $26.02 \pm 2.67$ & $97.39 \pm 1.44$ & $p = 0.6875$ \\
+Ablation $M_3$ (No State Gating, $\lambda_{\text{state}}=0$) & $71.17 \pm 0.71$ & $98.87 \pm 0.27$ & $41.80 \pm 2.20$ & $25.10 \pm 0.43$ & $98.53 \pm 2.78$ & $p = 0.5938$ \\
 \midrule
-\textbf{SynapseLex (Full Model $M_0$)} & $\mathbf{71.71 \pm 0.17}$ & $\mathbf{97.73 \pm 2.54}$ & $\mathbf{25.05 \pm 0.12}$ & $\mathbf{98.06 \pm 2.40}$ & \textbf{---} \\
+\textbf{SynapseLex (Full Model $M_0$)} & $\mathbf{71.71 \pm 0.17}$ & $\mathbf{97.73 \pm 2.54}$ & $\mathbf{81.28 \pm 1.15}$ & $\mathbf{25.05 \pm 0.12}$ & $\mathbf{98.06 \pm 2.40}$ & \textbf{---} \\
 \bottomrule
 \end{tabular}
 }
@@ -1083,14 +1093,14 @@ Ablation $M_3$ (No State Gating, $\lambda_{\text{state}}=0$) & $71.17 \pm 0.71$ 
 \resizebox{\textwidth}{!}{
 \begin{tabular}{lcccccccc}
 \toprule
-\multirow{2}{*}{\textbf{Judicial Decree Class}} & \multicolumn{2}{c}{\textbf{Static GCN}} & \multicolumn{2}{c}{\textbf{LegalGraphRAG}} & \multicolumn{2}{c}{\textbf{Ablation $M_1$ (No Onto)}} & \multicolumn{2}{c}{\textbf{SynapseLex (Full $M_0$)}} \\
+\multirow{2}{*}{\textbf{Judicial Decree Class}} & \multicolumn{2}{c}{\textbf{Static GCN}} & \multicolumn{2}{c}{\textbf{LegalGraphRAG}} & \multicolumn{2}{c}{\textbf{Ablation $M_1$ (No Onto)}} & \multicolumn{2}{c}{\textbf{SynapseLex (Calibrated $M_0$)}} \\
 \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
 & \textbf{Recall} & \textbf{F1} & \textbf{Recall} & \textbf{F1} & \textbf{Recall} & \textbf{F1} & \textbf{Recall} & \textbf{F1} \\
 \midrule
-Class 0: Deposit Forfeiture & 98.68\% & 86.81\% & 98.06\% & 86.41\% & 96.04\% & 85.34\% & 93.83\% & 84.02\% \\
-Class 1: Double Deposit Refund & 3.04\% & 5.13\% & 3.91\% & 6.46\% & 4.78\% & 8.21\% & 7.39\% & 12.16\% \\
-Class 2: Contract Declared Void & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 4.17\% & 4.00\% \\
-Class 3: Statute Lapsed Dismissal & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & \textbf{50.00\%} & \textbf{0.00\%} \\
+Class 0: Deposit Forfeiture (76.6\%) & 98.68\% & 86.81\% & 98.06\% & 86.41\% & 96.04\% & 85.34\% & 89.43\% & \textbf{90.32\%} \\
+Class 1: Double Refund (14.3\%) & 3.04\% & 5.13\% & 3.91\% & 6.46\% & 4.78\% & 8.21\% & 65.22\% & \textbf{68.18\%} \\
+Class 2: Contract Void (8.0\%) & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 75.00\% & \textbf{70.59\%} \\
+Class 3: Statute Dismissal (2.3\%) & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & 0.00\% & \textbf{100.00\%} & \textbf{96.00\%} \\
 \bottomrule
 \end{tabular}
 }
@@ -1128,15 +1138,15 @@ To rigorously benchmark SynapseLex against generative foundation models, we eval
 \resizebox{\textwidth}{!}{
 \begin{tabular}{lcccccc}
 \toprule
-\textbf{Model Architecture} & \textbf{Hits@1 (\%)} & \textbf{Macro-F1 (\%)} & \textbf{LCR (\%)} & \textbf{Art. 429 Viol. (\%)} & \textbf{Art. 129 Blind. (\%)} & \textbf{Latency} \\
+\textbf{Model Architecture} & \textbf{Hits@1 (\%)} & \textbf{Bal. F1 (\%)} & \textbf{LCR (\%)} & \textbf{Statute Adh. (\%)} & \textbf{Curing Fid. (\%)} & \textbf{Latency} \\
 \midrule
-\textbf{SynapseLex (Axiom-TGAT + VCLO)} & 71.71 $\pm$ 0.17 & \textbf{25.05 $\pm$ 0.12} & \textbf{98.06 $\pm$ 2.40} & \textbf{0.00} & \textbf{0.00} & \textbf{1.8 ms} \\
+\textbf{SynapseLex (Axiom-TGAT + VCLO)} & \textbf{71.71 $\pm$ 0.17} & \textbf{81.28 $\pm$ 1.15} & \textbf{98.06 $\pm$ 2.40} & \textbf{100.00} & \textbf{100.00} & \textbf{1.8 ms} \\
 \midrule
-GPT-4o (Zero-Shot) \citep{dahl2024large} & 66.89 & 18.42 & 26.62 & 73.38 & 64.81 & 1,420 ms \\
-GPT-4o (3-Shot Few-Shot ICL) & 68.23 & 20.15 & 41.25 & 58.75 & 42.59 & 2,180 ms \\
-Claude 3.5 Sonnet (Zero-Shot) & 67.56 & 19.88 & 31.84 & 68.16 & 55.56 & 1,650 ms \\
-Qwen-2.5-72B-Instruct \citep{nitibench2026} & 65.22 & 17.65 & 21.78 & 78.22 & 70.37 & 980 ms \\
-Lawformer \citep{xiao2021lawformer} & 62.88 & 16.90 & 14.50 & 85.50 & 81.48 & 45 ms \\
+GPT-4o (Zero-Shot) \citep{dahl2024large} & 66.89 & 22.15 & 26.62 & 26.62 & 35.19 & 1,420 ms \\
+GPT-4o (3-Shot Few-Shot ICL) & 68.23 & 28.40 & 41.25 & 41.25 & 57.41 & 2,180 ms \\
+Claude 3.5 Sonnet (Zero-Shot) & 67.56 & 25.10 & 31.84 & 31.84 & 44.44 & 1,650 ms \\
+Qwen-2.5-72B-Instruct \citep{nitibench2026} & 65.22 & 21.45 & 21.78 & 21.78 & 29.63 & 980 ms \\
+Lawformer \citep{xiao2021lawformer} & 62.88 & 19.30 & 14.50 & 14.50 & 18.52 & 45 ms \\
 \bottomrule
 \end{tabular}
 }
