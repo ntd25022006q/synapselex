@@ -1,367 +1,271 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 680" width="1440" height="680">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360">
   <defs>
-    <!-- Crisp Academic Arrowheads -->
     <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
       <path d="M 0 0 L 6 3 L 0 6 z" fill="#1E293B"/>
     </marker>
-    <marker id="arrBlue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M 0 0 L 6 3 L 0 6 z" fill="#1D4ED8"/>
-    </marker>
-    <marker id="arrRed" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M 0 0 L 6 3 L 0 6 z" fill="#DC2626"/>
-    </marker>
-    <marker id="arrGreen" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M 0 0 L 6 3 L 0 6 z" fill="#15803D"/>
-    </marker>
-    <marker id="arrPurple" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M 0 0 L 6 3 L 0 6 z" fill="#7C3AED"/>
-    </marker>
+    <style>
+      .txt-serif { font-family: 'Times New Roman', Times, serif; font-style: italic; }
+      .txt-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+      .box-title { font-size: 10px; font-weight: 600; text-anchor: middle; }
+      .math-lbl { font-size: 13px; font-weight: bold; fill: #0F172A; text-anchor: middle; }
+    </style>
   </defs>
 
-  <!-- Clean Academic Pure White Background -->
-  <rect x="0" y="0" width="1440" height="680" fill="#FFFFFF"/>
+  <!-- Clean Canvas -->
+  <rect x="0" y="0" width="1200" height="360" fill="#FFFFFF"/>
 
-  <!-- ==================== STREAM HEADERS (LEFT MARGIN) ==================== -->
-  <g transform="translate(15, 175) rotate(-90)">
-    <rect x="-85" y="-12" width="170" height="24" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="0.8"/>
-    <text x="0" y="4" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#1E40AF" text-anchor="middle" letter-spacing="1">TEMPORAL GNN STREAM</text>
+  <!-- ==================== 1. LEFT: QUERY NODES & DYNAMIC GRAPH ==================== -->
+  <!-- Node u -->
+  <circle cx="40" cy="75" r="12" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="40" y="80" class="txt-serif" font-size="14" font-weight="bold" fill="#1E293B" text-anchor="middle">u</text>
+
+  <!-- Node v -->
+  <circle cx="40" cy="285" r="12" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="40" y="290" class="txt-serif" font-size="14" font-weight="bold" fill="#1E293B" text-anchor="middle">v</text>
+
+  <!-- Dashed Link u-v with t? -->
+  <line x1="40" y1="88" x2="40" y2="162" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <line x1="40" y1="198" x2="40" y2="272" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
+  <text x="40" y="184" class="txt-serif" font-size="12.5" font-weight="bold" fill="#DC2626" text-anchor="middle">t?</text>
+
+  <!-- Dynamic Graph Icon -->
+  <g transform="translate(100, 140)">
+    <circle cx="16" cy="22" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+    <circle cx="42" cy="10" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+    <circle cx="34" cy="44" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+    <circle cx="64" cy="26" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+    <circle cx="80" cy="50" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+    <circle cx="56" cy="65" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
+    
+    <line x1="20" y1="20" x2="38" y2="12" stroke="#64748B" stroke-width="1.1"/>
+    <line x1="19" y1="26" x2="31" y2="41" stroke="#64748B" stroke-width="1.1"/>
+    <line x1="46" y1="13" x2="60" y2="23" stroke="#64748B" stroke-width="1.1"/>
+    <line x1="38" y1="42" x2="60" y2="29" stroke="#64748B" stroke-width="1.1"/>
+    <line x1="68" y1="30" x2="77" y2="47" stroke="#64748B" stroke-width="1.1"/>
+    <line x1="38" y1="46" x2="52" y2="63" stroke="#64748B" stroke-width="1.1"/>
+    <line x1="60" y1="64" x2="77" y2="53" stroke="#64748B" stroke-width="1.1"/>
+    
+    <text x="48" y="86" class="txt-sans" font-size="10.5" font-weight="600" fill="#334155" text-anchor="middle">Dynamic Graph</text>
   </g>
 
-  <g transform="translate(15, 455) rotate(-90)">
-    <rect x="-85" y="-12" width="170" height="24" rx="4" fill="#FEF3C7" stroke="#FDE68A" stroke-width="0.8"/>
-    <text x="0" y="4" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#92400E" text-anchor="middle" letter-spacing="1">ONTOLOGY TBOX STREAM</text>
-  </g>
+  <!-- Arrows from u, v to Extract boxes -->
+  <line x1="53" y1="75" x2="78" y2="75" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="53" y1="285" x2="78" y2="285" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-  <!-- Dividing Subtle Stream Separator -->
-  <line x1="45" y1="320" x2="1080" y2="320" stroke="#F1F5F9" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Vertical Arrows from Graph to Extract boxes -->
+  <line x1="135" y1="138" x2="135" y2="102.0" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <line x1="135" y1="222" x2="135" y2="258.0" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
 
-  <!-- ==================== 1. STAGE I: INPUT COURT JUDGMENT & GRAPH ==================== -->
-  <g transform="translate(45, 40)">
-    <!-- Container Card -->
-    <rect x="0" y="0" width="230" height="255" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
-    <text x="115" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0F172A" text-anchor="middle">Supreme Court Narrative</text>
-    <text x="115" y="36" font-family="serif" font-size="9" font-style="italic" fill="#64748B" text-anchor="middle">Authentic Civil Disputes (2018–2026)</text>
+  <!-- ==================== 2. EXTRACT FIRST-HOP INTERACTIONS ==================== -->
+  <!-- Box u (Lavender) -->
+  <rect x="80" y="51.0" width="108" height="48" rx="8" fill="#E8D7F1" stroke="#8E6CA8" stroke-width="1.2"/>
+  <text x="134.0" y="71.0" class="txt-sans box-title" fill="#2E1045">Extract First-</text>
+  <text x="134.0" y="85.0" class="txt-sans box-title" fill="#2E1045">hop Interactions</text>
 
-    <!-- Mini Case Text Extract Box -->
-    <rect x="12" y="48" width="206" height="68" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-    <text x="18" y="64" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#334155">Case Facts (BLDS 2015 Art. 328):</text>
-    <text x="18" y="78" font-family="sans-serif" font-size="8" fill="#64748B">"Buyer A deposited 500M VND to Seller B.</text>
-    <text x="18" y="90" font-family="sans-serif" font-size="8" fill="#64748B">Closing deadline passed. Dispute filed</text>
-    <text x="18" y="102" font-family="serif" font-size="8" font-style="italic" fill="#DC2626">Δt = 1,254 days later without curing."</text>
+  <line x1="188" y1="75" x2="210" y2="75" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="223" y="79" class="txt-serif math-lbl">S<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u</tspan></text>
 
-    <!-- Dynamic Legal Graph Drawing G(t) -->
-    <g transform="translate(15, 126)">
-      <rect x="0" y="0" width="200" height="115" rx="5" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="100" y="16" font-family="serif" font-size="9.5" font-weight="bold" fill="#1E293B" text-anchor="middle">Dynamic Multi-Relational Graph G(t)</text>
-      
-      <!-- Litigant u (Buyer) -->
-      <circle cx="35" cy="55" r="15" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
-      <text x="35" y="59" font-family="serif" font-size="11" font-style="italic" font-weight="bold" fill="#1D4ED8" text-anchor="middle">u</text>
-      <text x="35" y="80" font-family="sans-serif" font-size="7.5" fill="#64748B" text-anchor="middle">Plaintiff</text>
+  <!-- Box v (Lavender) -->
+  <rect x="80" y="261.0" width="108" height="48" rx="8" fill="#E8D7F1" stroke="#8E6CA8" stroke-width="1.2"/>
+  <text x="134.0" y="281.0" class="txt-sans box-title" fill="#2E1045">Extract First-</text>
+  <text x="134.0" y="295.0" class="txt-sans box-title" fill="#2E1045">hop Interactions</text>
 
-      <!-- Litigant v (Seller) -->
-      <circle cx="165" cy="55" r="15" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.4"/>
-      <text x="165" y="59" font-family="serif" font-size="11" font-style="italic" font-weight="bold" fill="#1D4ED8" text-anchor="middle">v</text>
-      <text x="165" y="80" font-family="sans-serif" font-size="7.5" fill="#64748B" text-anchor="middle">Defendant</text>
+  <line x1="188" y1="285" x2="210" y2="285" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="223" y="289" class="txt-serif math-lbl">S<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v</tspan></text>
 
-      <!-- Directed Forward Edge: Deposit -->
-      <path d="M 52 50 L 148 50" stroke="#2563EB" stroke-width="1.4" marker-end="url(#arrBlue)"/>
-      <rect x="68" y="38" width="64" height="14" rx="2" fill="#DBEAFE"/>
-      <text x="100" y="48" font-family="sans-serif" font-size="7" font-weight="bold" fill="#1E40AF" text-anchor="middle">Deposit (t1)</text>
+  <!-- Branching Paths from S_u^t and S_v^t to Encoders -->
+  <path d="M 235 75 L 260 75 L 260 75 L 282 75" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <path d="M 235 75 L 260 75 L 260 162 L 282 162" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-      <!-- Directed Return Edge: Breach -->
-      <path d="M 148 62 L 52 62" stroke="#DC2626" stroke-width="1.4" stroke-dasharray="3,2" marker-end="url(#arrRed)"/>
-      <rect x="68" y="64" width="64" height="14" rx="2" fill="#FEE2E2"/>
-      <text x="100" y="74" font-family="sans-serif" font-size="7" font-weight="bold" fill="#991B1B" text-anchor="middle">Breach (t2 &gt; t1)</text>
+  <path d="M 235 285 L 260 285 L 260 198 L 282 198" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <path d="M 235 285 L 260 285 L 260 285 L 282 285" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-      <!-- Timing Indicator -->
-      <text x="100" y="102" font-family="serif" font-size="8" font-style="italic" fill="#475569" text-anchor="middle">Operative Latency: Δt = t_filing - t_breach</text>
-    </g>
-  </g>
+  <!-- ==================== 3. ENCODING MODULES ==================== -->
+  <!-- Top Green Box (Neighbors, Links & Time) -->
+  <rect x="285" y="48.0" width="142" height="54" rx="8" fill="#D4EDDA" stroke="#5A9E66" stroke-width="1.2"/>
+  <text x="356.0" y="70.0" class="txt-sans box-title" fill="#14421E">Encoding Neighbors,</text>
+  <text x="356.0" y="85.0" class="txt-sans box-title" fill="#14421E">Links &amp; Time Intervals</text>
 
-  <!-- Horizontal Dataflow Arrow Stage 1 -> Stage 2 -->
-  <line x1="275" y1="165" x2="310" y2="165" stroke="#1E293B" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="292" y="156" font-family="serif" font-size="9" font-style="italic" fill="#1E293B" text-anchor="middle">G(t), Δt</text>
+  <!-- Middle Yellow Box (Neighbor Co-occurrences) -->
+  <rect x="285" y="153.0" width="142" height="54" rx="8" fill="#FFF3CD" stroke="#C9A844" stroke-width="1.2"/>
+  <text x="356.0" y="176.0" class="txt-sans box-title" fill="#4B3B0A">Encoding Neighbor</text>
+  <text x="356.0" y="191.0" class="txt-sans box-title" fill="#4B3B0A">Co-occurrences</text>
 
-  <!-- ==================== 2. STAGE II: CONTINUOUS TIME & MULTI-FEATURE ENCODING ==================== -->
-  <g transform="translate(315, 30)">
-    <!-- Container Card -->
-    <rect x="0" y="0" width="220" height="275" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
-    <text x="110" y="20" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0F172A" text-anchor="middle">Multi-Feature Encoders</text>
-    <text x="110" y="34" font-family="serif" font-size="8.5" font-style="italic" fill="#64748B" text-anchor="middle">Continuous Bochner Kernel &amp; PhoBERT</text>
+  <!-- Bottom Green Box (Neighbors, Links & Time) -->
+  <rect x="285" y="258.0" width="142" height="54" rx="8" fill="#D4EDDA" stroke="#5A9E66" stroke-width="1.2"/>
+  <text x="356.0" y="280.0" class="txt-sans box-title" fill="#14421E">Encoding Neighbors,</text>
+  <text x="356.0" y="295.0" class="txt-sans box-title" fill="#14421E">Links &amp; Time Intervals</text>
 
-    <!-- Card 2.1: Bochner Spectral Kernel with Sine Wave Drawing -->
-    <g transform="translate(10, 44)">
-      <rect x="0" y="0" width="200" height="80" rx="5" fill="#ECFDF5" stroke="#10B981" stroke-width="1"/>
-      <text x="10" y="16" font-family="sans-serif" font-size="9" font-weight="bold" fill="#065F46">Bochner Spectral Time Kernel</text>
-      <text x="10" y="28" font-family="serif" font-size="8" font-style="italic" fill="#047857">Φ_d(Δt) = √2/d [cos(ω_k Δt), sin(ω_k Δt)]</text>
-      
-      <!-- Embedded Sine Wave Curve -->
-      <g transform="translate(45, 52)">
-        <line x1="-30" y1="0" x2="120" y2="0" stroke="#CBD5E1" stroke-width="0.8"/>
-        <line x1="0" y1="-18" x2="0" y2="18" stroke="#CBD5E1" stroke-width="0.8"/>
-        <path d="M 0,0.0 L 2,3.6 L 4,6.9 L 6,9.9 L 8,12.3 L 10,14.0 L 12,14.9 L 14,14.9 L 16,14.1 L 18,12.5 L 20,10.1 L 22,7.2 L 24,3.9 L 26,0.3 L 28,-3.3 L 30,-6.6 L 32,-9.6 L 34,-12.1 L 36,-13.9 L 38,-14.8 L 40,-14.9 L 42,-14.2 L 44,-12.6 L 46,-10.4 L 48,-7.5 L 50,-4.2 L 52,-0.6 L 54,2.9 L 56,6.3 L 58,9.4 L 60,11.9 L 62,13.7 L 64,14.8 L 66,15.0 L 68,14.3 L 70,12.8 L 72,10.6 L 74,7.8 L 76,4.5 L 78,1.0 L 80,-2.6 L 82,-6.1 L 84,-9.1 L 86,-11.7 L 88,-13.6 L 90,-14.7 L 92,-15.0 L 94,-14.4 L 96,-13.0 L 98,-10.8 L 100,-8.0 L 102,-4.8 L 104,-1.3 L 106,2.3 L 108,5.8" fill="none" stroke="#10B981" stroke-width="1.8"/>
-      </g>
-      <rect x="135" y="58" width="55" height="15" rx="2" fill="#D1FAE5"/>
-      <text x="162" y="69" font-family="serif" font-size="7.5" font-weight="bold" fill="#065F46" text-anchor="middle">z(t) ∈ R^64</text>
-    </g>
+  <!-- Tokens and Curly Braces for Top Module -->
+  <!-- Left Brace from Green Box -->
+  <path d="M 431 75 L 437 75 
+           M 437 55 Q 441 55 441 65 
+           L 441 72 Q 441 75 445 75
+           Q 441 75 441 78
+           L 441 85 Q 441 95 437 95"
+        fill="none" stroke="#1E293B" stroke-width="1.1"/>
 
-    <!-- Card 2.2: PhoBERT Relational Embedding -->
-    <g transform="translate(10, 132)">
-      <rect x="0" y="0" width="200" height="58" rx="5" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
-      <text x="10" y="16" font-family="sans-serif" font-size="9" font-weight="bold" fill="#92400E">Legal Domain Encoder (PhoBERT)</text>
-      <text x="10" y="28" font-family="sans-serif" font-size="8" fill="#B45309">Statutory Clause &amp; Relational Context</text>
-      <rect x="10" y="36" width="180" height="15" rx="2" fill="#FDE68A"/>
-      <text x="100" y="47" font-family="serif" font-size="8" font-weight="bold" fill="#78350F" text-anchor="middle">Relation Embed e_r ∈ R^128</text>
-    </g>
+  <text x="472" y="57" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,N</tspan></text>
+  <text x="472" y="79" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,E</tspan></text>
+  <text x="472" y="101" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,T</tspan></text>
 
-    <!-- Card 2.3: Litigant Node State Vectors -->
-    <g transform="translate(10, 198)">
-      <rect x="0" y="0" width="200" height="65" rx="5" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1"/>
-      <text x="10" y="16" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1E40AF">Litigant Covenants &amp; Roles</text>
-      <text x="10" y="28" font-family="sans-serif" font-size="8" fill="#1D4ED8">Party Attributes x_u, x_v (768d)</text>
-      <rect x="10" y="38" width="180" height="18" rx="2" fill="#DBEAFE"/>
-      <text x="100" y="50" font-family="serif" font-size="8" font-weight="bold" fill="#1E3A8A" text-anchor="middle">Patch Vector Z_t = [z(t) || e_r || x_v]</text>
-    </g>
-  </g>
+  <!-- Right Brace to Top Coral Box -->
+  <path d="M 490 55 Q 494 55 494 65
+           L 494 72 Q 494 75 498 75
+           Q 494 75 494 78
+           L 494 85 Q 494 95 490 95
+           M 498 75 L 522 75"
+        fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
 
-  <!-- Horizontal Dataflow Arrow Stage 2 -> Stage 3 -->
-  <line x1="535" y1="165" x2="570" y2="165" stroke="#1E293B" stroke-width="1.4" marker-end="url(#arr)"/>
-  <text x="552" y="156" font-family="serif" font-size="9" font-style="italic" fill="#1E293B" text-anchor="middle">Z_t</text>
+  <!-- Tokens and Curly Braces for Bottom Module -->
+  <!-- Left Brace from Green Box -->
+  <path d="M 431 285 L 437 285 
+           M 437 265 Q 441 265 441 275 
+           L 441 282 Q 441 285 445 285
+           Q 441 285 441 288
+           L 441 295 Q 441 305 437 305"
+        fill="none" stroke="#1E293B" stroke-width="1.1"/>
 
-  <!-- ==================== 3. STAGE III: AXIOM-TGAT LAYER STACK (× L) ==================== -->
-  <g transform="translate(575, 25)">
-    <!-- Shadow Card 2 -->
-    <rect x="8" y="-8" width="185" height="285" rx="8" fill="#E2E8F0" stroke="#94A3B8" stroke-width="0.8"/>
-    <!-- Shadow Card 1 -->
-    <rect x="4" y="-4" width="185" height="285" rx="8" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.8"/>
-    <!-- Main Layer Foreground -->
-    <rect x="0" y="0" width="185" height="285" rx="8" fill="#FFFFFF" stroke="#475569" stroke-width="1.4"/>
-    <text x="175" y="16" font-family="serif" font-size="11" font-style="italic" font-weight="bold" fill="#475569" text-anchor="end">× L</text>
-    <text x="85" y="16" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0F172A" text-anchor="middle">Axiom-TGAT Layer</text>
+  <text x="472" y="267" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,N</tspan></text>
+  <text x="472" y="289" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,E</tspan></text>
+  <text x="472" y="311" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,T</tspan></text>
 
-    <!-- Bottom LayerNorm -->
-    <rect x="15" y="245" width="155" height="26" rx="4" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
-    <text x="92" y="262" font-family="sans-serif" font-size="9" font-weight="bold" fill="#92400E" text-anchor="middle">Layer Normalization</text>
+  <!-- Right Brace to Bottom Coral Box -->
+  <path d="M 490 265 Q 494 265 494 275
+           L 494 282 Q 494 285 498 285
+           Q 494 285 494 288
+           L 494 295 Q 494 305 490 305
+           M 498 285 L 522 285"
+        fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
 
-    <!-- Arrow Up from LN to Attention -->
-    <line x1="92" y1="245" x2="92" y2="218" stroke="#1E293B" stroke-width="1" marker-end="url(#arr)"/>
+  <!-- Tokens and Curly Braces for Middle Yellow Module -->
+  <path d="M 431 180 L 437 180 
+           M 437 165 Q 441 165 441 172 
+           L 441 177 Q 441 180 445 180
+           Q 441 180 441 183
+           L 441 188 Q 441 195 437 195"
+        fill="none" stroke="#1E293B" stroke-width="1.1"/>
 
-    <!-- Multi-Head Temporal Attention -->
-    <rect x="15" y="170" width="155" height="46" rx="4" fill="#FFEDD5" stroke="#EA580C" stroke-width="1"/>
-    <text x="92" y="187" font-family="sans-serif" font-size="9" font-weight="bold" fill="#9A3412" text-anchor="middle">Temporal Graph Attention</text>
-    <text x="92" y="201" font-family="serif" font-size="8" font-style="italic" fill="#C2410C" text-anchor="middle">α_uv(t) = Softmax(Q_u (K_v + z(Δt))/√d)</text>
+  <text x="472" y="172" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,C</tspan></text>
+  <text x="472" y="196" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,C</tspan></text>
 
-    <!-- Residual 1: Add & Norm Circle -->
-    <circle cx="92" cy="142" r="8" fill="#FFFFFF" stroke="#1E293B" stroke-width="1"/>
-    <line x1="87" y1="142" x2="97" y2="142" stroke="#1E293B" stroke-width="1"/>
-    <line x1="92" y1="137" x2="92" y2="147" stroke="#1E293B" stroke-width="1"/>
-    <line x1="92" y1="170" x2="92" y2="152" stroke="#1E293B" stroke-width="1" marker-end="url(#arr)"/>
-    <!-- Residual Bypass 1 -->
-    <path d="M 92 280 L 92 285 L 178 285 L 178 142 L 102 142" fill="none" stroke="#1E293B" stroke-width="1" marker-end="url(#arr)"/>
+  <!-- Right Brace and Routing from Middle Tokens to Coral Boxes -->
+  <path d="M 490 165 Q 494 165 494 170 
+           L 494 174 Q 494 177 498 177
+           Q 494 177 494 180
+           L 494 184 Q 494 189 490 189"
+        fill="none" stroke="#1E293B" stroke-width="1.1"/>
+  
+  <path d="M 498 177 L 510 177 L 510 89 L 522 89" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <path d="M 498 177 L 510 177 L 510 271 L 522 271" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
 
-    <!-- Middle LayerNorm -->
-    <rect x="15" y="102" width="155" height="24" rx="4" fill="#FEF3C7" stroke="#F59E0B" stroke-width="0.8"/>
-    <text x="92" y="118" font-family="sans-serif" font-size="9" font-weight="bold" fill="#92400E" text-anchor="middle">Layer Normalization</text>
-    <line x1="92" y1="134" x2="92" y2="128" stroke="#1E293B" stroke-width="1" marker-end="url(#arr)"/>
+  <!-- ==================== 4. PATCHING, ALIGNMENT & CONCATENATION ==================== -->
+  <!-- Top Coral Box (u) -->
+  <rect x="525" y="48.0" width="112" height="54" rx="8" fill="#F8D7DA" stroke="#BC707B" stroke-width="1.2"/>
+  <text x="581.0" y="66.0" class="txt-sans box-title" fill="#4C1118">Patching &amp;</text>
+  <text x="581.0" y="80.0" class="txt-sans box-title" fill="#4C1118">Alignment &amp;</text>
+  <text x="581.0" y="94.0" class="txt-sans box-title" fill="#4C1118">Concatenation</text>
 
-    <!-- Feed-Forward Network -->
-    <rect x="15" y="48" width="155" height="40" rx="4" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1"/>
-    <text x="92" y="64" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1E40AF" text-anchor="middle">Statutory FFN</text>
-    <text x="92" y="78" font-family="serif" font-size="8" font-style="italic" fill="#1D4ED8" text-anchor="middle">Gated State Projection W_s</text>
-    <line x1="92" y1="102" x2="92" y2="90" stroke="#1E293B" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="637" y1="75" x2="659" y2="75" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="672" y="79" class="txt-serif math-lbl">Z<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u</tspan></text>
 
-    <!-- Residual 2: Add & Norm Circle -->
-    <circle cx="92" cy="28" r="8" fill="#FFFFFF" stroke="#1E293B" stroke-width="1"/>
-    <line x1="87" y1="28" x2="97" y2="28" stroke="#1E293B" stroke-width="1"/>
-    <line x1="92" y1="23" x2="92" y2="33" stroke="#1E293B" stroke-width="1"/>
-    <line x1="92" y1="48" x2="92" y2="38" stroke="#1E293B" stroke-width="1" marker-end="url(#arr)"/>
-    <!-- Residual Bypass 2 -->
-    <path d="M 92 96 L 178 96 L 178 28 L 102 28" fill="none" stroke="#1E293B" stroke-width="1" marker-end="url(#arr)"/>
-  </g>
+  <!-- Bottom Coral Box (v) -->
+  <rect x="525" y="258.0" width="112" height="54" rx="8" fill="#F8D7DA" stroke="#BC707B" stroke-width="1.2"/>
+  <text x="581.0" y="276.0" class="txt-sans box-title" fill="#4C1118">Patching &amp;</text>
+  <text x="581.0" y="290.0" class="txt-sans box-title" fill="#4C1118">Alignment &amp;</text>
+  <text x="581.0" y="304.0" class="txt-sans box-title" fill="#4C1118">Concatenation</text>
 
-  <!-- Output Path H(t) from TGAT Top to Fusion Arbiter -->
-  <path d="M 667 43 L 667 15 L 835 15 L 835 45" fill="none" stroke="#1E293B" stroke-width="1.4" marker-end="url(#arr)"/>
-  <rect x="715" y="4" width="115" height="20" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="0.8"/>
-  <text x="772" y="17" font-family="serif" font-size="9.5" font-weight="bold" fill="#1E293B" text-anchor="middle">H(t) ∈ R^(N × 128)</text>
+  <line x1="637" y1="285" x2="659" y2="285" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="672" y="289" class="txt-serif math-lbl">Z<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v</tspan></text>
 
-  <!-- ==================== 4. LOWER STREAM: FORMAL ONTOLOGY (VCLO-CORE) & REASONER ==================== -->
-  <g transform="translate(45, 345)">
-    <!-- Container Card -->
-    <rect x="0" y="0" width="490" height="260" rx="8" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.2"/>
-    <text x="245" y="22" font-family="sans-serif" font-size="11.5" font-weight="bold" fill="#92400E" text-anchor="middle">VCLO-Core OWL 2 DL Formal Ontology &amp; HermiT Reasoner</text>
-    <text x="245" y="36" font-family="serif" font-size="9" font-style="italic" fill="#B45309" text-anchor="middle">35 Classes, 233 SROIQ Axioms verified with zero inconsistency (owl:Nothing = ∅)</text>
+  <!-- Joining Paths from Z_u^t and Z_v^t to Z^t -->
+  <path d="M 685 75 L 696 75 L 696 166 L 702 166" fill="none" stroke="#1E293B" stroke-width="1.2"/>
+  <path d="M 685 285 L 696 285 L 696 194 L 702 194" fill="none" stroke="#1E293B" stroke-width="1.2"/>
 
-    <!-- Sub-Box 1: Description Logic TBox Axioms Display -->
-    <g transform="translate(15, 48)">
-      <rect x="0" y="0" width="225" height="195" rx="5" fill="#FFFFFF" stroke="#FDE68A" stroke-width="1"/>
-      <text x="112" y="18" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#78350F" text-anchor="middle">TBox Coded Statutory Axioms</text>
+  <!-- Joint Label Z^t -->
+  <text x="668" y="184" class="txt-serif math-lbl" font-size="13">Z<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="11.5" dy="5"> = [Z</tspan><tspan font-size="7.5" dy="-4">t</tspan><tspan font-size="7.5" dy="7">u</tspan><tspan font-size="11.5" dy="-3">; Z</tspan><tspan font-size="7.5" dy="-4">t</tspan><tspan font-size="7.5" dy="7">v</tspan><tspan font-size="11.5" dy="-3">]</tspan></text>
+  <line x1="710" y1="180" x2="752" y2="180" stroke="#1E293B" stroke-width="1.2"/>
 
-      <!-- Axiom 1: Valid vs Void Disjointness -->
-      <rect x="8" y="28" width="209" height="34" rx="3" fill="#FEF3C7"/>
-      <text x="14" y="42" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#92400E">Axiom 1: Mutual Disjointness</text>
-      <text x="14" y="55" font-family="serif" font-size="8" font-style="italic" fill="#78350F">ValidContract ⊓ VoidAbInitio ⊑ ⊥</text>
+  <!-- ==================== 5. STACKED TRANSFORMER / GNN BLOCK (× L) ==================== -->
+  <!-- Shadow Background Card 2 -->
+  <rect x="763" y="14" width="165" height="320" rx="14" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
+  <!-- Shadow Background Card 1 -->
+  <rect x="759" y="17" width="165" height="320" rx="14" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+  <!-- Foreground Main Card -->
+  <rect x="755" y="20" width="165" height="320" rx="14" fill="#EAECEF" stroke="#4B5563" stroke-width="1.3"/>
 
-      <!-- Axiom 2: Curing Performance (Art 129(2)) -->
-      <rect x="8" y="68" width="209" height="42" rx="3" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="0.8"/>
-      <text x="14" y="82" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#065F46">Axiom 2: Non-Monotonic Curing (Art 129)</text>
-      <text x="14" y="94" font-family="serif" font-size="7.5" font-style="italic" fill="#047857">FormalDefect ⊓ (≥ 0.67 performed)</text>
-      <text x="14" y="104" font-family="serif" font-size="7.5" font-style="italic" fill="#047857">  ⊑ ¬VoidAbInitio ⊓ ValidContract</text>
+  <!-- 	imes L label -->
+  <text x="908" y="42" class="txt-serif" font-size="13" font-style="italic" font-weight="bold" fill="#374151" text-anchor="end">× L</text>
 
-      <!-- Axiom 3: Time Limitation Extinguishment (Art 429) -->
-      <rect x="8" y="116" width="209" height="42" rx="3" fill="#FEE2E2" stroke="#FECACA" stroke-width="0.8"/>
-      <text x="14" y="130" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#991B1B">Axiom 3: Procedural Bar (Art 429)</text>
-      <text x="14" y="142" font-family="serif" font-size="7.5" font-style="italic" fill="#B91C1C">Dispute ⊓ (Δt &gt; 1095d) ⊓ ¬Tolling</text>
-      <text x="14" y="152" font-family="serif" font-size="7.5" font-style="italic" fill="#B91C1C">  ⊑ BarredClaim ⊓ ExtinguishedState</text>
+  <!-- Input path into bottom of block -->
+  <path d="M 752 180 L 767 180 L 767 302 L 837.5 302 L 837.5 286" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-      <!-- Reasoner Badge -->
-      <rect x="8" y="164" width="209" height="22" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="0.8"/>
-      <text x="112" y="179" font-family="sans-serif" font-size="8" font-weight="bold" fill="#334155" text-anchor="middle">HermiT Hypertableau: 0 Unsatisfiable</text>
-    </g>
+  <!-- Layer Normalization 1 (Bottom, Yellow) -->
+  <rect x="771" y="250" width="133" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="837.5" y="269" class="txt-sans box-title" fill="#92400E">Layer Normalization</text>
 
-    <!-- Sub-Box 2: 4-State Automaton Simulation (M_state) -->
-    <g transform="translate(250, 48)">
-      <rect x="0" y="0" width="225" height="195" rx="5" fill="#FFFFFF" stroke="#FDE68A" stroke-width="1"/>
-      <text x="112" y="18" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#78350F" text-anchor="middle">Markovian State Automaton M_state</text>
+  <!-- Arrow from LN1 to Multi-Head Attention -->
+  <line x1="837.5" y1="250" x2="837.5" y2="222" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-      <!-- 4 State Circles -->
-      <!-- S0 Valid -->
-      <circle cx="45" cy="55" r="18" fill="#ECFDF5" stroke="#10B981" stroke-width="1.4"/>
-      <text x="45" y="58" font-family="serif" font-size="9.5" font-weight="bold" fill="#065F46" text-anchor="middle">S0</text>
-      <text x="45" y="82" font-family="sans-serif" font-size="7" font-weight="bold" fill="#047857" text-anchor="middle">VALID</text>
+  <!-- Multi-head Self-Attention (Orange) -->
+  <rect x="771" y="174" width="133" height="42" rx="6" fill="#FFE5D0" stroke="#EA580C" stroke-width="1.2"/>
+  <text x="837.5" y="192" class="txt-sans box-title" fill="#9A3412">Multi-head</text>
+  <text x="837.5" y="206" class="txt-sans box-title" fill="#9A3412">Self-Attention</text>
 
-      <!-- S1 Voidable -->
-      <circle cx="180" cy="55" r="18" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.4"/>
-      <text x="180" y="58" font-family="serif" font-size="9.5" font-weight="bold" fill="#92400E" text-anchor="middle">S1</text>
-      <text x="180" y="82" font-family="sans-serif" font-size="7" font-weight="bold" fill="#B45309" text-anchor="middle">VOIDABLE</text>
+  <!-- Residual 1: Add Circle -->
+  <circle cx="837.5" cy="146" r="7.5" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.1"/>
+  <line x1="833.0" y1="146" x2="842.0" y2="146" stroke="#1E293B" stroke-width="1.1"/>
+  <line x1="837.5" y1="141.5" x2="837.5" y2="150.5" stroke="#1E293B" stroke-width="1.1"/>
+  
+  <line x1="837.5" y1="174" x2="837.5" y2="156" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- Skip Connection 1 -->
+  <path d="M 837.5 294 L 902 294 L 902 146 L 847.5 146" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
 
-      <!-- S2 Void ab initio -->
-      <circle cx="45" cy="135" r="18" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.4"/>
-      <text x="45" y="138" font-family="serif" font-size="9.5" font-weight="bold" fill="#991B1B" text-anchor="middle">S2</text>
-      <text x="45" y="162" font-family="sans-serif" font-size="7" font-weight="bold" fill="#B91C1C" text-anchor="middle">VOID</text>
+  <!-- Layer Normalization 2 (Middle, Yellow) -->
+  <rect x="771" y="98" width="133" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="837.5" y="117" class="txt-sans box-title" fill="#92400E">Layer Normalization</text>
+  <line x1="837.5" y1="138" x2="837.5" y2="130" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-      <!-- S3 Extinguished -->
-      <circle cx="180" cy="135" r="18" fill="#F1F5F9" stroke="#64748B" stroke-width="1.4"/>
-      <text x="180" y="138" font-family="serif" font-size="9.5" font-weight="bold" fill="#334155" text-anchor="middle">S3</text>
-      <text x="180" y="162" font-family="sans-serif" font-size="7" font-weight="bold" fill="#475569" text-anchor="middle">EXTINGUISHED</text>
+  <!-- Feed Forward Network (Blue) -->
+  <rect x="771" y="42" width="133" height="38" rx="6" fill="#CCE5FF" stroke="#38BDF8" stroke-width="1.2"/>
+  <text x="837.5" y="58" class="txt-sans box-title" fill="#0369A1">Feed Forward</text>
+  <text x="837.5" y="72" class="txt-sans box-title" fill="#0369A1">Network</text>
+  <line x1="837.5" y1="98" x2="837.5" y2="82" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-      <!-- Transitions -->
-      <!-- S0 -> S1 Breach -->
-      <path d="M 64 50 L 160 50" stroke="#D97706" stroke-width="1.2" marker-end="url(#arrAmber)"/>
-      <!-- S1 -> S0 Non-Monotonic Curing (Green Dashed) -->
-      <path d="M 160 60 L 64 60" stroke="#16A34A" stroke-width="1.6" stroke-dasharray="3,2" marker-end="url(#arrGreen)"/>
-      <text x="112" y="72" font-family="sans-serif" font-size="6.5" font-weight="bold" fill="#15803D" text-anchor="middle">Cure (Art 129)</text>
+  <!-- Residual 2: Add Circle -->
+  <circle cx="837.5" cy="18" r="7.5" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.1"/>
+  <line x1="833.0" y1="18" x2="842.0" y2="18" stroke="#1E293B" stroke-width="1.1"/>
+  <line x1="837.5" y1="13.5" x2="837.5" y2="22.5" stroke="#1E293B" stroke-width="1.1"/>
+  
+  <line x1="837.5" y1="42" x2="837.5" y2="28" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- Skip Connection 2 -->
+  <path d="M 837.5 90 L 902 90 L 902 18 L 847.5 18" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
 
-      <!-- S1 -> S3 Limitation Bar -->
-      <path d="M 180 75 L 180 115" stroke="#64748B" stroke-width="1.2" marker-end="url(#arr)"/>
-      <text x="195" y="98" font-family="sans-serif" font-size="6.5" fill="#475569">Art 429</text>
+  <!-- Exit from Transformer Top to Output Head -->
+  <path d="M 837.5 10 L 837.5 -6 L 1030 -6 L 1030 71" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  
+  <!-- Label H^t above Average Pooling -->
+  <text x="1048" y="32" class="txt-serif math-lbl">H<tspan font-size="8.5" dy="-5">t</tspan></text>
 
-      <!-- S0 -> S2 Absolute Void -->
-      <path d="M 45 75 L 45 115" stroke="#EF4444" stroke-width="1.2" marker-end="url(#arrRed)"/>
-      <text x="25" y="98" font-family="sans-serif" font-size="6.5" fill="#B91C1C">Art 123</text>
+  <!-- ==================== 6. AVERAGE POOLING & DOWNSTREAM TASKS ==================== -->
+  <!-- Average Pooling Box (Teal/Cyan) -->
+  <rect x="982.5" y="75" width="95" height="42" rx="8" fill="#D1ECF1" stroke="#3FA7B3" stroke-width="1.2"/>
+  <text x="1030" y="94" class="txt-sans box-title" fill="#0C5460">Average</text>
+  <text x="1030" y="108" class="txt-sans box-title" fill="#0C5460">Pooling</text>
 
-      <!-- State Vector Badge -->
-      <rect x="8" y="168" width="209" height="18" rx="3" fill="#FEF3C7"/>
-      <text x="112" y="181" font-family="serif" font-size="8" font-style="italic" fill="#92400E" text-anchor="middle">Automaton Gating: s_t ∈ Δ^3</text>
-    </g>
-  </g>
+  <!-- Downward Arrows from Pooling to h_u^t and h_v^t -->
+  <path d="M 1006 117 L 1006 150" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <path d="M 1054 117 L 1054 150" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-  <!-- Flow upward from Ontology/Automaton to Normative Fusion Arbiter -->
-  <path d="M 535 475 L 790 475 L 790 220" fill="none" stroke="#D97706" stroke-width="1.4" marker-end="url(#arrAmber)"/>
-  <rect x="620" y="462" width="125" height="20" rx="3" fill="#FEF3C7" stroke="#FDE68A" stroke-width="0.8"/>
-  <text x="682" y="476" font-family="serif" font-size="8.5" font-weight="bold" fill="#92400E" text-anchor="middle">Axiomatic Prior s_t</text>
+  <text x="1006" y="168" class="txt-serif math-lbl">h<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u</tspan></text>
+  <text x="1054" y="168" class="txt-serif math-lbl">h<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v</tspan></text>
 
-  <!-- ==================== 5. NORMATIVE HIERARCHY DAG ARBITER (NH-DA) ==================== -->
-  <g transform="translate(790, 50)">
-    <!-- Container Card -->
-    <rect x="0" y="0" width="240" height="240" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
-    <text x="120" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0F172A" text-anchor="middle">Normative Arbiter (NH-DA)</text>
-    <text x="120" y="36" font-family="serif" font-size="8.5" font-style="italic" fill="#64748B" text-anchor="middle">Lex Specialis &amp; Precedence DAG</text>
+  <!-- Arrows from h_u, h_v to Downstream Tasks -->
+  <path d="M 1006 178 L 1006 222" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <path d="M 1054 178 L 1054 222" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
 
-    <!-- Precedence Rules -->
-    <g transform="translate(12, 48)">
-      <rect x="0" y="0" width="216" height="52" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-      <text x="10" y="16" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#1E293B">Statutory Hierarchy Precedence:</text>
-      <text x="10" y="30" font-family="serif" font-size="8" font-style="italic" fill="#2563EB">• Land Law 2024 ≻ BLDS 2015 (Art 156)</text>
-      <text x="10" y="42" font-family="serif" font-size="8" font-style="italic" fill="#D97706">• Usury Cap ceiling: r ≤ 20%/yr (Art 468)</text>
-    </g>
-
-    <!-- Gated Embedding Fusion -->
-    <g transform="translate(12, 108)">
-      <rect x="0" y="0" width="216" height="56" rx="4" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-      <text x="10" y="16" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#1E40AF">Neuro-Symbolic Gated Fusion:</text>
-      <text x="10" y="32" font-family="serif" font-size="8" font-style="italic" fill="#1D4ED8">h_G* = h_G ⊙ (1 + σ(W_g h_G) · w_domain)</text>
-      <text x="10" y="46" font-family="sans-serif" font-size="7.5" fill="#1E3A8A">Enforces Lex Specialis in Latent Space</text>
-    </g>
-
-    <!-- Axiomatic Regularizer Output -->
-    <rect x="12" y="172" width="216" height="56" rx="4" fill="#FAF5FF" stroke="#E9D5FF" stroke-width="1"/>
-    <text x="10" y="188" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#6B21A8">Axiomatic TBox Regularizer:</text>
-    <text x="10" y="202" font-family="serif" font-size="8" font-style="italic" fill="#7E22CE">L_total = L_task + λ_onto L_onto + λ_state L_state</text>
-    <text x="10" y="218" font-family="sans-serif" font-size="7.5" fill="#581C87">HermiT Certified Compliance: 99.12% LCR</text>
-  </g>
-
-  <!-- Flow Arrow from NH-DA to Dung Defeasible Head -->
-  <line x1="1030" y1="165" x2="1065" y2="165" stroke="#1E293B" stroke-width="1.4" marker-end="url(#arr)"/>
-
-  <!-- ==================== 6. DEFEASIBLE DUNG REASONER & FINAL VERDICT ==================== -->
-  <g transform="translate(1070, 35)">
-    <!-- Container Card (Soft Coral / Red) -->
-    <rect x="0" y="0" width="340" height="265" rx="8" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.4"/>
-    <text x="170" y="22" font-family="sans-serif" font-size="11.5" font-weight="bold" fill="#9F1239" text-anchor="middle">Dung Defeasible Head &amp; Adjudication</text>
-    <text x="170" y="36" font-family="serif" font-size="8.5" font-style="italic" fill="#BE123C" text-anchor="middle">Abstract Argumentation Framework AF = ⟨A, R_defeat⟩ (Dung 1995)</text>
-
-    <!-- Argument Dispute Graph -->
-    <g transform="translate(15, 48)">
-      <!-- Argument Bar (Procedural) -->
-      <rect x="0" y="0" width="135" height="52" rx="4" fill="#FFFFFF" stroke="#BE123C" stroke-width="1.2"/>
-      <text x="67" y="16" font-family="serif" font-size="10" font-weight="bold" fill="#9F1239" text-anchor="middle">A_bar (Procedural)</text>
-      <text x="67" y="28" font-family="sans-serif" font-size="7.5" fill="#64748B" text-anchor="middle">Lapse Δt &gt; 1095d (Art 429)</text>
-      <rect x="10" y="34" width="115" height="14" rx="2" fill="#DCFCE7"/>
-      <text x="67" y="44" font-family="sans-serif" font-size="7" font-weight="bold" fill="#166534" text-anchor="middle">STATUS: ACCEPTED</text>
-
-      <!-- Asymmetric Defeat Arrow -->
-      <line x1="138" y1="26" x2="167" y2="26" stroke="#DC2626" stroke-width="1.8" marker-end="url(#arrRed)"/>
-      <text x="152" y="20" font-family="sans-serif" font-size="7" font-weight="bold" fill="#DC2626" text-anchor="middle">def</text>
-
-      <!-- Argument Claim (Substantive) -->
-      <rect x="172" y="0" width="135" height="52" rx="4" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
-      <text x="240" y="16" font-family="serif" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">A_claim (Substantive)</text>
-      <text x="240" y="28" font-family="sans-serif" font-size="7.5" fill="#64748B" text-anchor="middle">Double Deposit Penalty (Art 328)</text>
-      <rect x="182" y="34" width="115" height="14" rx="2" fill="#FEE2E2"/>
-      <text x="240" y="44" font-family="sans-serif" font-size="7" font-weight="bold" fill="#991B1B" text-anchor="middle">STATUS: DEFEATED</text>
-    </g>
-
-    <!-- Grounded Extension Mathematical Resolution -->
-    <g transform="translate(15, 110)">
-      <rect x="0" y="0" width="310" height="40" rx="4" fill="#FFFFFF" stroke="#FECDD3" stroke-width="1"/>
-      <text x="155" y="18" font-family="serif" font-size="10.5" font-weight="bold" fill="#9F1239" text-anchor="middle">GE(AF) = lfp(F_AF) = { A_bar }</text>
-      <text x="155" y="32" font-family="sans-serif" font-size="8" fill="#475569" text-anchor="middle">Unique Minimal Fixed Point: Procedural Bar overrules Substantive Claim</text>
-    </g>
-
-    <!-- Final Judicial Verdict Box -->
-    <g transform="translate(15, 160)">
-      <rect x="0" y="0" width="310" height="92" rx="5" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.4"/>
-      <text x="155" y="20" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#166534" text-anchor="middle">FINAL JUDICIAL VERDICT (y*)</text>
-      
-      <!-- Decree Badge -->
-      <rect x="12" y="28" width="286" height="26" rx="3" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1"/>
-      <text x="155" y="45" font-family="sans-serif" font-size="10" font-weight="bold" fill="#14532D" text-anchor="middle">✓ DISMISS: STATUTE OF LIMITATIONS EXPIRED (Art. 429)</text>
-
-      <!-- Empirical Metrics Row -->
-      <g transform="translate(12, 62)">
-        <rect x="0" y="0" width="138" height="22" rx="3" fill="#F0FDF4"/>
-        <text x="69" y="15" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#166534" text-anchor="middle">Hits@1: 86.41 ± 0.38%</text>
-
-        <rect x="148" y="0" width="138" height="22" rx="3" fill="#F0FDF4"/>
-        <text x="217" y="15" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#166534" text-anchor="middle">Latency: 1.5 ms (A30 GPU)</text>
-      </g>
-    </g>
-  </g>
-
-  <!-- ==================== 7. AXIOMATIC GRADIENT FEEDBACK LOOP ==================== -->
-  <path d="M 1240 300 L 1240 640 L 667 640 L 667 315" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrPurple)"/>
-  <rect x="800" y="628" width="340" height="24" rx="4" fill="#F3E8FF" stroke="#D8B4FE" stroke-width="1"/>
-  <text x="970" y="644" font-family="sans-serif" font-size="9" font-weight="bold" fill="#6B21A8" text-anchor="middle">Backward Gradient Feedback: ∇ L_onto + ∇ L_state (TBox Margin Consistency)</text>
-
+  <!-- Downstream Tasks Box (White with Crisp Border) -->
+  <rect x="972.5" y="225" width="115" height="48" rx="8" fill="#FFFFFF" stroke="#374151" stroke-width="1.3"/>
+  <text x="1030" y="247" class="txt-sans box-title" fill="#111827">Downstream</text>
+  <text x="1030" y="261" class="txt-sans box-title" fill="#111827">Tasks</text>
 </svg>

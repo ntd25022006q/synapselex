@@ -18,7 +18,7 @@ Tracks across 5 seeds:
   - Exact Wilcoxon Signed-Rank Statistical Significance p-values (p < 0.01)
 
 Author: Nguyen Tien Dat (ntd25022006q@gmail.com)
-Hanoi University of Industry (HaUI), Hanoi, Vietnam
+International School, Vietnam National University, Hanoi (VNU-IS), Hanoi, Vietnam
 """
 
 import sys

@@ -22,7 +22,7 @@ Zero Temporal Leakage Guarantee:
   - Case ID intersection: 0
 
 Author: Nguyen Tien Dat (ntd25022006q@gmail.com)
-Hanoi University of Industry (HaUI), Hanoi, Vietnam
+International School, Vietnam National University, Hanoi (VNU-IS), Hanoi, Vietnam
 """
 
 import sys

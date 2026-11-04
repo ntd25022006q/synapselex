@@ -73,7 +73,7 @@ paper_tex = r"""\documentclass[11pt,a4paper]{article}
 
 \author{
   \textbf{Nguyen Tien Dat}\thanks{Corresponding author: \texttt{ntd25022006q@gmail.com}} \\
-  \textit{Department of Information Technology, Hanoi University of Industry (HaUI), Hanoi, Vietnam} \\
+  \textit{Department of Information Technology, International School, Vietnam National University, Hanoi (VNU-IS), Hanoi, Vietnam} \\
   \and
   \textbf{Antigravity Research Agent} \\
   \textit{Autonomous Scientific Agent, DeepMind Research Sandbox}
