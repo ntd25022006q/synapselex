@@ -1,0 +1,376 @@
+"""
+Generate DyGFormer-Grade Academic Figure 1: SynapseLex System Architecture & Pipeline.
+Inspired directly by NeurIPS 2023 DyGFormer layout:
+- Transparent / clean white canvas (no heavy dashboard containers)
+- Elegant pastel cards with thin dark borders
+- Horizontal left-to-right academic dataflow
+- Mathematical symbols with Computer Modern / Times style serif italics
+- Curly braces for tensor groupings
+- Stacked Transformer block with \times L depth and residual \bigoplus
+- Seamless integration of Bochner Fourier embedding, Axiom-TGAT, Automaton gating, and Dung grounded extension.
+"""
+import fitz
+
+def generate_fig1_academic_svg():
+    width = 1520
+    height = 560
+    
+    svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">
+  <defs>
+    <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#1E293B"/>
+    </marker>
+    <marker id="arrRed" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#DC2626"/>
+    </marker>
+    <marker id="arrBlue" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrPurple" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#7C3AED"/>
+    </marker>
+    <marker id="arrGreen" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#16A34A"/>
+    </marker>
+  </defs>
+
+  <!-- Clean Background -->
+  <rect x="0" y="0" width="{width}" height="{height}" fill="#FFFFFF"/>
+
+  <!-- ==================== 1. LEFT: INPUT DYNAMIC GRAPH ==================== -->
+  <!-- Source Node u -->
+  <circle cx="45" cy="130" r="14" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="45" y="135" font-family="serif" font-size="14" font-style="italic" font-weight="bold" fill="#1E293B" text-anchor="middle">u</text>
+  <text x="45" y="105" font-family="sans-serif" font-size="10" fill="#64748B" text-anchor="middle">Buyer</text>
+
+  <!-- Target Node v -->
+  <circle cx="45" cy="390" r="14" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="45" y="395" font-family="serif" font-size="14" font-style="italic" font-weight="bold" fill="#1E293B" text-anchor="middle">v</text>
+  <text x="45" y="418" font-family="sans-serif" font-size="10" fill="#64748B" text-anchor="middle">Seller</text>
+
+  <!-- Dashed Link between u and v with latency t? -->
+  <line x1="45" y1="144" x2="45" y2="376" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="4,4"/>
+  <rect x="30" y="250" width="30" height="18" rx="3" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="0.8"/>
+  <text x="45" y="263" font-family="serif" font-size="11" font-style="italic" font-weight="bold" fill="#DC2626" text-anchor="middle">t?</text>
+
+  <!-- Dynamic Graph Illustration -->
+  <g transform="translate(85, 200)">
+    <!-- Nodes -->
+    <circle cx="20" cy="30" r="5" fill="#FFFFFF" stroke="#334155" stroke-width="1.4"/>
+    <circle cx="50" cy="15" r="5" fill="#FFFFFF" stroke="#334155" stroke-width="1.4"/>
+    <circle cx="40" cy="55" r="5" fill="#FFFFFF" stroke="#334155" stroke-width="1.4"/>
+    <circle cx="75" cy="35" r="5" fill="#FFFFFF" stroke="#334155" stroke-width="1.4"/>
+    <circle cx="95" cy="65" r="5" fill="#FFFFFF" stroke="#334155" stroke-width="1.4"/>
+    <circle cx="65" cy="80" r="5" fill="#FFFFFF" stroke="#334155" stroke-width="1.4"/>
+    <!-- Edges -->
+    <line x1="24" y1="28" x2="46" y2="18" stroke="#64748B" stroke-width="1.2"/>
+    <line x1="23" y1="34" x2="37" y2="52" stroke="#64748B" stroke-width="1.2"/>
+    <line x1="54" y1="18" x2="71" y2="32" stroke="#64748B" stroke-width="1.2"/>
+    <line x1="44" y1="53" x2="71" y2="38" stroke="#64748B" stroke-width="1.2"/>
+    <line x1="78" y1="39" x2="92" y2="61" stroke="#64748B" stroke-width="1.2"/>
+    <line x1="44" y1="58" x2="61" y2="78" stroke="#64748B" stroke-width="1.2"/>
+    <line x1="69" y1="78" x2="91" y2="67" stroke="#64748B" stroke-width="1.2"/>
+    <text x="58" y="106" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#334155" text-anchor="middle">Dynamic Legal Graph</text>
+    <text x="58" y="119" font-family="serif" font-size="10" font-style="italic" fill="#64748B" text-anchor="middle">G(t) = (V, E(t))</text>
+  </g>
+
+  <!-- Connectors to Extract Interactions -->
+  <line x1="59" y1="130" x2="90" y2="130" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="59" y1="390" x2="90" y2="390" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- Extraction Cards (Soft Purple) -->
+  <g transform="translate(95, 105)">
+    <rect x="0" y="0" width="125" height="50" rx="8" fill="#F3E8FF" stroke="#A855F7" stroke-width="1.2"/>
+    <text x="62" y="22" font-family="sans-serif" font-size="10" font-weight="bold" fill="#6B21A8" text-anchor="middle">Extract Litigant</text>
+    <text x="62" y="36" font-family="sans-serif" font-size="10" font-weight="bold" fill="#6B21A8" text-anchor="middle">1-hop Subgraph</text>
+  </g>
+  <line x1="157" y1="200" x2="157" y2="160" stroke="#64748B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <g transform="translate(95, 365)">
+    <rect x="0" y="0" width="125" height="50" rx="8" fill="#F3E8FF" stroke="#A855F7" stroke-width="1.2"/>
+    <text x="62" y="22" font-family="sans-serif" font-size="10" font-weight="bold" fill="#6B21A8" text-anchor="middle">Extract Litigant</text>
+    <text x="62" y="36" font-family="sans-serif" font-size="10" font-weight="bold" fill="#6B21A8" text-anchor="middle">1-hop Subgraph</text>
+  </g>
+  <line x1="157" y1="325" x2="157" y2="360" stroke="#64748B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- Intermediate Sequence Tokens S_u^t and S_v^t -->
+  <line x1="220" y1="130" x2="242" y2="130" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="252" y="134" font-family="serif" font-size="13" font-style="italic" font-weight="bold" fill="#1E293B">S</text>
+  <text x="260" y="130" font-family="serif" font-size="9" font-style="italic" fill="#1E293B">t</text>
+  <text x="260" y="139" font-family="serif" font-size="9" font-style="italic" fill="#1E293B">u</text>
+
+  <line x1="220" y1="390" x2="242" y2="390" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="252" y="394" font-family="serif" font-size="13" font-style="italic" font-weight="bold" fill="#1E293B">S</text>
+  <text x="260" y="390" font-family="serif" font-size="9" font-style="italic" fill="#1E293B">t</text>
+  <text x="260" y="399" font-family="serif" font-size="9" font-style="italic" fill="#1E293B">v</text>
+
+  <!-- Lines branching into Encoders -->
+  <path d="M 270 130 L 295 80 L 305 80" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <path d="M 270 130 L 295 180 L 305 230" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <path d="M 270 390 L 295 340 L 305 290" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <path d="M 270 390 L 295 440 L 305 440" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- ==================== 2. FEATURE & TEMPORAL ENCODERS ==================== -->
+  <!-- Top: Bochner Continuous Fourier Kernel (Soft Green) -->
+  <g transform="translate(310, 55)">
+    <rect x="0" y="0" width="165" height="52" rx="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.2"/>
+    <text x="82" y="21" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#166534" text-anchor="middle">Bochner Spectral Kernel</text>
+    <text x="82" y="34" font-family="sans-serif" font-size="8.5" fill="#15803D" text-anchor="middle">Harmonic Fourier Mapping</text>
+    <text x="82" y="45" font-family="serif" font-size="9" font-style="italic" fill="#14532D" text-anchor="middle">Φ_d(Δt, τ(t)) ∈ R^64</text>
+  </g>
+
+  <!-- Middle: Legal Co-occurrences & Statutory Relations (Soft Yellow) -->
+  <g transform="translate(310, 235)">
+    <rect x="0" y="0" width="165" height="52" rx="8" fill="#FEF9C3" stroke="#CA8A04" stroke-width="1.2"/>
+    <text x="82" y="21" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#854D0E" text-anchor="middle">Statutory &amp; Relational</text>
+    <text x="82" y="34" font-family="sans-serif" font-size="8.5" fill="#A16207" text-anchor="middle">Co-occurrence Encoding</text>
+    <text x="82" y="45" font-family="serif" font-size="9" font-style="italic" fill="#713F12" text-anchor="middle">PhoBERT Embeddings e_r</text>
+  </g>
+
+  <!-- Bottom: Litigant & Obligation Feature Encoding (Soft Green) -->
+  <g transform="translate(310, 415)">
+    <rect x="0" y="0" width="165" height="52" rx="8" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.2"/>
+    <text x="82" y="21" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#166534" text-anchor="middle">Litigant Covenants</text>
+    <text x="82" y="34" font-family="sans-serif" font-size="8.5" fill="#15803D" text-anchor="middle">&amp; Breach Intervals</text>
+    <text x="82" y="45" font-family="serif" font-size="9" font-style="italic" fill="#14532D" text-anchor="middle">Node Vectors x_u, x_v</text>
+  </g>
+
+  <!-- Feature Outputs with Curly Braces -->
+  <!-- Top outputs for u -->
+  <g transform="translate(485, 45)">
+    <line x1="-10" y1="35" x2="8" y2="15" stroke="#1E293B" stroke-width="1"/>
+    <line x1="-10" y1="35" x2="8" y2="35" stroke="#1E293B" stroke-width="1"/>
+    <line x1="-10" y1="35" x2="8" y2="55" stroke="#1E293B" stroke-width="1"/>
+    <text x="14" y="19" font-family="serif" font-size="10.5" font-style="italic" font-weight="bold" fill="#1E293B">X_u,T (t)</text>
+    <text x="14" y="39" font-family="serif" font-size="10.5" font-style="italic" font-weight="bold" fill="#1E293B">X_u,R (t)</text>
+    <text x="14" y="59" font-family="serif" font-size="10.5" font-style="italic" font-weight="bold" fill="#1E293B">X_u,N (t)</text>
+    <!-- Curly bracket grouping to Patching -->
+    <path d="M 68 12 Q 75 12 75 35 Q 75 58 68 58 M 75 35 L 82 35" fill="none" stroke="#1E293B" stroke-width="1.2"/>
+  </g>
+
+  <!-- Bottom outputs for v -->
+  <g transform="translate(485, 405)">
+    <line x1="-10" y1="35" x2="8" y2="15" stroke="#1E293B" stroke-width="1"/>
+    <line x1="-10" y1="35" x2="8" y2="35" stroke="#1E293B" stroke-width="1"/>
+    <line x1="-10" y1="35" x2="8" y2="55" stroke="#1E293B" stroke-width="1"/>
+    <text x="14" y="19" font-family="serif" font-size="10.5" font-style="italic" font-weight="bold" fill="#1E293B">X_v,T (t)</text>
+    <text x="14" y="39" font-family="serif" font-size="10.5" font-style="italic" font-weight="bold" fill="#1E293B">X_v,R (t)</text>
+    <text x="14" y="59" font-family="serif" font-size="10.5" font-style="italic" font-weight="bold" fill="#1E293B">X_v,N (t)</text>
+    <!-- Curly bracket grouping to Patching -->
+    <path d="M 68 12 Q 75 12 75 35 Q 75 58 68 58 M 75 35 L 82 35" fill="none" stroke="#1E293B" stroke-width="1.2"/>
+  </g>
+
+  <!-- Middle outputs connecting to both -->
+  <path d="M 475 250 L 510 250 L 525 95" fill="none" stroke="#CA8A04" stroke-width="1" stroke-dasharray="3,3"/>
+  <path d="M 475 270 L 510 270 L 525 425" fill="none" stroke="#CA8A04" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- ==================== 3. PATCHING & CONCATENATION ==================== -->
+  <!-- Patching Card u (Soft Coral) -->
+  <g transform="translate(555, 55)">
+    <rect x="0" y="0" width="115" height="50" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.2"/>
+    <text x="57" y="21" font-family="sans-serif" font-size="9" font-weight="bold" fill="#991B1B" text-anchor="middle">Patching &amp; Alignment</text>
+    <text x="57" y="35" font-family="sans-serif" font-size="8.5" fill="#B91C1C" text-anchor="middle">&amp; Concatenation</text>
+  </g>
+  <line x1="670" y1="80" x2="695" y2="80" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="702" y="85" font-family="serif" font-size="13" font-style="italic" font-weight="bold" fill="#1E293B">Z<tspan font-size="9" dy="-5">t</tspan><tspan font-size="9" dy="8">u</tspan></text>
+
+  <!-- Patching Card v (Soft Coral) -->
+  <g transform="translate(555, 415)">
+    <rect x="0" y="0" width="115" height="50" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.2"/>
+    <text x="57" y="21" font-family="sans-serif" font-size="9" font-weight="bold" fill="#991B1B" text-anchor="middle">Patching &amp; Alignment</text>
+    <text x="57" y="35" font-family="sans-serif" font-size="8.5" fill="#B91C1C" text-anchor="middle">&amp; Concatenation</text>
+  </g>
+  <line x1="670" y1="440" x2="695" y2="440" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="702" y="445" font-family="serif" font-size="13" font-style="italic" font-weight="bold" fill="#1E293B">Z<tspan font-size="9" dy="-5">t</tspan><tspan font-size="9" dy="8">v</tspan></text>
+
+  <!-- Pairwise Joint Latent Vector Z^t -->
+  <path d="M 720 80 L 735 80 L 735 240 L 748 240" fill="none" stroke="#1E293B" stroke-width="1.2"/>
+  <path d="M 720 440 L 735 440 L 735 280 L 748 280" fill="none" stroke="#1E293B" stroke-width="1.2"/>
+  <path d="M 748 240 Q 755 240 755 260 Q 755 280 748 280 M 755 260 L 762 260" fill="none" stroke="#1E293B" stroke-width="1.4"/>
+  
+  <!-- Joint Vector Label Badge -->
+  <rect x="680" y="248" width="95" height="24" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="0.8"/>
+  <text x="727" y="264" font-family="serif" font-size="11" font-weight="bold" fill="#1E293B" text-anchor="middle">Z^t = [ Z_u^t ; Z_v^t ]</text>
+
+  <line x1="778" y1="260" x2="802" y2="260" stroke="#1E293B" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- ==================== 4. AXIOM-TGAT TRANSFORMER BLOCK (STACKED \times L) ==================== -->
+  <g transform="translate(805, 65)">
+    <!-- Layer 2 Shadow Background -->
+    <rect x="12" y="-12" width="180" height="425" rx="12" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.2"/>
+    <!-- Layer 1 Shadow Background -->
+    <rect x="6" y="-6" width="180" height="425" rx="12" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1.2"/>
+    <!-- Main Layer Foreground -->
+    <rect x="0" y="0" width="180" height="425" rx="12" fill="#FFFFFF" stroke="#64748B" stroke-width="1.4"/>
+    <text x="170" y="24" font-family="serif" font-size="12" font-style="italic" font-weight="bold" fill="#475569" text-anchor="end">× L</text>
+    <text x="90" y="25" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#1E293B" text-anchor="middle">Axiom-TGAT Layer</text>
+
+    <!-- Bottom LayerNorm -->
+    <rect x="15" y="345" width="150" height="32" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+    <text x="90" y="365" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#92400E" text-anchor="middle">Layer Normalization</text>
+
+    <!-- Arrow Up from LN to Attention -->
+    <line x1="90" y1="345" x2="90" y2="305" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+    <!-- Multi-Head Attention Block -->
+    <rect x="15" y="245" width="150" height="58" rx="6" fill="#FFEDD5" stroke="#EA580C" stroke-width="1.2"/>
+    <text x="90" y="265" font-family="sans-serif" font-size="10" font-weight="bold" fill="#9A3412" text-anchor="middle">Time-Aware Multi-Head</text>
+    <text x="90" y="278" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#9A3412" text-anchor="middle">Self-Attention</text>
+    <text x="90" y="293" font-family="serif" font-size="8.5" font-style="italic" fill="#C2410C" text-anchor="middle">α(u,v,t) with Bochner Bias</text>
+
+    <!-- Residual 1: Add & Norm Circle -->
+    <circle cx="90" cy="205" r="9" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.2"/>
+    <line x1="84" y1="205" x2="96" y2="205" stroke="#1E293B" stroke-width="1.2"/>
+    <line x1="90" y1="199" x2="90" y2="211" stroke="#1E293B" stroke-width="1.2"/>
+    <!-- Arrow from MHA to Add -->
+    <line x1="90" y1="245" x2="90" y2="216" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+    <!-- Residual Bypass 1 -->
+    <path d="M 90 395 L 90 405 L 175 405 L 175 205 L 101 205" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+    <!-- Middle LayerNorm -->
+    <rect x="15" y="145" width="150" height="32" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+    <text x="90" y="165" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#92400E" text-anchor="middle">Layer Normalization</text>
+    <line x1="90" y1="196" x2="90" y2="179" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+    <!-- Feed Forward Network (Soft Blue) -->
+    <rect x="15" y="65" width="150" height="48" rx="6" fill="#DBEAFE" stroke="#3B82F6" stroke-width="1.2"/>
+    <text x="90" y="86" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1E40AF" text-anchor="middle">Statutory Gated FFN</text>
+    <text x="90" y="101" font-family="serif" font-size="8.5" font-style="italic" fill="#1D4ED8" text-anchor="middle">State Projection W_s</text>
+    <line x1="90" y1="145" x2="90" y2="115" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+    <!-- Residual 2: Add & Norm Circle -->
+    <circle cx="90" cy="40" r="9" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.2"/>
+    <line x1="84" y1="40" x2="96" y2="40" stroke="#1E293B" stroke-width="1.2"/>
+    <line x1="90" y1="34" x2="90" y2="46" stroke="#1E293B" stroke-width="1.2"/>
+    <!-- Arrow from FFN to Add -->
+    <line x1="90" y1="65" x2="90" y2="51" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+    <!-- Residual Bypass 2 -->
+    <path d="M 90 135 L 175 135 L 175 40 L 101 40" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+
+    <!-- Arrow Out of Transformer -->
+    <line x1="90" y1="31" x2="90" y2="5" stroke="#1E293B" stroke-width="1.4"/>
+  </g>
+
+  <!-- Output Path H^t from Transformer Top -->
+  <path d="M 895 65 L 895 24 L 1120 24 L 1120 68" fill="none" stroke="#1E293B" stroke-width="1.4" marker-end="url(#arr)"/>
+  <rect x="940" y="12" width="135" height="24" rx="4" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="0.8"/>
+  <text x="1007" y="28" font-family="serif" font-size="11" font-weight="bold" fill="#1E293B" text-anchor="middle">H^t ∈ R^(N × 128)</text>
+
+  <!-- ==================== 5. NORMATIVE HIERARCHY & AUTOMATON GATING ==================== -->
+  <g transform="translate(1010, 70)">
+    <!-- Container Card -->
+    <rect x="0" y="0" width="220" height="215" rx="10" fill="#FFFBEB" stroke="#F59E0B" stroke-width="1.4"/>
+    <text x="110" y="22" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#92400E" text-anchor="middle">Normative Governance</text>
+    <text x="110" y="36" font-family="sans-serif" font-size="8.5" fill="#B45309" text-anchor="middle">NH-DA Arbiter &amp; Automaton M_state</text>
+
+    <!-- Lex Specialis Filter -->
+    <rect x="12" y="46" width="196" height="28" rx="4" fill="#FEF3C7" stroke="#FDE68A" stroke-width="1"/>
+    <text x="110" y="64" font-family="sans-serif" font-size="9" font-weight="bold" fill="#78350F" text-anchor="middle">Lex Specialis: Land Law 2024 ≻ BLDS</text>
+
+    <!-- 4 Automaton State Circles -->
+    <g transform="translate(20, 85)">
+      <!-- S0 Valid -->
+      <circle cx="20" cy="22" r="16" fill="#ECFDF5" stroke="#10B981" stroke-width="1.4"/>
+      <text x="20" y="26" font-family="sans-serif" font-size="9" font-weight="bold" fill="#065F46" text-anchor="middle">S0</text>
+      <!-- S1 Voidable -->
+      <circle cx="160" cy="22" r="16" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.4"/>
+      <text x="160" y="26" font-family="sans-serif" font-size="9" font-weight="bold" fill="#92400E" text-anchor="middle">S1</text>
+      
+      <!-- Breach Arrow S0 -> S1 -->
+      <line x1="38" y1="18" x2="142" y2="18" stroke="#D97706" stroke-width="1.2" marker-end="url(#arr)"/>
+      <!-- Non-Monotonic Curing Arrow S1 -> S0 (Green Dashed) -->
+      <line x1="142" y1="28" x2="38" y2="28" stroke="#16A34A" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrGreen)"/>
+      <text x="90" y="42" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#15803D" text-anchor="middle">Cure ≥ 2/3 (Art 129)</text>
+
+      <!-- S2 Void ab initio -->
+      <circle cx="20" cy="80" r="16" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.4"/>
+      <text x="20" y="84" font-family="sans-serif" font-size="9" font-weight="bold" fill="#991B1B" text-anchor="middle">S2</text>
+      <!-- S3 Extinguished -->
+      <circle cx="160" cy="80" r="16" fill="#F1F5F9" stroke="#64748B" stroke-width="1.4"/>
+      <text x="160" y="84" font-family="sans-serif" font-size="9" font-weight="bold" fill="#334155" text-anchor="middle">S3</text>
+
+      <!-- Limitation Lapse S1 -> S3 -->
+      <line x1="160" y1="40" x2="160" y2="62" stroke="#64748B" stroke-width="1.2" marker-end="url(#arr)"/>
+      <text x="165" y="54" font-family="sans-serif" font-size="7.5" fill="#475569">Art 429</text>
+    </g>
+
+    <!-- State Output Vector -->
+    <rect x="12" y="180" width="196" height="24" rx="4" fill="#FFFFFF" stroke="#FDE68A" stroke-width="1"/>
+    <text x="110" y="196" font-family="serif" font-size="10" font-style="italic" fill="#92400E" text-anchor="middle">State Vector: s_t ∈ Δ^3</text>
+  </g>
+
+  <!-- Connect Normative Governance to Dung Defeasible Head -->
+  <line x1="1230" y1="175" x2="1265" y2="175" stroke="#1E293B" stroke-width="1.4" marker-end="url(#arr)"/>
+
+  <!-- ==================== 6. DEFEASIBLE DUNG REASONER & VERDICT ==================== -->
+  <g transform="translate(1275, 70)">
+    <!-- Container Card (Soft Coral / Red) -->
+    <rect x="0" y="0" width="225" height="215" rx="10" fill="#FFF1F2" stroke="#BE123C" stroke-width="1.4"/>
+    <text x="112" y="22" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#9F1239" text-anchor="middle">Dung Defeasible Head</text>
+    <text x="112" y="36" font-family="sans-serif" font-size="8.5" fill="#BE123C" text-anchor="middle">Grounded Extension AF = ⟨A, R_def⟩</text>
+
+    <!-- Argument Dispute Graph -->
+    <g transform="translate(12, 48)">
+      <!-- Argument Bar -->
+      <rect x="0" y="0" width="85" height="40" rx="5" fill="#FFFFFF" stroke="#BE123C" stroke-width="1.2"/>
+      <text x="42" y="16" font-family="serif" font-size="9" font-weight="bold" fill="#9F1239" text-anchor="middle">A_bar</text>
+      <text x="42" y="26" font-family="sans-serif" font-size="7" fill="#64748B" text-anchor="middle">Lapse &gt; 1095d</text>
+      <text x="42" y="35" font-family="sans-serif" font-size="7" font-weight="bold" fill="#16A34A" text-anchor="middle">ACCEPTED</text>
+
+      <!-- Defeat Arrow -->
+      <line x1="87" y1="20" x2="110" y2="20" stroke="#BE123C" stroke-width="1.6" marker-end="url(#arrRed)"/>
+      <text x="98" y="14" font-family="sans-serif" font-size="7" font-weight="bold" fill="#BE123C" text-anchor="middle">def</text>
+
+      <!-- Argument Claim -->
+      <rect x="115" y="0" width="85" height="40" rx="5" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+      <text x="157" y="16" font-family="serif" font-size="9" font-weight="bold" fill="#475569" text-anchor="middle">A_claim</text>
+      <text x="157" y="26" font-family="sans-serif" font-size="7" fill="#64748B" text-anchor="middle">Penalty Claim</text>
+      <text x="157" y="35" font-family="sans-serif" font-size="7" font-weight="bold" fill="#DC2626" text-anchor="middle">DEFEATED</text>
+    </g>
+
+    <!-- Grounded Fixed Point -->
+    <rect x="12" y="100" width="201" height="32" rx="4" fill="#FFFFFF" stroke="#FECDD3" stroke-width="1"/>
+    <text x="112" y="117" font-family="serif" font-size="10" font-weight="bold" fill="#9F1239" text-anchor="middle">GE(AF) = lfp(F_AF) = {{ A_bar }}</text>
+    <text x="112" y="127" font-family="sans-serif" font-size="7.5" fill="#475569" text-anchor="middle">Zero Remedy Bias Guarantee</text>
+
+    <!-- Final Judicial Verdict Card -->
+    <rect x="12" y="142" width="201" height="60" rx="5" fill="#DCFCE7" stroke="#16A34A" stroke-width="1.2"/>
+    <text x="112" y="159" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#166534" text-anchor="middle">Judicial Verdict y*</text>
+    <text x="112" y="174" font-family="sans-serif" font-size="9" font-weight="bold" fill="#15803D" text-anchor="middle">✓ DISMISS: STATUTE LAPSED</text>
+    <text x="112" y="188" font-family="sans-serif" font-size="8" fill="#14532D" text-anchor="middle">Hits@1: 86.41% | Latency: 1.5ms</text>
+  </g>
+
+  <!-- ==================== 7. AXIOMATIC BACKPROPAGATION FEEDBACK LOOP ==================== -->
+  <path d="M 1387 285 L 1387 495 L 895 495 L 895 480" fill="none" stroke="#7C3AED" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#arrPurple)"/>
+  <rect x="990" y="482" width="300" height="24" rx="4" fill="#F3E8FF" stroke="#D8B4FE" stroke-width="1"/>
+  <text x="1140" y="498" font-family="sans-serif" font-size="9" font-weight="bold" fill="#6B21A8" text-anchor="middle">Axiomatic Regularization Feedback: ∇ L_onto + ∇ L_state</text>
+
+  <!-- Caption Label at Bottom Center -->
+  <text x="760" y="540" font-family="sans-serif" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">Figure 1: The SynapseLex Neuro-Symbolic Framework Architecture (Inductive Axiom-TGAT Pipeline)</text>
+
+</svg>"""
+    return svg
+
+def build_assets():
+    svg_code = generate_fig1_academic_svg()
+    with open('synapselex/paper/figures/fig1_system_architecture.svg', 'w', encoding='utf-8') as f:
+        f.write(svg_code)
+    print("Saved academic fig1_system_architecture.svg")
+
+    doc = fitz.open(stream=svg_code.encode('utf-8'), filetype='svg')
+    pdf_bytes = doc.convert_to_pdf()
+    
+    with open('synapselex/paper/figures/fig1_system_architecture.pdf', 'wb') as f:
+        f.write(pdf_bytes)
+    print("Saved fig1_system_architecture.pdf (Academic Vector)")
+
+    pdf_doc = fitz.open('pdf', pdf_bytes)
+    page = pdf_doc[0]
+    pix = page.get_pixmap(dpi=300)
+    pix.save('synapselex/paper/figures/fig1_system_architecture.png')
+    pix.save('paper_figures/fig1_system_architecture.png')
+    print("Saved fig1_system_architecture.png (300 DPI high-res)")
+
+if __name__ == '__main__':
+    build_assets()
