@@ -1,4 +1,4 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{24}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -43,6 +43,12 @@ Artur d'Avila Garcez, Marco Gori, Pascal Hitzler, Lu{\'\i}s~C. Lamb, Luciano
 \newblock Neural-symbolic computing: An effective methodology for principled
   ai.
 \newblock \emph{Frontiers in Big Data}, 2:\penalty0 38, 2019.
+
+\bibitem[Deveci et~al.(2026)Deveci, Sartor, and Bench-Capon]{deveci2026arggym}
+Mehmet Deveci, Giovanni Sartor, and Trevor Bench-Capon.
+\newblock {ArgGYM}: A benchmark for defeasible reasoning and non-monotonic
+  argumentation in legal and commonsense scenarios.
+\newblock \emph{Artificial Intelligence and Law}, 2026.
 
 \bibitem[Dung(1995)]{dung1995acceptability}
 Phan~Minh Dung.

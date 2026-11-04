@@ -287,6 +287,15 @@ SynapseLex couples both clocks into a unified \textit{Dual-Clock Deontic Embeddi
 \mathbf{\Phi}_{\text{dual}}(\Delta t, \Delta \tau) = \left[ \mathbf{\Phi}_{d/2}(\Delta t) \,\|\, \mathbf{\Phi}_{d/2}(\Delta \tau) \right] \in \mathbb{R}^d
 \end{equation}
 
+\subsection{Defeasible Argumentation Adjudication Head (DAAH)}
+\label{sec:daah}
+As highlighted by \citet{deveci2026arggym}, real-world legal adjudication is non-monotonic: conclusions provisionally supported by factual evidence may be defeated when overriding procedural grounds emerge. Grounded in the seminal Abstract Argumentation Framework of \citet{dung1995acceptability} and formal defeasible priority theory \citep{prakken2015formal}, SynapseLex introduces the \textit{Defeasible Argumentation Adjudication Head} (DAAH). We formulate the asymmetric defeat relation $\mathcal{R}_{\text{defeat}}$ between procedural bar arguments and substantive enforcement remedies:
+\begin{equation}
+\label{eq:asymmetric_defeat}
+\mathcal{A}_{\text{defeat}}(i, j) = \mathrm{ReLU}\left( \mathbf{w}_{\text{bar}}^\top \mathbf{h}_j \cdot \mathbf{1}_{\{\Delta \tau > 1095\}} - \mathbf{w}_{\text{substantive}}^\top \mathbf{h}_i \right)
+\end{equation}
+When the procedural latency $\Delta \tau > 1095$ days, the procedural bar unconditionally defeats substantive claims, driving substantive remedy logits to zero probability and selecting procedural dismissal as the justified remedy.
+
 \begin{theorem}[Soundness of Defeasible Legal Adjudication]
 \label{thm:defeasible_soundness}
 Let $\mathcal{AF} = \langle \mathcal{A}, \mathcal{R}_{\text{defeat}} \rangle$ be Dung's abstract argumentation framework \citep{dung1995acceptability} induced by the Description Logic TBox $\mathcal{T}_{\mathcal{VCLO}}$ and extracted case facts $\mathcal{A}_{\text{case}}$, where arguments supporting substantive relief $\mathcal{A}_{\text{substantive}}$ are defeated by procedural expiration arguments $\mathcal{A}_{\text{procedural\_bar}}$ whenever $\Delta \tau > 1095$. 
