@@ -2,60 +2,48 @@ import os
 import fitz
 
 def generate_standard_protocol_figure():
-    width = 1200
-    height = 360
+    width = 1420
+    height = 410
     
-    # Precise geometry coordinates
-    # u, v nodes
-    u_x, u_y = 40, 75
-    v_x, v_y = 40, 285
+    # Mathematical SVG curly brace generator
+    def curly_brace(x, y1, y2, orientation='right', w=12, r=5):
+        ym = (y1 + y2) / 2.0
+        if orientation == 'right': # points to right: }
+            d = (f"M {x} {y1} "
+                 f"Q {x+w/2} {y1} {x+w/2} {y1+r} "
+                 f"L {x+w/2} {ym-r} "
+                 f"Q {x+w/2} {ym} {x+w} {ym} "
+                 f"Q {x+w/2} {ym} {x+w/2} {ym+r} "
+                 f"L {x+w/2} {y2-r} "
+                 f"Q {x+w/2} {y2} {x} {y2}")
+        else: # points to left: {
+            d = (f"M {x} {y1} "
+                 f"Q {x-w/2} {y1} {x-w/2} {y1+r} "
+                 f"L {x-w/2} {ym-r} "
+                 f"Q {x-w/2} {ym} {x-w} {ym} "
+                 f"Q {x-w/2} {ym} {x-w/2} {ym+r} "
+                 f"L {x-w/2} {y2-r} "
+                 f"Q {x-w/2} {y2} {x} {y2}")
+        return d
+
+    # Pre-generate braces
+    b_top_r = curly_brace(506, 48, 112, 'right', w=12, r=4)
+    b_mid_r = curly_brace(506, 172, 222, 'right', w=12, r=4)
+    b_bot_r = curly_brace(506, 282, 346, 'right', w=12, r=4)
     
-    # Extract boxes
-    ext_w, ext_h = 108, 48
-    ext_x = 80
-    ext_u_y = u_y - ext_h / 2
-    ext_v_y = v_y - ext_h / 2
-    
-    # Encoders
-    enc_w, enc_h = 142, 54
-    enc_x = 285
-    enc_top_y = u_y - enc_h / 2
-    enc_mid_y = 180 - enc_h / 2
-    enc_bot_y = v_y - enc_h / 2
-    
-    # Token columns
-    tok_x = 472
-    
-    # Patching boxes
-    pat_w, pat_h = 112, 54
-    pat_x = 525
-    pat_top_y = u_y - pat_h / 2
-    pat_bot_y = v_y - pat_h / 2
-    
-    # Transformer block
-    tr_x, tr_y = 755, 20
-    tr_w, tr_h = 165, 320
-    
-    # Right column (Average Pooling & Downstream)
-    head_x = 1030
-    pool_w, pool_h = 95, 42
-    pool_x = head_x - pool_w / 2
-    pool_y = 75
-    
-    down_w, down_h = 115, 48
-    down_x = head_x - down_w / 2
-    down_y = 225
+    b_top_l = curly_brace(600, 48, 194, 'left', w=13, r=6)
+    b_bot_l = curly_brace(600, 204, 350, 'left', w=13, r=6)
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">
   <defs>
-    <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M 0 0 L 6 3 L 0 6 z" fill="#1E293B"/>
+    <marker id="arr" markerWidth="6.5" markerHeight="6.5" refX="5.5" refY="3.25" orient="auto">
+      <path d="M 0 0 L 6.5 3.25 L 0 6.5 z" fill="#1E1E1E"/>
     </marker>
     <style>
-      .txt-serif {{ font-family: 'Times New Roman', Times, serif; font-style: italic; }}
+      .txt-serif {{ font-family: 'Times New Roman', Times, serif; }}
       .txt-sans {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }}
-      .box-title {{ font-size: 10px; font-weight: 600; text-anchor: middle; }}
-      .math-lbl {{ font-size: 13px; font-weight: bold; fill: #0F172A; text-anchor: middle; }}
+      .box-title {{ font-size: 12.5px; font-weight: 550; text-anchor: middle; fill: #111111; }}
+      .math-lbl {{ font-size: 15px; font-weight: bold; font-style: italic; fill: #000000; text-anchor: middle; }}
     </style>
   </defs>
 
@@ -64,258 +52,245 @@ def generate_standard_protocol_figure():
 
   <!-- ==================== 1. LEFT: QUERY NODES & DYNAMIC GRAPH ==================== -->
   <!-- Node u -->
-  <circle cx="{u_x}" cy="{u_y}" r="12" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="{u_x}" y="{u_y + 5}" class="txt-serif" font-size="14" font-weight="bold" fill="#1E293B" text-anchor="middle">u</text>
+  <circle cx="50" cy="80" r="14" fill="#FFFFFF" stroke="#1F77B4" stroke-width="1.8"/>
+  <text x="50" y="86" class="txt-serif" font-size="17" font-style="italic" font-weight="bold" fill="#111111" text-anchor="middle">u</text>
 
   <!-- Node v -->
-  <circle cx="{v_x}" cy="{v_y}" r="12" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.6"/>
-  <text x="{v_x}" y="{v_y + 5}" class="txt-serif" font-size="14" font-weight="bold" fill="#1E293B" text-anchor="middle">v</text>
+  <circle cx="50" cy="314" r="14" fill="#FFFFFF" stroke="#1F77B4" stroke-width="1.8"/>
+  <text x="50" y="320" class="txt-serif" font-size="17" font-style="italic" font-weight="bold" fill="#111111" text-anchor="middle">v</text>
 
   <!-- Dashed Link u-v with t? -->
-  <line x1="{u_x}" y1="{u_y + 13}" x2="{u_x}" y2="162" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
-  <line x1="{u_x}" y1="198" x2="{u_x}" y2="{v_y - 13}" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
-  <text x="{u_x}" y="184" class="txt-serif" font-size="12.5" font-weight="bold" fill="#DC2626" text-anchor="middle">t?</text>
+  <line x1="50" y1="98" x2="50" y2="178" stroke="#1F77B4" stroke-width="1.4" stroke-dasharray="3.5,3.5"/>
+  <line x1="50" y1="210" x2="50" y2="296" stroke="#1F77B4" stroke-width="1.4" stroke-dasharray="3.5,3.5"/>
+  <text x="50" y="198" class="txt-serif" font-size="15" font-style="italic" font-weight="bold" fill="#D9383A" text-anchor="middle">t?</text>
 
-  <!-- Dynamic Graph Icon -->
-  <g transform="translate(100, 140)">
-    <circle cx="16" cy="22" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-    <circle cx="42" cy="10" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-    <circle cx="34" cy="44" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-    <circle cx="64" cy="26" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-    <circle cx="80" cy="50" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-    <circle cx="56" cy="65" r="4.2" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-    
-    <line x1="20" y1="20" x2="38" y2="12" stroke="#64748B" stroke-width="1.1"/>
-    <line x1="19" y1="26" x2="31" y2="41" stroke="#64748B" stroke-width="1.1"/>
-    <line x1="46" y1="13" x2="60" y2="23" stroke="#64748B" stroke-width="1.1"/>
-    <line x1="38" y1="42" x2="60" y2="29" stroke="#64748B" stroke-width="1.1"/>
-    <line x1="68" y1="30" x2="77" y2="47" stroke="#64748B" stroke-width="1.1"/>
-    <line x1="38" y1="46" x2="52" y2="63" stroke="#64748B" stroke-width="1.1"/>
-    <line x1="60" y1="64" x2="77" y2="53" stroke="#64748B" stroke-width="1.1"/>
-    
-    <text x="48" y="86" class="txt-sans" font-size="10.5" font-weight="600" fill="#334155" text-anchor="middle">Dynamic Graph</text>
-  </g>
+  <!-- Extract First-hop Interactions Boxes (Lavender) -->
+  <rect x="90" y="52" width="144" height="56" rx="8" fill="#DECCD8" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="162" y="74" class="txt-sans box-title">Extract First-</text>
+  <text x="162" y="92" class="txt-sans box-title">hop Interactions</text>
+
+  <rect x="90" y="286" width="144" height="56" rx="8" fill="#DECCD8" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="162" y="308" class="txt-sans box-title">Extract First-</text>
+  <text x="162" y="326" class="txt-sans box-title">hop Interactions</text>
 
   <!-- Arrows from u, v to Extract boxes -->
-  <line x1="{u_x + 13}" y1="{u_y}" x2="{ext_x - 2}" y2="{u_y}" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <line x1="{v_x + 13}" y1="{v_y}" x2="{ext_x - 2}" y2="{v_y}" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="66" y1="80" x2="87" y2="80" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <line x1="66" y1="314" x2="87" y2="314" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <!-- Vertical Arrows from Graph to Extract boxes -->
-  <line x1="135" y1="138" x2="135" y2="{ext_u_y + ext_h + 3}" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
-  <line x1="135" y1="222" x2="135" y2="{ext_v_y - 3}" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <!-- Dynamic Graph Icon & Organic Edges -->
+  <g transform="translate(100, 136)">
+    <!-- Nodes -->
+    <circle cx="16" cy="40" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="48" cy="18" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="86" cy="12" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="40" cy="54" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="74" cy="43" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="108" cy="30" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="124" cy="56" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="26" cy="88" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="65" cy="90" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="92" cy="70" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <circle cx="114" cy="90" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    
+    <!-- Edges -->
+    <line x1="20" y1="37" x2="44" y2="21" stroke="#444444" stroke-width="1.15"/>
+    <line x1="20" y1="43" x2="36" y2="51" stroke="#444444" stroke-width="1.15"/>
+    <line x1="17" y1="45" x2="25" y2="83" stroke="#444444" stroke-width="1.15"/>
+    <line x1="52" y1="17" x2="82" y2="13" stroke="#444444" stroke-width="1.15"/>
+    <line x1="50" y1="22" x2="70" y2="39" stroke="#444444" stroke-width="1.15"/>
+    <line x1="44" y1="55" x2="70" y2="45" stroke="#444444" stroke-width="1.15"/>
+    <line x1="42" y1="58" x2="62" y2="86" stroke="#444444" stroke-width="1.15"/>
+    <line x1="31" y1="88" x2="60" y2="90" stroke="#444444" stroke-width="1.15"/>
+    <line x1="78" y1="41" x2="104" y2="32" stroke="#444444" stroke-width="1.15"/>
+    <line x1="76" y1="46" x2="90" y2="66" stroke="#444444" stroke-width="1.15"/>
+    <line x1="68" y1="87" x2="88" y2="72" stroke="#444444" stroke-width="1.15"/>
+    <line x1="95" y1="73" x2="110" y2="87" stroke="#444444" stroke-width="1.15"/>
+    <line x1="94" y1="67" x2="120" y2="58" stroke="#444444" stroke-width="1.15"/>
+    <line x1="90" y1="15" x2="105" y2="27" stroke="#444444" stroke-width="1.15"/>
+    
+    <text x="62" y="114" class="txt-serif" font-size="13" font-weight="bold" fill="#222222" text-anchor="middle">Dynamic Graph</text>
+  </g>
 
-  <!-- ==================== 2. EXTRACT FIRST-HOP INTERACTIONS ==================== -->
-  <!-- Box u (Lavender) -->
-  <rect x="{ext_x}" y="{ext_u_y}" width="{ext_w}" height="{ext_h}" rx="8" fill="#E8D7F1" stroke="#8E6CA8" stroke-width="1.2"/>
-  <text x="{ext_x + ext_w/2}" y="{ext_u_y + 20}" class="txt-sans box-title" fill="#2E1045">Extract First-</text>
-  <text x="{ext_x + ext_w/2}" y="{ext_u_y + 34}" class="txt-sans box-title" fill="#2E1045">hop Interactions</text>
+  <!-- Arrows from Dynamic Graph to Extract Boxes -->
+  <line x1="162" y1="130" x2="162" y2="111" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <line x1="162" y1="262" x2="162" y2="282" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <line x1="{ext_x + ext_w}" y1="{u_y}" x2="{ext_x + ext_w + 22}" y2="{u_y}" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <text x="{ext_x + ext_w + 35}" y="{u_y + 4}" class="txt-serif math-lbl">S<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u</tspan></text>
+  <!-- ==================== 2. BRANCHING S_u^t and S_v^t ==================== -->
+  <!-- Out of top Extract Box -->
+  <line x1="234" y1="80" x2="258" y2="80" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <text x="274" y="86" class="txt-serif math-lbl">S<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u</tspan></text>
 
-  <!-- Box v (Lavender) -->
-  <rect x="{ext_x}" y="{ext_v_y}" width="{ext_w}" height="{ext_h}" rx="8" fill="#E8D7F1" stroke="#8E6CA8" stroke-width="1.2"/>
-  <text x="{ext_x + ext_w/2}" y="{ext_v_y + 20}" class="txt-sans box-title" fill="#2E1045">Extract First-</text>
-  <text x="{ext_x + ext_w/2}" y="{ext_v_y + 34}" class="txt-sans box-title" fill="#2E1045">hop Interactions</text>
+  <!-- Out of bottom Extract Box -->
+  <line x1="234" y1="314" x2="258" y2="314" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <text x="274" y="320" class="txt-serif math-lbl">S<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v</tspan></text>
 
-  <line x1="{ext_x + ext_w}" y1="{v_y}" x2="{ext_x + ext_w + 22}" y2="{v_y}" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <text x="{ext_x + ext_w + 35}" y="{v_y + 4}" class="txt-serif math-lbl">S<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v</tspan></text>
+  <!-- Arrows branching from S_u^t and S_v^t -->
+  <line x1="288" y1="80" x2="318" y2="80" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <line x1="286" y1="92" x2="318" y2="182" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <!-- Branching Paths from S_u^t and S_v^t to Encoders -->
-  <path d="M 235 {u_y} L 260 {u_y} L 260 {u_y} L {enc_x - 3} {u_y}" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <path d="M 235 {u_y} L 260 {u_y} L 260 162 L {enc_x - 3} 162" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="286" y1="302" x2="318" y2="212" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <line x1="288" y1="314" x2="318" y2="314" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <path d="M 235 {v_y} L 260 {v_y} L 260 198 L {enc_x - 3} 198" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <path d="M 235 {v_y} L 260 {v_y} L 260 {v_y} L {enc_x - 3} {v_y}" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- ==================== 3. THREE ENCODING MODULES ==================== -->
+  <!-- Top Green Box -->
+  <rect x="322" y="44" width="170" height="72" rx="8" fill="#D5E8C8" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="407" y="65" class="txt-sans box-title">Encoding Neighbors,</text>
+  <text x="407" y="82" class="txt-sans box-title">Links &amp; Time</text>
+  <text x="407" y="99" class="txt-sans box-title">Intervals</text>
 
-  <!-- ==================== 3. ENCODING MODULES ==================== -->
-  <!-- Top Green Box (Neighbors, Links & Time) -->
-  <rect x="{enc_x}" y="{enc_top_y}" width="{enc_w}" height="{enc_h}" rx="8" fill="#D4EDDA" stroke="#5A9E66" stroke-width="1.2"/>
-  <text x="{enc_x + enc_w/2}" y="{enc_top_y + 22}" class="txt-sans box-title" fill="#14421E">Encoding Neighbors,</text>
-  <text x="{enc_x + enc_w/2}" y="{enc_top_y + 37}" class="txt-sans box-title" fill="#14421E">Links &amp; Time Intervals</text>
+  <!-- Middle Yellow Box -->
+  <rect x="322" y="165" width="170" height="64" rx="8" fill="#F1DC6C" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="407" y="194" class="txt-sans box-title">Encoding Neighbor</text>
+  <text x="407" y="212" class="txt-sans box-title">Co-occurrences</text>
 
-  <!-- Middle Yellow Box (Neighbor Co-occurrences) -->
-  <rect x="{enc_x}" y="{enc_mid_y}" width="{enc_w}" height="{enc_h}" rx="8" fill="#FFF3CD" stroke="#C9A844" stroke-width="1.2"/>
-  <text x="{enc_x + enc_w/2}" y="{enc_mid_y + 23}" class="txt-sans box-title" fill="#4B3B0A">Encoding Neighbor</text>
-  <text x="{enc_x + enc_w/2}" y="{enc_mid_y + 38}" class="txt-sans box-title" fill="#4B3B0A">Co-occurrences</text>
+  <!-- Bottom Green Box -->
+  <rect x="322" y="278" width="170" height="72" rx="8" fill="#D5E8C8" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="407" y="299" class="txt-sans box-title">Encoding Neighbors,</text>
+  <text x="407" y="316" class="txt-sans box-title">Links &amp; Time</text>
+  <text x="407" y="333" class="txt-sans box-title">Intervals</text>
 
-  <!-- Bottom Green Box (Neighbors, Links & Time) -->
-  <rect x="{enc_x}" y="{enc_bot_y}" width="{enc_w}" height="{enc_h}" rx="8" fill="#D4EDDA" stroke="#5A9E66" stroke-width="1.2"/>
-  <text x="{enc_x + enc_w/2}" y="{enc_bot_y + 22}" class="txt-sans box-title" fill="#14421E">Encoding Neighbors,</text>
-  <text x="{enc_x + enc_w/2}" y="{enc_bot_y + 37}" class="txt-sans box-title" fill="#14421E">Links &amp; Time Intervals</text>
+  <!-- ==================== 4. CURLY BRACES & TOKENS ==================== -->
+  <!-- Top Right Brace -->
+  <path d="{b_top_r}" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
+  <text x="550" y="62" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,N</tspan></text>
+  <text x="550" y="85" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,E</tspan></text>
+  <text x="550" y="108" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,T</tspan></text>
 
-  <!-- Tokens and Curly Braces for Top Module -->
-  <!-- Left Brace from Green Box -->
-  <path d="M {enc_x + enc_w + 4} {u_y} L {enc_x + enc_w + 10} {u_y} 
-           M {enc_x + enc_w + 10} {u_y - 20} Q {enc_x + enc_w + 14} {u_y - 20} {enc_x + enc_w + 14} {u_y - 10} 
-           L {enc_x + enc_w + 14} {u_y - 3} Q {enc_x + enc_w + 14} {u_y} {enc_x + enc_w + 18} {u_y}
-           Q {enc_x + enc_w + 14} {u_y} {enc_x + enc_w + 14} {u_y + 3}
-           L {enc_x + enc_w + 14} {u_y + 10} Q {enc_x + enc_w + 14} {u_y + 20} {enc_x + enc_w + 10} {u_y + 20}"
-        fill="none" stroke="#1E293B" stroke-width="1.1"/>
+  <!-- Middle Right Brace -->
+  <path d="{b_mid_r}" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
+  <text x="550" y="185" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,C</tspan></text>
+  <text x="550" y="214" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,C</tspan></text>
 
-  <text x="{tok_x}" y="{u_y - 18}" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,N</tspan></text>
-  <text x="{tok_x}" y="{u_y + 4}" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,E</tspan></text>
-  <text x="{tok_x}" y="{u_y + 26}" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,T</tspan></text>
+  <!-- Bottom Right Brace -->
+  <path d="{b_bot_r}" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
+  <text x="550" y="296" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,N</tspan></text>
+  <text x="550" y="319" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,E</tspan></text>
+  <text x="550" y="342" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,T</tspan></text>
 
-  <!-- Right Brace to Top Coral Box -->
-  <path d="M {tok_x + 18} {u_y - 20} Q {tok_x + 22} {u_y - 20} {tok_x + 22} {u_y - 10}
-           L {tok_x + 22} {u_y - 3} Q {tok_x + 22} {u_y} {tok_x + 26} {u_y}
-           Q {tok_x + 22} {u_y} {tok_x + 22} {u_y + 3}
-           L {tok_x + 22} {u_y + 10} Q {tok_x + 22} {u_y + 20} {tok_x + 18} {u_y + 20}
-           M {tok_x + 26} {u_y} L {pat_x - 3} {u_y}"
-        fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <!-- Left Brace grouping 4 tokens into Top Patching Box -->
+  <path d="{b_top_l}" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
+  <line x1="587" y1="121" x2="620" y2="121" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <!-- Tokens and Curly Braces for Bottom Module -->
-  <!-- Left Brace from Green Box -->
-  <path d="M {enc_x + enc_w + 4} {v_y} L {enc_x + enc_w + 10} {v_y} 
-           M {enc_x + enc_w + 10} {v_y - 20} Q {enc_x + enc_w + 14} {v_y - 20} {enc_x + enc_w + 14} {v_y - 10} 
-           L {enc_x + enc_w + 14} {v_y - 3} Q {enc_x + enc_w + 14} {v_y} {enc_x + enc_w + 18} {v_y}
-           Q {enc_x + enc_w + 14} {v_y} {enc_x + enc_w + 14} {v_y + 3}
-           L {enc_x + enc_w + 14} {v_y + 10} Q {enc_x + enc_w + 14} {v_y + 20} {enc_x + enc_w + 10} {v_y + 20}"
-        fill="none" stroke="#1E293B" stroke-width="1.1"/>
+  <!-- Left Brace grouping 4 tokens into Bottom Patching Box -->
+  <path d="{b_bot_l}" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
+  <line x1="587" y1="277" x2="620" y2="277" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <text x="{tok_x}" y="{v_y - 18}" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,N</tspan></text>
-  <text x="{tok_x}" y="{v_y + 4}" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,E</tspan></text>
-  <text x="{tok_x}" y="{v_y + 26}" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,T</tspan></text>
+  <!-- ==================== 5. PATCHING & ALIGNMENT BOXES ==================== -->
+  <!-- Top Pink Box -->
+  <rect x="624" y="58" width="146" height="78" rx="8" fill="#FBDBD0" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="697" y="82" class="txt-sans box-title">Patching &amp;</text>
+  <text x="697" y="99" class="txt-sans box-title">Alignment &amp;</text>
+  <text x="697" y="116" class="txt-sans box-title">Concatenation</text>
 
-  <!-- Right Brace to Bottom Coral Box -->
-  <path d="M {tok_x + 18} {v_y - 20} Q {tok_x + 22} {v_y - 20} {tok_x + 22} {v_y - 10}
-           L {tok_x + 22} {v_y - 3} Q {tok_x + 22} {v_y} {tok_x + 26} {v_y}
-           Q {tok_x + 22} {v_y} {tok_x + 22} {v_y + 3}
-           L {tok_x + 22} {v_y + 10} Q {tok_x + 22} {v_y + 20} {tok_x + 18} {v_y + 20}
-           M {tok_x + 26} {v_y} L {pat_x - 3} {v_y}"
-        fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <!-- Bottom Pink Box -->
+  <rect x="624" y="256" width="146" height="78" rx="8" fill="#FBDBD0" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="697" y="280" class="txt-sans box-title">Patching &amp;</text>
+  <text x="697" y="297" class="txt-sans box-title">Alignment &amp;</text>
+  <text x="697" y="314" class="txt-sans box-title">Concatenation</text>
 
-  <!-- Tokens and Curly Braces for Middle Yellow Module -->
-  <path d="M {enc_x + enc_w + 4} 180 L {enc_x + enc_w + 10} 180 
-           M {enc_x + enc_w + 10} 165 Q {enc_x + enc_w + 14} 165 {enc_x + enc_w + 14} 172 
-           L {enc_x + enc_w + 14} 177 Q {enc_x + enc_w + 14} 180 {enc_x + enc_w + 18} 180
-           Q {enc_x + enc_w + 14} 180 {enc_x + enc_w + 14} 183
-           L {enc_x + enc_w + 14} 188 Q {enc_x + enc_w + 14} 195 {enc_x + enc_w + 10} 195"
-        fill="none" stroke="#1E293B" stroke-width="1.1"/>
+  <!-- Arrows to Z_u^t and Z_v^t -->
+  <line x1="770" y1="97" x2="796" y2="97" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <text x="812" y="102" class="txt-serif math-lbl">Z<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u</tspan></text>
 
-  <text x="{tok_x}" y="172" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u,C</tspan></text>
-  <text x="{tok_x}" y="196" class="txt-serif math-lbl">X<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v,C</tspan></text>
+  <line x1="770" y1="295" x2="796" y2="295" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <text x="812" y="300" class="txt-serif math-lbl">Z<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v</tspan></text>
 
-  <!-- Right Brace and Routing from Middle Tokens to Coral Boxes -->
-  <path d="M {tok_x + 18} 165 Q {tok_x + 22} 165 {tok_x + 22} 170 
-           L {tok_x + 22} 174 Q {tok_x + 22} 177 {tok_x + 26} 177
-           Q {tok_x + 22} 177 {tok_x + 22} 180
-           L {tok_x + 22} 184 Q {tok_x + 22} 189 {tok_x + 18} 189"
-        fill="none" stroke="#1E293B" stroke-width="1.1"/>
-  
-  <path d="M {tok_x + 26} 177 L {tok_x + 38} 177 L {tok_x + 38} {u_y + 14} L {pat_x - 3} {u_y + 14}" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
-  <path d="M {tok_x + 26} 177 L {tok_x + 38} 177 L {tok_x + 38} {v_y - 14} L {pat_x - 3} {v_y - 14}" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <!-- Vertical Arrows between Z_u^t, Z_v^t and Joint Z^t -->
+  <line x1="812" y1="114" x2="812" y2="174" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <line x1="812" y1="282" x2="812" y2="218" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <!-- ==================== 4. PATCHING, ALIGNMENT & CONCATENATION ==================== -->
-  <!-- Top Coral Box (u) -->
-  <rect x="{pat_x}" y="{pat_top_y}" width="{pat_w}" height="{pat_h}" rx="8" fill="#F8D7DA" stroke="#BC707B" stroke-width="1.2"/>
-  <text x="{pat_x + pat_w/2}" y="{pat_top_y + 18}" class="txt-sans box-title" fill="#4C1118">Patching &amp;</text>
-  <text x="{pat_x + pat_w/2}" y="{pat_top_y + 32}" class="txt-sans box-title" fill="#4C1118">Alignment &amp;</text>
-  <text x="{pat_x + pat_w/2}" y="{pat_top_y + 46}" class="txt-sans box-title" fill="#4C1118">Concatenation</text>
+  <!-- Joint Z^t Label -->
+  <text x="812" y="198" class="txt-serif math-lbl">Z<tspan font-size="10" dy="-6">t</tspan><tspan font-size="13" dy="5"> = [Z</tspan><tspan font-size="9" dy="-4">t</tspan><tspan font-size="9" dy="8">u</tspan><tspan font-size="13" dy="-4">; Z</tspan><tspan font-size="9" dy="-4">t</tspan><tspan font-size="9" dy="8">v</tspan><tspan font-size="13" dy="-4">]</tspan></text>
 
-  <line x1="{pat_x + pat_w}" y1="{u_y}" x2="{pat_x + pat_w + 22}" y2="{u_y}" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <text x="{pat_x + pat_w + 35}" y="{u_y + 4}" class="txt-serif math-lbl">Z<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u</tspan></text>
+  <!-- ==================== 6. STACKED TRANSFORMER / TGAT BLOCK (× L) ==================== -->
+  <!-- Stack Card 2 (Back) -->
+  <rect x="918" y="18" width="170" height="340" rx="12" fill="#EDEDED" stroke="#555555" stroke-width="1.0"/>
+  <!-- Stack Card 1 (Middle) -->
+  <rect x="912" y="24" width="170" height="340" rx="12" fill="#E3E3E3" stroke="#444444" stroke-width="1.0"/>
+  <!-- Stack Card 0 (Front) -->
+  <rect x="906" y="30" width="170" height="340" rx="12" fill="#DADADA" stroke="#2B2B2B" stroke-width="1.25"/>
 
-  <!-- Bottom Coral Box (v) -->
-  <rect x="{pat_x}" y="{pat_bot_y}" width="{pat_w}" height="{pat_h}" rx="8" fill="#F8D7DA" stroke="#BC707B" stroke-width="1.2"/>
-  <text x="{pat_x + pat_w/2}" y="{pat_bot_y + 18}" class="txt-sans box-title" fill="#4C1118">Patching &amp;</text>
-  <text x="{pat_x + pat_w/2}" y="{pat_bot_y + 32}" class="txt-sans box-title" fill="#4C1118">Alignment &amp;</text>
-  <text x="{pat_x + pat_w/2}" y="{pat_bot_y + 46}" class="txt-sans box-title" fill="#4C1118">Concatenation</text>
+  <!-- × L text -->
+  <text x="1070" y="24" class="txt-serif" font-size="15" font-style="italic" font-weight="bold" fill="#222222">× L</text>
 
-  <line x1="{pat_x + pat_w}" y1="{v_y}" x2="{pat_x + pat_w + 22}" y2="{v_y}" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <text x="{pat_x + pat_w + 35}" y="{v_y + 4}" class="txt-serif math-lbl">Z<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v</tspan></text>
+  <!-- Right bracket ] and Routing path into Transformer Block (DRAWN ON TOP OF CARD!) -->
+  <path d="M 860 185 L 872 185 L 872 388 L 991 388 L 991 306" fill="none" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <!-- Joining Paths from Z_u^t and Z_v^t to Z^t -->
-  <path d="M {pat_x + pat_w + 48} {u_y} L 696 {u_y} L 696 166 L 702 166" fill="none" stroke="#1E293B" stroke-width="1.2"/>
-  <path d="M {pat_x + pat_w + 48} {v_y} L 696 {v_y} L 696 194 L 702 194" fill="none" stroke="#1E293B" stroke-width="1.2"/>
+  <!-- Inside Front Card -->
+  <!-- Layer Normalization 1 (Bottom, Cream) -->
+  <rect x="928" y="270" width="126" height="36" rx="6" fill="#FFF2CC" stroke="#2B2B2B" stroke-width="1.15"/>
+  <text x="991" y="292" class="txt-sans box-title">Layer Normalization</text>
 
-  <!-- Joint Label Z^t -->
-  <text x="668" y="184" class="txt-serif math-lbl" font-size="13">Z<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="11.5" dy="5"> = [Z</tspan><tspan font-size="7.5" dy="-4">t</tspan><tspan font-size="7.5" dy="7">u</tspan><tspan font-size="11.5" dy="-3">; Z</tspan><tspan font-size="7.5" dy="-4">t</tspan><tspan font-size="7.5" dy="7">v</tspan><tspan font-size="11.5" dy="-3">]</tspan></text>
-  <line x1="710" y1="180" x2="{tr_x - 3}" y2="180" stroke="#1E293B" stroke-width="1.2"/>
+  <!-- Triple Arrows (Q, K, V) from LN1 to Multi-Head Attention -->
+  <line x1="960" y1="270" x2="960" y2="246" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
+  <line x1="991" y1="270" x2="991" y2="246" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
+  <line x1="1022" y1="270" x2="1022" y2="246" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
 
-  <!-- ==================== 5. STACKED TRANSFORMER / GNN BLOCK (× L) ==================== -->
-  <!-- Shadow Background Card 2 -->
-  <rect x="{tr_x + 8}" y="{tr_y - 6}" width="{tr_w}" height="{tr_h}" rx="14" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1"/>
-  <!-- Shadow Background Card 1 -->
-  <rect x="{tr_x + 4}" y="{tr_y - 3}" width="{tr_w}" height="{tr_h}" rx="14" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
-  <!-- Foreground Main Card -->
-  <rect x="{tr_x}" y="{tr_y}" width="{tr_w}" height="{tr_h}" rx="14" fill="#EAECEF" stroke="#4B5563" stroke-width="1.3"/>
+  <!-- Multi-head Self-Attention (Terracotta/Orange) -->
+  <rect x="928" y="198" width="126" height="46" rx="6" fill="#EBB788" stroke="#2B2B2B" stroke-width="1.15"/>
+  <text x="991" y="217" class="txt-sans box-title">Multi-head</text>
+  <text x="991" y="233" class="txt-sans box-title">Self-Attention</text>
 
-  <!-- \times L label -->
-  <text x="{tr_x + tr_w - 12}" y="{tr_y + 22}" class="txt-serif" font-size="13" font-style="italic" font-weight="bold" fill="#374151" text-anchor="end">× L</text>
+  <!-- Residual 1: Circle + -->
+  <circle cx="991" cy="174" r="7" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.15"/>
+  <line x1="986.5" y1="174" x2="995.5" y2="174" stroke="#2B2B2B" stroke-width="1.15"/>
+  <line x1="991" y1="169.5" x2="991" y2="178.5" stroke="#2B2B2B" stroke-width="1.15"/>
 
-  <!-- Input path into bottom of block -->
-  <path d="M {tr_x - 3} 180 L {tr_x + 12} 180 L {tr_x + 12} 302 L {tr_x + tr_w/2} 302 L {tr_x + tr_w/2} 286" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="991" y1="198" x2="991" y2="183.5" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
 
-  <!-- Layer Normalization 1 (Bottom, Yellow) -->
-  <rect x="{tr_x + 16}" y="250" width="133" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
-  <text x="{tr_x + tr_w/2}" y="269" class="txt-sans box-title" fill="#92400E">Layer Normalization</text>
+  <!-- Skip Connection 1 (around MHA) -->
+  <path d="M 991 324 L 1064 324 L 1064 174 L 1000 174" fill="none" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
 
-  <!-- Arrow from LN1 to Multi-Head Attention -->
-  <line x1="{tr_x + tr_w/2}" y1="250" x2="{tr_x + tr_w/2}" y2="222" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- Arrow from Residual 1 to LN2 -->
+  <line x1="991" y1="167" x2="991" y2="152" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
 
-  <!-- Multi-head Self-Attention (Orange) -->
-  <rect x="{tr_x + 16}" y="174" width="133" height="42" rx="6" fill="#FFE5D0" stroke="#EA580C" stroke-width="1.2"/>
-  <text x="{tr_x + tr_w/2}" y="192" class="txt-sans box-title" fill="#9A3412">Multi-head</text>
-  <text x="{tr_x + tr_w/2}" y="206" class="txt-sans box-title" fill="#9A3412">Self-Attention</text>
+  <!-- Layer Normalization 2 (Middle, Cream) -->
+  <rect x="928" y="116" width="126" height="36" rx="6" fill="#FFF2CC" stroke="#2B2B2B" stroke-width="1.15"/>
+  <text x="991" y="138" class="txt-sans box-title">Layer Normalization</text>
 
-  <!-- Residual 1: Add Circle -->
-  <circle cx="{tr_x + tr_w/2}" cy="146" r="7.5" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.1"/>
-  <line x1="{tr_x + tr_w/2 - 4.5}" y1="146" x2="{tr_x + tr_w/2 + 4.5}" y2="146" stroke="#1E293B" stroke-width="1.1"/>
-  <line x1="{tr_x + tr_w/2}" y1="141.5" x2="{tr_x + tr_w/2}" y2="150.5" stroke="#1E293B" stroke-width="1.1"/>
-  
-  <line x1="{tr_x + tr_w/2}" y1="174" x2="{tr_x + tr_w/2}" y2="156" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <!-- Skip Connection 1 -->
-  <path d="M {tr_x + tr_w/2} 294 L {tr_x + tr_w - 18} 294 L {tr_x + tr_w - 18} 146 L {tr_x + tr_w/2 + 10} 146" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <!-- Arrow from LN2 to FFN -->
+  <line x1="991" y1="116" x2="991" y2="99" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
 
-  <!-- Layer Normalization 2 (Middle, Yellow) -->
-  <rect x="{tr_x + 16}" y="98" width="133" height="30" rx="6" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
-  <text x="{tr_x + tr_w/2}" y="117" class="txt-sans box-title" fill="#92400E">Layer Normalization</text>
-  <line x1="{tr_x + tr_w/2}" y1="138" x2="{tr_x + tr_w/2}" y2="130" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- Feed Forward Network (Soft Blue) -->
+  <rect x="928" y="52" width="126" height="46" rx="6" fill="#B2D2EC" stroke="#2B2B2B" stroke-width="1.15"/>
+  <text x="991" y="71" class="txt-sans box-title">Feed Forward</text>
+  <text x="991" y="87" class="txt-sans box-title">Network</text>
 
-  <!-- Feed Forward Network (Blue) -->
-  <rect x="{tr_x + 16}" y="42" width="133" height="38" rx="6" fill="#CCE5FF" stroke="#38BDF8" stroke-width="1.2"/>
-  <text x="{tr_x + tr_w/2}" y="58" class="txt-sans box-title" fill="#0369A1">Feed Forward</text>
-  <text x="{tr_x + tr_w/2}" y="72" class="txt-sans box-title" fill="#0369A1">Network</text>
-  <line x1="{tr_x + tr_w/2}" y1="98" x2="{tr_x + tr_w/2}" y2="82" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- Residual 2: Circle + -->
+  <circle cx="991" cy="38" r="7" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.15"/>
+  <line x1="986.5" y1="38" x2="995.5" y2="38" stroke="#2B2B2B" stroke-width="1.15"/>
+  <line x1="991" y1="33.5" x2="991" y2="42.5" stroke="#2B2B2B" stroke-width="1.15"/>
 
-  <!-- Residual 2: Add Circle -->
-  <circle cx="{tr_x + tr_w/2}" cy="18" r="7.5" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.1"/>
-  <line x1="{tr_x + tr_w/2 - 4.5}" y1="18" x2="{tr_x + tr_w/2 + 4.5}" y2="18" stroke="#1E293B" stroke-width="1.1"/>
-  <line x1="{tr_x + tr_w/2}" y1="13.5" x2="{tr_x + tr_w/2}" y2="22.5" stroke="#1E293B" stroke-width="1.1"/>
-  
-  <line x1="{tr_x + tr_w/2}" y1="42" x2="{tr_x + tr_w/2}" y2="28" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <!-- Skip Connection 2 -->
-  <path d="M {tr_x + tr_w/2} 90 L {tr_x + tr_w - 18} 90 L {tr_x + tr_w - 18} 18 L {tr_x + tr_w/2 + 10} 18" fill="none" stroke="#1E293B" stroke-width="1.1" marker-end="url(#arr)"/>
+  <line x1="991" y1="52" x2="991" y2="47" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
 
-  <!-- Exit from Transformer Top to Output Head -->
-  <path d="M {tr_x + tr_w/2} 10 L {tr_x + tr_w/2} -6 L {head_x} -6 L {head_x} {pool_y - 4}" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  
-  <!-- Label H^t above Average Pooling -->
-  <text x="{head_x + 18}" y="32" class="txt-serif math-lbl">H<tspan font-size="8.5" dy="-5">t</tspan></text>
+  <!-- Skip Connection 2 (around FFN) -->
+  <path d="M 991 160 L 1064 160 L 1064 38 L 1000 38" fill="none" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
 
-  <!-- ==================== 6. AVERAGE POOLING & DOWNSTREAM TASKS ==================== -->
-  <!-- Average Pooling Box (Teal/Cyan) -->
-  <rect x="{pool_x}" y="{pool_y}" width="{pool_w}" height="{pool_h}" rx="8" fill="#D1ECF1" stroke="#3FA7B3" stroke-width="1.2"/>
-  <text x="{head_x}" y="{pool_y + 19}" class="txt-sans box-title" fill="#0C5460">Average</text>
-  <text x="{head_x}" y="{pool_y + 33}" class="txt-sans box-title" fill="#0C5460">Pooling</text>
+  <!-- ==================== 7. OUTPUT HEAD: POOLING & DOWNSTREAM ==================== -->
+  <!-- Continuous Exit Path from Top of Residual 2 to Average Pooling -->
+  <path d="M 991 31 L 991 10 L 1210 10 L 1210 68" fill="none" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <!-- Downward Arrows from Pooling to h_u^t and h_v^t -->
-  <path d="M {head_x - 24} {pool_y + pool_h} L {head_x - 24} 150" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <path d="M {head_x + 24} {pool_y + pool_h} L {head_x + 24} 150" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- H^t Label -->
+  <text x="1210" y="52" class="txt-serif math-lbl">H<tspan font-size="10" dy="-6">t</tspan></text>
 
-  <text x="{head_x - 24}" y="168" class="txt-serif math-lbl">h<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">u</tspan></text>
-  <text x="{head_x + 24}" y="168" class="txt-serif math-lbl">h<tspan font-size="8.5" dy="-5">t</tspan><tspan font-size="8.5" dy="8">v</tspan></text>
+  <!-- Average Pooling Box (Pastel Mint/Teal) -->
+  <rect x="1146" y="72" width="128" height="48" rx="8" fill="#C4EEEA" stroke="#2B2B2B" stroke-width="1.25"/>
+  <text x="1210" y="93" class="txt-sans box-title">Average</text>
+  <text x="1210" y="109" class="txt-sans box-title">Pooling</text>
 
-  <!-- Arrows from h_u, h_v to Downstream Tasks -->
-  <path d="M {head_x - 24} 178 L {head_x - 24} {down_y - 3}" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
-  <path d="M {head_x + 24} 178 L {head_x + 24} {down_y - 3}" fill="none" stroke="#1E293B" stroke-width="1.2" marker-end="url(#arr)"/>
+  <!-- Downward Arrows from Pooling to Downstream Tasks -->
+  <line x1="1176" y1="120" x2="1176" y2="250" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <line x1="1244" y1="120" x2="1244" y2="250" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
 
-  <!-- Downstream Tasks Box (White with Crisp Border) -->
-  <rect x="{down_x}" y="{down_y}" width="{down_w}" height="{down_h}" rx="8" fill="#FFFFFF" stroke="#374151" stroke-width="1.3"/>
-  <text x="{head_x}" y="{down_y + 22}" class="txt-sans box-title" fill="#111827">Downstream</text>
-  <text x="{head_x}" y="{down_y + 36}" class="txt-sans box-title" fill="#111827">Tasks</text>
+  <!-- h_u^t and h_v^t Labels beside arrows -->
+  <text x="1158" y="186" class="txt-serif math-lbl">h<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u</tspan></text>
+  <text x="1262" y="186" class="txt-serif math-lbl">h<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v</tspan></text>
+
+  <!-- Downstream Tasks Box (Clean White) -->
+  <rect x="1146" y="254" width="128" height="56" rx="8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.35"/>
+  <text x="1210" y="278" class="txt-sans box-title">Downstream</text>
+  <text x="1210" y="296" class="txt-sans box-title">Tasks</text>
+
 </svg>"""
 
     out_dir = os.path.join(os.path.dirname(__file__), "figures")
