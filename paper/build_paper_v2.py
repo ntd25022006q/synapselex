@@ -22,7 +22,7 @@ paper_tex = r"""\documentclass[11pt,a4paper]{article}
 \usepackage{multirow}
 \usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds, decorations.pathreplacing, shadows}
 
 % LaTeX Float Parameters to prevent lonely float pages
 \renewcommand{\topfraction}{0.90}
@@ -44,6 +44,22 @@ paper_tex = r"""\documentclass[11pt,a4paper]{article}
 \definecolor{darkslate}{RGB}{30, 41, 59}
 \definecolor{softslate}{RGB}{241, 245, 249}
 
+% Extended Executive Color Tokens for Modern Aesthetic
+\definecolor{inkslate}{RGB}{15, 23, 42}
+\definecolor{subtlecard}{RGB}{248, 250, 252}
+\definecolor{bordercard}{RGB}{203, 213, 225}
+\definecolor{royal}{RGB}{37, 99, 235}
+\definecolor{royalsoft}{RGB}{239, 246, 255}
+\definecolor{emerald}{RGB}{5, 150, 105}
+\definecolor{emeraldsoft}{RGB}{236, 253, 245}
+\definecolor{amber}{RGB}{217, 119, 6}
+\definecolor{ambersoft}{RGB}{254, 243, 199}
+\definecolor{rose}{RGB}{225, 29, 72}
+\definecolor{rosesoft}{RGB}{255, 241, 242}
+\definecolor{violet}{RGB}{124, 58, 237}
+\definecolor{violetsoft}{RGB}{245, 243, 255}
+\definecolor{slatecard}{RGB}{241, 245, 249}
+
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{enumitem}
@@ -56,7 +72,7 @@ paper_tex = r"""\documentclass[11pt,a4paper]{article}
 \title{\textbf{SynapseLex: An Axiomatic Temporal State-Transition Graph Framework for Non-Monotonic Civil Legal Adjudication}}
 
 \author{
-  \textbf{Nguy\~{\^e}n Ti\^{e}n \DJ\d{a}t}\thanks{Corresponding author: \texttt{datbazuka2502@gmail.com}} \\
+  \textbf{Nguy\~{\^e}n Ti\^{e}n \DJ\d{a}t}\thanks{Corresponding author: \texttt{ntd25022006q@gmail.com}} \\
   \textit{Department of Information Technology, Hanoi University of Industry, Vietnam} \\
   \and
   \textbf{Antigravity Research Agent} \\
@@ -216,125 +232,158 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 \begin{tikzpicture}[
     >=Stealth,
     font=\sffamily\footnotesize,
-    panelbox/.style={draw=primarynavy!35, fill=cardbg, rounded corners=6pt, line width=0.9pt, inner sep=5pt},
-    header/.style={fill=#1, text=white, font=\sffamily\bfseries\scriptsize, rounded corners=3pt, inner sep=3pt, minimum height=0.52cm},
-    elem/.style={draw=#1!80, fill=#1!12, rounded corners=4pt, line width=0.7pt, font=\sffamily\scriptsize, align=center, inner sep=2.5pt},
-    dataflow/.style={->, line width=1.1pt, draw=primarynavy!80},
-    lossarrow/.style={<-, line width=1.0pt, dashed, draw=accentcrimson}
+    panelbox/.style={draw=bordercard, fill=subtlecard, rounded corners=8pt, line width=0.9pt, inner sep=6pt},
+    headerpill/.style={fill=#1, text=white, font=\sffamily\bfseries\scriptsize, rounded corners=4pt, inner sep=4pt, align=center, minimum height=0.7cm},
+    elemcard/.style={draw=#1!80, fill=white, rounded corners=5pt, line width=0.8pt, font=\sffamily\scriptsize, align=center, inner sep=3.5pt},
+    dataflow/.style={->, line width=1.2pt, draw=royal},
+    lossflow/.style={<-, line width=1.1pt, dashed, draw=rose}
 ]
 
 % ===================== PANEL A: DYNAMIC GRAPH =====================
-\node[panelbox, minimum width=3.8cm, minimum height=5.6cm] (panelA) at (0, 0) {};
-\node[header=primarynavy, minimum width=3.6cm, anchor=north] at (panelA.north) {(a) Dynamic Subgraph $\mathcal{G}(t)$};
+\node[panelbox, minimum width=4.1cm, minimum height=6.2cm] (panelA) at (0, 0) {};
+\node[headerpill=royal, minimum width=3.8cm, anchor=north] at ([yshift=-0.15cm]panelA.north) {
+    \textbf{STAGE 1: JURISPRUDENTIAL GRAPH}\\
+    Dynamic Case Subgraph $\mathcal{G}(t)$
+};
 
-\node[elem=accentteal, circle, inner sep=1.8pt] (litU) at (-0.9, 1.6) {Litigant $u$\\(Buyer)};
-\node[elem=accentteal, circle, inner sep=1.8pt] (litV) at (0.9, 1.6) {Litigant $v$\\(Seller)};
-\node[elem=accentamber, minimum width=2.4cm] (contract) at (0, 0.6) {Deposit Contract $c$\\(BLDS Art. 328)};
-\node[elem=accentcrimson, minimum width=2.4cm] (breach) at (0, -0.4) {Breach Notice $e_1$\\(Default at $t_1$)};
-\node[elem=darkslate, minimum width=2.4cm] (claim) at (0, -1.4) {Lawsuit Action $e_2$\\(Filed at $t_2$)};
+\node[elemcard=royal, circle, inner sep=2.2pt] (litU) at (-0.95, 1.6) {\textbf{Litigant $u$}\\(Buyer)};
+\node[elemcard=royal, circle, inner sep=2.2pt] (litV) at (0.95, 1.6) {\textbf{Litigant $v$}\\(Seller)};
+\node[elemcard=amber, minimum width=2.8cm, fill=ambersoft] (contract) at (0, 0.5) {
+    \textbf{Deposit Contract $c$}\\
+    \textit{BLDS Art. 328 Security}
+};
+\node[elemcard=rose, minimum width=2.8cm, fill=rosesoft] (breach) at (0, -0.6) {
+    \textbf{Breach Milestone $e_1$}\\
+    \textit{Default Event at $(t_1, \tau_1)$}
+};
+\node[elemcard=inkslate, minimum width=2.8cm, fill=slatecard] (claim) at (0, -1.7) {
+    \textbf{Lawsuit Action $e_2$}\\
+    \textit{Litigation at $(t_2, \tau_2)$}
+};
 
-\draw[dataflow] (litU) -- node[left, font=\tiny] {signs} (contract);
-\draw[dataflow] (litV) -- node[right, font=\tiny] {secures} (contract);
-\draw[dataflow, draw=accentcrimson] (contract) -- node[right, font=\tiny] {breach $(\Delta t_1, \Delta \tau_1)$} (breach);
-\draw[dataflow, draw=darkslate] (breach) -- node[right, font=\tiny] {litigation $(\Delta t_2, \Delta \tau_2)$} (claim);
+\draw[dataflow] (litU) -- node[left, font=\tiny\bfseries\color{royal}] {signs} (contract);
+\draw[dataflow] (litV) -- node[right, font=\tiny\bfseries\color{royal}] {secures} (contract);
+\draw[dataflow, draw=rose] (contract) -- node[right, font=\tiny\bfseries\color{rose}] {breach $(\Delta t_1, \Delta \tau_1)$} (breach);
+\draw[dataflow, draw=inkslate] (breach) -- node[right, font=\tiny\bfseries\color{inkslate}] {dispute $(\Delta t_2, \Delta \tau_2)$} (claim);
 
-\node[anchor=south, font=\tiny\bfseries\color{primarynavy!90}, align=center] at (panelA.south) {Attributed Multi-Relational Topology $(V, E, \mathcal{T})$};
+\node[anchor=south, font=\tiny\bfseries\color{royal}, align=center] at ([yshift=0.15cm]panelA.south) {
+    Attributed Topology $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \mathcal{T}, \mathcal{S})$\\
+    $\mathbf{H}^{(0)} \in \mathbb{R}^{|\mathcal{V}| \times d}$
+};
 
 % Connecting Arrow A -> B
-\draw[->, line width=1.4pt, draw=primarynavy] (1.95, 0.6) -- (2.55, 0.6);
+\draw[->, line width=1.5pt, draw=royal] (2.1, 0.5) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{H}^{(0)}$} (2.8, 0.5);
 
 % ===================== PANEL B: DUAL-CLOCK TGAT =====================
-\node[panelbox, minimum width=4.1cm, minimum height=5.6cm] (panelB) at (4.6, 0) {};
-\node[header=accentteal, minimum width=3.9cm, anchor=north] at (panelB.north) {(b) Dual-Clock Axiom-TGAT};
+\node[panelbox, minimum width=4.3cm, minimum height=6.2cm] (panelB) at (5.0, 0) {};
+\node[headerpill=violet, minimum width=4.0cm, anchor=north] at ([yshift=-0.15cm]panelB.north) {
+    \textbf{STAGE 2: TEMPORAL ATTENTION}\\
+    Dual-Clock Axiom-TGAT Layer
+};
 
-\node[elem=accentteal, minimum width=3.5cm, fill=softteal] (dualclock) at (4.6, 1.5) {
-    \textbf{Dual-Clock Fourier Kernel}\\
+\node[elemcard=violet, minimum width=3.8cm, fill=violetsoft] (dualclock) at (5.0, 1.5) {
+    \textbf{Dual-Clock Bochner Kernel}\\
     $\mathbf{\Phi}_{\text{dual}}(\Delta t, \Delta \tau) = [\mathbf{\Phi}(\Delta t) \,\|\, \mathbf{\Phi}(\Delta \tau)]$\\
-    \textit{Bochner Continuous Spectral Projection}
+    \textit{Harmonic Spectral Projection $\in \mathbb{R}^{d_\Phi}$}
 };
 
-\node[elem=borderblue, minimum width=3.5cm] (mhattn) at (4.6, 0.3) {
+\node[elemcard=royal, minimum width=3.8cm, fill=royalsoft] (mhattn) at (5.0, 0.2) {
     \textbf{Multi-Head Attention Head $h$}\\
-    $\mathbf{q}_u = \mathbf{W}_Q \mathbf{h}_u, \ \mathbf{k}_{uv} = \mathbf{W}_K \mathbf{z}_{uv}$\\
-    $\alpha_{uv}^{(h)} = \mathrm{softmax}(\mathbf{q}_u^\top \mathbf{k}_{uv}/\sqrt{d})$
+    $\alpha_{uv}^{(h)} = \mathrm{Softmax}\left(\frac{\mathbf{q}_u^\top \mathbf{k}_{uv}}{\sqrt{d}} - \kappa \Delta t_{uv}\right)$\\
+    \textit{Continuous-Time Inductive Routing}
 };
 
-\node[elem=borderblue, minimum width=3.5cm] (aggr) at (4.6, -1.3) {
-    \textbf{Temporal Aggregation}\\
+\node[elemcard=royal, minimum width=3.8cm, fill=white] (aggr) at (5.0, -1.3) {
+    \textbf{Continuous Aggregation}\\
     $\mathbf{m}_u^{(l)} = \bigoplus_{h=1}^H \sum_v \alpha_{uv}^{(h)} \mathbf{v}_{uv}^{(h)}$\\
     $\mathbf{h}_u^{(l)} = \mathrm{LN}(\mathbf{h}_u + \mathrm{FFN}(\mathbf{m}_u))$
 };
 
-\draw[dataflow] (dualclock) -- node[right, font=\tiny] {$\mathbf{\Phi}_{\text{dual}}$} (mhattn);
-\draw[dataflow] (mhattn) -- node[right, font=\tiny] {$\alpha_{uv}$} (aggr);
+\draw[dataflow, draw=violet] (dualclock) -- node[right, font=\tiny\bfseries\color{violet}] {$\mathbf{\Phi}_{\text{dual}}$} (mhattn);
+\draw[dataflow] (mhattn) -- node[right, font=\tiny\bfseries\color{royal}] {$\alpha_{uv}$} (aggr);
 
-\node[anchor=south, font=\tiny\bfseries\color{accentteal!90}, align=center] at (panelB.south) {Inductive Continuous-Time Message Passing};
-
-% Connecting Arrow B -> C
-\draw[->, line width=1.4pt, draw=primarynavy] (6.7, -1.3) -- (7.3, -1.3);
-
-% ===================== PANEL C: NH-DA & STATE MACHINE =====================
-\node[panelbox, minimum width=4.1cm, minimum height=5.6cm] (panelC) at (9.4, 0) {};
-\node[header=accentamber, minimum width=3.9cm, anchor=north] at (panelC.north) {(c) Normative Arbiter \& State};
-
-\node[elem=accentamber, minimum width=3.5cm, fill=softamber] (nhda) at (9.4, 1.5) {
-    \textbf{NH-DA Priority Arbiter}\\
-    $\mathbf{h}_{\mathcal{G}}^* = \mathbf{h}_{\mathcal{G}} \odot (\mathbf{1} + \sigma(\mathbf{W}_g \mathbf{h}_{\mathcal{G}}) \cdot w_{\text{lex}})$\\
-    \textit{Lex Specialis}: $w_{\text{land}} > w_{\text{civil}}$
+\node[anchor=south, font=\tiny\bfseries\color{violet}, align=center] at ([yshift=0.15cm]panelB.south) {
+    Decoupled Physical \& Procedural Clocks\\
+    Contract Embedding $\mathbf{h}_c(t) \in \mathbb{R}^d$
 };
 
-\node[elem=darkslate, minimum width=3.5cm] (stategate) at (9.4, 0.2) {
+% Connecting Arrow B -> C
+\draw[->, line width=1.5pt, draw=royal] (7.2, -1.3) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{h}_c(t)$} (7.9, -1.3);
+
+% ===================== PANEL C: NH-DA & STATE MACHINE =====================
+\node[panelbox, minimum width=4.3cm, minimum height=6.2cm] (panelC) at (10.1, 0) {};
+\node[headerpill=amber, minimum width=4.0cm, anchor=north] at ([yshift=-0.15cm]panelC.north) {
+    \textbf{STAGE 3: NORMATIVE ARBITER}\\
+    \textit{Lex Specialis} DAG \& State Automaton
+};
+
+\node[elemcard=amber, minimum width=3.8cm, fill=ambersoft] (nhda) at (10.1, 1.5) {
+    \textbf{NH-DA Priority Arbiter}\\
+    $\mathbf{h}_{\mathcal{G}}^* = \mathbf{h}_{\mathcal{G}} \odot (\mathbf{1} + \sigma(\mathbf{W}_g \mathbf{h}_{\mathcal{G}}) \cdot w_{\text{lex}})$\\
+    \textit{Lex Specialis}: Land Law $2024 \succ$ Civil $2015$
+};
+
+\node[elemcard=inkslate, minimum width=3.8cm, fill=slatecard] (stategate) at (10.1, 0.2) {
     \textbf{Markovian State Automaton}\\
     $\mathbf{z}_{\text{state}} = \mathrm{Softmax}(\mathbf{W}_S \mathbf{h}_c + \mathbf{b}_S)$\\
     $\mathcal{S} \in \{\text{Valid}, \text{Voidable}, \text{Void}, \text{Exting}\}$
 };
 
-\node[elem=darkslate, minimum width=3.5cm, fill=white] (statebox) at (9.4, -1.3) {
+\node[elemcard=inkslate, minimum width=3.8cm, fill=white] (statebox) at (10.1, -1.3) {
     \begin{tabular}{cc}
-    \tiny\color{accentteal}$\blacksquare$ \textbf{Valid (0)} & \tiny\color{accentamber}$\blacksquare$ \textbf{Voidable (1)} \\
-    \tiny\color{accentcrimson}$\blacksquare$ \textbf{Void (2)} & \tiny\color{darkslate}$\blacksquare$ \textbf{Exting (3)}
+    \tiny\color{emerald}$\blacksquare$ \textbf{Valid ($\mathcal{S}_0$)} & \tiny\color{amber}$\blacksquare$ \textbf{Voidable ($\mathcal{S}_1$)} \\
+    \tiny\color{rose}$\blacksquare$ \textbf{Void ($\mathcal{S}_2$)} & \tiny\color{inkslate}$\blacksquare$ \textbf{Exting ($\mathcal{S}_3$)}
     \end{tabular}
 };
 
-\draw[dataflow] (nhda) -- node[right, font=\tiny] {$\mathbf{h}_{\mathcal{G}}^*$} (stategate);
-\draw[dataflow] (stategate) -- node[right, font=\tiny] {$\mathbf{z}_{\text{state}}$} (statebox);
+\draw[dataflow, draw=amber] (nhda) -- node[right, font=\tiny\bfseries\color{amber}] {$\mathbf{h}_{\mathcal{G}}^*$} (stategate);
+\draw[dataflow] (stategate) -- node[right, font=\tiny\bfseries] {$\mathbf{z}_{\text{state}}$} (statebox);
 
-\node[anchor=south, font=\tiny\bfseries\color{accentamber!90}, align=center] at (panelC.south) {Discrete Regime Tracking \& Priority Modulation};
-
-% Connecting Arrow C -> D
-\draw[->, line width=1.4pt, draw=primarynavy] (11.5, 0.2) -- (12.1, 0.2);
-
-% ===================== PANEL D: DAAH & VERDICT =====================
-\node[panelbox, minimum width=4.1cm, minimum height=5.6cm] (panelD) at (14.2, 0) {};
-\node[header=accentcrimson, minimum width=3.9cm, anchor=north] at (panelD.north) {(d) Defeasible Head \& Loss};
-
-\node[elem=accentcrimson, minimum width=3.5cm, fill=softcrimson] (daah) at (14.2, 1.5) {
-    \textbf{Defeasible Head (DAAH)}\\
-    $\mathcal{A}_{\text{defeat}} = \mathrm{ReLU}(\mathbf{w}_b^\top \mathbf{h} \cdot \mathbf{1}_{\Delta \tau > 1095} - \mathbf{w}_s^\top \mathbf{h})$\\
-    \textit{Dung Grounded Extension $\mathcal{GE}(\mathcal{AF})$}
+\node[anchor=south, font=\tiny\bfseries\color{amber}, align=center] at ([yshift=0.15cm]panelC.south) {
+    Discrete Regime Tracking $\mathbf{z}_{\text{state}} \in \Delta^3$\\
+    Hierarchical Normative Modulation
 };
 
-\node[elem=primarynavy, minimum width=3.5cm, fill=softblue] (verdict) at (14.2, 0.2) {
-    \textbf{Consistent Judicial Verdict}\\
-    $\hat{\mathbf{y}} = \mathrm{Softmax}(\mathbf{W}_V [\mathbf{h}_{\mathcal{G}}^* \,\|\, \mathbf{h}_c \,\|\, \mathbf{z}_s])$\\
+% Connecting Arrow C -> D
+\draw[->, line width=1.5pt, draw=royal] (12.3, 0.2) -- node[above, font=\tiny\bfseries\color{royal}] {$\mathbf{z}_{\text{state}}$} (13.0, 0.2);
+
+% ===================== PANEL D: DAAH & VERDICT =====================
+\node[panelbox, minimum width=4.3cm, minimum height=6.2cm] (panelD) at (15.2, 0) {};
+\node[headerpill=rose, minimum width=4.0cm, anchor=north] at ([yshift=-0.15cm]panelD.north) {
+    \textbf{STAGE 4: DEFEASIBLE HEAD}\\
+    Banach Contraction \& Deontic Field
+};
+
+\node[elemcard=rose, minimum width=3.8cm, fill=rosesoft] (daah) at (15.2, 1.5) {
+    \textbf{Differentiable Dung Head}\\
+    $\mathcal{F}_{\text{Dung}}(\mathbf{z}) = \sigma(\mathbf{W}_{\text{defeat}} \mathbf{z} + \mathbf{b})$\\
+    \textit{Banach Fixed-Point Grounded Ext. $\mathbf{z}^*$}
+};
+
+\node[elemcard=royal, minimum width=3.8cm, fill=royalsoft] (verdict) at (15.2, 0.2) {
+    \textbf{Adjudication Verdict}\\
+    $\hat{\mathbf{y}} = \mathrm{Softmax}(\mathbf{W}_V [\mathbf{h}_{\mathcal{G}}^* \,\|\, \mathbf{h}_c \,\|\, \mathbf{z}^*])$\\
     $\hat{y} \in \{\text{Forfeit}, \text{Refund}, \text{Dismiss}, \dots\}$
 };
 
-\node[elem=accentcrimson, minimum width=3.5cm, fill=softcrimson] (ontoloss) at (14.2, -1.3) {
-    \textbf{TBox Axiom Penalty Loss}\\
+\node[elemcard=rose, minimum width=3.8cm, fill=rosesoft] (ontoloss) at (15.2, -1.3) {
+    \textbf{Description Logic TBox Loss}\\
     $\mathcal{L}_{\text{onto}}(\theta) = \sum_{k=1}^K \max(0, \psi_k(\theta))$\\
-    $\mathcal{O}(1/\sqrt{T})$ \textit{Axiomatic Convergence}
+    $\mathcal{U}_{\text{deontic}}$ \textit{Lyapunov Energy Minimization}
 };
 
-\draw[dataflow] (daah) -- (verdict);
+\draw[dataflow, draw=rose] (daah) -- (verdict);
 \draw[dataflow] (verdict) -- (ontoloss);
-\draw[lossarrow] (ontoloss.west) to[bend left=25] node[below, font=\tiny] {$\nabla \mathcal{L}_{\text{onto}}$} (stategate.east);
+\draw[lossflow] (ontoloss.west) to[bend left=25] node[below, font=\tiny\bfseries\color{rose}] {$\nabla \mathcal{L}_{\text{onto}}$} (stategate.east);
 
-\node[anchor=south, font=\tiny\bfseries\color{accentcrimson!90}, align=center] at (panelD.south) {Backward Penalty \& Defeasible Adjudication};
+\node[anchor=south, font=\tiny\bfseries\color{rose}, align=center] at ([yshift=0.15cm]panelD.south) {
+    Backward Axiomatic Regularization\\
+    Defeasible Procedural Enforcement
+};
 
 \end{tikzpicture}
 }
-\caption{End-to-End System Architecture of SynapseLex. (a) Dynamic Subgraph $\mathcal{G}(t)$ capturing litigant interactions, transactional contracts, and procedural milestones over continuous time. (b) Dual-Clock Continuous Axiom-TGAT module projecting physical ($\Delta t$) and procedural ($\Delta \tau$) latencies via Bochner Fourier kernels and aggregating chronological neighborhood messages. (c) Normative Hierarchy DAG Arbiter (NH-DA) enforcing \textit{Lex Specialis} precedence of specialized land legislation over general civil codes, coupled with Markovian Legal State Gating across four operational regimes. (d) Defeasible Argumentation Adjudication Head (DAAH) executing Dung's grounded extension and backpropagating Description Logic TBox penalty loss $\mathcal{L}_{\text{onto}}$ to guarantee normative consistency.}
+\caption{Executive End-to-End System Architecture of SynapseLex. (a) Dynamic Subgraph $\mathcal{G}(t)$ capturing litigant interactions, transactional contracts, and procedural milestones over continuous time. (b) Dual-Clock Continuous Axiom-TGAT module projecting physical ($\Delta t$) and procedural ($\Delta \tau$) latencies via Bochner Fourier kernels and aggregating chronological neighborhood messages. (c) Normative Hierarchy DAG Arbiter (NH-DA) enforcing \textit{Lex Specialis} precedence of specialized land legislation over general civil codes, coupled with Markovian Legal State Gating across four operational regimes. (d) Defeasible Argumentation Adjudication Head (DAAH) executing Dung's continuous contraction mapping and backpropagating Description Logic TBox penalty loss $\mathcal{L}_{\text{onto}}$ via the Continuous Deontic Potential Field $\mathcal{U}_{\text{deontic}}$.}
 \label{fig:framework_architecture}
 \end{figure}
 
@@ -412,75 +461,89 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
 \begin{tikzpicture}[
     >=Stealth,
     font=\sffamily\small,
-    cardtitle/.style={
+    statecard/.style={
+        draw=#1!80,
+        fill=white,
+        line width=1.0pt,
+        rounded corners=8pt,
+        minimum width=4.3cm,
+        minimum height=2.4cm,
+        inner sep=4pt
+    },
+    statetitle/.style={
         fill=#1,
         text=white,
         font=\sffamily\bfseries\footnotesize,
         rounded corners=4pt,
-        minimum width=3.8cm,
+        minimum width=4.0cm,
         minimum height=0.55cm,
         align=center
     },
-    transarrow/.style={->, line width=1.1pt, draw=primarynavy!85},
-    curvedtrans/.style={->, line width=1.1pt, draw=accentteal!90},
-    voidtrans/.style={->, line width=1.1pt, draw=accentcrimson!90},
-    bararrow/.style={->, line width=1.2pt, draw=darkslate}
+    transarrow/.style={->, line width=1.2pt, draw=inkslate},
+    curearrow/.style={->, line width=1.3pt, draw=emerald},
+    voidarrow/.style={->, line width=1.2pt, draw=rose},
+    extarrow/.style={->, line width=1.3pt, draw=inkslate}
 ]
 
 % State 0: Valid
-\node[draw=accentteal!80, fill=cardbg, line width=1.0pt, rounded corners=7pt, minimum width=4.1cm, minimum height=2.1cm] (s0) at (0, 2.0) {};
-\node[cardtitle=accentteal, anchor=north] at (s0.north) {$\mathcal{S}_0$: VALID CONTRACT};
-\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.2cm]s0.center) {
-    $\bullet$ Valid bilateral obligations\\
-    $\bullet$ Fully enforceable at law\\
-    $\bullet$ Substantive relief (Art. 328)
+\node[statecard=emerald] (s0) at (0, 2.2) {};
+\node[statetitle=emerald, anchor=north] at ([yshift=-0.12cm]s0.north) {$\mathcal{S}_0$: VALID CONTRACT};
+\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s0.center) {
+    $\bullet$ Valid bilateral consensus (Art. 117)\\
+    $\bullet$ Enforceable substantive obligations\\
+    $\bullet$ \textbf{Substantive relief granted (Art. 328)}
 };
 
-% State 1: Voidable
-\node[draw=accentamber!80, fill=cardbg, line width=1.0pt, rounded corners=7pt, minimum width=4.1cm, minimum height=2.1cm] (s1) at (6.8, 2.0) {};
-\node[cardtitle=accentamber, anchor=north] at (s1.north) {$\mathcal{S}_1$: VOIDABLE / INCHOATE};
-\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.2cm]s1.center) {
-    $\bullet$ Formal defect (unnotarized)\\
-    $\bullet$ Breach notice served\\
-    $\bullet$ \textbf{Curable under Art. 129 Cl. 2}
+% State 1: Voidable / Inchoate
+\node[statecard=amber] (s1) at (7.2, 2.2) {};
+\node[statetitle=amber, anchor=north] at ([yshift=-0.12cm]s1.north) {$\mathcal{S}_1$: VOIDABLE / INCHOATE};
+\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s1.center) {
+    $\bullet$ Formal defect (unnotarized agreement)\\
+    $\bullet$ Default / breach notice served\\
+    $\bullet$ \textbf{Curable via Art. 129(2) Performance}
 };
 
 % State 2: Void Ab Initio
-\node[draw=accentcrimson!80, fill=cardbg, line width=1.0pt, rounded corners=7pt, minimum width=4.1cm, minimum height=2.1cm] (s2) at (0, -1.2) {};
-\node[cardtitle=accentcrimson, anchor=north] at (s2.north) {$\mathcal{S}_2$: VOID AB INITIO};
-\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.2cm]s2.center) {
-    $\bullet$ Prohibited object (Art. 122)\\
-    $\bullet$ Absolute legal nullity\\
-    $\bullet$ Restitution \textit{status quo ante}
+\node[statecard=rose] (s2) at (0, -1.4) {};
+\node[statetitle=rose, anchor=north] at ([yshift=-0.12cm]s2.north) {$\mathcal{S}_2$: VOID AB INITIO};
+\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s2.center) {
+    $\bullet$ Illegal subject matter (Art. 122)\\
+    $\bullet$ Absolute legal nullity \textit{ex tunc}\\
+    $\bullet$ \textbf{Restitution \textit{status quo ante}}
 };
 
 % State 3: Extinguished
-\node[draw=darkslate!80, fill=cardbg, line width=1.0pt, rounded corners=7pt, minimum width=4.1cm, minimum height=2.1cm] (s3) at (6.8, -1.2) {};
-\node[cardtitle=darkslate, anchor=north] at (s3.north) {$\mathcal{S}_3$: EXTINGUISHED};
-\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.2cm]s3.center) {
-    $\bullet$ \textbf{Procedural Bar (Art. 429)}\\
-    $\bullet$ Elapsed $\Delta\tau > 1,095$ days\\
-    $\bullet$ Mandatory suit dismissal
+\node[statecard=inkslate] (s3) at (7.2, -1.4) {};
+\node[statetitle=inkslate, anchor=north] at ([yshift=-0.12cm]s3.north) {$\mathcal{S}_3$: EXTINGUISHED};
+\node[font=\scriptsize, align=center, anchor=center] at ([yshift=-0.25cm]s3.center) {
+    $\bullet$ \textbf{Procedural Time-Bar (Art. 429)}\\
+    $\bullet$ Elapsed latency $\Delta\tau > 1,095$ days\\
+    $\bullet$ \textbf{Mandatory judicial suit dismissal}
 };
 
 % Transitions
-\draw[transarrow] ([yshift=0.2cm]s0.east) -- node[above, font=\scriptsize\bfseries\color{primarynavy}] {Defect / Breach} ([yshift=0.2cm]s1.west);
-\draw[curvedtrans] ([yshift=-0.3cm]s1.west) to[bend left=18] node[below, font=\scriptsize\bfseries\color{accentteal}] {Art. 129 ($\ge 2/3$ Performance)} ([yshift=-0.3cm]s0.east);
-\draw[voidtrans] (s0.south) -- node[left, font=\scriptsize\bfseries\color{accentcrimson}, align=right] {Art. 122\\(Illegal Object)} (s2.north);
-\draw[voidtrans, dashed] (s1.south west) -- node[above, sloped, font=\scriptsize\bfseries\color{accentcrimson}] {Judicial Rescission} (s2.north east);
-\draw[bararrow] (s1.south) -- node[right, font=\scriptsize\bfseries\color{darkslate}, align=left] {Art. 429 Time-Bar\\($\Delta\tau > 1095\text{d}$)} (s3.north);
+\draw[transarrow] ([yshift=0.25cm]s0.east) -- node[above, font=\scriptsize\bfseries\color{inkslate}] {Defect / Breach} ([yshift=0.25cm]s1.west);
+\draw[curearrow] ([yshift=-0.35cm]s1.west) to[bend left=20] node[below, font=\scriptsize\bfseries\color{emerald}, align=center] {Art. 129(2) BLDS: Substantial Performance\\($\ge 2/3$ Fulfilled) $\implies$ Cured!} ([yshift=-0.35cm]s0.east);
+\draw[voidarrow] (s0.south) -- node[left, font=\scriptsize\bfseries\color{rose}, align=right] {Art. 122 BLDS\\(Illegal Object)} (s2.north);
+\draw[voidarrow, dashed] (s1.south west) -- node[above, sloped, font=\scriptsize\bfseries\color{rose}] {Judicial Invalidation} (s2.north east);
+\draw[extarrow] (s1.south) -- node[right, font=\scriptsize\bfseries\color{inkslate}, align=left] {Art. 429 Time-Bar\\($\Delta\tau > 1,095\text{ days}$)} (s3.north);
 
 % Dung Defeasible Priority Box
-\node[draw=accentcrimson!70, fill=softcrimson, dashed, rounded corners=5pt, line width=0.8pt, inner sep=3.5pt, font=\scriptsize, align=center] (defeatbox) at (3.4, 0.4) {
-    \textbf{Dung Defeasible Priority ($\mathcal{A}_{\text{defeat}}$)}\\
-    $\mathcal{S}_3 \text{ (Extinction)} \succ \text{Substantive Relief}$\\
-    \textit{Procedural bar defeats deposit claims}
+\node[draw=rose!80, fill=rosesoft, rounded corners=6pt, line width=0.9pt, inner sep=4pt, font=\scriptsize, align=center] (defeatbox) at (3.6, 0.4) {
+    \textbf{Dung Defeasible Priority Head ($\mathcal{R}_{\text{defeat}}$)}\\
+    $\mathcal{S}_3 \text{ (Extinction)} \succ \text{Substantive Enforcement}$\\
+    \textit{Procedural time-bar defeats deposit claims}
 };
-\draw[->, line width=1.0pt, dashed, draw=accentcrimson] (s3.west) to[bend left=15] (defeatbox.south east);
+\draw[->, line width=1.1pt, dashed, draw=rose] (s3.west) to[bend left=15] (defeatbox.south east);
+
+% Deontic Potential Energy Bar at Bottom
+\node[draw=violet!70, fill=violetsoft, rounded corners=5pt, line width=0.8pt, font=\scriptsize, align=center, minimum width=11.5cm, inner sep=3.5pt] at (3.6, -3.1) {
+    \textbf{Continuous Deontic Potential Field Gradient Flow}: $\frac{d\mathbf{s}}{dt} = -\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s}) \implies$ \textit{Asymptotic convergence to admissible legal manifold $\mathcal{M}_{\text{admissible}}$}
+};
 
 \end{tikzpicture}
 }
-\caption{Markovian Legal State-Transition Automaton ($\mathcal{S}$). Contracts evolve non-monotonically between four discrete operational regimes: $\mathcal{S}_0$ (Valid), $\mathcal{S}_1$ (Voidable), $\mathcal{S}_2$ (Void Ab Initio), and $\mathcal{S}_3$ (Extinguished). A defective contract in $\mathcal{S}_1$ can be cured back to $\mathcal{S}_0$ under Article 129 (Clause 2) through substantial performance ($\ge 2/3$), or permanently barred into $\mathcal{S}_3$ upon accrual of 1,095 procedural days without tolling under Article 429.}
+\caption{Markovian Legal State-Transition Automaton ($\mathcal{S}$) with Continuous Deontic Potential Field. Contracts evolve non-monotonically between four discrete operational regimes: $\mathcal{S}_0$ (Valid), $\mathcal{S}_1$ (Voidable), $\mathcal{S}_2$ (Void Ab Initio), and $\mathcal{S}_3$ (Extinguished). A defective contract in $\mathcal{S}_1$ can be cured back to $\mathcal{S}_0$ under Article 129 (Clause 2) through substantial performance ($\ge 2/3$), or permanently barred into $\mathcal{S}_3$ upon accrual of 1,095 procedural days without tolling under Article 429.}
 \label{fig:state_machine}
 \end{figure}
 
@@ -567,31 +630,31 @@ Figure~\ref{fig:dual_clock_trajectory} illustrates the non-autonomous dynamical 
     x=0.75cm, y=0.34cm,
     >=Stealth,
     font=\sffamily\small,
-    axis/.style={->, line width=1.1pt, draw=primarynavy},
-    gridline/.style={draw=gray!25, line width=0.4pt},
-    threshold/.style={dashed, line width=1.2pt, draw=accentcrimson},
-    synapsetraj/.style={line width=2.0pt, draw=accentteal},
-    naivetraj/.style={dashed, line width=1.1pt, draw=gray!60},
-    countertraj/.style={densely dashed, line width=1.2pt, draw=accentamber}
+    axis/.style={->, line width=1.2pt, draw=inkslate},
+    gridline/.style={draw=slatecard!80, line width=0.5pt},
+    threshold/.style={dashed, line width=1.3pt, draw=rose},
+    synapsetraj/.style={line width=2.2pt, draw=emerald},
+    naivetraj/.style={dashed, line width=1.2pt, draw=inkslate!50},
+    countertraj/.style={densely dashed, line width=1.3pt, draw=amber}
 ]
 
-% Light Grid
+% Clean Grid
 \foreach \x in {2,4,6,8,10,12,14,16}
     \draw[gridline] (\x, 0) -- (\x, 12.5);
 \foreach \y in {2,4,6,8,10,12}
     \draw[gridline] (0, \y) -- (16.2, \y);
 
 % Tolling Shaded Zone (t in [3.5, 6.5], days 350 to 650)
-\fill[softteal, opacity=0.8] (3.5, 0) rectangle (6.5, 12.5);
-\draw[accentteal!60, dashed, line width=0.7pt] (3.5, 0) -- (3.5, 12.5);
-\draw[accentteal!60, dashed, line width=0.7pt] (6.5, 0) -- (6.5, 12.5);
+\fill[emeraldsoft, opacity=0.85] (3.5, 0) rectangle (6.5, 12.5);
+\draw[emerald!60, dashed, line width=0.8pt] (3.5, 0) -- (3.5, 12.5);
+\draw[emerald!60, dashed, line width=0.8pt] (6.5, 0) -- (6.5, 12.5);
 
 % Procedural Bar Extinction Shaded Area (tau >= 10.95)
-\fill[softcrimson, opacity=0.5] (0, 10.95) rectangle (16.2, 12.5);
+\fill[rosesoft, opacity=0.6] (0, 10.95) rectangle (16.2, 12.5);
 
 % Extinction Threshold Line (tau = 10.95 = 1,095 days)
 \draw[threshold] (0, 10.95) -- (16.2, 10.95) 
-    node[pos=0.68, above, font=\scriptsize\bfseries\color{accentcrimson}] {Article 429 Mandatory Extinction Threshold: $\tau_{\mathrm{bar}} = 1,095\text{ days}$};
+    node[pos=0.68, above, font=\scriptsize\bfseries\color{rose}] {Article 429 Mandatory Extinction Threshold: $\tau_{\mathrm{bar}} = 1,095\text{ days}$};
 
 % Axes
 \draw[axis] (0, 0) -- (16.5, 0) node[below right, font=\footnotesize\bfseries] {Physical Calendar Days $t$};
@@ -607,51 +670,51 @@ Figure~\ref{fig:dual_clock_trajectory} illustrates the non-autonomous dynamical 
 
 % Trajectory 1: Naive Monotonic Physical Clock (tau = t)
 \draw[naivetraj] (0, 0) -- (10.95, 10.95) -- (12.5, 12.5)
-    node[pos=0.45, sloped, above, font=\tiny\color{gray!80}] {Naive Monotonic Clock ($\tau \equiv t$)};
-\fill[gray!80] (10.95, 10.95) circle (2.5pt);
-\node[anchor=south east, font=\tiny\bfseries\color{gray!90}, fill=white, inner sep=1.5pt, rounded corners=2pt] at (10.8, 11.1) {False Extinction at $t=1,095$d};
+    node[pos=0.45, sloped, above, font=\tiny\bfseries\color{inkslate!70}] {Naive Monotonic Clock ($\tau \equiv t$)};
+\fill[rose] (10.95, 10.95) circle (3pt);
+\node[anchor=south east, font=\tiny\bfseries\color{rose}, fill=white, draw=rose, line width=0.6pt, inner sep=2pt, rounded corners=3pt] at (10.8, 11.1) {False Extinction at $t=1,095$d (Error)};
 
 % Trajectory 2: Counterfactual (Tolled but No Restart)
 \draw[countertraj] (6.5, 3.5) -- (13.95, 10.95);
-\fill[accentamber] (13.95, 10.95) circle (2.5pt);
-\node[anchor=south west, font=\tiny\bfseries\color{accentamber!90}, fill=softamber, inner sep=1.5pt, rounded corners=2pt] at (13.0, 11.2) {Extinction without Restart ($t=1,395$d)};
+\fill[amber] (13.95, 10.95) circle (3pt);
+\node[anchor=south west, font=\tiny\bfseries\color{amber}, fill=ambersoft, draw=amber, line width=0.6pt, inner sep=2pt, rounded corners=3pt] at (12.8, 11.2) {Extinction without Restart ($t=1,395$d)};
 
 % Trajectory 3: SynapseLex Non-Monotonic Jurisprudential Trajectory tau(t)
 \draw[synapsetraj] (0, 0) -- (3.5, 3.5);
 \draw[synapsetraj] (3.5, 3.5) -- (6.5, 3.5);
 \draw[synapsetraj] (6.5, 3.5) -- (9.0, 6.0);
-\draw[->, line width=1.5pt, draw=accentcrimson, dashed] (9.0, 6.0) -- (9.0, 0.1);
-\fill[accentcrimson] (9.0, 6.0) circle (2.5pt);
-\fill[accentteal] (9.0, 0.0) circle (2.5pt);
+\draw[->, line width=1.6pt, draw=rose, dashed] (9.0, 6.0) -- (9.0, 0.1);
+\fill[rose] (9.0, 6.0) circle (3pt);
+\fill[emerald] (9.0, 0.0) circle (3pt);
 \draw[synapsetraj] (9.0, 0.0) -- (16.0, 7.0);
 
 % Annotation 1: Tolling Plateau
-\node[draw=accentteal, fill=white, rounded corners=4pt, line width=0.8pt, inner sep=3pt, font=\scriptsize, align=center] at (5.0, 5.2) {
+\node[draw=emerald, fill=white, rounded corners=5pt, line width=0.9pt, inner sep=3.5pt, font=\scriptsize, align=center] at (5.0, 5.2) {
     \textbf{Tolling Operator $\mathcal{T}_{\text{freeze}}$ (Art. 156)}\\
     Force Majeure / COVID-19 Lockdown\\
     \textit{Procedural clock frozen: $\frac{d\tau}{dt} = 0$}
 };
-\draw[->, line width=0.8pt, draw=accentteal] (5.0, 4.2) -- (5.0, 3.65);
+\draw[->, line width=0.9pt, draw=emerald] (5.0, 4.2) -- (5.0, 3.65);
 
 % Annotation 2: Restart Operator
-\node[draw=accentcrimson, fill=white, rounded corners=4pt, line width=0.8pt, inner sep=3pt, font=\scriptsize, align=center] at (10.5, 4.5) {
+\node[draw=rose, fill=white, rounded corners=5pt, line width=0.9pt, inner sep=3.5pt, font=\scriptsize, align=center] at (10.6, 4.5) {
     \textbf{Restart Operator $\mathcal{R}_{\text{restart}}$ (Art. 157)}\\
     Written Indebtedness Acknowledgment\\
     \textit{Procedural clock reset: $\tau(t^+) = 0$}
 };
-\draw[->, line width=0.8pt, draw=accentcrimson] (9.8, 3.6) -- (9.1, 2.3);
+\draw[->, line width=0.9pt, draw=rose] (9.8, 3.6) -- (9.1, 2.3);
 
 % Annotation 3: Status at t = 1600 days
-\node[draw=accentteal, fill=softteal, rounded corners=4pt, line width=0.9pt, inner sep=3pt, font=\scriptsize, align=center] at (14.2, 5.2) {
+\node[draw=emerald, fill=emeraldsoft, rounded corners=5pt, line width=1.0pt, inner sep=4pt, font=\scriptsize, align=center] at (14.2, 5.0) {
     \textbf{Active \& Enforceable!}\\
-    At $t = 1,600\text{ days}$: $\tau(t) = 700\text{ days}$\\
-    $\tau < 1,095\text{ days} \implies \mathcal{S} \neq \text{Extinguished}$
+    At $t = 1,600\text{d}$: $\tau(t) = 700\text{d}$\\
+    $\tau < 1,095\text{d} \implies \mathcal{S}_0 \text{ Valid}$
 };
-\draw[->, line width=0.8pt, draw=accentteal] (14.5, 5.9) -- (15.5, 6.6);
+\draw[->, line width=0.9pt, draw=emerald] (14.5, 5.8) -- (15.5, 6.6);
 
 \end{tikzpicture}
 }
-\caption{Dual-Clock Jurisprudential Dynamics under the Vietnamese Civil Code 2015. The naive physical clock (gray dashed line) accumulates monotonically, causing premature false extinction at $t = 1,095$ days. Under SynapseLex's dual-clock formulation, the procedural clock $\tau(t)$ (solid teal curve) freezes during force majeure ($\mathcal{T}_{\text{freeze}}$, Article 156) and collapses instantaneously to zero upon written debt acknowledgment ($\mathcal{R}_{\text{restart}}$, Article 157). Consequently, at $t = 1,600$ physical days, operative latency is only $\tau = 700$ days, preserving substantive deposit enforceability.}
+\caption{Dual-Clock Jurisprudential Dynamics under the Vietnamese Civil Code 2015. The naive physical clock (gray dashed line) accumulates monotonically, causing premature false extinction at $t = 1,095$ days. Under SynapseLex's dual-clock formulation, the procedural clock $\tau(t)$ (solid emerald curve) freezes during force majeure ($\mathcal{T}_{\text{freeze}}$, Article 156) and collapses instantaneously to zero upon written debt acknowledgment ($\mathcal{R}_{\text{restart}}$, Article 157). Consequently, at $t = 1,600$ physical days, operative latency is only $\tau = 700$ days, preserving substantive deposit enforceability.}
 \label{fig:dual_clock_trajectory}
 \end{figure}
 
@@ -677,6 +740,86 @@ Now assume for contradiction that $P_{\theta^*}(y_A \mid \mathcal{G}(t)) > 0.5$.
 \psi_1(\theta^*) = \mathbb{I}(\Delta \tau > 1095) \cdot (1 - P_{\theta^*}(\mathcal{S} = \text{Extinguished})) \ge 1 - P_{\theta^*}(y_B) > 0
 \end{equation}
 Consequently, $\mathcal{L}_{\text{onto}}(\theta^*) \ge \psi_1(\theta^*) > 0$, directly contradicting the hypothesis that $\mathcal{L}_{\text{onto}}(\theta^*) = 0$. Therefore, $P_{\theta^*}(y_A) \le 0.5$ and $P_{\theta^*}(y_B) > 0.5$, demonstrating that SynapseLex selects exactly the justified claims in $\mathcal{GE}(\mathcal{AF})$.
+\end{proof}
+
+\subsection{Continuous Differentiable Dung Contraction Mapping}
+\label{sec:dung_contraction}
+In classical argumentation theory \citep{dung1995acceptability}, the grounded extension is computed via discrete fixed-point iterations of the characteristic function, which is intrinsically non-differentiable and prevents gradient-based end-to-end training. To bridge continuous representation learning with symbolic defeasibility, SynapseLex formulates a \textit{Continuous Differentiable Dung Operator} $\mathcal{F}_{\text{Dung}}: [0, 1]^N \to [0, 1]^N$ over the argument acceptance vector $\mathbf{z} \in [0, 1]^N$:
+\begin{equation}
+\label{eq:dung_operator}
+\mathcal{F}_{\text{Dung}}(\mathbf{z}) = \sigma\left( \mathbf{W}_{\text{defeat}} \mathbf{z} + \mathbf{b}_{\text{prior}} \right)
+\end{equation}
+where $\sigma(u) = 1/(1 + e^{-u})$ is the component-wise logistic sigmoid, $\mathbf{b}_{\text{prior}} \in \mathbb{R}^N$ encodes intrinsic legal validity priors derived from verified case facts and statutory provisions ($b_{\text{prior}, i} = \mathbf{w}_{\text{prior}}^\top \mathbf{h}_i$), and the asymmetric defeat matrix $\mathbf{W}_{\text{defeat}} \in \mathbb{R}^{N \times N}$ is defined by:
+\begin{equation}
+\label{eq:w_defeat}
+(\mathbf{W}_{\text{defeat}})_{ij} = \begin{cases}
+-\gamma \cdot \mathrm{ReLU}(\mathbf{w}_{\text{rank}}^\top [\mathbf{h}_j \,\|\, \mathbf{h}_i]), & \text{if } (a_j, a_i) \in \mathcal{R}_{\text{defeat}} \\
+0, & \text{otherwise}
+\end{cases}
+\end{equation}
+with $\gamma > 0$ denoting the defeat penalty magnitude. Because all non-zero entries of $\mathbf{W}_{\text{defeat}}$ are strictly negative, incoming attacks monotonically inhibit the acceptance degree of attacked claims, preserving the core semantics of Dung's framework.
+
+\begin{theorem}[Banach Contraction and Implicit Differentiability]
+\label{thm:banach_contraction}
+Let the complete metric space be $(\mathcal{X}, \|\cdot\|_\infty)$ where $\mathcal{X} = [0, 1]^N$. If the defeat weight matrix satisfies $\|\mathbf{W}_{\text{defeat}}\|_\infty < 4$, then:
+\begin{enumerate}[label=(\roman*)]
+    \item $\mathcal{F}_{\text{Dung}}$ is a strict contraction mapping on $\mathcal{X}$ with Lipschitz constant $L = \frac{1}{4} \|\mathbf{W}_{\text{defeat}}\|_\infty < 1$.
+    \item There exists a unique continuous grounded extension $\mathbf{z}^* \in \mathcal{X}$ such that $\mathcal{F}_{\text{Dung}}(\mathbf{z}^*) = \mathbf{z}^*$, and Picard iterations $\mathbf{z}^{(k+1)} = \mathcal{F}_{\text{Dung}}(\mathbf{z}^{(k)})$ converge globally at a linear rate:
+    \begin{equation}
+    \|\mathbf{z}^{(k)} - \mathbf{z}^*\|_\infty \le \frac{L^k}{1 - L} \|\mathbf{z}^{(1)} - \mathbf{z}^{(0)}\|_\infty
+    \end{equation}
+    \item The fixed point $\mathbf{z}^*$ is continuously differentiable with respect to network parameters $\theta$, and the exact gradient is computed via the Implicit Function Theorem:
+    \begin{equation}
+    \label{eq:implicit_grad}
+    \frac{\partial \mathbf{z}^*}{\partial \theta} = \left( \mathbf{I} - \mathbf{J}_{\mathcal{F}}(\mathbf{z}^*) \right)^{-1} \frac{\partial \mathcal{F}_{\text{Dung}}(\mathbf{z}^*; \theta)}{\partial \theta}
+    \end{equation}
+    where $\mathbf{J}_{\mathcal{F}}(\mathbf{z}^*) = \mathrm{diag}(\mathbf{z}^* \odot (\mathbf{1} - \mathbf{z}^*)) \mathbf{W}_{\text{defeat}}$ is the Jacobian matrix, whose spectral radius satisfies $\rho(\mathbf{J}_{\mathcal{F}}) \le L < 1$, ensuring $(\mathbf{I} - \mathbf{J}_{\mathcal{F}})^{-1}$ exists and can be expanded as a convergent Neumann series $\sum_{m=0}^\infty \mathbf{J}_{\mathcal{F}}^m$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For any $\mathbf{u}, \mathbf{v} \in \mathcal{X}$, by the Mean Value Theorem applied component-wise to the logistic sigmoid $\sigma$:
+\begin{equation}
+|\sigma(x) - \sigma(y)| = \sigma'(\xi) |x - y| \le \frac{1}{4} |x - y|
+\end{equation}
+since $\sigma'(u) = \sigma(u)(1 - \sigma(u)) \le 1/4$ for all $u \in \mathbb{R}$. Therefore:
+\begin{equation}
+\|\mathcal{F}_{\text{Dung}}(\mathbf{u}) - \mathcal{F}_{\text{Dung}}(\mathbf{v})\|_\infty \le \frac{1}{4} \|\mathbf{W}_{\text{defeat}}(\mathbf{u} - \mathbf{v})\|_\infty \le \frac{1}{4} \|\mathbf{W}_{\text{defeat}}\|_\infty \|\mathbf{u} - \mathbf{v}\|_\infty
+\end{equation}
+Setting $L = \frac{1}{4} \|\mathbf{W}_{\text{defeat}}\|_\infty < 1$, the operator $\mathcal{F}_{\text{Dung}}$ is a strict contraction. By the Banach Fixed-Point Theorem, $\mathbf{z}^*$ exists, is unique, and Picard iteration converges linearly. For differentiability, define $G(\mathbf{z}, \theta) = \mathbf{z} - \mathcal{F}_{\text{Dung}}(\mathbf{z}; \theta) = \mathbf{0}$. The Jacobian $\nabla_{\mathbf{z}} G = \mathbf{I} - \mathbf{J}_{\mathcal{F}}(\mathbf{z}^*)$. Since $\rho(\mathbf{J}_{\mathcal{F}}) \le \|\mathbf{J}_{\mathcal{F}}\|_\infty \le \frac{1}{4} \|\mathbf{W}_{\text{defeat}}\|_\infty = L < 1$, the matrix $\mathbf{I} - \mathbf{J}_{\mathcal{F}}$ has no zero eigenvalues and is invertible. Applying the Implicit Function Theorem yields Equation~\ref{eq:implicit_grad}.
+\end{proof}
+
+\subsection{Continuous Deontic Potential Field and Dynamical Stability}
+\label{sec:deontic_field}
+We further formalize the legal state space as an energy landscape governed by a \textit{Continuous Deontic Potential Field} $\mathcal{U}_{\text{deontic}}: \Delta^3 \times \mathcal{G} \to \mathbb{R}^+$. Legally forbidden configurations (e.g., executing a contract extinguished under Article~429 or enforcing an agreement void ab initio under Article~122) represent high potential energy barriers, while legally sound adjudications correspond to global energy minima:
+\begin{equation}
+\label{eq:deontic_field}
+\mathcal{U}_{\text{deontic}}(\mathbf{s}; \mathcal{G}) = \frac{1}{2} \|\mathbf{s} - \mathbf{s}_{\text{target}}(\mathcal{G})\|_2^2 + \sum_{k=1}^K \mu_k \cdot \phi_k(\mathbf{s}, \mathcal{T}_{\mathcal{VCLO}})
+\end{equation}
+where $\mathbf{s} \in \Delta^3$ is the legal state distribution across $\{\mathcal{S}_0, \mathcal{S}_1, \mathcal{S}_2, \mathcal{S}_3\}$, $\mu_k > 0$ are penalty multipliers, and $\phi_k \ge 0$ are smooth convex barrier functions penalizing normative inconsistencies:
+\begin{align}
+\phi_1(\mathbf{s}) &= \mathbb{I}(\Delta \tau > 1095) \cdot (1 - s_{\text{Extinguished}})^2 \\
+\phi_2(\mathbf{s}) &= \mathbb{I}(\text{IllegalObject} \in \mathcal{G}) \cdot (1 - s_{\text{Void}})^2 \\
+\phi_3(\mathbf{s}) &= \mathbb{I}(\text{Unnotarized} \land \text{Perf} < 2/3) \cdot (s_{\text{Valid}})^2
+\end{align}
+The continuous legal state dynamics evolves along the negative gradient of the Deontic Potential Field:
+\begin{equation}
+\label{eq:state_dyn}
+\frac{d\mathbf{s}}{dt} = -\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})
+\end{equation}
+
+\begin{theorem}[Lyapunov Asymptotic Stability of Adjudication Equilibria]
+\label{thm:lyapunov_stability}
+The dynamical system governed by Equation~\ref{eq:state_dyn} is asymptotically stable in the sense of Lyapunov. All state trajectories $\mathbf{s}(t)$ asymptotically converge to the admissible jurisprudential manifold $\mathcal{M}_{\text{admissible}} = \{ \mathbf{s} \in \Delta^3 \mid \forall k, \ \phi_k(\mathbf{s}) = 0 \}$.
+\end{theorem}
+
+\begin{proof}
+Consider the candidate Lyapunov function $V(\mathbf{s}) = \mathcal{U}_{\text{deontic}}(\mathbf{s})$. By construction in Equation~\ref{eq:deontic_field}, $V(\mathbf{s}) \ge 0$ for all $\mathbf{s} \in \Delta^3$, and $V(\mathbf{s}) = 0$ if and only if $\mathbf{s} = \mathbf{s}_{\text{target}}$ and all normative constraints $\phi_k(\mathbf{s}) = 0$ are satisfied.
+Taking the time derivative of $V(\mathbf{s})$ along trajectories of Equation~\ref{eq:state_dyn}:
+\begin{equation}
+\dot{V}(\mathbf{s}) = \left(\nabla_{\mathbf{s}} V(\mathbf{s})\right)^\top \frac{d\mathbf{s}}{dt} = \left(\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\right)^\top \left(-\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\right) = -\|\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\|_2^2 \le 0
+\end{equation}
+Hence $\dot{V}(\mathbf{s}) \le 0$ strictly holds everywhere in $\Delta^3$. Furthermore, $\dot{V}(\mathbf{s}) = 0$ if and only if $\|\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\|_2 = 0$, which corresponds to the stationary points of $\mathcal{U}_{\text{deontic}}$. Because $\mathcal{U}_{\text{deontic}}$ is strongly convex in $\mathbf{s}$ with positive definite Hessian $\nabla^2 \mathcal{U}_{\text{deontic}} \succeq \mathbf{I}$, there exists a unique global minimum $\mathbf{s}^* \in \mathcal{M}_{\text{admissible}}$. By LaSalle's Invariance Principle, every solution $\mathbf{s}(t)$ starting in $\Delta^3$ converges asymptotically to $\mathbf{s}^*$ as $t \to \infty$, guaranteeing normative stability.
 \end{proof}
 
 \begin{algorithm}[!ht]
@@ -923,7 +1066,7 @@ As detailed in Table~\ref{tab:case_study_trace}, unconstrained neural models and
 \paragraph{Case Summary:} In Judgment No.~08/2023/DS-ST (Doc ID: \texttt{DOC\_831412}), parties executed an unnotarized handwritten agreement for agricultural land transfer. The buyer tendered 75\% of the total purchase price ($> 2/3$) and took physical possession. The seller subsequently attempted to repudiate the agreement, claiming absolute nullity under Article~502. Baselines classified the agreement as Void Ab Initio. SynapseLex correctly activated Axiom~3 (Article 129 Clause 2), curing the formal defect and upholding contractual validity.
 
 \subsection{Case Study 3: Fault Attribution in Double Deposit Remedies (Article 328 BLDS 2015)}
-\paragraph{Case Summary:} In Judgment No.~44/2021/DS-ST (Doc ID: \texttt{DOC\_831945}), both parties alleged default. Standard LLMs produced conflicting predictions ($P(\text{Forfeit}) = 0.48, P(\text{DoubleRefund}) = 0.44$). SynapseLex's mutual exclusivity regularizer forced unambiguous temporal disambiguation: because the seller's obligation to present original title was a condition precedent occurring earlier in the sequence, the seller was held in primary breach, mandating double refund.
+\paragraph{Case Summary:} In Judgment No.~44/2021/DS-ST (Doc ID: \texttt{DOC\_831945}), both parties alleged default. Standard LLMs produced conflicting probabilities ($P = 0.48$ for Forfeiture vs. $P = 0.44$ for Double Refund). SynapseLex's mutual exclusivity regularizer forced unambiguous temporal disambiguation: because the seller's obligation to present original title was a condition precedent occurring earlier in the sequence, the seller was held in primary breach, mandating double refund.
 
 % ------------------------------------------------------------------------
 \section{Ethical Considerations, Limitations, and Threats to Validity}
