@@ -208,7 +208,7 @@ def main():
     if ok1 and ok2 and ok3 and ok4:
         log_header("REPRODUCTION SUITE STATUS: ALL CHECKS PASSED (100% VERIFIED)")
         print("\n  Summary of Artifacts:")
-        print("  - Camera-ready PDF: synapselex/paper/synapselex_paper.pdf (24 pages, 0 overfull hbox)")
+        print("  - Camera-ready PDF: synapselex/paper/synapselex_paper.pdf (25 pages, 0 overfull hbox)")
         print("  - Formal OWL 2 DL:  synapselex/ontology/vclo_core.owl (HermiT reasoned)")
         print("  - Benchmark Split:  synapselex/data/benchmarks/ (Train: 1460, Val: 460, Test: 920, CF: 320)")
         print("  - Evaluation Logs:  synapselex/data/RIGOROUS_TGAT_RESULTS.json (50 runs across 10 models)")
