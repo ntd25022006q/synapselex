@@ -1,20 +1,49 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Baader et~al.(2003)Baader, Calvanese, McGuinness, Nardi, and
+  Patel-Schneider]{baader2003description}
+Franz Baader, Diego Calvanese, Deborah~L. McGuinness, Daniele Nardi, and
+  Peter~F. Patel-Schneider.
+\newblock \emph{The Description Logic Handbook: Theory, Implementation, and
+  Applications}.
+\newblock Cambridge University Press, 2003.
+
 \bibitem[Bochner(1959)]{bochner1959lectures}
 Salomon Bochner.
 \newblock Lectures on fourier integrals.
 \newblock \emph{Annals of Mathematics Studies}, 42, 1959.
+
+\bibitem[Caminada(2006)]{caminada2006issue}
+Martin Caminada.
+\newblock On the issue of reinstatement in argumentation.
+\newblock In \emph{Proceedings of the European Conference on Logics in
+  Artificial Intelligence (JELIA)}, volume 4160 of \emph{Lecture Notes in
+  Computer Science}, pages 111--123. Springer, 2006.
 
 \bibitem[Chen et~al.(2026)Chen, Zhang, and Wang]{chen2026legalgraphrag}
 Haoran Chen, Yue Zhang, and Kevin Wang.
 \newblock Hierarchical legal graph retrieval-augmented generation for judicial
   reasoning.
 \newblock \emph{arXiv preprint arXiv:2605.28120}, 2026.
+
+\bibitem[Chen et~al.(2024)Chen, Wang, Lyu, Wong, and Chao]{chen2024causal}
+Zhe Chen, Longyue Wang, Chenyang Lyu, Derek~F. Wong, and Lidia~S. Chao.
+\newblock Rethinking the development of large language models from the causal
+  perspective: A legal text prediction case study.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~38, pages 21966--21974, 2024.
+
+\bibitem[Dahl et~al.(2024)Dahl, Magesh, Suzgun, and Ho]{dahl2024large}
+Matthew Dahl, Varun Magesh, Mirac Suzgun, and Daniel~E. Ho.
+\newblock Large legal fictions: Profiling legal hallucinations in large
+  language models.
+\newblock \emph{Journal of Legal Analysis}, 16\penalty0 (1):\penalty0 302--340,
+  2024.
 
 \bibitem[Deveci et~al.(2026)Deveci, Sartor, and Bench-Capon]{deveci2026arggym}
 Mehmet Deveci, Giovanni Sartor, and Trevor Bench-Capon.
@@ -68,6 +97,12 @@ Thomas~N. Kipf and Max Welling.
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2017.
 
+\bibitem[Pavlyshenko and Romanko(2026)]{ualegalbench2026}
+Bohdan~V. Pavlyshenko and Oleksandr Romanko.
+\newblock {UA-Legal-Bench}: A benchmark for evaluating large language models on
+  legal reasoning.
+\newblock \emph{arXiv preprint arXiv:2605.29170}, 2026.
+
 \bibitem[Prakken and Sartor(2002)]{prakken2002law}
 Henry Prakken and Giovanni Sartor.
 \newblock The role of logic in computational models of legal argument.
@@ -79,11 +114,22 @@ Henry Prakken and Giovanni Sartor.
 \newblock Law and logic: a review from an argumentation perspective.
 \newblock \emph{Artificial Intelligence}, 227:\penalty0 214--245, 2015.
 
+\bibitem[Sadowski(2026)]{sadowski2026contexts}
+Albert Sadowski.
+\newblock From contexts to values: Context-dependent defeat in abstract
+  argumentation.
+\newblock \emph{arXiv preprint arXiv:2608.15536}, 2026.
+
 \bibitem[Sharma et~al.(2026)Sharma, Patel, and Gupta]{nitibench2026}
 Amit Sharma, Rahul Patel, and Sunita Gupta.
 \newblock {NitiBench+}: Unveiling statutory obsolescence and temporal
   misapplication in judicial verdict prediction.
 \newblock \emph{arXiv preprint arXiv:2611.03576}, 2026.
+
+\bibitem[Tang(2026)]{tang2026evidential}
+Shuai Tang.
+\newblock Evidential-based higher-order set argumentation framework.
+\newblock \emph{arXiv preprint arXiv:2608.27824}, 2026.
 
 \bibitem[Vanderbilt et~al.(2026)Vanderbilt, Thorne, and
   Liu]{oxford2026lexkairos}
@@ -99,6 +145,13 @@ Petar Veli{\v{c}}kovi{\'c}, Guillem Cucurull, Arantxa Casanova, Adriana Romero,
 \newblock Graph attention networks.
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2018.
+
+\bibitem[Xiao et~al.(2021)Xiao, Han, Sun, Yang, Zhang, Meng, and
+  Wu]{xiao2021lawformer}
+Chaojun Xiao, Xuefei Han, Chaojun Sun, Baosong Yang, Tianyang Zhang, Yuxian
+  Meng, and Fei Wu.
+\newblock {Lawformer}: A pre-trained language model for legal long documents.
+\newblock \emph{AI Open}, 2:\penalty0 79--84, 2021.
 
 \bibitem[Xu et~al.(2020)Xu, Ruan, Korpeoglu, Kumar, and Achan]{xu2020inductive}
 Da~Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan.
