@@ -231,152 +231,12 @@ The ontology was subjected to consistency validation using the \textbf{HermiT OW
 
 The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig:system_arch}. SynapseLex operates through a 4-stage neuro-symbolic pipeline: (1) dynamic heterogeneous temporal case graph formulation $\mathcal{G}(t)$; (2) continuous-time inductive message passing via dual-clock Bochner harmonic embeddings and multi-head temporal attention (Axiom-TGAT); (3) normative hierarchy priority arbitration (NH-DA) and Markovian legal state tracking ($\mathcal{S}$); and (4) defeasible argumentation adjudication (DAAH) regularized by Description Logic axiomatic penalties ($\mathcal{L}_{\text{onto}}$).
 
-\begin{figure}[!t]
+\begin{figure*}[!t]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    >=Stealth,
-    font=\sffamily\footnotesize,
-    panelbox/.style={draw=inkslate!30, fill=slatecard!40, rounded corners=6pt, line width=0.8pt, inner sep=5pt},
-    headerpill/.style={fill=#1, text=white, font=\sffamily\bfseries\tiny, rounded corners=3pt, inner sep=3pt, align=center, minimum height=0.6cm},
-    elemcard/.style={draw=#1!80, fill=white, rounded corners=4pt, line width=0.7pt, font=\sffamily\tiny, align=center, inner sep=3pt},
-    dataflow/.style={->, line width=1.1pt, draw=royal},
-    lossflow/.style={<-, line width=1.0pt, dashed, draw=rose}
-]
-
-% PANEL A: JURISPRUDENTIAL GRAPH
-\node[panelbox, minimum width=3.7cm, minimum height=6.8cm] (panelA) at (0, 0) {};
-\node[headerpill=royal, minimum width=3.5cm, anchor=north] at ([yshift=-0.12cm]panelA.north) {
-    \textbf{STAGE 1: JURISPRUDENTIAL GRAPH}\\
-    Dynamic Case Subgraph $\mathcal{G}(t)$
-};
-\node[elemcard=royal, circle, inner sep=2pt] (litU) at (-0.95, 1.8) {\textbf{Litigant $u$}\\(Buyer)};
-\node[elemcard=royal, circle, inner sep=2pt] (litV) at (0.95, 1.8) {\textbf{Litigant $v$}\\(Seller)};
-\node[elemcard=amber, minimum width=3.1cm, fill=ambersoft] (contract) at (0, 0.7) {
-    \textbf{Deposit Contract $c$}\\
-    \textit{BLDS Art. 328 Obligation}
-};
-\node[elemcard=rose, minimum width=3.1cm, fill=rosesoft] (breach) at (0, -0.5) {
-    \textbf{Breach Milestone $e_1$}\\
-    \textit{Default at $(t_1, \tau_1)$}
-};
-\node[elemcard=inkslate, minimum width=3.1cm, fill=white] (suit) at (0, -1.7) {
-    \textbf{Lawsuit Filing $e_2$}\\
-    \textit{Litigation at $(t_2, \tau_2)$}
-};
-
-\draw[dataflow, draw=royal!70] (litU) -- (contract);
-\draw[dataflow, draw=royal!70] (litV) -- (contract);
-\draw[dataflow, draw=rose] (contract) -- node[right, font=\fontsize{5}{6}\selectfont\color{rose}] {breach} (breach);
-\draw[dataflow, draw=inkslate] (breach) -- node[right, font=\fontsize{5}{6}\selectfont] {dispute} (suit);
-
-\node[font=\scriptsize\bfseries\color{royal}, align=center] at (0, -2.9) {
-    Topology $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \mathcal{T}, \mathcal{R})$\\
-    $\mathbf{H}^{(0)} \in \mathbb{R}^{|\mathcal{V}| \times d}$
-};
-
-% PANEL B: TEMPORAL ATTENTION
-\node[panelbox, minimum width=3.7cm, minimum height=6.8cm] (panelB) at (4.0, 0) {};
-\node[headerpill=royal!80!black, minimum width=3.5cm, anchor=north] at ([yshift=-0.12cm]panelB.north) {
-    \textbf{STAGE 2: TEMPORAL ATTENTION}\\
-    Dual-Clock Axiom-TGAT Layer
-};
-\node[elemcard=royal, fill=royal!5, minimum width=3.3cm, inner sep=3.5pt] (bochner) at (4.0, 1.85) {
-    \textbf{Dual-Clock Bochner Kernel}\\[2pt]
-    $\mathbf{\Phi}(\Delta t, \Delta\tau) \in \mathbb{R}^{64}$\\[2pt]
-    \textit{Harmonic Spectral Projection}
-};
-\node[elemcard=royal, fill=royal!5, minimum width=3.3cm, inner sep=3.5pt] (att) at (4.0, 0.45) {
-    \textbf{Multi-Head Attention}\\[2pt]
-    $\alpha_{uv}^{(k)} = \text{Softmax}\left(\frac{\mathbf{q}^\top \mathbf{k}}{\sqrt{d}} - \kappa \Delta t\right)$\\[2pt]
-    \textit{Continuous-Time Routing}
-};
-\node[elemcard=royal, fill=royal!5, minimum width=3.3cm, inner sep=3.5pt] (agg) at (4.0, -1.1) {
-    \textbf{Continuous Aggregation}\\[2pt]
-    $\mathbf{m}_u = \bigoplus_k \sum \alpha_{uv}^{(k)} \mathbf{v}_{uv}^{(k)}$\\[2pt]
-    $\mathbf{h}_u = \text{LN}(\mathbf{h}_u + \text{FFN}(\mathbf{m}_u))$
-};
-
-\draw[dataflow] (contract.east) -- (bochner.west);
-\draw[dataflow] (suit.east) -- (att.west);
-\draw[dataflow] (bochner) -- (att);
-\draw[dataflow] (att) -- (agg);
-
-\node[font=\scriptsize\bfseries\color{royal!80!black}, align=center] at (4.0, -2.9) {
-    Decoupled Dual Clocks\\
-    Graph Vector $\mathbf{h}_{\mathcal{G}}(t) \in \mathbb{R}^d$
-};
-
-% PANEL C: NORMATIVE ARBITER
-\node[panelbox, minimum width=3.7cm, minimum height=6.8cm] (panelC) at (8.0, 0) {};
-\node[headerpill=amber!90!black, minimum width=3.5cm, anchor=north] at ([yshift=-0.12cm]panelC.north) {
-    \textbf{STAGE 3: NORMATIVE ARBITER}\\
-    \textit{Lex Specialis} DAG \& Automaton
-};
-\node[elemcard=amber, fill=ambersoft!50, minimum width=3.3cm] (dag) at (8.0, 1.8) {
-    \textbf{NH-DA Priority Arbiter}\\
-    $\mathbf{h}_{\mathcal{G}}^* = \mathbf{h}_{\mathcal{G}} \odot (1 + \sigma(\cdot) \mathbf{u}_{\text{lex}})$\\
-    \textit{Land Law 2024 $\succ$ Civil 2015}
-};
-\node[elemcard=amber, fill=white, minimum width=3.3cm] (fsm) at (8.0, 0.5) {
-    \textbf{Markovian State Automaton}\\
-    $\mathbf{z}_{\text{state}} = \text{Softmax}(\mathbf{W}_S \mathbf{h}_c + \mathbf{b}_S)$\\
-    $\mathcal{S} \in \{\text{Valid}, \text{Voidable}, \text{Void}, \text{Ext}\}$
-};
-\node[elemcard=amber, fill=ambersoft!30, minimum width=3.3cm] (states) at (8.0, -1.1) {
-    \textbf{State Tracking}\\
-    \textcolor{emerald}{\textbf{$\blacksquare$ $\mathcal{S}_0$}} \quad \textcolor{amber}{\textbf{$\blacksquare$ $\mathcal{S}_1$}} \quad
-    \textcolor{rose}{\textbf{$\blacksquare$ $\mathcal{S}_2$}} \quad \textcolor{inkslate}{\textbf{$\blacksquare$ $\mathcal{S}_3$}}
-};
-
-\draw[dataflow] (agg.east) -- (dag.west);
-\draw[dataflow] (dag) -- (fsm);
-\draw[dataflow] (fsm) -- (states);
-
-\node[font=\scriptsize\bfseries\color{amber!90!black}, align=center] at (8.0, -2.9) {
-    Discrete Region $\mathbf{z}_{\text{state}} \in \Delta^3$\\
-    Hierarchical Modulation
-};
-
-% PANEL D: DEFEASIBLE HEAD
-\node[panelbox, minimum width=3.7cm, minimum height=6.8cm] (panelD) at (12.0, 0) {};
-\node[headerpill=rose!90!black, minimum width=3.5cm, anchor=north] at ([yshift=-0.12cm]panelD.north) {
-    \textbf{STAGE 4: DEFEASIBLE HEAD}\\
-    Dung Contraction \& TBox Loss
-};
-\node[elemcard=rose, fill=rosesoft!40, minimum width=3.3cm] (dung) at (12.0, 1.8) {
-    \textbf{Differentiable Dung Head}\\
-    $\mathcal{T}_{\text{Dung}}(\mathbf{z}) = \sigma(\mathbf{W}_{\text{def}} \mathbf{z} + \mathbf{b})$\\
-    \textit{Banach Fixed-Point $\mathbf{z}^*$}
-};
-\node[elemcard=rose, fill=white, minimum width=3.3cm, inner sep=3.5pt] (verdict) at (12.0, 0.45) {
-    \textbf{Adjudication Verdict}\\[2pt]
-    $\hat{\mathbf{y}} = \text{Softmax}(\mathbf{W}_V [\mathbf{h}_{\mathcal{G}}^* \,\|\,\mathbf{h}_c \,\|\,\mathbf{z}^*])$\\[2pt]
-    $\hat{y} \in \{\text{Forfeit}, \text{Refund}, \dots\}$
-};
-\node[elemcard=rose, fill=rosesoft!50, minimum width=3.3cm] (onto) at (12.0, -1.1) {
-    \textbf{Description Logic TBox Loss}\\
-    $\mathcal{L}_{\text{onto}}(\theta) = \sum \max(0, \phi_k(\hat{\mathbf{y}}))$\\
-    \textit{$\mathcal{U}_{\text{deontic}}$ Energy Minimization}
-};
-
-\draw[dataflow] (fsm.east) -- (verdict.west);
-\draw[dataflow] (dung) -- (verdict);
-\draw[dataflow] (verdict) -- (onto);
-
-\node[font=\scriptsize\bfseries\color{rose!90!black}, align=center] at (12.0, -2.9) {
-    Axiomatic Regularisation\\
-    Defeasible Enforcement
-};
-
-% Clean bottom loss flow
-\draw[lossflow] (panelC.south) -- ++(0, -0.3) -| node[pos=0.25, below, font=\fontsize{5}{6}\selectfont\bfseries\color{rose}] {$\nabla \mathcal{L}_{\text{onto}}$ (TBox Regularisation)} (onto.south);
-
-\end{tikzpicture}%
-}
-\caption{End-to-End Architectural Pipeline of SynapseLex. Attributed dynamic case subgraphs $\mathcal{G}(t)$ traverse continuous harmonic Fourier temporal attention, normative DAG arbitration, and Dung defeasible reasoning, bounded by Description Logic TBox regularisation.}
+\includegraphics[width=\textwidth]{figures/fig1_system_architecture.pdf}
+\caption{The SynapseLex Neuro-Symbolic Framework Architecture. A structured four-stage pipeline: (Stage 1) Dynamic multi-relational case graph $\mathcal{G}(t)$ extraction from authentic court narratives; (Stage 2) Axiom-TGAT Continuous Spectral Attention with Bochner harmonic Fourier embedding; (Stage 3) Normative Hierarchy DAG Arbiter (NH-DA) and 4-State Markovian Contract Mutation Automaton; (Stage 4) Dung Defeasible Adjudication Head yielding grounded decrees regularized by formal Description Logic $\mathcal{SROIQ}$ TBox loss.}
 \label{fig:system_arch}
-\end{figure}
+\end{figure*}
 
 \subsection{Dynamic Attributed Legal Graph Formulation}
 \begin{definition}[Attributed Dynamic Legal Graph]
@@ -446,110 +306,12 @@ corresponding to $\mathcal{S} \in \{\text{Valid (0)}, \text{Voidable (1)}, \text
 \hat{\mathbf{y}}_{\text{verdict}} = \text{Softmax}\left( \mathbf{W}_V [\mathbf{h}_{\mathcal{G}}^* \,\|\, \mathbf{h}_{\text{contract}} \,\|\, \mathbf{z}_{\text{state}}] + \mathbf{b}_V \right)
 \end{equation}
 
-\begin{figure}[!ht]
+\begin{figure*}[!ht]
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    >=Stealth,
-    font=\sffamily\small,
-    subpanel/.style={draw=inkslate!30, fill=slatecard!25, rounded corners=6pt, line width=0.8pt, inner sep=6pt},
-    subhead/.style={fill=#1, text=white, font=\sffamily\bfseries\scriptsize, rounded corners=3pt, inner sep=3.5pt, align=center},
-    statecard/.style={draw=#1!80, fill=white, line width=0.9pt, rounded corners=5pt, minimum width=4.6cm, minimum height=1.8cm, inner sep=4pt},
-    statetitle/.style={fill=#1, text=white, font=\sffamily\bfseries\scriptsize, rounded corners=3pt, minimum width=4.2cm, minimum height=0.48cm, align=center},
-    argcard/.style={draw=#1!80, fill=white, line width=0.9pt, rounded corners=5pt, minimum width=3.2cm, minimum height=1.5cm, align=center, inner sep=3pt},
-    transarrow/.style={->, line width=1.1pt, draw=inkslate},
-    curearrow/.style={->, line width=1.1pt, draw=emerald},
-    voidarrow/.style={->, line width=1.1pt, draw=rose},
-    extarrow/.style={->, line width=1.1pt, draw=inkslate},
-    defeatarrow/.style={->, line width=1.3pt, dashed, draw=rose}
-]
-
-% PANEL A: 4-STATE AUTOMATON (TOP)
-\node[subpanel, minimum width=15.8cm, minimum height=5.6cm] (panelA) at (0, 3.0) {};
-\node[subhead=royal, minimum width=15.2cm, anchor=north] at ([yshift=-0.12cm]panelA.north) {
-    \textbf{(A) Non-Monotonic Legal State-Transition Automaton $\mathcal{M}_{\text{state}}$}
-};
-
-% S0: Valid
-\node[statecard=emerald] (s0) at (-4.1, 4.2) {};
-\node[statetitle=emerald, anchor=north] at ([yshift=-0.06cm]s0.north) {$\mathcal{S}_0$: VALID CONTRACT};
-\node[font=\scriptsize, align=center] at ([yshift=-0.18cm]s0.center) {
-    $\bullet$ Valid bilateral consensus (Art. 117)\\
-    $\bullet$ Enforceable obligations (Art. 328)
-};
-
-% S1: Voidable
-\node[statecard=amber] (s1) at (4.1, 4.2) {};
-\node[statetitle=amber, anchor=north] at ([yshift=-0.06cm]s1.north) {$\mathcal{S}_1$: VOIDABLE / INCHOATE};
-\node[font=\scriptsize, align=center] at ([yshift=-0.18cm]s1.center) {
-    $\bullet$ Formal defect / breach notice served\\
-    $\bullet$ Curable via Art. 129(2) Performance
-};
-
-% S2: Void Ab Initio
-\node[statecard=rose] (s2) at (-4.1, 1.6) {};
-\node[statetitle=rose, anchor=north] at ([yshift=-0.06cm]s2.north) {$\mathcal{S}_2$: VOID AB INITIO};
-\node[font=\scriptsize, align=center] at ([yshift=-0.18cm]s2.center) {
-    $\bullet$ Illegal subject matter (Art. 122)\\
-    $\bullet$ Absolute legal nullity \textit{ex tunc}
-};
-
-% S3: Extinguished
-\node[statecard=inkslate] (s3) at (4.1, 1.6) {};
-\node[statetitle=inkslate, anchor=north] at ([yshift=-0.06cm]s3.north) {$\mathcal{S}_3$: EXTINGUISHED};
-\node[font=\scriptsize, align=center] at ([yshift=-0.18cm]s3.center) {
-    $\bullet$ Procedural Time-Bar (Art. 429)\\
-    $\bullet$ Elapsed latency $\Delta\tau > 1,095$ days
-};
-
-% Transitions in Panel A with generous spacing
-\draw[transarrow] ([yshift=0.25cm]s0.east) -- node[above=2pt, font=\tiny\bfseries] {Defect / Breach Notice} ([yshift=0.25cm]s1.west);
-\draw[curearrow] ([yshift=-0.25cm]s1.west) -- node[below=2pt, font=\tiny\bfseries\color{emerald}] {Art. 129(2) Curing ($\ge 2/3$ executed)} ([yshift=-0.25cm]s0.east);
-\draw[voidarrow] (s0.south) -- node[left=2pt, font=\tiny\bfseries\color{rose}, align=right] {Art. 122\\Absolute Nullity} (s2.north);
-\draw[extarrow] (s1.south) -- node[right=2pt, font=\tiny\bfseries, align=left] {Art. 429\\Time-Bar Expired} (s3.north);
-\draw[voidarrow, dashed] (s1.south west) -- node[pos=0.45, above=2pt, sloped, font=\tiny\bfseries\color{rose}] {Rescission} (s2.north east);
-
-% PANEL B: DUNG DEFEASIBLE ADJUDICATION HEAD (BOTTOM)
-\node[subpanel, minimum width=15.8cm, minimum height=3.0cm] (panelB) at (0, -1.8) {};
-\node[subhead=rose!90!black, minimum width=15.2cm, anchor=north] at ([yshift=-0.12cm]panelB.north) {
-    \textbf{(B) Dung Defeasible Adjudication Head ($\mathcal{R}_{\text{defeat}}$) \& Deontic Potential Field}
-};
-
-% Arg 3: Procedural Bar (Left)
-\node[argcard=inkslate, fill=slatecard!70] (arg3) at (-5.6, -2.0) {
-    \textbf{Arg $\mathcal{A}_{\text{bar}}$ (Procedural Bar)}\\
-    \textit{From $\mathcal{S}_3$ ($\Delta\tau > 1,095$d)}\\
-    \vspace{2pt}
-    \textcolor{emerald}{\textbf{Label: IN (Grounded Ext.)}}
-};
-
-% Arg 1: Substantive Claim (Center)
-\node[argcard=rose, fill=rosesoft!40] (arg1) at (0.0, -2.0) {
-    \textbf{Arg $\mathcal{A}_{\text{claim}}$ (Deposit Claim)}\\
-    \textit{From $\mathcal{S}_0$ (Relief Art. 328)}\\
-    \vspace{2pt}
-    \textcolor{rose}{\textbf{Label: OUT (Defeated)}}
-};
-
-% Defeat Arrow connecting Arg 3 to Arg 1 with wide gap
-\draw[defeatarrow] (arg3.east) -- node[pos=0.5, above=2pt, font=\fontsize{5.5}{6.5}\selectfont\bfseries\color{rose}] {$\mathcal{R}_{\text{defeat}}$} node[pos=0.5, below=2pt, font=\fontsize{4.5}{5.5}\selectfont\color{rose}] {Strict Defeat} (arg1.west);
-
-% Energy Minimization (Right)
-\node[draw=violetsoft!80!black, fill=violetsoft, rounded corners=5pt, line width=0.8pt, minimum width=3.2cm, minimum height=1.5cm, align=center, font=\scriptsize, inner sep=3pt] (energy) at (5.6, -2.0) {
-    \textbf{Deontic Lyapunov Field}\\
-    \vspace{1pt}
-    $\frac{d\mathbf{s}}{dt} = -\nabla \mathcal{U}_{\text{deontic}}(\mathbf{s})$\\
-    \vspace{1pt}
-    $\implies \mathbf{z}^* \in \mathcal{GE}(\mathcal{AF})$
-};
-
-\draw[transarrow] (arg1.east) -- node[above=2pt, font=\tiny\bfseries] {Minimizes} (energy.west);
-
-\end{tikzpicture}%
-}
-\caption{Non-Monotonic Legal State-Transition Automaton $\mathcal{M}_{\text{state}}$ and Defeasible Adjudication Head. Substantive contract validity transitions through defect, procedural time-bar expiration, and judicial curing, governed by Dung's abstract argumentation priorities and continuous Lyapunov deontic energy minimization.}
+\includegraphics[width=\textwidth]{figures/fig2_legal_automaton_defeasible.pdf}
+\caption{Non-Monotonic Contract State-Transition Automaton and Defeasible Priority Argumentation. (A) Four mutually exclusive contractual states $(\mathcal{S}_0 \dots \mathcal{S}_3)$ with formal statutory transitions under BLDS 2015, capturing non-monotonic curing (Article~129(2)) and statutory expiration (Article~429). (B) Abstract Argumentation Framework $AF = \langle \mathcal{A}, \mathcal{R}_{\mathrm{defeat}} \rangle$ where procedural bar arguments $\mathcal{A}_{\mathrm{bar}}$ asymmetrically defeat substantive enforcement claims $\mathcal{A}_{\mathrm{claim}}$, guaranteeing grounded extension $GE(AF) = \{\mathcal{A}_{\mathrm{bar}}\}$ without substantive remedy bias.}
 \label{fig:state_machine}
-\end{figure}
+\end{figure*}
 
 \subsection{Mathematical Convergence Proof of TBox Axiomatic Loss}
 \label{sec:proof}
@@ -705,131 +467,47 @@ since $\sigma'(u) = \sigma(u)(1 - \sigma(u)) \le 1/4$ for all $u \in \mathbb{R}$
 Setting $L = \frac{1}{4} \|\mathbf{W}_{\text{defeat}}\|_\infty < 1$, the operator $\mathcal{F}_{\text{Dung}}$ is a strict contraction. By the Banach Fixed-Point Theorem, $\mathbf{z}^*$ exists, is unique, and Picard iteration converges linearly. For differentiability, define $G(\mathbf{z}, \theta) = \mathbf{z} - \mathcal{F}_{\text{Dung}}(\mathbf{z}; \theta) = \mathbf{0}$. The Jacobian $\nabla_{\mathbf{z}} G = \mathbf{I} - \mathbf{J}_{\mathcal{F}}(\mathbf{z}^*)$. Since $\rho(\mathbf{J}_{\mathcal{F}}) \le \|\mathbf{J}_{\mathcal{F}}\|_\infty \le \frac{1}{4} \|\mathbf{W}_{\text{defeat}}\|_\infty = L < 1$, the matrix $\mathbf{I} - \mathbf{J}_{\mathcal{F}}$ has no zero eigenvalues and is invertible. Applying the Implicit Function Theorem yields Equation~\ref{eq:implicit_grad}.
 \end{proof}
 
-\subsection{Continuous Deontic Potential Field and Dynamical Stability}
-\label{sec:deontic_field}
-We further formalize the legal state space as an energy landscape governed by a \textit{Continuous Deontic Potential Field} $\mathcal{U}_{\text{deontic}}: \Delta^3 \times \mathcal{G} \to \mathbb{R}^+$. Legally forbidden configurations (e.g., executing a contract extinguished under Article~429 or enforcing an agreement void ab initio under Article~122) represent high potential energy barriers, while legally sound adjudications correspond to global energy minima:
-\begin{equation}
-\label{eq:deontic_field}
-\mathcal{U}_{\text{deontic}}(\mathbf{s}; \mathcal{G}) = \frac{1}{2} \|\mathbf{s} - \mathbf{s}_{\text{target}}(\mathcal{G})\|_2^2 + \sum_{k=1}^K \mu_k \cdot \phi_k(\mathbf{s}, \mathcal{T}_{\mathcal{VCLO}})
-\end{equation}
-where $\mathbf{s} \in \Delta^3$ is the legal state distribution across $\{\mathcal{S}_0, \mathcal{S}_1, \mathcal{S}_2, \mathcal{S}_3\}$, $\mu_k > 0$ are penalty multipliers, and $\phi_k \ge 0$ are smooth convex barrier functions penalizing normative inconsistencies:
-\begin{align}
-\phi_1(\mathbf{s}) &= \mathbb{I}(\Delta \tau > 1095) \cdot (1 - s_{\text{Extinguished}})^2 \\
-\phi_2(\mathbf{s}) &= \mathbb{I}(\text{IllegalObject} \in \mathcal{G}) \cdot (1 - s_{\text{Void}})^2 \\
-\phi_3(\mathbf{s}) &= \mathbb{I}(\text{Unnotarized} \land \text{Perf} < 2/3) \cdot (s_{\text{Valid}})^2
-\end{align}
-The continuous legal state dynamics evolves along the negative gradient of the Deontic Potential Field:
-\begin{equation}
-\label{eq:state_dyn}
-\frac{d\mathbf{s}}{dt} = -\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})
-\end{equation}
+\subsection{Non-Monotonic Grounded Semantics and Defeasible Priority Soundness}
+\label{sec:grounded_semantics}
+Rather than treating legal adjudication as an ad-hoc continuous energy landscape, we formally ground SynapseLex in the canonical fixed-point semantics of Abstract Argumentation Frameworks \citep{dung1995acceptability, prakken2015formal}.
 
-\begin{theorem}[Lyapunov Asymptotic Stability of Adjudication Equilibria]
-\label{thm:lyapunov_stability}
-The dynamical system governed by Equation~\ref{eq:state_dyn} is asymptotically stable in the sense of Lyapunov. All state trajectories $\mathbf{s}(t)$ asymptotically converge to the admissible jurisprudential manifold $\mathcal{M}_{\text{admissible}} = \{ \mathbf{s} \in \Delta^3 \mid \forall k, \ \phi_k(\mathbf{s}) = 0 \}$.
+\begin{definition}[Abstract Argumentation Framework over Legal Claims]
+Let $AF = \langle \mathcal{A}, \mathcal{R}_{\mathrm{defeat}} \rangle$ be an argumentation framework where:
+\begin{itemize}[leftmargin=*]
+    \item $\mathcal{A} = \{\mathcal{A}_{\mathrm{claim}}, \mathcal{A}_{\mathrm{defense}}, \mathcal{A}_{\mathrm{bar}}\}$ represents the discrete set of legal arguments instantiated from case facts.
+    \item $\mathcal{R}_{\mathrm{defeat}} \subseteq \mathcal{A} \times \mathcal{A}$ denotes the asymmetric defeat relation governed by the procedural hierarchy: $(\mathcal{A}_{\mathrm{bar}}, \mathcal{A}_{\mathrm{claim}}) \in \mathcal{R}_{\mathrm{defeat}}$.
+\end{itemize}
+The characteristic function $F_{AF}: 2^{\mathcal{A}} \to 2^{\mathcal{A}}$ is defined as:
+\begin{equation}
+F_{AF}(S) = \{ A \in \mathcal{A} \mid \forall B \in \mathcal{A}, \, (B, A) \in \mathcal{R}_{\mathrm{defeat}} \implies \exists C \in S \text{ s.t. } (C, B) \in \mathcal{R}_{\mathrm{defeat}} \}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Grounded Defeasible Adjudication Soundness]
+\label{thm:grounded_soundness}
+Because $F_{AF}$ is monotonic over the complete lattice $(2^{\mathcal{A}}, \subseteq)$, by the Knaster-Tarski Theorem it admits a unique least fixed point defining the \textbf{Grounded Extension}:
+\begin{equation}
+GE(AF) = \operatorname{lfp}(F_{AF}) = \bigcup_{i=0}^\infty F_{AF}^i(\emptyset)
+\end{equation}
+Whenever the operative procedural latency satisfies $\Delta\tau > 1,095$ days, the procedural limitation argument $\mathcal{A}_{\mathrm{bar}}$ has no defeaters: $\text{Def}(\mathcal{A}_{\mathrm{bar}}) = \emptyset$. Consequently:
+\begin{equation}
+\mathcal{A}_{\mathrm{bar}} \in F_{AF}(\emptyset) \subseteq GE(AF) \implies \mathcal{A}_{\mathrm{claim}} \notin GE(AF)
+\end{equation}
+guaranteeing that substantive contractual remedies are never awarded on statute-barred claims.
 \end{theorem}
 
 \begin{proof}
-Consider the candidate Lyapunov function $V(\mathbf{s}) = \mathcal{U}_{\text{deontic}}(\mathbf{s})$. By construction in Equation~\ref{eq:deontic_field}, $V(\mathbf{s}) \ge 0$ for all $\mathbf{s} \in \Delta^3$, and $V(\mathbf{s}) = 0$ if and only if $\mathbf{s} = \mathbf{s}_{\text{target}}$ and all normative constraints $\phi_k(\mathbf{s}) = 0$ are satisfied.
-Taking the time derivative of $V(\mathbf{s})$ along trajectories of Equation~\ref{eq:state_dyn}:
-\begin{equation}
-\dot{V}(\mathbf{s}) = \left(\nabla_{\mathbf{s}} V(\mathbf{s})\right)^\top \frac{d\mathbf{s}}{dt} = \left(\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\right)^\top \left(-\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\right) = -\|\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\|_2^2 \le 0
-\end{equation}
-Hence $\dot{V}(\mathbf{s}) \le 0$ strictly holds everywhere in $\Delta^3$. Furthermore, $\dot{V}(\mathbf{s}) = 0$ if and only if $\|\nabla_{\mathbf{s}} \mathcal{U}_{\text{deontic}}(\mathbf{s})\|_2 = 0$, which corresponds to the stationary points of $\mathcal{U}_{\text{deontic}}$. Because $\mathcal{U}_{\text{deontic}}$ is strongly convex in $\mathbf{s}$ with positive definite Hessian $\nabla^2 \mathcal{U}_{\text{deontic}} \succeq \mathbf{I}$, there exists a unique global minimum $\mathbf{s}^* \in \mathcal{M}_{\text{admissible}}$. By LaSalle's Invariance Principle, every solution $\mathbf{s}(t)$ starting in $\Delta^3$ converges asymptotically to $\mathbf{s}^*$ as $t \to \infty$, guaranteeing normative stability.
+Since $\mathcal{A}_{\mathrm{bar}}$ has no incoming defeat edges in $\mathcal{R}_{\mathrm{defeat}}$, it is defended by $\emptyset$, yielding $\mathcal{A}_{\mathrm{bar}} \in F_{AF}(\emptyset) \subseteq GE(AF)$. Because $GE(AF)$ is conflict-free and $(\mathcal{A}_{\mathrm{bar}}, \mathcal{A}_{\mathrm{claim}}) \in \mathcal{R}_{\mathrm{defeat}}$, the claim cannot belong to $GE(AF)$.
 \end{proof}
 
-
-
-\subsection{Caminada Three-Valued Labeling Equivalence and Semantic Projection}
-\label{sec:caminada_semantics}
-In abstract argumentation theory, the grounded extension $\mathcal{GE}(\mathcal{AF})$ admits an equivalent representation through Caminada's three-valued argument labeling $\mathcal{L}ab: \mathcal{A} \to \{\text{in}, \text{out}, \text{undec}\}$ \citep{caminada2006issue}. An argument $A$ is labeled $\text{in}$ if all its attackers are labeled $\text{out}$; labeled $\text{out}$ if at least one of its attackers is labeled $\text{in}$; and labeled $\text{undec}$ otherwise. Recent investigations by \citet{tang2026evidential} and \citet{sadowski2026contexts} have highlighted the theoretical imperative of establishing formal semantic bridges between continuous neural representations and discrete qualitative justification.
-
-To establish this bridge, we parameterize the continuous Dung operator by an inverse temperature parameter $\beta > 0$:
+\subsection{Differentiable Soft Ranking Implementation}
+To render Dung's discrete grounded extension amenable to end-to-end backpropagation, we parameterize soft argument acceptance scores $s(A) \in [0, 1]$ via margin-based defeat penalties:
 \begin{equation}
-\label{eq:temp_dung}
-\mathcal{F}_{\text{Dung}}^{(\beta)}(\mathbf{z}) = \sigma\left( \beta \left( \mathbf{W}_{\text{defeat}} \mathbf{z} + \mathbf{b}_{\text{prior}} \right) \right)
+\label{eq:soft_dung}
+s(A) = \sigma\left( \mathbf{w}_{\mathrm{arg}}^\top \mathbf{h}_A - \sum_{B \in \mathrm{Def}(A)} \lambda_{\mathrm{def}} \cdot s(B) \right)
 \end{equation}
-and define the Caminada semantic projection operator $\Pi_{\text{Caminada}}: [0, 1]^N \to \{\text{in}, \text{out}, \text{undec}\}^N$ with tolerance $\epsilon \in (0, 0.5)$:
-\begin{equation}
-\label{eq:caminada_proj}
-\Pi_{\text{Caminada}}(z_A) = \begin{cases}
-\text{in}, & \text{if } z_A > 1 - \epsilon \\
-\text{out}, & \text{if } z_A < \epsilon \\
-\text{undec}, & \text{if } \epsilon \le z_A \le 1 - \epsilon
-\end{cases}
-\end{equation}
+where $\lambda_{\mathrm{def}} \ge 2.0$ guarantees that whenever $s(\mathcal{A}_{\mathrm{bar}}) \to 1$, $s(\mathcal{A}_{\mathrm{claim}})$ is exponentially attenuated to $0$, faithfully mirroring discrete grounded semantics during stochastic optimization.
 
-\begin{theorem}[Caminada Three-Valued Semantic Projection and Temperature Limit]
-\label{thm:caminada_limit}
-Let $\mathcal{AF} = \langle \mathcal{A}, \mathcal{R}_{\text{defeat}} \rangle$ be an acyclic or well-founded legal argumentation framework induced by case facts and Description Logic axioms, and let $\mathbf{z}^*(\beta)$ denote the unique fixed point of $\mathcal{F}_{\text{Dung}}^{(\beta)}$. In the asymptotic temperature limit $\beta \to \infty$, the continuous fixed point converges component-wise to the unique Caminada grounded labeling $\mathcal{L}ab_{\mathcal{GE}}$:
-\begin{equation}
-\lim_{\beta \to \infty} z_A^*(\beta) = \begin{cases}
-1, & \text{if } \mathcal{L}ab_{\mathcal{GE}}(A) = \text{in} \quad (A \in \mathcal{GE}(\mathcal{AF})) \\
-0, & \text{if } \mathcal{L}ab_{\mathcal{GE}}(A) = \text{out} \quad (\exists B \in \mathcal{GE}(\mathcal{AF}) \text{ s.t. } (B, A) \in \mathcal{R}_{\text{defeat}}) \\
-1/2, & \text{if } \mathcal{L}ab_{\mathcal{GE}}(A) = \text{undec}
-\end{cases}
-\end{equation}
-Furthermore, for any finite inverse temperature satisfying:
-\begin{equation}
-\beta \ge \frac{4}{\gamma \cdot \delta_{\min}} \ln\left(\frac{1 - \epsilon}{\epsilon}\right), \quad \text{where} \quad \delta_{\min} = \min_{(B, A) \in \mathcal{R}_{\text{defeat}}} |(\mathbf{W}_{\text{defeat}})_{AB}|
-\end{equation}
-the projected vector satisfies $\Pi_{\text{Caminada}}(\mathbf{z}^*(\beta)) = \mathcal{L}ab_{\mathcal{GE}}$ identically.
-\end{theorem}
-
-\begin{proof}
-Let $\mathcal{A}_0 \subseteq \mathcal{A}$ be the set of unattacked arguments. For any $A \in \mathcal{A}_0$, the incoming defeat sum $\sum_B (\mathbf{W}_{\text{defeat}})_{AB} z_B = 0$. Since $A$ is supported by prima-facie statutory validity, $b_{\text{prior}, A} > 0$. Therefore:
-\begin{equation}
-z_A^*(\beta) = \sigma(\beta b_{\text{prior}, A}) = \frac{1}{1 + e^{-\beta b_{\text{prior}, A}}} \xrightarrow{\beta \to \infty} 1
-\end{equation}
-establishing that $A$ is labeled $\text{in}$.
-Now consider an argument $C$ attacked by an unattacked argument $A \in \mathcal{A}_0$. The input to the sigmoid for argument $C$ is $\beta(b_{\text{prior}, C} - \gamma z_A^*)$. Since $z_A^* \to 1$ and $\gamma > b_{\text{prior}, C}$ by the statutory priority condition of Article~429, the net logit satisfies $\lim_{\beta \to \infty} \beta(b_{\text{prior}, C} - \gamma) = -\infty$. Consequently, $\lim_{\beta \to \infty} z_C^*(\beta) = 0$, mapping to $\text{out}$.
-By finite induction along the finite topological ordering of the well-founded defeat relation $\mathcal{R}_{\text{defeat}}$, every argument assigned to the discrete grounded extension $\mathcal{GE}(\mathcal{AF})$ has fixed-point value converging to $1$, and every defeated argument has value converging to $0$. For any tolerance $\epsilon > 0$, setting $\sigma(\beta \Delta) \ge 1 - \epsilon$ requires $\beta \Delta \ge \ln((1 - \epsilon)/\epsilon)$, which is satisfied whenever $\beta \ge \frac{1}{\Delta} \ln((1 - \epsilon)/\epsilon)$, completing the proof.
-\end{proof}
-
-\subsection{Computational Complexity and Real-Time Inference Tractability}
-\label{sec:complexity}
-A foundational critique often directed at ontology-guided neuro-symbolic systems concerns computational tractability: naive Description Logic reasoning in expressive formalisms like $\mathcal{SROIQ}(\mathcal{D})$ is \textsc{2NExpTime}-complete in the worst case \citep{baader2003description}. SynapseLex completely circumvents this theoretical bottleneck through an offline compilation and tensorized execution design:
-
-\begin{enumerate}[label=(\roman*)]
-    \item \textbf{Offline TBox Satisfiability vs. Online Execution:} Full consistency checking of the TBox $\mathcal{T}_{\mathcal{VCLO}}$ is performed strictly \textit{offline} during ontology authoring using the HermiT 1.4 reasoner. For the entire 233-triple ontology, HermiT verifies consistency in exactly $1.42\text{ s}$ on a standard workstation, guaranteeing that no unsatisfiable classes exist before training.
-    \item \textbf{Tensorized TBox Compilation:} During training and inference, TBox axioms are compiled into vectorized penalty terms $\psi_k(\theta)$ (Section~\ref{sec:proof}). Inference does not invoke an external tableaux reasoner; instead, it executes standard feed-forward tensor operations.
-    \item \textbf{Asymptotic Inference Complexity:} For a case subgraph $\mathcal{G} = (\mathcal{V}, \mathcal{E})$ with $N = |\mathcal{V}|$ nodes, $M = |\mathcal{E}|$ edges, hidden dimension $d$, and attention heads $H$, the total time complexity per inference pass is:
-    \begin{equation}
-    \mathcal{O}\left( L \cdot (M \cdot d + N \cdot d) + N \cdot d^2 + |\mathcal{Y}| \cdot d \right)
-    \end{equation}
-    which is strictly \textit{linear} in the number of edges and nodes.
-    \item \textbf{Empirical Runtime Latency:} On an Intel Core i7 CPU, mean inference latency is \textbf{$11.4 \pm 0.6\text{ ms}$} per judgment; on an NVIDIA A30 GPU, mean inference latency is \textbf{$1.8 \pm 0.2\text{ ms}$} per judgment, delivering a processing throughput exceeding \textbf{550 cases per second}. SynapseLex is thus readily deployable in real-time judicial docketing pipelines.
-\end{enumerate}
-
-\begin{algorithm}[!ht]
-\caption{SynapseLex Axiom-TGAT Inference and Constraint Audit}
-\label{alg:inference}
-\begin{algorithmic}[1]
-\REQUIRE Dynamic Case Graph $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \mathcal{T})$, Elapsed Latency $\Delta t$, Procedural Latency $\Delta \tau$, TBox $\mathcal{T}_{\mathcal{VCLO}}$
-\ENSURE Predicted Judicial Verdict $\hat{y}_{\text{verdict}}$, Contract State $\hat{\mathcal{S}}$, Consistency Audit Flag $C_{\text{audit}}$
-\STATE Initialize node embeddings $\mathbf{h}_u^{(0)} \leftarrow [\mathbf{E}_{\text{type}}(v_u) \,\|\, \mathbf{W}_x \mathbf{x}_u]$ for all $u \in \mathcal{V}$
-\FOR{layer $l = 1$ to $L$}
-    \FOR{each node $u \in \mathcal{V}$}
-        \STATE Compute Dual-Clock Harmonic Fourier embeddings $\mathbf{\Phi}_{\text{dual}}(\Delta t_{uv}, \Delta \tau_{uv})$ for incoming neighbors $v \in \mathcal{N}(u)$
-        \STATE Compute multi-head temporal attention weights $\alpha_{uv}^{(h)}$ via Eq. (9)
-        \STATE Aggregate temporal messages $\mathbf{m}_u^{(l)}$ and update node state $\mathbf{h}_u^{(l)}$ via Eq. (11)
-    \ENDFOR
-\ENDFOR
-\STATE Extract contract node embedding $\mathbf{h}_{\text{contract}} \leftarrow \mathbf{h}_{\text{contract\_idx}}^{(L)}$
-\STATE Compute Markovian legal state probabilities: $\mathbf{z}_{\text{state}} \leftarrow \text{Softmax}(\mathbf{W}_S \mathbf{h}_{\text{contract}} + \mathbf{b}_S)$
-\STATE Pool graph representation: $\mathbf{h}_{\mathcal{G}} \leftarrow \sum_{u} \text{Softmax}(\mathbf{w}_p^\top \mathbf{h}_u) \mathbf{h}_u$
-\STATE Apply Normative Hierarchy Arbiter (NH-DA): $\mathbf{h}_{\mathcal{G}}^* \leftarrow \text{NH-DA}(\mathbf{h}_{\mathcal{G}}, I_{\text{land}})$ via Eq. (13)
-\STATE Compute verdict logits: $\hat{\mathbf{y}}_{\text{logits}} \leftarrow \mathbf{W}_V [\mathbf{h}_{\mathcal{G}}^* \,\|\, \mathbf{h}_{\text{contract}} \,\|\, \mathbf{z}_{\text{state}}] + \mathbf{b}_V$
-\IF{$\Delta \tau > 1095$ days and no tolling}
-    \STATE $\hat{\mathbf{y}}_{\text{logits}}[2] \leftarrow \hat{\mathbf{y}}_{\text{logits}}[2] + 4.0$ \COMMENT{Enforce Art. 429 BLDS 2015 Extinction Bias}
-\ENDIF
-\STATE $\hat{y}_{\text{verdict}} \leftarrow \arg\max \hat{\mathbf{y}}_{\text{logits}}$, $\hat{\mathcal{S}} \leftarrow \arg\max \mathbf{z}_{\text{state}}$
-\STATE Verify TBox Horn consistency: $C_{\text{audit}} \leftarrow \prod_{k=1}^K \mathbb{I}(\psi_k(\hat{y}_{\text{verdict}}, \mathcal{G}) == 0)$
-\RETURN $\hat{y}_{\text{verdict}}, \hat{\mathcal{S}}, C_{\text{audit}}$
-\end{algorithmic}
-\end{algorithm}
-
-% ------------------------------------------------------------------------
 \section{The SynapseCivil-Bench Benchmark}
 \label{sec:benchmark}
 
