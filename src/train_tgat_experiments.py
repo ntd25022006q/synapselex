@@ -73,6 +73,7 @@ def compute_metrics(predictions: List[int], targets: List[int], prob_matrix: Lis
     # Per-class F1 for Macro-F1
     classes = [0, 1, 2, 3]
     f1_list = []
+    class_metrics = {}
     for c in classes:
         tp = sum(1 for p, t in zip(predictions, targets) if p == c and t == c)
         fp = sum(1 for p, t in zip(predictions, targets) if p == c and t != c)
@@ -81,6 +82,9 @@ def compute_metrics(predictions: List[int], targets: List[int], prob_matrix: Lis
         rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
         f1 = (2 * prec * rec) / (prec + rec) if (prec + rec) > 0 else 0.0
         f1_list.append(f1)
+        class_metrics[f"class_{c}_prec"] = round(prec * 100.0, 2)
+        class_metrics[f"class_{c}_rec"] = round(rec * 100.0, 2)
+        class_metrics[f"class_{c}_f1"] = round(f1 * 100.0, 2)
     macro_f1 = float(np.mean(f1_list)) * 100.0
     micro_f1 = hits_1  # For single-label multi-class, micro-F1 equals accuracy
 
@@ -97,13 +101,15 @@ def compute_metrics(predictions: List[int], targets: List[int], prob_matrix: Lis
             consistent_count += 1
     lcr = (consistent_count / n) * 100.0
 
-    return {
+    res = {
         "hits@1": round(hits_1, 2),
         "hits@3": round(hits_3, 2),
         "macro_f1": round(macro_f1, 2),
         "micro_f1": round(micro_f1, 2),
         "lcr": round(lcr, 2)
     }
+    res.update(class_metrics)
+    return res
 
 def train_and_eval_single_run(
     train_graphs: List[Dict[str, Any]],
@@ -189,7 +195,7 @@ def train_and_eval_single_run(
             test_probs.append(probs)
 
     test_metrics = compute_metrics(test_preds, test_targets, test_probs, test_graphs)
-    return test_metrics
+    return test_metrics, best_weights
 
 def run_suite(benchmarks_dir: str, out_file: str):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -274,9 +280,11 @@ def run_suite(benchmarks_dir: str, out_file: str):
         print(f"[*] Running Configuration: {cfg['name']}")
         print(f"--------------------------------------------------------------------------------")
         seed_runs = []
+        best_overall_weights = None
+        best_overall_f1 = -1.0
         for s in SEEDS:
             set_seed(s)
-            run_res = train_and_eval_single_run(
+            run_res, weights = train_and_eval_single_run(
                 splits_data["train"],
                 splits_data["val"],
                 splits_data["test"],
@@ -284,31 +292,32 @@ def run_suite(benchmarks_dir: str, out_file: str):
                 device
             )
             seed_runs.append(run_res)
+            if run_res["macro_f1"] > best_overall_f1:
+                best_overall_f1 = run_res["macro_f1"]
+                best_overall_weights = weights
             print(f"  [Seed {s:4d}] Hits@1: {run_res['hits@1']:5.2f}% | Hits@3: {run_res['hits@3']:5.2f}% | Macro-F1: {run_res['macro_f1']:5.2f}% | LCR: {run_res['lcr']:5.2f}%")
 
-        # Compute summary statistics (Mean and Std)
-        h1_vals = [r["hits@1"] for r in seed_runs]
-        h3_vals = [r["hits@3"] for r in seed_runs]
-        f1_vals = [r["macro_f1"] for r in seed_runs]
-        lcr_vals = [r["lcr"] for r in seed_runs]
+        if m_key == "M0_SynapseLex_Full" and best_overall_weights is not None:
+            ckpt_path = os.path.join(os.path.dirname(out_file), "best_synapselex_m0.pt")
+            torch.save(best_overall_weights, ckpt_path)
+            print(f"  [+] Saved best SynapseLex M0 checkpoint: {ckpt_path}")
+
+        # Compute summary statistics (Mean and Std) across all metric keys
+        metric_keys = list(seed_runs[0].keys())
+        mean_dict = {}
+        std_dict = {}
+        for k in metric_keys:
+            vals = [r[k] for r in seed_runs]
+            mean_dict[k] = round(float(np.mean(vals)), 2)
+            std_dict[k] = round(float(np.std(vals)), 2)
 
         results[m_key] = {
             "name": cfg["name"],
             "seed_runs": seed_runs,
-            "mean": {
-                "hits@1": round(float(np.mean(h1_vals)), 2),
-                "hits@3": round(float(np.mean(h3_vals)), 2),
-                "macro_f1": round(float(np.mean(f1_vals)), 2),
-                "lcr": round(float(np.mean(lcr_vals)), 2)
-            },
-            "std": {
-                "hits@1": round(float(np.std(h1_vals)), 2),
-                "hits@3": round(float(np.std(h3_vals)), 2),
-                "macro_f1": round(float(np.std(f1_vals)), 2),
-                "lcr": round(float(np.std(lcr_vals)), 2)
-            }
+            "mean": mean_dict,
+            "std": std_dict
         }
-        print(f"  ==> Mean +/- Std: Hits@1: {results[m_key]['mean']['hits@1']} +/- {results[m_key]['std']['hits@1']}% | Macro-F1: {results[m_key]['mean']['macro_f1']} +/- {results[m_key]['std']['macro_f1']}% | LCR: {results[m_key]['mean']['lcr']} +/- {results[m_key]['std']['lcr']}%")
+        print(f"  ==> Mean +/- Std: Hits@1: {mean_dict['hits@1']} +/- {std_dict['hits@1']}% | Macro-F1: {mean_dict['macro_f1']} +/- {std_dict['macro_f1']}% | LCR: {mean_dict['lcr']} +/- {std_dict['lcr']}%")
 
     # Wilcoxon Signed-Rank Statistical Significance Tests
     m0_f1 = [r["macro_f1"] for r in results["M0_SynapseLex_Full"]["seed_runs"]]

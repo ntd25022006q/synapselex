@@ -38,15 +38,16 @@ class HarmonicTimeEmbedding(nn.Module):
     Continuous harmonic temporal embedding grounded in Bochner's Theorem.
     Maps continuous time intervals Delta t into orthogonal Fourier basis.
     """
-    def __init__(self, time_dim: int):
+    def __init__(self, time_dim: Optional[int] = None, d_time: Optional[int] = None):
         super().__init__()
-        assert time_dim % 2 == 0, "time_dim must be even"
-        self.time_dim = time_dim
+        effective_dim = time_dim if time_dim is not None else (d_time if d_time is not None else 32)
+        assert effective_dim % 2 == 0, "time_dim must be even"
+        self.time_dim = effective_dim
         # Geometric initialization of angular frequencies
-        half_dim = time_dim // 2
+        half_dim = effective_dim // 2
         frequencies = 1.0 / (10000.0 ** (torch.arange(0, half_dim, dtype=torch.float32) / half_dim))
         self.frequencies = nn.Parameter(frequencies)
-        self.scale = nn.Parameter(torch.tensor(math.sqrt(2.0 / time_dim)))
+        self.scale = nn.Parameter(torch.tensor(math.sqrt(2.0 / effective_dim)))
 
     def forward(self, delta_t: torch.Tensor) -> torch.Tensor:
         """
@@ -100,6 +101,24 @@ class DefeasibleDeonticHead(nn.Module):
             defeat_mask[0, 2] = +4.0  # Justified Dung Grounded Extension: DISMISS_STATUTE_LAPSED
             logits = logits + defeat_mask
         return logits
+
+class LegalMarkovGating(nn.Module):
+    """
+    Markovian Legal State-Transition Gating Layer.
+    Gates representations across 4 operational contract regimes:
+    0: Valid, 1: Voidable, 2: Void_Ab_Initio, 3: Extinguished.
+    """
+    def __init__(self, num_states: int = 4, hidden_dim: int = 64):
+        super().__init__()
+        self.state_embed = nn.Embedding(num_states, hidden_dim)
+        self.gate = nn.Linear(hidden_dim * 2, hidden_dim)
+
+    def forward(self, h: torch.Tensor, state_idx: torch.Tensor) -> torch.Tensor:
+        if state_idx.dim() == 0:
+            state_idx = state_idx.unsqueeze(0)
+        s_emb = self.state_embed(state_idx)
+        g = torch.sigmoid(self.gate(torch.cat([h, s_emb], dim=-1)))
+        return h * g
 
 class TemporalGraphAttentionLayer(nn.Module):
     """
@@ -216,7 +235,8 @@ class SynapseLexTGAT(nn.Module):
         use_ontology: bool = True,
         use_temporal: bool = True,
         lambda_onto: float = 2.0,
-        lambda_state: float = 0.5
+        lambda_state: float = 0.5,
+        **kwargs
     ):
         super().__init__()
         self.hidden_dim = hidden_dim
@@ -254,13 +274,12 @@ class SynapseLexTGAT(nn.Module):
             nn.Linear(hidden_dim // 2, NUM_LEGAL_STATES)
         )
 
-        # Head 2: Adjudication Verdict Classifier
-        self.verdict_head = nn.Sequential(
-            nn.Linear(hidden_dim * 2 + NUM_LEGAL_STATES, hidden_dim),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(hidden_dim, NUM_VERDICT_CLASSES)
+        # Head 2: Adjudication Verdict Classifier with Defeasible Deontic Reasoning
+        self.defeasible_head = DefeasibleDeonticHead(
+            in_features=hidden_dim * 2 + NUM_LEGAL_STATES,
+            num_classes=NUM_VERDICT_CLASSES
         )
+        self.verdict_head = self.defeasible_head.verdict_proj
 
     def forward(self, graph_dict: Dict[str, Any]) -> Dict[str, torch.Tensor]:
         x = graph_dict["x"]                        # [N, in_feat_dim]
@@ -296,17 +315,12 @@ class SynapseLexTGAT(nn.Module):
         is_land = torch.tensor([[1.0]], device=h.device)
         h_graph = self.nh_arbiter(h_graph, is_land)
 
-        # 6. Combined Adjudication Verdict
+        # 6. Combined Adjudication Verdict via Defeasible Deontic Reasoning
         h_combined = torch.cat([h_graph, h_contract, state_logits], dim=-1) # [1, 2*hidden_dim + 4]
-        verdict_logits = self.verdict_head(h_combined) # [1, 4]
-
-        # 7. Formal Description Logic Axiomatic Grounding
-        # BLDS 2015 Article 429: If elapsed days > 1095 without tolling -> Statute Lapsed
-        if self.use_ontology and is_statute_lapsed > 0.5:
-            # Add monotonic boost to DISMISS_STATUTE_LAPSED (index 2)
-            tbox_bias = torch.zeros_like(verdict_logits)
-            tbox_bias[0, 2] = 4.0
-            verdict_logits = verdict_logits + tbox_bias
+        if self.use_ontology:
+            verdict_logits = self.defeasible_head(h_combined, is_statute_lapsed)
+        else:
+            verdict_logits = self.verdict_head(h_combined)
 
         return {
             "verdict_logits": verdict_logits,
@@ -355,6 +369,10 @@ class SynapseLexTGAT(nn.Module):
 
         total_loss = l_verdict + self.lambda_state * l_state + self.lambda_onto * l_axiom
         return total_loss, l_verdict, l_state, l_axiom
+
+# Backwards compatibility aliases for reproduction suite & earlier research scripts
+HarmonicFourierEncoder = HarmonicTimeEmbedding
+AxiomTGAT = SynapseLexTGAT
 
 if __name__ == "__main__":
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

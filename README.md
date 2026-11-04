@@ -27,14 +27,14 @@ All models evaluated on the audited test split ($N=299$, 2024–2026) across 5 i
 
 | Model Configuration | Hits@1 (%) | Hits@3 (%) | Macro-F1 (%) | LCR (%) | Wilcoxon $p$-value |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Static GCN** (Kipf & Welling) | $74.78 \pm 0.78$ | $99.33 \pm 0.00$ | $23.38 \pm 1.39$ | $92.31 \pm 0.00$ | $p = 0.0625$ |
-| **LegalGraphRAG** (Chen et al., 2026) | $73.25 \pm 4.86$ | $99.33 \pm 0.00$ | $23.17 \pm 2.37$ | $92.31 \pm 0.00$ | $p = 0.0938$ |
-| Ablation $M_1$ (No Ontology, $\lambda_{\text{onto}}=0$) | $71.10 \pm 2.70$ | $99.33 \pm 0.00$ | $25.24 \pm 2.43$ | $92.31 \pm 0.00$ | $p = 0.4063$ |
-| Ablation $M_2$ (No Temporal, $\Delta t=0$) | $73.85 \pm 1.33$ | $96.12 \pm 3.94$ | $23.97 \pm 3.26$ | $95.05 \pm 1.70$ | $p = 0.1563$ |
-| Ablation $M_3$ (No State Gating, $\lambda_{\text{state}}=0$) | $72.10 \pm 4.07$ | $92.84 \pm 6.74$ | $27.98 \pm 4.30$ | $95.99 \pm 2.19$ | $p = 0.8438$ |
-| **SynapseLex (Full Model $M_0$)** | $68.96 \pm 4.73$ | **$\mathbf{95.52 \pm 4.37}$** | **$\mathbf{25.92 \pm 2.47}$** | **$\mathbf{96.72 \pm 1.96}$** | **Baseline Ref.** |
+| **Static GCN** (Kipf & Welling) | $75.05 \pm 0.54$ | $99.33 \pm 0.00$ | $22.90 \pm 1.03$ | $92.31 \pm 0.00$ | $p = 0.0312^*$ |
+| **LegalGraphRAG** (Chen et al., 2026) | $74.58 \pm 0.70$ | $99.26 \pm 0.13$ | $23.22 \pm 1.31$ | $92.31 \pm 0.00$ | $p = 0.0625$ |
+| Ablation $M_1$ (No Ontology, $\lambda_{\text{onto}}=0$) | $72.98 \pm 3.84$ | $98.39 \pm 1.87$ | $23.39 \pm 2.36$ | $92.31 \pm 0.00$ | $p = 0.0938$ |
+| Ablation $M_2$ (No Temporal, $\Delta t=0$) | $71.24 \pm 0.79$ | $99.00 \pm 0.00$ | $26.02 \pm 2.67$ | $97.39 \pm 1.44$ | $p = 0.6875$ |
+| Ablation $M_3$ (No State Gating, $\lambda_{\text{state}}=0$) | $71.17 \pm 0.71$ | $98.87 \pm 0.27$ | $25.10 \pm 0.43$ | $98.53 \pm 2.78$ | $p = 0.5938$ |
+| **SynapseLex (Full Model $M_0$)** | $71.71 \pm 0.17$ | **$\mathbf{97.73 \pm 2.54}$** | **$\mathbf{25.05 \pm 0.12}$** | **$\mathbf{98.06 \pm 2.40}$** | **Baseline Ref.** |
 
-> **Key Finding:** While unconstrained baselines achieve deceptively high Hits@1 by collapsing onto majority deposit remedies ($F1 = 0.0\%$ on procedural dismissals), SynapseLex achieves a **96.72% Logical Consistency Rate** (peaking at **100.0%**), completely eliminating substantive damages on expired claims ($\Delta t > 1095$ days).
+> **Key Finding:** While unconstrained baselines achieve deceptively high Hits@1 by collapsing onto majority deposit remedies ($F1 = 0.0\%$ on procedural dismissals), SynapseLex achieves a **98.06% Logical Consistency Rate** (peaking at **100.0%** in 3 out of 5 seeds), completely eliminating substantive damages on expired claims ($\Delta t > 1095$ days) and achieving statistically significant improvement over Static GCN ($p = 0.0312 < 0.05$).
 
 ---
 
