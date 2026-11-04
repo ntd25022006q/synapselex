@@ -270,7 +270,7 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 \draw[dataflow, draw=rose] (contract) -- node[right, font=\fontsize{5}{6}\selectfont\color{rose}] {breach} (breach);
 \draw[dataflow, draw=inkslate] (breach) -- node[right, font=\fontsize{5}{6}\selectfont] {dispute} (suit);
 
-\node[font=\fontsize{5}{6}\selectfont\bfseries\color{royal}, align=center] at (0, -2.9) {
+\node[font=\scriptsize\bfseries\color{royal}, align=center] at (0, -2.9) {
     Topology $\mathcal{G} = (\mathcal{V}, \mathcal{E}, \mathcal{T}, \mathcal{R})$\\
     $\mathbf{H}^{(0)} \in \mathbb{R}^{|\mathcal{V}| \times d}$
 };
@@ -302,7 +302,7 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 \draw[dataflow] (bochner) -- (att);
 \draw[dataflow] (att) -- (agg);
 
-\node[font=\fontsize{5}{6}\selectfont\bfseries\color{royal!80!black}, align=center] at (4.0, -2.9) {
+\node[font=\scriptsize\bfseries\color{royal!80!black}, align=center] at (4.0, -2.9) {
     Decoupled Dual Clocks\\
     Graph Vector $\mathbf{h}_{\mathcal{G}}(t) \in \mathbb{R}^d$
 };
@@ -333,7 +333,7 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 \draw[dataflow] (dag) -- (fsm);
 \draw[dataflow] (fsm) -- (states);
 
-\node[font=\fontsize{5}{6}\selectfont\bfseries\color{amber!90!black}, align=center] at (8.0, -2.9) {
+\node[font=\scriptsize\bfseries\color{amber!90!black}, align=center] at (8.0, -2.9) {
     Discrete Region $\mathbf{z}_{\text{state}} \in \Delta^3$\\
     Hierarchical Modulation
 };
@@ -364,7 +364,7 @@ The overarching system architecture of SynapseLex is depicted in Figure~\ref{fig
 \draw[dataflow] (dung) -- (verdict);
 \draw[dataflow] (verdict) -- (onto);
 
-\node[font=\fontsize{5}{6}\selectfont\bfseries\color{rose!90!black}, align=center] at (12.0, -2.9) {
+\node[font=\scriptsize\bfseries\color{rose!90!black}, align=center] at (12.0, -2.9) {
     Axiomatic Regularisation\\
     Defeasible Enforcement
 };
@@ -629,103 +629,8 @@ Figure~\ref{fig:dual_clock_trajectory} illustrates the non-autonomous dynamical 
 
 \begin{figure}[!ht]
 \centering
-\resizebox{0.95\textwidth}{!}{%
-\begin{tikzpicture}[
-    x=0.75cm, y=0.38cm,
-    >=Stealth,
-    font=\sffamily\small,
-    axis/.style={->, line width=1.1pt, draw=inkslate},
-    gridline/.style={draw=slatecard!80, line width=0.5pt},
-    threshold/.style={dashed, line width=1.2pt, draw=rose},
-    synapsetraj/.style={line width=2.2pt, draw=emerald},
-    naivetraj/.style={dashed, line width=1.1pt, draw=inkslate!50},
-    countertraj/.style={densely dashed, line width=1.2pt, draw=amber}
-]
-
-% Clean Grid
-\foreach \x in {2,4,6,8,10,12,14,16}
-    \draw[gridline] (\x, 0) -- (\x, 14.0);
-\foreach \y in {2,4,6,8,10,12}
-    \draw[gridline] (0, \y) -- (16.2, \y);
-
-% Tolling Shaded Zone (t in [3.5, 6.5], days 350 to 650)
-\fill[emeraldsoft, opacity=0.85] (3.5, 0) rectangle (6.5, 14.0);
-\draw[emerald!60, dashed, line width=0.8pt] (3.5, 0) -- (3.5, 14.0);
-\draw[emerald!60, dashed, line width=0.8pt] (6.5, 0) -- (6.5, 14.0);
-
-% Procedural Bar Extinction Shaded Area (tau >= 10.95)
-\fill[rosesoft, opacity=0.6] (0, 10.95) rectangle (16.2, 14.0);
-
-% Extinction Threshold Line (tau = 10.95 = 1,095 days)
-\draw[threshold] (0, 10.95) -- (16.2, 10.95);
-
-% Threshold Pill Label placed cleanly at the left ABOVE the line
-\node[anchor=south west, font=\tiny\bfseries\color{rose}, fill=white, draw=rose, line width=0.6pt, inner sep=2.5pt, rounded corners=3pt] at (0.2, 11.25) {
-    Art. 429 Extinction Threshold ($\tau_{\mathrm{bar}} = 1,095\text{d}$)
-};
-
-% Axes
-\draw[axis] (0, 0) -- (16.5, 0) node[below right, font=\footnotesize\bfseries] {Physical Calendar Days $t$};
-\draw[axis] (0, 0) -- (0, 14.5) node[above left, font=\footnotesize\bfseries, align=center] {Procedural Latency\\$\tau(t)$ (days)};
-
-% Tick Labels X
-\foreach \x/\val in {0/0, 2/200, 4/400, 6/600, 8/800, 10/1000, 12/1200, 14/1400, 16/1600}
-    \node[below, font=\scriptsize] at (\x, -0.05) {\val};
-
-% Tick Labels Y
-\foreach \y/\val in {2/200, 4/400, 6/600, 8/800, 10/1000, 12/1200}
-    \node[left, font=\scriptsize] at (-0.05, \y) {\val};
-
-% Trajectory 1: Naive Monotonic Physical Clock (tau = t)
-\draw[naivetraj] (0, 0) -- (10.95, 10.95) -- (12.5, 12.5);
-\fill[rose] (10.95, 10.95) circle (2.5pt);
-\node[anchor=south, font=\tiny\bfseries\color{rose}, fill=white, draw=rose, line width=0.6pt, inner sep=2.5pt, rounded corners=3pt] at (10.8, 11.8) {
-    Naive Clock: False Extinction ($t=1,095\text{d}$)
-};
-
-% Trajectory 2: Counterfactual (Tolled but No Restart)
-\draw[countertraj] (6.5, 3.5) -- (13.95, 10.95);
-\fill[amber] (13.95, 10.95) circle (2.5pt);
-\node[anchor=south east, font=\tiny\bfseries\color{amber}, fill=white, draw=amber, line width=0.6pt, inner sep=2.5pt, rounded corners=3pt] at (15.8, 11.25) {
-    Extinction w/o Restart ($t=1,395\text{d}$)
-};
-
-% Trajectory 3: SynapseLex Non-Monotonic Jurisprudential Trajectory tau(t)
-\draw[synapsetraj] (0, 0) -- (3.5, 3.5);
-\draw[synapsetraj] (3.5, 3.5) -- (6.5, 3.5);
-\draw[synapsetraj] (6.5, 3.5) -- (9.0, 6.0);
-\draw[->, line width=1.5pt, draw=rose, dashed] (9.0, 6.0) -- (9.0, 0.1);
-\fill[rose] (9.0, 6.0) circle (2.5pt);
-\fill[emerald] (9.0, 0.0) circle (2.5pt);
-\draw[synapsetraj] (9.0, 0.0) -- (16.0, 7.0);
-
-% Annotation 1: Tolling Plateau (Above plateau at t in [3.5, 6.5])
-\node[draw=emerald, fill=white, rounded corners=4pt, line width=0.8pt, inner sep=4pt, font=\scriptsize, align=center] at (4.5, 5.2) {
-    \textbf{Tolling Operator $\mathcal{T}_{\text{freeze}}$ (Art. 156)}\\[2.5pt]
-    Force Majeure Tolling\\[2.5pt]
-    \textit{Procedural clock frozen: $\frac{d\tau}{dt} = 0$}
-};
-\draw[->, line width=0.8pt, draw=emerald] (4.5, 3.9) -- (4.5, 3.55);
-
-% Annotation 2: Restart Operator (Placed cleanly at t=9.2, y=8.8)
-\node[draw=rose, fill=white, rounded corners=4pt, line width=0.8pt, inner sep=4pt, font=\scriptsize, align=center] at (9.2, 8.8) {
-    \textbf{Restart Operator $\mathcal{R}_{\text{restart}}$ (Art. 157)}\\[2.5pt]
-    Debt Acknowledgment Reset\\[2.5pt]
-    \textit{Procedural clock reset: $\tau(t^+) = 0$}
-};
-\draw[->, line width=0.8pt, draw=rose] (9.2, 7.5) -- (9.05, 6.15);
-
-% Annotation 3: Status at t = 1600 days (In open white space below trajectory)
-\node[draw=emerald, fill=emeraldsoft, rounded corners=4pt, line width=0.9pt, inner sep=4pt, font=\scriptsize, align=center] at (13.5, 2.2) {
-    \textbf{Active \& Enforceable!}\\[2pt]
-    At $t = 1,600\text{d}$: $\tau(t) = 700\text{d}$\\[2pt]
-    $\tau < 1,095\text{d} \implies \mathcal{S}_0 \text{ Valid}$
-};
-\draw[->, line width=0.8pt, draw=emerald] (14.2, 3.4) -- (15.5, 6.3);
-
-\end{tikzpicture}%
-}
-\caption{Dual-Clock Jurisprudential Dynamics under the Vietnamese Civil Code 2015. Decoupling physical calendar time $t$ from procedural latency $\tau(t)$ via force majeure tolling ($\mathcal{T}_{\text{freeze}}$, Article 156) and debt acknowledgment restart ($\mathcal{R}_{\text{restart}}$, Article 157).}
+\includegraphics[width=\textwidth]{figures/fig3_bochner_dual_clock.pdf}
+\caption{Continuous Spectral Dynamics and Dual-Clock Jurisprudential Latency under the Vietnamese Civil Code 2015. (a) Continuous Bochner harmonic Fourier embedding $\mathbf{\Phi}_d(\Delta t)$ across geometric frequency scales, illustrating smooth spectral decay into the Article~429 procedural bar zone ($\Delta t > 1,095$ days). (b) Operative latency $\tau(t)$ dynamically decoupling from physical calendar time $t$ under COVID-19 administrative tolling ($\mathcal{T}_{\mathrm{freeze}}$, Article~156), preserving valid contract enforcement at $t=1,200\text{d}$ where naive baselines mistakenly extinguish substantive claims.}
 \label{fig:dual_clock_trajectory}
 \end{figure}
 
@@ -1131,6 +1036,13 @@ As demonstrated in Table~\ref{tab:main_results} and Table~\ref{tab:per_class_res
 
 % ------------------------------------------------------------------------
 
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.82\textwidth]{figures/fig4_pareto_arena.pdf}
+\caption{Pareto Efficiency Analysis across the 10-Model Arena ($N=920$ test cases). SynapseLex ($M_0$) achieves SOTA Adjudication Accuracy ($86.41\%$) within the ultra-low real-time judicial inference regime ($1.5\text{ ms}$), achieving up to $800\times$ speedup over frontier reasoning models (GPT-4o, DeepSeek-R1) while eliminating procedural hallucinations.}
+\label{fig:pareto_efficiency}
+\end{figure}
 
 \subsection{Comparative Evaluation Against Frontier Large Language Models}
 \label{sec:llm_comparison}
