@@ -1,4 +1,4 @@
-\begin{thebibliography}{23}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -44,6 +44,14 @@ Matthew Dahl, Varun Magesh, Mirac Suzgun, and Daniel~E. Ho.
   language models.
 \newblock \emph{Journal of Legal Analysis}, 16\penalty0 (1):\penalty0 302--340,
   2024.
+
+\bibitem[{DeepSeek-AI} et~al.(2025){DeepSeek-AI}, Guo, Yang, Zhang, Song,
+  Zhang, Xu, Zhu, Ma, and Wang]{deepseek2025r1}
+{DeepSeek-AI}, Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Ruoyu Zhang,
+  Runxin Xu, Qihao Zhu, Shirong Ma, and Peiyi Wang.
+\newblock {DeepSeek-R1}: Incentivizing reasoning capability in {LLMs} via
+  reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2501.12948}, 2025.
 
 \bibitem[Deveci et~al.(2026)Deveci, Sartor, and Bench-Capon]{deveci2026arggym}
 Mehmet Deveci, Giovanni Sartor, and Trevor Bench-Capon.
@@ -97,6 +105,12 @@ Thomas~N. Kipf and Max Welling.
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2017.
 
+\bibitem[Nguyen and Nguyen(2020)]{nguyen2021phobert}
+Dat~Quoc Nguyen and Anh~Tuan Nguyen.
+\newblock {PhoBERT}: Pre-trained language models for vietnamese.
+\newblock \emph{Findings of the Association for Computational Linguistics
+  (EMNLP)}, pages 1037--1042, 2020.
+
 \bibitem[Pavlyshenko and Romanko(2026)]{ualegalbench2026}
 Bohdan~V. Pavlyshenko and Oleksandr Romanko.
 \newblock {UA-Legal-Bench}: A benchmark for evaluating large language models on
@@ -113,6 +127,14 @@ Henry Prakken and Giovanni Sartor.
 Henry Prakken and Giovanni Sartor.
 \newblock Law and logic: a review from an argumentation perspective.
 \newblock \emph{Artificial Intelligence}, 227:\penalty0 214--245, 2015.
+
+\bibitem[Rossi et~al.(2020)Rossi, Chamberlain, Frasca, Eynard, Monti, and
+  Bronstein]{rossi2020temporal}
+Emanuele Rossi, Ben Chamberlain, Fabrizio Frasca, Davide Eynard, Federico
+  Monti, and Michael Bronstein.
+\newblock Temporal graph networks for deep learning on dynamic graphs.
+\newblock In \emph{NeurIPS Workshop on Graph Representation Learning and
+  Beyond}, 2020.
 
 \bibitem[Sadowski(2026)]{sadowski2026contexts}
 Albert Sadowski.
@@ -146,17 +168,17 @@ Petar Veli{\v{c}}kovi{\'c}, Guillem Cucurull, Arantxa Casanova, Adriana Romero,
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2018.
 
-\bibitem[Xiao et~al.(2021)Xiao, Han, Sun, Yang, Zhang, Meng, and
-  Wu]{xiao2021lawformer}
-Chaojun Xiao, Xuefei Han, Chaojun Sun, Baosong Yang, Tianyang Zhang, Yuxian
-  Meng, and Fei Wu.
-\newblock {Lawformer}: A pre-trained language model for legal long documents.
-\newblock \emph{AI Open}, 2:\penalty0 79--84, 2021.
-
 \bibitem[Xu et~al.(2020)Xu, Ruan, Korpeoglu, Kumar, and Achan]{xu2020inductive}
 Da~Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan.
 \newblock Inductive representation learning on temporal graphs.
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2020.
+
+\bibitem[Yu et~al.(2023)Yu, Sun, Du, and Lv]{yu2023towards}
+Le~Yu, Leilei Sun, Bowen Du, and Weifeng Lv.
+\newblock Towards better dynamic graph learning: New architecture and unified
+  library.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, volume~36, pages 65874--65898, 2023.
 
 \end{thebibliography}
