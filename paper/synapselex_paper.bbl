@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -17,6 +17,12 @@ Franz Baader, Diego Calvanese, Deborah~L. McGuinness, Daniele Nardi, and
 Salomon Bochner.
 \newblock Lectures on fourier integrals.
 \newblock \emph{Annals of Mathematics Studies}, 42, 1959.
+
+\bibitem[Boven et~al.(2026)Boven, Behnke, and Graus]{boven2026machina}
+Daan Boven, Gregor Behnke, and David Graus.
+\newblock Machina pauliana: A neuro-symbolic approach to the actio pauliana in
+  dutch insolvency law.
+\newblock \emph{arXiv preprint arXiv:2610.26241}, 2026.
 
 \bibitem[Caminada(2006)]{caminada2006issue}
 Martin Caminada.
@@ -117,6 +123,11 @@ Bohdan~V. Pavlyshenko and Oleksandr Romanko.
   legal reasoning.
 \newblock \emph{arXiv preprint arXiv:2605.29170}, 2026.
 
+\bibitem[Popper(2005)]{popper2005logic}
+Karl Popper.
+\newblock \emph{The Logic of Scientific Discovery}.
+\newblock Routledge, 2005.
+
 \bibitem[Prakken and Sartor(2002)]{prakken2002law}
 Henry Prakken and Giovanni Sartor.
 \newblock The role of logic in computational models of legal argument.
@@ -148,6 +159,12 @@ Amit Sharma, Rahul Patel, and Sunita Gupta.
   misapplication in judicial verdict prediction.
 \newblock \emph{arXiv preprint arXiv:2611.03576}, 2026.
 
+\bibitem[S{'o}jka and Kowalczyk(2026)]{sojka2026accurate}
+Stanis{\l}aw S{'o}jka and Witold Kowalczyk.
+\newblock Accurate legal reasoning at scale: Neuro-symbolic offloading and
+  structural auditability for robust legal adjudication.
+\newblock \emph{arXiv preprint arXiv:2605.02472}, 2026.
+
 \bibitem[Tang(2026)]{tang2026evidential}
 Shuai Tang.
 \newblock Evidential-based higher-order set argumentation framework.
@@ -167,6 +184,14 @@ Petar Veli{\v{c}}kovi{\'c}, Guillem Cucurull, Arantxa Casanova, Adriana Romero,
 \newblock Graph attention networks.
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2018.
+
+\bibitem[Wang et~al.(2026)Wang, Tian, Wang, Gao, Shen, Sun, La, and
+  Yu]{wang2026prose}
+Yimeng Wang, Zeyuan Tian, Xinyu Wang, Danyang Gao, Chenglei Shen, Zhongxiang
+  Sun, Lei La, and Weijie Yu.
+\newblock {PROSE}: Preservation-constrained selective editing for guilty bias
+  in legal judgment prediction.
+\newblock \emph{arXiv preprint arXiv:2611.04921}, 2026.
 
 \bibitem[Xu et~al.(2020)Xu, Ruan, Korpeoglu, Kumar, and Achan]{xu2020inductive}
 Da~Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan.

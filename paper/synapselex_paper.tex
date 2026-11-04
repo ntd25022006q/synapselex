@@ -168,6 +168,12 @@ In civil adjudication, a claim for deposit forfeiture may have overwhelming fact
 \end{equation}
 Furthermore, SynapseLex couples this procedural latency into the \textit{Defeasible Argumentation Adjudication Head} (DAAH), grounded in the seminal Abstract Argumentation Framework of \citet{dung1995acceptability} and \citet{prakken2015formal}. Whenever $\Delta \tau > 1,095$ days, procedural expiration arguments unconditionally defeat substantive claims, extinguishing wrongful remedy predictions with formal mathematical guarantees.
 
+\subsection{Frontier 4: Neuro-Symbolic Compilation and Counterfactual Decision Bias}
+Two complementary breakthroughs in late 2026 computational jurisprudence have further illuminated the boundaries of legal AI:
+\paragraph{Amortized Neuro-Symbolic Compilation:} \citet{sojka2026accurate} (*Delos AI*, May 2026) introduced the paradigm of \textit{Amortized Intelligence}, demonstrating that runtime LLM reasoning across complex contractual provisions experiences a catastrophic `reasoning cliff'' and incurs up to $13.4\times$ higher inference token overhead. While their Deterministic Autonomous Contract Language (DACL) executes typed graph representations with deterministic guarantees, the authors explicitly acknowledge that DACL is fundamentally restricted to first-order arithmetic and range-based lookups, lacking support for defeasible argumentation, statutory hierarchy arbitrations, or open-textured civil norms. In parallel, \citet{boven2026machina} (*University of Amsterdam*, October 2026) demonstrated that civil law adjudication in continental jurisdictions requires coupling formal rule-based code (written in Catala) with case-based reasoning over prior civil judgments to resolve open-textured legal requirements.
+
+\paragraph{Counterfactual Decision Bias in Legal Adjudication:} Most recently, \citet{wang2026prose} (*University of Chicago \& UIBE*, November 2026) identified a pervasive \textit{Guilty Bias} across frontier language models on the CAIL-MC benchmark (11,478 matched pairs): models stubbornly retain a liability decree even after a legally decisive factual condition has been altered such that the charge is legally untenable. In civil adjudication, this vulnerability manifests as \textit{Substantive Remedy Bias}---where statistical models continue granting damages or restitution despite the expiration of mandatory procedural limitation periods. SynapseLex directly bridges these frontiers by uniting continuous-time dynamic graph attention with defeasible Dung argumentation and an explicit 320-case paired counterfactual stress suite.
+
 % ------------------------------------------------------------------------
 \section{The VCLO Ontology Specification}
 \label{sec:ontology}
@@ -922,10 +928,12 @@ A foundational critique often directed at ontology-guided neuro-symbolic systems
 \section{The SynapseCivil-Bench Benchmark}
 \label{sec:benchmark}
 
-\subsection{Zero Mock Data and Public Judgment Acquisition}
-To eliminate synthetic artifacts and benchmark gaming, \textbf{SynapseCivil-Bench} was curated exclusively from genuine, pre-anonymized public judgments published on the official portal of the Supreme People's Court of Vietnam (\texttt{congbobanan.toaan.gov.vn}). Each record corresponds to a verifiable sequential identifier mapped to the official court PDF repository.
-
-A high-throughput crawler acquired 3,160 raw court judgments spanning provincial and superior appellate jurisdictions across Vietnam. Textual bodies were extracted directly from authentic multi-page PDFs using \texttt{pypdf}.
+\subsection{Dual-Component Benchmark Architecture: Empirical Core and Counterfactual Suite}
+To ensure both natural distributional fidelity and rigorous out-of-distribution boundary testing, \textbf{SynapseCivil-Bench v2} is constructed under a principled \textit{Dual-Component Architecture}:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Empirical Core ($\mathcal{D}_{\text{empirical}}$):} Comprises genuine, pre-anonymized public judgments crawled directly from the official portal of the Supreme People's Court of Vietnam (\texttt{congbobanan.toaan.gov.vn}), capturing authentic trial proceedings, authentic judicial language, and natural statutory dispute distributions across provincial and superior appellate jurisdictions.
+\item \textbf{Parametric Counterfactual Suite ($\mathcal{D}_{\text{counterfactual}}$):} Following the rigorous matched-pair methodology established by \citet{wang2026prose} in CAIL-MC, we curate a dedicated suite of 320 cases (160 paired factual/counterfactual contrasts). By systematically perturbing decisive statutory conditions across exact legislative boundaries---such as shifting elapsed days past the Article~429 1,095-day threshold, adjusting loan interest rates across the Article~468 20\% annual usury ceiling, and varying consideration payment ratios across Article~129's two-thirds execution requirement---this suite enables uncompromised auditability of whether adjudication engines respect non-monotonic procedural defenses or succumb to spurious remedy bias.
+\end{enumerate}
 
 \begin{table}[!ht]
 \centering
@@ -1247,11 +1255,13 @@ The High Court appellate decree fully mirrored SynapseLex's adjudication: confir
 \section{Ethical Considerations, Limitations, and Threats to Validity}
 \label{sec:limitations}
 
-\paragraph{Popperian Honesty and Negative Results:} In accordance with rigorous scientific reporting, we candidly disclose the limitations of SynapseLex:
+\paragraph{Popperian Honesty and Transparent Disclosure of Limitations:} In accordance with rigorous scientific reporting standards \citep{popper2005logic}, we candidly delineate the foundational boundaries of SynapseLex:
 \begin{enumerate}[label=(\roman*)]
-    \item \textbf{Extreme Class Imbalance:} Because genuine Vietnamese court judgments exhibit overwhelming empirical skew towards deposit forfeiture ($76.59\%$), minority procedural remedies remain challenging for statistical classifiers. SynapseLex addresses this through hard symbolic loss constraints rather than synthetic oversampling.
-    \item \textbf{Reliance on Extractable Chronology:} If a local court record omits dates, the continuous temporal encoder must fall back to default interval priors.
-    \item \textbf{Anonymization and Privacy Compliance:} All records were fully scrubbed of personally identifiable information (PII) in compliance with Decree 13/2023/ND-CP on Personal Data Protection.
+    \item \textbf{Natural Distributional Prior and Remedy Skew:} Genuine civil court proceedings exhibit severe empirical skew toward claims where the obligee establishes prima facie default ($76.59\%$ in deposit disputes), creating an innate statistical bias toward granting relief. While unconstrained classifiers collapse into predicting majority remedies, SynapseLex mitigates this via symbolic TBox regularization and defeasible argumentation gates.
+    \item \textbf{Expressivity Boundaries of Description Logic Formalization:} While OWL~2~DL ($\mathcal{SROIQ}$) provides deterministic decidability for hard statutory rules (Articles 129, 328, 429, and 468 BLDS 2015), it cannot fully automate subjective, open-textured judicial discretion---such as assessing whether subjective fault constitutes `gross negligence'' or whether an unforeseen hardship qualifies as an objective impediment under Article~156 in the absence of human witness testimony.
+    \item \textbf{Computational Complexity of TBox Consistency Checking:} Although neural forward inference in Axiom-TGAT executes in only $1.5\text{ ms}$, formal ontological verification using HermiT carries a worst-case $2\text{-NExpTime}$ complexity for arbitrary OWL~2~DL ontologies. While our 233-axiom TBox reasons in $0.42\text{ s}$, massive enterprise graphs with complex cyclic ownership structures may require restriction to tractable DL profiles such as $\mathcal{EL}^{++}$ or DL-Lite.
+    \item \textbf{Chronological Extraction Sensitivity and Scanning Artifacts:} If historic trial records omit critical execution or breach timestamps due to poor scanning or non-standard redactions, the continuous Bochner temporal encoder must fall back to conservative default interval priors.
+    \item \textbf{Human-in-the-Loop Governance and Privacy Safeguards:} SynapseLex is engineered strictly as an auditable judicial decision-support and consistency-auditing engine, never as an autonomous replacement for human judges. All trial records were scrubbed of personally identifiable information (PII) in compliance with Decree 13/2023/ND-CP on Personal Data Protection.
 \end{enumerate}
 
 % ------------------------------------------------------------------------
