@@ -1,9 +1,15 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{34}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Artale and Franconi(2005)]{artale2005temporal}
+Alessandro Artale and Enrico Franconi.
+\newblock Temporal description logics.
+\newblock In \emph{Handbook of Temporal Reasoning in Artificial Intelligence},
+  pages 375--418. Elsevier, 2005.
 
 \bibitem[Baader et~al.(2003)Baader, Calvanese, McGuinness, Nardi, and
   Patel-Schneider]{baader2003description}
@@ -12,6 +18,13 @@ Franz Baader, Diego Calvanese, Deborah~L. McGuinness, Daniele Nardi, and
 \newblock \emph{The Description Logic Handbook: Theory, Implementation, and
   Applications}.
 \newblock Cambridge University Press, 2003.
+
+\bibitem[Batsakis and Petrakis(2011)]{batsakis20114d}
+Sotiris Batsakis and Euripides G.~M. Petrakis.
+\newblock {SOWL}: A framework for handling spatio-temporal information in {OWL}
+  2.0.
+\newblock \emph{Rule-Based Reasoning, Programming, and Applications (RuleML
+  2011)}, pages 242--249, 2011.
 
 \bibitem[Bochner(1959)]{bochner1959lectures}
 Salomon Bochner.
@@ -78,6 +91,12 @@ Lon~L. Fuller.
 \newblock \emph{The Morality of Law}.
 \newblock Yale University Press, New Haven, CT, 1969.
 
+\bibitem[H{\'a}jek(1998)]{hajek2013metamathematics}
+Petr H{\'a}jek.
+\newblock \emph{Metamathematics of Fuzzy Logic}, volume~4 of \emph{Trends in
+  Logic}.
+\newblock Springer Science \& Business Media, 1998.
+
 \bibitem[Hogan et~al.(2021)Hogan, Blomqvist, Cochez, d'Amato, de~Melo,
   Gutierrez, Kirrane, Gayo, Navigli, Neumaier, Ngomo, Polleres, Rashid, Rula,
   Schmelzeisen, Sequeda, Staab, and Zimmermann]{hogan2021knowledge}
@@ -89,6 +108,13 @@ Aidan Hogan, Eva Blomqvist, Michael Cochez, Claudia d'Amato, Gerard de~Melo,
 \newblock Knowledge graphs.
 \newblock \emph{ACM Computing Surveys}, 54\penalty0 (4):\penalty0 71:1--71:37,
   2021.
+
+\bibitem[Horrocks et~al.(2006)Horrocks, Kutz, and Sattler]{horrocks2006even}
+Ian Horrocks, Oliver Kutz, and Ulrike Sattler.
+\newblock The even more irresistible {SROIQ}.
+\newblock In \emph{Proceedings of the 10th International Conference on
+  Principles of Knowledge Representation and Reasoning (KR 2006)}, pages
+  57--67, 2006.
 
 \bibitem[Kazemi et~al.(2019)Kazemi, Goel, Eghbali, Ramanan, Sahota, Thakur, Wu,
   Smyth, Poupart, and Brubaker]{kazemi2019time2vec}
@@ -103,6 +129,11 @@ Thomas~N. Kipf and Max Welling.
 \newblock Semi-supervised classification with graph convolutional networks.
 \newblock In \emph{Proceedings of the International Conference on Learning
   Representations (ICLR)}, 2017.
+
+\bibitem[{\L}ukasiewicz(1970)]{lukasiewicz1970selected}
+Jan {\L}ukasiewicz.
+\newblock \emph{Selected Works}.
+\newblock North-Holland Publishing Company, Amsterdam, 1970.
 
 \bibitem[Nguyen and Nguyen(2020)]{nguyen2021phobert}
 Dat~Quoc Nguyen and Anh~Tuan Nguyen.
@@ -152,6 +183,12 @@ Stanis{\l}aw S{'o}jka and Witold Kowalczyk.
   structural auditability for robust legal adjudication.
 \newblock \emph{arXiv preprint arXiv:2605.02472}, 2026.
 
+\bibitem[van Harmelen and ten Teije(2022)]{van2022analyzing}
+Frank van Harmelen and Annette ten Teije.
+\newblock How boxology refers to the architecture of neuro-symbolic systems.
+\newblock \emph{Neuro-Symbolic Artificial Intelligence: The State of the Art},
+  pages 3--15, 2022.
+
 \bibitem[Vanderbilt et~al.(2026)Vanderbilt, Thorne, and
   Liu]{oxford2026lexkairos}
 Elena Vanderbilt, James Thorne, and Zhen Liu.
@@ -174,6 +211,12 @@ Yimeng Wang, Zeyuan Tian, Xinyu Wang, Danyang Gao, Chenglei Shen, Zhongxiang
 \newblock {PROSE}: Preservation-constrained selective editing for guilty bias
   in legal judgment prediction.
 \newblock \emph{arXiv preprint arXiv:2611.04921}, 2026.
+
+\bibitem[Welty and Fikes(2006)]{welty2006formal}
+Christopher Welty and Richard Fikes.
+\newblock A reusable ontology for fluents in {OWL}.
+\newblock \emph{Formal Ontology in Information Systems (FOIS 2006)},
+  150:\penalty0 226--236, 2006.
 
 \bibitem[Xu et~al.(2020)Xu, Ruan, Korpeoglu, Kumar, and Achan]{xu2020inductive}
 Da~Xu, Chuanwei Ruan, Evren Korpeoglu, Sushant Kumar, and Kannan Achan.

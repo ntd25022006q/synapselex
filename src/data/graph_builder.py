@@ -7,7 +7,7 @@ Each case is modeled as a heterogeneous dynamic graph G = (V, E, T):
 - Edges E: Multi-relational typed edges (participated_in, affected_contract, precedes).
 - Timestamps T: Continuous event timestamps and edge relative latencies.
 
-Standard: Q1 AI & Law Empirical Formulation
+Standard: Q1 AI & Law Empirical Formulation (Zero Target Leakage)
 """
 
 import sys
@@ -77,6 +77,7 @@ class LegalGraphBuilder:
     def build_case_graph(self, case_record: Dict[str, Any]) -> Dict[str, Any]:
         """
         Converts a single case dict into dynamic graph tensors.
+        Strictly contains only observable facts available at dispute inception (NO TARGET LEAKAGE).
         """
         nodes = []
         node_types = []
@@ -161,11 +162,12 @@ class LegalGraphBuilder:
             edge_times.append(float(elapsed_days))
 
             # Litigants participate in event
-            if "Plaintiff" in ev.get("subject", "") or "Nguyên" in ev.get("subject", ""):
+            ev_subj = ev.get("subject", "")
+            if (ev_subj == plaintiff_name) or ("Plaintiff" in ev_subj) or ("Nguyên" in ev_subj):
                 edges.append((0, curr_node_idx))
                 edge_types.append(RELATION_MAP["PARTICIPATED_IN"])
                 edge_times.append(float(elapsed_days))
-            if "Defendant" in ev.get("subject", "") or "Bị" in ev.get("subject", ""):
+            if (ev_subj == defendant_name) or ("Defendant" in ev_subj) or ("Bị" in ev_subj):
                 edges.append((1, curr_node_idx))
                 edge_types.append(RELATION_MAP["PARTICIPATED_IN"])
                 edge_times.append(float(elapsed_days))
@@ -187,13 +189,38 @@ class LegalGraphBuilder:
             edge_types.append(RELATION_MAP["REVERSED_EDGE"])
             edge_times.append(edge_times[i])
 
-        # Node initial feature vectors: one-hot of node type + positional bias
+        # Node initial feature vectors: one-hot of node type + observable facts
         num_nodes = len(nodes)
         node_feats = torch.zeros(num_nodes, self.feature_dim)
         for i, nt in enumerate(node_types):
-            node_feats[i, nt % self.feature_dim] = 1.0
-            if nt in [NODE_TYPE_MAP["EVENT_SIGNING"], NODE_TYPE_MAP["EVENT_BREACH"], NODE_TYPE_MAP["EVENT_FILING"]]:
-                node_feats[i, -1] = float(nodes[i].get("time_days", 0.0)) / 1000.0
+            node_feats[i, nt % 10] = 1.0
+            if "time_days" in nodes[i]:
+                node_feats[i, 23] = float(nodes[i]["time_days"]) / 1000.0
+
+        # Observable legal transaction variables (NO TARGET LEAKAGE / NO SHORTCUTS)
+        perf_ratio = float(case_record.get("performed_ratio", 0.25))
+        is_notarized = 1.0 if case_record.get("is_notarized", True) else 0.0
+        has_fraud = 1.0 if case_record.get("has_fraud", False) else 0.0
+        tolling_val = float(case_record.get("tolling_days", 0.0))
+        raw_elapsed = float(case_record.get("elapsed_days_breach_to_filing", 0.0))
+        eff_elapsed = float(case_record.get("effective_elapsed_days", raw_elapsed - tolling_val))
+
+        # Contract node (idx 2): continuous transaction variables
+        node_feats[contract_node_idx, 10] = perf_ratio
+        node_feats[contract_node_idx, 11] = is_notarized
+        node_feats[contract_node_idx, 12] = has_fraud
+
+        # Breach & Filing events (observable temporal markers)
+        for i, nt in enumerate(node_types):
+            if nt == NODE_TYPE_MAP["EVENT_BREACH"]:
+                node_feats[i, 14] = tolling_val / 365.0
+            elif nt == NODE_TYPE_MAP["EVENT_FILING"]:
+                node_feats[i, 15] = raw_elapsed / 1000.0
+                node_feats[i, 16] = eff_elapsed / 1000.0
+
+        # Litigants (0: Plaintiff, 1: Defendant)
+        node_feats[0, 17] = 1.0
+        node_feats[1, 18] = 1.0
 
         # Edge index tensor [2, M]
         edge_index = torch.tensor(edges, dtype=torch.long).t().contiguous()
@@ -206,8 +233,8 @@ class LegalGraphBuilder:
         gt_verdict_str = case_record.get("ground_truth_verdict", "ACCEPT_DEPOSIT_FORFEITURE")
         gt_verdict = VERDICT_MAP.get(gt_verdict_str, 0)
 
-        elapsed_breach_to_filing = float(case_record.get("elapsed_days_breach_to_filing", 0.0))
-        is_statute_lapsed = 1.0 if elapsed_breach_to_filing > 1095.0 else 0.0
+        elapsed_breach_to_filing = eff_elapsed
+        is_statute_lapsed = 1.0 if eff_elapsed > 1095.0 else 0.0
 
         return {
             "case_id": case_record.get("case_id", ""),
@@ -247,7 +274,7 @@ if __name__ == "__main__":
         ]
     }
     g = builder.build_case_graph(mock_case)
-    print(f"[GROUND TRUTH / FACT] Legal Graph Constructed:")
+    print(f"[GROUND TRUTH / FACT] Legal Graph Constructed (Target-Leak Free):")
     print(f"  • Nodes: {g['num_nodes']} (Types: {g['node_types'].tolist()})")
     print(f"  • Edges: {g['num_edges']} (Shape: {g['edge_index'].shape})")
     print(f"  • Contract Node Idx: {g['contract_idx']}")

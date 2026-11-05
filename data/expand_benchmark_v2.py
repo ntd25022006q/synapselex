@@ -90,62 +90,135 @@ def generate_case(case_num: int, domain: str, target_split: str) -> Dict[str, An
     defendant = make_name()
 
     # Domain specific timeline and ground truth logic
-    # We maintain 4 balanced classes:
-    # 0: Obligee Prevailed / Upheld (ACCEPT_DEPOSIT_FORFEITURE / ACCEPT_CLAIM)
-    # 1: Obligor Prevailed / Counter-Remedy (ACCEPT_DOUBLE_DEPOSIT_REFUND / NULLIFY_EXCESS)
+    # 4 balanced classes without trivial event-type shortcuts:
+    # 0: Obligee Prevailed / Upheld (ACCEPT_DEPOSIT_FORFEITURE)
+    # 1: Obligor Prevailed / Counter-Remedy (ACCEPT_DOUBLE_DEPOSIT_REFUND)
     # 2: DISMISS_STATUTE_LAPSED (Article 429: elapsed days > 1095)
-    # 3: DECLARE_CONTRACT_VOID (Formal / Legal defect, Art 131)
+    # 3: DECLARE_CONTRACT_VOID (Formal defect Art 129(2) or Fraud Art 127)
     
-    # Pick target class to keep balanced distribution
-    c_choice = random.choices([0, 1, 2, 3], weights=[0.32, 0.28, 0.22, 0.18])[0]
+    # Realistic judicial distribution
+    c_choice = random.choices([0, 1, 2, 3], weights=[0.36, 0.28, 0.20, 0.16])[0]
 
     events = []
     if c_choice == 2:
         # Lapsed statute of limitation: breach occurred > 1095 days before filing
-        breach_dt = filing_dt - timedelta(days=random.randint(1100, 1800))
-        signing_dt = breach_dt - timedelta(days=random.randint(30, 180))
-        events.append({"event_type": "contract_signing", "subject": plaintiff, "timestamp": signing_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "contractual_breach", "subject": defendant, "timestamp": breach_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "lawsuit_filing", "subject": plaintiff, "timestamp": filing_dt.strftime("%Y-%m-%d")})
-        gt_verdict = "DISMISS_STATUTE_LAPSED"
-        final_state = "Extinguished"
-        elapsed_days = (filing_dt - breach_dt).days
+        elapsed_days = random.randint(1105, 1750)
+        tolling_days = 0
+        effective_elapsed_days = elapsed_days
         is_statute_lapsed = True
-    elif c_choice == 3:
-        # Void contract
-        breach_dt = filing_dt - timedelta(days=random.randint(60, 600))
+        final_state = "Extinguished"
+        gt_verdict = "DISMISS_STATUTE_LAPSED"
+        performed_ratio = round(random.uniform(0.15, 0.40), 3)
+        is_notarized = random.random() > 0.40
+        has_fraud = False
+        fault_score = round(random.uniform(-0.80, 0.80), 3)
+        breach_subject = defendant if fault_score > 0 else plaintiff
+
+        breach_dt = filing_dt - timedelta(days=elapsed_days)
         signing_dt = breach_dt - timedelta(days=random.randint(30, 120))
-        events.append({"event_type": "contract_signing", "subject": plaintiff, "timestamp": signing_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "invalidity_discovery", "subject": defendant, "timestamp": breach_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "lawsuit_filing", "subject": plaintiff, "timestamp": filing_dt.strftime("%Y-%m-%d")})
-        gt_verdict = "DECLARE_CONTRACT_VOID"
+        deposit_dt = signing_dt
+        notice_dt = breach_dt + timedelta(days=random.randint(5, 20))
+
+    elif c_choice == 3:
+        # Void contract (Form defect uncured or Subjective fraud)
+        elapsed_days = random.randint(45, 750)
+        tolling_days = 0
+        effective_elapsed_days = elapsed_days
+        is_statute_lapsed = False
         final_state = "Void_Ab_Initio"
-        elapsed_days = (filing_dt - breach_dt).days
-        is_statute_lapsed = False
+        gt_verdict = "DECLARE_CONTRACT_VOID"
+
+        if random.random() < 0.65:
+            # Form defect under Art. 129(2) failure: performed ratio strictly under 2/3 (0.667)
+            is_notarized = False
+            performed_ratio = round(random.uniform(0.15, 0.655), 3)
+            has_fraud = False
+        else:
+            # Subjective fraud / latent encumbrance under Art. 127
+            is_notarized = random.random() > 0.50
+            performed_ratio = round(random.uniform(0.15, 0.50), 3)
+            has_fraud = True
+
+        fault_score = round(random.uniform(0.30, 0.85), 3)
+        breach_subject = defendant
+
+        breach_dt = filing_dt - timedelta(days=elapsed_days)
+        signing_dt = breach_dt - timedelta(days=random.randint(30, 120))
+        deposit_dt = signing_dt
+        notice_dt = breach_dt + timedelta(days=random.randint(5, 20))
+
     elif c_choice == 1:
-        # Defendant / Counter-claim prevailed
-        breach_dt = filing_dt - timedelta(days=random.randint(40, 500))
-        signing_dt = breach_dt - timedelta(days=random.randint(30, 90))
-        events.append({"event_type": "contract_signing", "subject": plaintiff, "timestamp": signing_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "deposit_payment", "subject": plaintiff, "timestamp": signing_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "contractual_breach", "subject": defendant, "timestamp": breach_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "lawsuit_filing", "subject": plaintiff, "timestamp": filing_dt.strftime("%Y-%m-%d")})
-        gt_verdict = "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        # Defendant / Counter-claim prevailed (Double deposit refund, Art. 328(2))
         final_state = "Voidable"
-        elapsed_days = (filing_dt - breach_dt).days
+        gt_verdict = "ACCEPT_DOUBLE_DEPOSIT_REFUND"
         is_statute_lapsed = False
-    else: # c_choice == 0
-        # Plaintiff forfeiture / enforcement prevailed
-        breach_dt = filing_dt - timedelta(days=random.randint(30, 450))
-        signing_dt = breach_dt - timedelta(days=random.randint(20, 80))
-        events.append({"event_type": "contract_signing", "subject": plaintiff, "timestamp": signing_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "deposit_payment", "subject": plaintiff, "timestamp": signing_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "refusal_to_execute", "subject": plaintiff, "timestamp": breach_dt.strftime("%Y-%m-%d")})
-        events.append({"event_type": "lawsuit_filing", "subject": defendant, "timestamp": filing_dt.strftime("%Y-%m-%d")})
-        gt_verdict = "ACCEPT_DEPOSIT_FORFEITURE"
+        has_fraud = False
+        fault_score = round(random.uniform(0.40, 0.95), 3)
+        breach_subject = defendant
+
+        if random.random() < 0.35:
+            # Form defect cured: performed ratio >= 2/3 (0.667) under Art. 129(2)
+            is_notarized = False
+            performed_ratio = round(random.uniform(0.668, 0.92), 3)
+        else:
+            is_notarized = True
+            performed_ratio = round(random.uniform(0.15, 0.40), 3)
+
+        if random.random() < 0.08:
+            # Tolling case: elapsed days > 1095, but COVID-19 Directive 16 tolling saves claim
+            tolling_days = random.randint(180, 240)
+            elapsed_days = random.randint(1105, 1220)
+            effective_elapsed_days = elapsed_days - tolling_days
+        else:
+            tolling_days = 0
+            elapsed_days = random.randint(35, 750)
+            effective_elapsed_days = elapsed_days
+
+        breach_dt = filing_dt - timedelta(days=elapsed_days)
+        signing_dt = breach_dt - timedelta(days=random.randint(30, 90))
+        deposit_dt = signing_dt
+        notice_dt = breach_dt + timedelta(days=random.randint(5, 20))
+
+    else:  # c_choice == 0
+        # Plaintiff forfeiture / enforcement prevailed (Deposit forfeiture, Art. 328(2))
         final_state = "Valid"
-        elapsed_days = (filing_dt - breach_dt).days
+        gt_verdict = "ACCEPT_DEPOSIT_FORFEITURE"
         is_statute_lapsed = False
+        has_fraud = False
+        fault_score = round(random.uniform(-0.95, -0.40), 3)
+        breach_subject = plaintiff
+
+        if random.random() < 0.35:
+            # Form defect cured: performed ratio >= 2/3 (0.667) under Art. 129(2)
+            is_notarized = False
+            performed_ratio = round(random.uniform(0.668, 0.92), 3)
+        else:
+            is_notarized = True
+            performed_ratio = round(random.uniform(0.15, 0.40), 3)
+
+        if random.random() < 0.08:
+            # Tolling case
+            tolling_days = random.randint(180, 240)
+            elapsed_days = random.randint(1105, 1220)
+            effective_elapsed_days = elapsed_days - tolling_days
+        else:
+            tolling_days = 0
+            elapsed_days = random.randint(35, 750)
+            effective_elapsed_days = elapsed_days
+
+        breach_dt = filing_dt - timedelta(days=elapsed_days)
+        signing_dt = breach_dt - timedelta(days=random.randint(20, 80))
+        deposit_dt = signing_dt
+        notice_dt = breach_dt + timedelta(days=random.randint(5, 20))
+
+    # Construct uniform 5-event timeline across ALL dispute types
+    events = [
+        {"event_type": "contract_signing", "subject": plaintiff, "timestamp": signing_dt.strftime("%Y-%m-%d")},
+        {"event_type": "deposit_payment", "subject": plaintiff, "timestamp": deposit_dt.strftime("%Y-%m-%d")},
+        {"event_type": "contractual_breach", "subject": breach_subject, "timestamp": breach_dt.strftime("%Y-%m-%d")},
+        {"event_type": "notice_of_breach", "subject": plaintiff if breach_subject == defendant else defendant, "timestamp": notice_dt.strftime("%Y-%m-%d")},
+        {"event_type": "lawsuit_filing", "subject": plaintiff, "timestamp": filing_dt.strftime("%Y-%m-%d")}
+    ]
 
     return {
         "case_id": case_id,
@@ -154,10 +227,16 @@ def generate_case(case_num: int, domain: str, target_split: str) -> Dict[str, An
         "defendant": defendant,
         "domain": domain,
         "earliest_deposit_date": events[0]["timestamp"],
-        "breach_date": events[1]["timestamp"],
+        "breach_date": events[2]["timestamp"],
         "filing_date": filing_dt.strftime("%Y-%m-%d"),
         "verdict_date": verdict_dt.strftime("%Y-%m-%d"),
         "elapsed_days_breach_to_filing": elapsed_days,
+        "effective_elapsed_days": effective_elapsed_days,
+        "tolling_days": tolling_days,
+        "performed_ratio": performed_ratio,
+        "is_notarized": is_notarized,
+        "has_fraud": has_fraud,
+        "fault_score": fault_score,
         "is_statute_lapsed": is_statute_lapsed,
         "final_state": final_state,
         "ground_truth_verdict": gt_verdict,
@@ -260,20 +339,33 @@ def build_benchmark_v2(output_dir: str):
         cf_pair["is_counterfactual"] = True
         cf_pair["pair_id"] = orig["case_id"]
         # Invert statute lapse or performance state
+        f_dt = datetime.strptime(orig["filing_date"], "%Y-%m-%d")
+        cf_events = [dict(ev) for ev in orig["temporal_events"]]
         if orig["is_statute_lapsed"]:
             # Counterfactual: timely filing (elapsed days < 1095)
             cf_pair["case_id"] = f"{orig['case_id']}_CF_TIMELY"
             cf_pair["elapsed_days_breach_to_filing"] = 400
+            cf_pair["effective_elapsed_days"] = 400
+            cf_pair["tolling_days"] = 0
             cf_pair["is_statute_lapsed"] = False
             cf_pair["final_state"] = "Valid"
             cf_pair["ground_truth_verdict"] = "ACCEPT_DEPOSIT_FORFEITURE"
+            cf_b_dt = f_dt - timedelta(days=400)
+            cf_events[2]["timestamp"] = cf_b_dt.strftime("%Y-%m-%d")
+            cf_pair["breach_date"] = cf_events[2]["timestamp"]
         else:
             # Counterfactual: delayed filing (elapsed days > 1095)
             cf_pair["case_id"] = f"{orig['case_id']}_CF_LAPSED"
             cf_pair["elapsed_days_breach_to_filing"] = 1250
+            cf_pair["effective_elapsed_days"] = 1250
+            cf_pair["tolling_days"] = 0
             cf_pair["is_statute_lapsed"] = True
             cf_pair["final_state"] = "Extinguished"
             cf_pair["ground_truth_verdict"] = "DISMISS_STATUTE_LAPSED"
+            cf_b_dt = f_dt - timedelta(days=1250)
+            cf_events[2]["timestamp"] = cf_b_dt.strftime("%Y-%m-%d")
+            cf_pair["breach_date"] = cf_events[2]["timestamp"]
+        cf_pair["temporal_events"] = cf_events
         
         cf_cases.append(orig)
         cf_cases.append(cf_pair)

@@ -1,150 +1,138 @@
-#!/usr/bin/env python3
 """
-SynapseLex: Interactive Judicial Inference and Explainability CLI
-=================================================================
-Demonstrates non-monotonic civil legal adjudication, continuous Fourier time
-attention, Markovian contractual state gating, and Description Logic enforcement.
-
-Usage:
-    python demo_inference.py --case_id DOC_1701750
-    python demo_inference.py --benchmark_index 0
-    python demo_inference.py --custom "Deposit on 2019-04-10, Breach on 2019-11-20, Lawsuit on 2024-03-12"
+SynapseLex: Interactive Neuro-Symbolic Legal Adjudication CLI
+=============================================================
+Demonstrates end-to-end inference on authentic civil dispute cases:
+1. Loads case facts, entities, and temporal timeline
+2. Constructs heterogeneous temporal case graph
+3. Computes continuous-time harmonic Fourier embeddings
+4. Applies Description Logic TBox constraints (BLDS 2015)
+5. Predicts adjudication verdict with defeasible reasoning rationale
 """
 
 import sys
 import os
 import json
-import math
 import argparse
-from datetime import datetime, date
-from pathlib import Path
+import torch
+import torch.nn.functional as F
 
-if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
+
+if sys.stdout.encoding.lower() != 'utf-8':
     try:
         sys.stdout.reconfigure(encoding='utf-8', errors='replace')
     except Exception:
         pass
 
-BASE_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(BASE_DIR))
-sys.path.insert(0, str(BASE_DIR / "src"))
+from synapselex.src.data.graph_builder import LegalGraphBuilder
+from synapselex.src.models.tgat_core import SynapseLexTGAT
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="SynapseLex Interactive Adjudication Engine")
-    parser.add_argument("--case_id", type=str, default="DOC_1701750", help="Case ID from SynapseCivil-Bench")
-    parser.add_argument("--benchmark_index", type=int, default=None, help="Index of case in test split")
-    parser.add_argument("--benchmark_file", type=str, default="data/benchmarks/synapse_civil_bench_test.json")
-    return parser.parse_args()
+VERDICT_NAMES = [
+    "CHẤP NHẬN PHẠT CỌC / YÊU CẦU KHỞI KIỆN (Obligee Prevailed)",
+    "CHẤP NHẬN PHẢN TỐ / HOÀN TRẢ TIỀN CỌC (Obligor Prevailed)",
+    "ĐÌNH CHỈ DO HẾT THỜI HIỆU KHỞI KIỆN - ĐIỀU 429 (Statute Lapsed)",
+    "TUYÊN BỐ HỢP ĐỒNG VÔ HIỆU TOÀN BỘ - ĐIỀU 129/131 (Contract Void)"
+]
 
-def compute_fourier_time_embedding(delta_t_days: float, d_time: int = 16):
-    """Bochner Harmonic Continuous Fourier Time Representation"""
-    omega = [1.0 / (10.0 ** (2 * (i // 2) / d_time)) for i in range(d_time)]
-    phi = []
-    for i, w in enumerate(omega):
-        val = math.cos(w * delta_t_days) if i % 2 == 0 else math.sin(w * delta_t_days)
-        phi.append(val / math.sqrt(d_time))
-    return phi
+STATE_NAMES = ["Hợp lệ (Valid)", "Có thể hủy bỏ (Voidable)", "Vô hiệu tuyệt đối (Void_Ab_Initio)", "Đã tiêu tán/Hết thời hiệu (Extinguished)"]
 
-def simulate_markov_state_evolution(earliest_deposit, breach_date, filing_date):
-    """Tracks contractual transitions: Valid -> Voidable -> Void_Ab_Initio -> Extinguished"""
-    states = ["Valid"]
-    t0 = datetime.fromisoformat(earliest_deposit).date() if earliest_deposit else None
-    t1 = datetime.fromisoformat(breach_date).date() if breach_date else None
-    t_file = datetime.fromisoformat(filing_date).date() if filing_date else None
-    
-    elapsed_days = (t_file - t1).days if (t1 and t_file) else 0
-    is_expired = elapsed_days > 1095
-    
-    if t1:
-        states.append("Voidable (Seller default / title defect)")
-    if is_expired:
-        states.append(f"Extinguished (Article 429 BLDS 2015: elapsed {elapsed_days}d > 1095d)")
-        
-    return states, elapsed_days, is_expired
+def run_demo(case_id: str = None, case_index: int = 0):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    bench_path = os.path.join(base_dir, "data", "benchmarks", "synapse_civil_bench_test.json")
+    ckpt_path = os.path.join(base_dir, "data", "best_synapselex_m0.pt")
 
-def run_judicial_adjudication(case: dict):
-    print("=" * 82)
-    print(f"  SYNAPSELEX JUDICIAL ADJUDICATION ENGINE: CASE ANALYSIS")
-    print("=" * 82)
-    print(f"  [Case ID]:      {case.get('case_id', 'UNKNOWN')} (Doc ID: {case.get('doc_id')})")
-    print(f"  [Court]:        {case.get('court_name')}")
-    print(f"  [Verdict Date]: {case.get('verdict_date')}")
-    print(f"  [Litigants]:    Plaintiff: {case.get('plaintiff')} | Defendant: {case.get('defendant')}")
-    print("-" * 82)
-    print("  1. TEMPORAL CHRONOLOGY & LATENCY COMPUTATION:")
-    print(f"     - Contract Execution (t0):  {case.get('earliest_deposit_date')}")
-    print(f"     - Material Breach (t1):     {case.get('breach_date')}")
-    print(f"     - Lawsuit Initiation (t_f): {case.get('filing_date')}")
-    
-    states, elapsed, is_expired = simulate_markov_state_evolution(
-        case.get('earliest_deposit_date'),
-        case.get('breach_date'),
-        case.get('filing_date')
-    )
-    print(f"     - Elapsed Latency (delta t): {elapsed} days ({elapsed/365.25:.2f} years)")
-    print(f"     - Article 429 Statutory Bar: {'EXPIRED (>1,095 days)' if is_expired else 'ACTIVE (<=1,095 days)'}")
-    
-    print("\n  2. HARMONIC CONTINUOUS-TIME FOURIER SPECTRUM (Bochner's Theorem):")
-    phi = compute_fourier_time_embedding(elapsed, d_time=8)
-    phi_str = ", ".join([f"{v:+.4f}" for v in phi[:6]])
-    print(f"     - Phi_d(delta t = {elapsed}) = [{phi_str}, ...]")
-    print(f"     - Frequency decay property: preserved shift-invariance <Phi(t1), Phi(t2)> = K(t1-t2)")
+    if not os.path.exists(bench_path):
+        print(f"[!] Benchmark file not found at: {bench_path}")
+        return
 
-    print("\n  3. MARKOVIAN LEGAL STATE AUTOMATON EVOLUTION:")
-    for step, st in enumerate(states, 1):
-        arrow = " -> " if step > 1 else "    "
-        print(f"     {arrow} Step {step}: Status = [{st}]")
-
-    print("\n  4. COMPARATIVE ADJUDICATION TRACE & LOGICAL CONSISTENCY AUDIT:")
-    gt_verdict = case.get('ground_truth_verdict', 'UNKNOWN')
-    
-    if is_expired:
-        synapse_verdict = "DISMISS_STATUTE_LAPSED"
-        synapse_conf = 99.2
-        baseline_verdict = "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-        baseline_conf = 88.5
-        violation = "FATAL STATUTORY VIOLATION (Dismissal required by Article 429 BLDS 2015)"
-    else:
-        synapse_verdict = gt_verdict
-        synapse_conf = 94.6
-        baseline_verdict = gt_verdict
-        baseline_conf = 81.2
-        violation = "NONE"
-
-    print(f"     - Unconstrained Baseline (Static GCN / LegalGraphRAG):")
-    print(f"       * Predicted Remedy: {baseline_verdict} (Confidence: {baseline_conf:.1f}%)")
-    print(f"       * TBox Consistency: {'VIOLATION' if is_expired else 'COMPLIANT'}")
-    if is_expired:
-        print(f"       * Judicial Error:   {violation}")
-    print(f"     - SynapseLex (Axiom-TGAT + VCLO Ontology):")
-    print(f"       * Predicted Remedy: {synapse_verdict} (Confidence: {synapse_conf:.1f}%)")
-    print(f"       * TBox Consistency: 100.0% COMPLIANT (HermiT Reasoner Verified)")
-    print(f"       * Ground Truth Match: {'MATCHES SUPREME COURT VERDICT' if synapse_verdict == gt_verdict else 'DEVIATES'}")
-    print("=" * 82 + "\n")
-
-def main():
-    args = parse_args()
-    bench_file = BASE_DIR / args.benchmark_file
-    if not bench_file.exists():
-        print(f"[-] Benchmark file not found: {bench_file}")
-        sys.exit(1)
-        
-    with open(bench_file, "r", encoding="utf-8") as f:
+    with open(bench_path, "r", encoding="utf-8") as f:
         cases = json.load(f)
-        
+
     selected_case = None
-    if args.benchmark_index is not None:
-        idx = max(0, min(args.benchmark_index, len(cases) - 1))
-        selected_case = cases[idx]
-    else:
+    if case_id:
         for c in cases:
-            if c.get("case_id") == args.case_id or c.get("doc_id") == args.case_id:
+            if c.get("case_id") == case_id:
                 selected_case = c
                 break
-        if not selected_case:
-            selected_case = cases[0]
-            
-    run_judicial_adjudication(selected_case)
+    if not selected_case:
+        selected_case = cases[min(case_index, len(cases) - 1)]
+
+    print("\n" + "=" * 90)
+    print("  SYNAPSELEX: NEURO-SYMBOLIC TEMPORAL ADJUDICATION INFERENCE DEMO")
+    print("=" * 90)
+    print(f"  • Vụ án số:       {selected_case.get('case_id')}")
+    print(f"  • Cơ quan xét xử: {selected_case.get('court_name', 'TAND')} ({selected_case.get('jurisdiction_level', 'Sơ thẩm')})")
+    print(f"  • Quan hệ pháp luật: {selected_case.get('case_title', 'Tranh chấp hợp đồng dân sự')}")
+    print(f"  • Ngày tuyên án:  {selected_case.get('verdict_date')}")
+    print(f"  • Nguyên đơn:     {selected_case.get('plaintiff')} | Bị đơn: {selected_case.get('defendant')}")
+    print("\n[TÓM TẮT DIỄN BIẾN SỰ KIỆN PHÁP LÝ]")
+    print(f"  {selected_case.get('fact_summary', 'Không có tóm tắt')}")
+
+    # Build Graph
+    builder = LegalGraphBuilder()
+    g = builder.build_case_graph(selected_case)
+    print("\n[CẤU TRÚC ĐỒ THỊ PHÁP LÝ ĐỘNG (Dynamic Legal Graph)]")
+    print(f"  • Số lượng nút (Entities): {g['num_nodes']} (Nguyên đơn, Bị đơn, Hợp đồng, Sự kiện)")
+    print(f"  • Số cạnh quan hệ (Edges): {g['num_edges']}")
+    print(f"  • Thời gian vi phạm đến khởi kiện: {g['elapsed_days']:.0f} ngày")
+    print(f"  • Rào cản thời hiệu (Điều 429 > 1,095 ngày): {'CÓ (Lapsed)' if g['is_statute_lapsed'] else 'KHÔNG (Active)'}")
+
+    # Model Inference
+    device = torch.device("cpu")
+    hidden_dim = 64
+    weights = None
+    if os.path.exists(ckpt_path):
+        try:
+            weights = torch.load(ckpt_path, map_location=device)
+            if "node_type_embed.weight" in weights:
+                hidden_dim = weights["node_type_embed.weight"].shape[1] * 2
+        except Exception:
+            weights = None
+
+    model = SynapseLexTGAT(
+        in_feat_dim=32,
+        hidden_dim=hidden_dim,
+        num_layers=2,
+        num_heads=4,
+        time_dim=32,
+        use_ontology=True,
+        use_temporal=True
+    ).to(device)
+
+    if weights is not None:
+        model.load_state_dict(weights, strict=True)
+        print(f"\n[+] Đã tải trọng số mô hình SynapseLex đã huấn luyện ({hidden_dim}d): {ckpt_path}")
+    else:
+        print("\n[!] Chạy suy luận với mô hình kiến trúc chuẩn Axiom-TGAT")
+
+    model.eval()
+    with torch.no_grad():
+        out = model(g)
+        probs = F.softmax(out["verdict_logits"], dim=-1).squeeze(0)
+        pred_class = int(torch.argmax(probs).item())
+        pred_conf = float(probs[pred_class]) * 100.0
+
+        state_probs = F.softmax(out["state_logits"], dim=-1).squeeze(0)
+        pred_state = int(torch.argmax(state_probs).item())
+
+    gt_verdict_idx = g["y_verdict"].item()
+
+    print("\n" + "-" * 90)
+    print("  KẾT QUẢ SUY LUẬN TỰ ĐỘNG CỦA HỆ THỐNG")
+    print("-" * 90)
+    print(f"  [Trạng thái Hợp đồng Dự đoán]:   {STATE_NAMES[pred_state]} (Xác suất: {state_probs[pred_state]*100:.1f}%)")
+    print(f"  [Phán quyết Tố tụng Dự đoán]:     {VERDICT_NAMES[pred_class]}")
+    print(f"  [Độ tin cậy Mô hình (Confidence)]: {pred_conf:.2f}%")
+    print(f"  [Phán quyết Thực tế của Bản án]:  {VERDICT_NAMES[gt_verdict_idx]}")
+    print(f"  [Kết quả Đánh giá]:               {'CHÍNH XÁC (MATCH)' if pred_class == gt_verdict_idx else 'SAI LỆCH (MISMATCH)'}")
+
+    print("\n[LẬP LUẬN TƯ PHÁP CỦA HỘI ĐỒNG XÉT XỬ (Ground Truth Judicial Reasoning)]")
+    print(f"  {selected_case.get('judicial_holding_reasoning', 'Không có dữ liệu')}")
+    print("=" * 90 + "\n")
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="SynapseLex Demo Inference CLI")
+    parser.add_argument("--case_id", type=str, default=None, help="Specific Case ID to evaluate")
+    parser.add_argument("--case_index", type=int, default=0, help="Case index in test split")
+    args = parser.parse_args()
+    run_demo(args.case_id, args.case_index)

@@ -91,15 +91,43 @@ class DefeasibleDeonticHead(nn.Module):
     def __init__(self, in_features: int, num_classes: int = 4):
         super().__init__()
         self.verdict_proj = nn.Linear(in_features, num_classes)
+        self.defeat_gate = nn.Linear(in_features, 1)
 
-    def forward(self, h_combined: torch.Tensor, is_statute_lapsed: float) -> torch.Tensor:
+    def forward(
+        self,
+        h_combined: torch.Tensor,
+        is_statute_lapsed: Optional[float] = None,
+        state_logits: Optional[torch.Tensor] = None
+    ) -> torch.Tensor:
         logits = self.verdict_proj(h_combined)
-        if is_statute_lapsed > 0.5:
+        
+        # Backward compatibility and hard procedural bar (Article 429)
+        if is_statute_lapsed is not None and is_statute_lapsed > 0.5:
             defeat_mask = torch.zeros_like(logits)
             defeat_mask[0, 0] = -1e4  # Defeat Forfeiture
             defeat_mask[0, 1] = -1e4  # Defeat Double Refund
             defeat_mask[0, 2] = +4.0  # Justified Dung Grounded Extension: DISMISS_STATUTE_LAPSED
-            logits = logits + defeat_mask
+            return logits + defeat_mask
+            
+        # Continuous, differentiable Dung defeat (Knaster-Tarski least fixed point)
+        if state_logits is not None:
+            p_probs = torch.softmax(state_logits, dim=-1)
+            p_ext = p_probs[:, 3]
+            p_void = p_probs[:, 2]
+            
+            defeat_penalty = torch.zeros_like(logits)
+            # State 3: Extinguished (Article 429 procedural bar defeats substantive claims)
+            defeat_penalty[:, 0] = defeat_penalty[:, 0] - 4.0 * p_ext
+            defeat_penalty[:, 1] = defeat_penalty[:, 1] - 4.0 * p_ext
+            defeat_penalty[:, 2] = defeat_penalty[:, 2] + 4.0 * p_ext
+            
+            # State 2: Void_Ab_Initio (Article 131 invalidity ab initio defeats deposit remedies)
+            defeat_penalty[:, 0] = defeat_penalty[:, 0] - 3.5 * p_void
+            defeat_penalty[:, 1] = defeat_penalty[:, 1] - 3.5 * p_void
+            defeat_penalty[:, 3] = defeat_penalty[:, 3] + 4.0 * p_void
+
+            logits = logits + defeat_penalty
+            
         return logits
 
 class LegalMarkovGating(nn.Module):
@@ -318,7 +346,11 @@ class SynapseLexTGAT(nn.Module):
         # 6. Combined Adjudication Verdict via Defeasible Deontic Reasoning
         h_combined = torch.cat([h_graph, h_contract, state_logits], dim=-1) # [1, 2*hidden_dim + 4]
         if self.use_ontology:
-            verdict_logits = self.defeasible_head(h_combined, is_statute_lapsed)
+            verdict_logits = self.defeasible_head(
+                h_combined,
+                is_statute_lapsed=is_statute_lapsed,
+                state_logits=state_logits
+            )
         else:
             verdict_logits = self.verdict_head(h_combined)
 
@@ -366,6 +398,14 @@ class SynapseLexTGAT(nn.Module):
             p_forfeit = probs_v[0, 0]
             p_double = probs_v[0, 1]
             l_axiom = l_axiom + (p_forfeit * p_double) * 2.0
+
+            # Axiom 3: Article 131 - If target state is Void_Ab_Initio (state 2) or target verdict is Class 3 (Declare Void)
+            t_s = target_state.item() if isinstance(target_state, torch.Tensor) else int(target_state)
+            t_v = target_verdict.item() if isinstance(target_verdict, torch.Tensor) else int(target_verdict)
+            if t_s == 2 or t_v == 3:
+                p_non_void_verdict = 1.0 - probs_v[0, 3]
+                p_non_void_state = 1.0 - probs_s[0, 2]
+                l_axiom = l_axiom + 1.5 * (p_non_void_verdict + p_non_void_state)
 
         total_loss = l_verdict + self.lambda_state * l_state + self.lambda_onto * l_axiom
         return total_loss, l_verdict, l_state, l_axiom
