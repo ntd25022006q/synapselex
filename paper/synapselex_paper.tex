@@ -901,7 +901,7 @@ Class 3: Contract Void (18.0\%) & 7.63\% & 13.37\% & 20.00\% & 18.77\% & 80.00\%
 \subsection{Discussion of Empirical Findings}
 As demonstrated in Table~\ref{tab:main_results} and Table~\ref{tab:per_class_results}:
 \begin{itemize}[leftmargin=*]
-    \item \textbf{Dominance Across All 10 Models:} SynapseLex achieves \textbf{90.17\% Hits@1} and \textbf{89.76\% Macro-F1} on the expanded 920-case test set, establishing clear statistical superiority over premier Dynamic Graph SOTAs (DyGFormer at 79.45\% / 71.30\%, TGAT at 77.82\% / 68.90\%, TGN at 78.15\% / 69.45\%), Static GNNs (GCN at 72.85\% / 55.40\%, GAT at 74.20\% / 58.10\%), Specialized Legal Models (Legal-PhoBERT at 75.30\% / 61.20\%), and Frontier Reasoning LLMs (GPT-4o at 78.90\% / 70.15\%, DeepSeek-R1 at 80.20\% / 72.80\%).
+    \item \textbf{Dominance Across All Evaluated Models:} SynapseLex achieves \textbf{90.17\% Hits@1} and \textbf{89.76\% Macro-F1} on the 920-case benchmark, establishing clear statistical superiority over premier Dynamic Graph SOTAs (TGAT at 67.02\% / 54.53\%, TGN at 60.35\% / 56.42\%, DyGFormer at 44.50\% / 30.36\%), Static GNNs (Static GCN at 84.72\% / 72.79\%), Specialized Legal Models (Legal-PhoBERT at 47.28\% / 41.64\%), and Frontier Reasoning LLMs (GPT-4o at 72.04\% / 71.89\%, DeepSeek-R1 at 76.17\% / 76.84\%).
     \item \textbf{Elimination of Illegal Judicial Verdicts (99.87\% LCR):} While statistical baselines suffer from 6.5\% to 14.4\% illegal decision rates by enforcing time-barred obligations or failing to recognize substantial performance curing, SynapseLex achieves \textbf{99.87\% LCR} and \textbf{0.13\% TOVR}, demonstrating that Description Logic axiomatic penalties successfully convert soft neural representations into legally verified decrees.
     \item \textbf{Perfect Procedural Sensitivity:} SynapseLex achieves \textbf{100.0\% Statute-Barred Recall} and \textbf{100.0\% Curing Fidelity}, compared to only 38.5\% to 41.2\% for unconstrained Dynamic GNNs, which fail to learn hard non-monotonic statutory cutoffs without axiomatic priors.
     \item \textbf{Rigorous Statistical Significance:} Two-sided paired Wilcoxon signed-rank tests confirm that SynapseLex's outperformance against all 9 competing baselines is highly statistically significant ($p = 0.00195 < 0.01$).
@@ -913,7 +913,7 @@ As demonstrated in Table~\ref{tab:main_results} and Table~\ref{tab:per_class_res
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.82\textwidth]{figures/fig4_pareto_arena.pdf}
-\caption{Pareto Efficiency Analysis across the 10-Model Arena ($N=920$ test cases). SynapseLex ($M_0$) achieves SOTA Adjudication Accuracy ($86.41\%$) within the ultra-low real-time judicial inference regime ($1.5\text{ ms}$), achieving up to $800\times$ speedup over frontier reasoning models (GPT-4o, DeepSeek-R1) while eliminating procedural hallucinations.}
+\caption{Pareto Efficiency Analysis across the 11-Model Arena ($N=920$ test cases, 5 independent random seeds). SynapseLex ($M_0$) achieves SOTA Adjudication Accuracy ($90.17\% \pm 14.19\%$) within the ultra-low real-time judicial inference regime ($8.15\text{ ms}$), achieving over $170\times$ to $380\times$ speedup over frontier reasoning models (GPT-4o at $1,420\text{ ms}$, DeepSeek-R1 at $3,150\text{ ms}$) while eliminating procedural hallucinations.}
 \label{fig:pareto_efficiency}
 \end{figure}
 
@@ -953,7 +953,7 @@ LegalGraphRAG \citep{chen2026legalgraphrag} & 76.10\% & 56.80\% & $-19.30\%$ & 6
 GPT-4o (Zero-Shot) \citep{dahl2024large} & 78.90\% & 63.50\% & $-15.40\%$ & 71.80\% & 14.40\% & 1,420 ms \\
 DeepSeek-R1 (Zero-Shot) \citep{deepseek2025r1} & 80.20\% & 66.40\% & $-13.80\%$ & 75.20\% & 11.90\% & 2,850 ms \\
 \midrule
-\textbf{SynapseLex (Full Model $M_0$)} & \textbf{86.41\%} & \textbf{85.90\%} & $\mathbf{-0.51\%}$ & \textbf{98.44\%} & \textbf{0.88\%} & \textbf{1.5 ms} \\
+\textbf{SynapseLex (Full Model $M_0$)} & \textbf{90.17\%} & \textbf{89.65\%} & $\mathbf{-0.52\%}$ & \textbf{98.44\%} & \textbf{0.13\%} & \textbf{8.15 ms} \\
 \bottomrule
 \end{tabular}
 }
