@@ -1,258 +1,296 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420 410" width="1420" height="410">
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="560" viewBox="0 0 1240 560">
   <defs>
-    <marker id="arr" markerWidth="6.5" markerHeight="6.5" refX="5.5" refY="3.25" orient="auto">
-      <path d="M 0 0 L 6.5 3.25 L 0 6.5 z" fill="#1E1E1E"/>
+    <filter id="cardShadow" x="-3%" y="-3%" width="106%" height="108%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="subCardShadow" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.05"/>
+    </filter>
+    
+    <!-- Marker arrows -->
+    <marker id="arrowSlate" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#475569"/>
     </marker>
-    <style>
-      .txt-serif { font-family: 'Times New Roman', Times, serif; }
-      .txt-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-      .box-title { font-size: 12.5px; font-weight: 550; text-anchor: middle; fill: #111111; }
-      .math-lbl { font-size: 15px; font-weight: bold; font-style: italic; fill: #000000; text-anchor: middle; }
-    </style>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#dc2626"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="headerGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+    <linearGradient id="headerGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="headerGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6b21a8"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="headerGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
   </defs>
 
-  <!-- Clean Canvas -->
-  <rect x="0" y="0" width="1420" height="410" fill="#FFFFFF"/>
+  <!-- Background Canvas -->
+  <rect width="1240" height="560" fill="#f8fafc" rx="12"/>
 
-  <!-- ==================== 1. LEFT: QUERY NODES & DYNAMIC GRAPH ==================== -->
-  <!-- Node u -->
-  <circle cx="50" cy="80" r="14" fill="#FFFFFF" stroke="#1F77B4" stroke-width="1.8"/>
-  <text x="50" y="86" class="txt-serif" font-size="17" font-style="italic" font-weight="bold" fill="#111111" text-anchor="middle">u</text>
+  <!-- Overall Diagram Title Bar -->
+  <rect x="20" y="16" width="1200" height="38" rx="8" fill="#0f172a"/>
+  <text x="35" y="41" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#ffffff" letter-spacing="0.3px">SynapseLex Neuro-Symbolic Judicial Adjudication Architecture</text>
+  <text x="1205" y="40" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11.5" font-style="italic" fill="#94a3b8">Bochner Continuous Dual-Clock Attention + OWL 2 DL TBox Arbiter + Defeasible Dung Head</text>
 
-  <!-- Node v -->
-  <circle cx="50" cy="314" r="14" fill="#FFFFFF" stroke="#1F77B4" stroke-width="1.8"/>
-  <text x="50" y="320" class="txt-serif" font-size="17" font-style="italic" font-weight="bold" fill="#111111" text-anchor="middle">v</text>
+  <!-- ================= STAGE 1: DYNAMIC LEGAL GRAPH ================= -->
+  <g transform="translate(20, 68)">
+    <rect width="280" height="472" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>
+    <!-- Stage Header -->
+    <path d="M 0 10 Q 0 0 10 0 L 270 0 Q 280 0 280 10 L 280 44 L 0 44 Z" fill="url(#headerGrad1)"/>
+    <rect x="12" y="10" width="62" height="22" rx="4" fill="#3b82f6"/>
+    <text x="43" y="25" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">STAGE 1</text>
+    <text x="84" y="27" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Dynamic Legal Graph</text>
+    <text x="14" y="40" font-family="sans-serif" font-size="9" fill="#94a3b8">Multi-Relational Extraction: G(t) = (V, E, T, S)</text>
 
-  <!-- Dashed Link u-v with t? -->
-  <line x1="50" y1="98" x2="50" y2="178" stroke="#1F77B4" stroke-width="1.4" stroke-dasharray="3.5,3.5"/>
-  <line x1="50" y1="210" x2="50" y2="296" stroke="#1F77B4" stroke-width="1.4" stroke-dasharray="3.5,3.5"/>
-  <text x="50" y="198" class="txt-serif" font-size="15" font-style="italic" font-weight="bold" fill="#D9383A" text-anchor="middle">t?</text>
-
-  <!-- Extract First-hop Interactions Boxes (Lavender) -->
-  <rect x="90" y="52" width="144" height="56" rx="8" fill="#DECCD8" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="162" y="74" class="txt-sans box-title">Extract First-</text>
-  <text x="162" y="92" class="txt-sans box-title">hop Interactions</text>
-
-  <rect x="90" y="286" width="144" height="56" rx="8" fill="#DECCD8" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="162" y="308" class="txt-sans box-title">Extract First-</text>
-  <text x="162" y="326" class="txt-sans box-title">hop Interactions</text>
-
-  <!-- Arrows from u, v to Extract boxes -->
-  <line x1="66" y1="80" x2="87" y2="80" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <line x1="66" y1="314" x2="87" y2="314" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-
-  <!-- Dynamic Graph Icon & Organic Edges -->
-  <g transform="translate(100, 136)">
-    <!-- Nodes -->
-    <circle cx="16" cy="40" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="48" cy="18" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="86" cy="12" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="40" cy="54" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="74" cy="43" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="108" cy="30" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="124" cy="56" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="26" cy="88" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="65" cy="90" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="92" cy="70" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
-    <circle cx="114" cy="90" r="4.8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.25"/>
+    <!-- Sub-card 1.1: Bipartite Dispute Subgraph -->
+    <rect x="12" y="56" width="256" height="186" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="75" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Bipartite Dispute Subgraph</text>
     
-    <!-- Edges -->
-    <line x1="20" y1="37" x2="44" y2="21" stroke="#444444" stroke-width="1.15"/>
-    <line x1="20" y1="43" x2="36" y2="51" stroke="#444444" stroke-width="1.15"/>
-    <line x1="17" y1="45" x2="25" y2="83" stroke="#444444" stroke-width="1.15"/>
-    <line x1="52" y1="17" x2="82" y2="13" stroke="#444444" stroke-width="1.15"/>
-    <line x1="50" y1="22" x2="70" y2="39" stroke="#444444" stroke-width="1.15"/>
-    <line x1="44" y1="55" x2="70" y2="45" stroke="#444444" stroke-width="1.15"/>
-    <line x1="42" y1="58" x2="62" y2="86" stroke="#444444" stroke-width="1.15"/>
-    <line x1="31" y1="88" x2="60" y2="90" stroke="#444444" stroke-width="1.15"/>
-    <line x1="78" y1="41" x2="104" y2="32" stroke="#444444" stroke-width="1.15"/>
-    <line x1="76" y1="46" x2="90" y2="66" stroke="#444444" stroke-width="1.15"/>
-    <line x1="68" y1="87" x2="88" y2="72" stroke="#444444" stroke-width="1.15"/>
-    <line x1="95" y1="73" x2="110" y2="87" stroke="#444444" stroke-width="1.15"/>
-    <line x1="94" y1="67" x2="120" y2="58" stroke="#444444" stroke-width="1.15"/>
-    <line x1="90" y1="15" x2="105" y2="27" stroke="#444444" stroke-width="1.15"/>
+    <!-- Graph Nodes -->
+    <!-- Litigant P (Plaintiff) -->
+    <circle cx="50" cy="120" r="22" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8"/>
+    <text x="50" y="117" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#1e40af">P</text>
+    <text x="50" y="131" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="600" fill="#3b82f6">Plaintiff</text>
+
+    <!-- Litigant D (Defendant) -->
+    <circle cx="230" cy="120" r="22" fill="#fef2f2" stroke="#ef4444" stroke-width="1.8"/>
+    <text x="230" y="117" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#991b1b">D</text>
+    <text x="230" y="131" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="600" fill="#ef4444">Defendant</text>
+
+    <!-- Central Contract C -->
+    <rect x="100" y="100" width="80" height="40" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="140" y="118" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="800" fill="#15803d">Contract C</text>
+    <text x="140" y="132" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#166534">Deposit Deed</text>
+
+    <!-- Graph Edges -->
+    <line x1="72" y1="120" x2="98" y2="120" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+    <line x1="208" y1="120" x2="182" y2="120" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+
+    <!-- Metadata Tags -->
+    <rect x="22" y="162" width="236" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="28" y="178" font-family="sans-serif" font-size="8.5" fill="#334155"><tspan font-weight="bold">Consideration:</tspan> 500M VND | <tspan font-weight="bold">Form:</tspan> Unnotarized</text>
     
-    <text x="62" y="114" class="txt-serif" font-size="13" font-weight="bold" fill="#222222" text-anchor="middle">Dynamic Graph</text>
+    <rect x="22" y="192" width="236" height="40" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="28" y="206" font-family="sans-serif" font-size="8.5" fill="#334155"><tspan font-weight="bold">Performance Ratio:</tspan> 350M/500M = 70%</text>
+    <text x="28" y="222" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#15803d">-&gt; Triggers Statutory Cure (Art. 129.2 &gt;= 2/3)</text>
+
+    <!-- Sub-card 1.2: Chronological Procedural Timeline -->
+    <rect x="12" y="254" width="256" height="206" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="274" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Chronological Timeline Events</text>
+
+    <!-- Timeline spine -->
+    <line x1="34" y1="290" x2="34" y2="440" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Event 1 -->
+    <circle cx="34" cy="298" r="5" fill="#3b82f6"/>
+    <text x="46" y="296" font-family="sans-serif" font-size="9" font-weight="700" fill="#1e293b">t_0: Contract Execution</text>
+    <text x="46" y="309" font-family="sans-serif" font-size="8" fill="#64748b">Valid consent (Art. 117 BLDS 2015)</text>
+
+    <!-- Event 2 -->
+    <circle cx="34" cy="336" r="5" fill="#f59e0b"/>
+    <text x="46" y="334" font-family="sans-serif" font-size="9" font-weight="700" fill="#1e293b">t_1: Refusal &amp; Default</text>
+    <text x="46" y="347" font-family="sans-serif" font-size="8" fill="#64748b">Defendant repudiates transfer deed</text>
+
+    <!-- Event 3 -->
+    <circle cx="34" cy="374" r="5" fill="#8b5cf6"/>
+    <text x="46" y="372" font-family="sans-serif" font-size="9" font-weight="700" fill="#1e293b">t_2: Tolling Suspension (Art. 156)</text>
+    <text x="46" y="385" font-family="sans-serif" font-size="8" fill="#64748b">COVID-19 Court Closure (dt/dtau = 0)</text>
+
+    <!-- Event 4 -->
+    <circle cx="34" cy="416" r="5" fill="#ef4444"/>
+    <text x="46" y="414" font-family="sans-serif" font-size="9" font-weight="700" fill="#1e293b">t_3: Lawsuit Filing at Trial Court</text>
+    <text x="46" y="427" font-family="sans-serif" font-size="8" fill="#64748b">Elapsed latency: Delta tau = 1,254 days</text>
+    <text x="46" y="439" font-family="sans-serif" font-size="8" font-weight="700" fill="#dc2626">Over 3-year bar (Art. 429 &gt; 1,095d)</text>
   </g>
 
-  <!-- Arrows from Dynamic Graph to Extract Boxes -->
-  <line x1="162" y1="130" x2="162" y2="111" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <line x1="162" y1="262" x2="162" y2="282" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+  <!-- Flow Arrow 1 -> 2 -->
+  <g transform="translate(304, 280)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+    <rect x="-8" y="-22" width="36" height="15" rx="3" fill="#eff6ff" stroke="#bfdbfe" stroke-width="0.8"/>
+    <text x="10" y="-11" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="#1d4ed8">G(t)</text>
+  </g>
 
-  <!-- ==================== 2. BRANCHING S_u^t and S_v^t ==================== -->
-  <!-- Out of top Extract Box -->
-  <line x1="234" y1="80" x2="258" y2="80" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <text x="274" y="86" class="txt-serif math-lbl">S<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u</tspan></text>
+  <!-- ================= STAGE 2: AXIOM-TGAT ATTENTION ================= -->
+  <g transform="translate(328, 68)">
+    <rect width="280" height="472" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>
+    <path d="M 0 10 Q 0 0 10 0 L 270 0 Q 280 0 280 10 L 280 44 L 0 44 Z" fill="url(#headerGrad2)"/>
+    <rect x="12" y="10" width="62" height="22" rx="4" fill="#1d4ed8"/>
+    <text x="43" y="25" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">STAGE 2</text>
+    <text x="84" y="27" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Axiom-TGAT Attention</text>
+    <text x="14" y="40" font-family="sans-serif" font-size="9" fill="#bfdbfe">Continuous Bochner Harmonic Deontic Continuum</text>
 
-  <!-- Out of bottom Extract Box -->
-  <line x1="234" y1="314" x2="258" y2="314" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <text x="274" y="320" class="txt-serif math-lbl">S<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v</tspan></text>
+    <!-- Sub-card 2.1: Bochner Basis -->
+    <rect x="12" y="56" width="256" height="186" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="75" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Continuous Bochner Fourier Basis</text>
 
-  <!-- Arrows branching from S_u^t and S_v^t -->
-  <line x1="288" y1="80" x2="318" y2="80" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <line x1="286" y1="92" x2="318" y2="182" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+    <!-- Split into 2 lines cleanly -->
+    <rect x="18" y="86" width="244" height="44" rx="5" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+    <text x="140" y="102" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#1e40af">Phi(Delta tau) = sqrt(2/d) [cos(omega_k Delta tau),</text>
+    <text x="140" y="118" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#1e40af">sin(omega_k Delta tau)]^T</text>
 
-  <line x1="286" y1="302" x2="318" y2="212" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <line x1="288" y1="314" x2="318" y2="314" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+    <!-- Dual Clock Explanation -->
+    <rect x="18" y="136" width="244" height="96" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="26" y="152" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#0f172a">Dual-Clock Procedural Time Mapping:</text>
+    <text x="26" y="169" font-family="sans-serif" font-size="8.5" fill="#334155">- Calendar Time: <tspan font-family="serif" font-weight="bold">t in R^+</tspan> (Astronomical days)</text>
+    <text x="26" y="185" font-family="sans-serif" font-size="8.5" fill="#334155">- Procedural Clock: <tspan font-family="serif" font-weight="bold">tau(t) in R^+</tspan> (Statutory timeline)</text>
+    <text x="26" y="201" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#b91c1c">Art. 156 Tolling: dtau/dt = 0 (COVID freeze)</text>
+    <text x="26" y="217" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#15803d">Art. 157 Restart: tau &lt;- 0 (Debt acknowledgment)</text>
 
-  <!-- ==================== 3. THREE ENCODING MODULES ==================== -->
-  <!-- Top Green Box -->
-  <rect x="322" y="44" width="170" height="72" rx="8" fill="#D5E8C8" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="407" y="65" class="txt-sans box-title">Encoding Neighbors,</text>
-  <text x="407" y="82" class="txt-sans box-title">Links &amp; Time</text>
-  <text x="407" y="99" class="txt-sans box-title">Intervals</text>
+    <!-- Sub-card 2.2: Continuous Cross-Attention -->
+    <rect x="12" y="254" width="256" height="206" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="274" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Multi-Head Continuous Temporal Attention</text>
 
-  <!-- Middle Yellow Box -->
-  <rect x="322" y="165" width="170" height="64" rx="8" fill="#F1DC6C" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="407" y="194" class="txt-sans box-title">Encoding Neighbor</text>
-  <text x="407" y="212" class="txt-sans box-title">Co-occurrences</text>
+    <rect x="18" y="286" width="244" height="44" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="140" y="304" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#1e293b">alpha_uv(t) = Softmax( q_u^T [k_v || Phi] / sqrt(d_k) )</text>
+    <text x="140" y="321" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#64748b">Inductive Temporal Attention Weights</text>
 
-  <!-- Bottom Green Box -->
-  <rect x="322" y="278" width="170" height="72" rx="8" fill="#D5E8C8" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="407" y="299" class="txt-sans box-title">Encoding Neighbors,</text>
-  <text x="407" y="316" class="txt-sans box-title">Links &amp; Time</text>
-  <text x="407" y="333" class="txt-sans box-title">Intervals</text>
+    <rect x="18" y="338" width="244" height="44" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="140" y="356" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#1e293b">h_u(t) = sum_v alpha_uv(t) ( W_v [z_v(t) || Phi] )</text>
+    <text x="140" y="373" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#64748b">2-Hop Continuous Neighborhood Aggregation</text>
 
-  <!-- ==================== 4. CURLY BRACES & TOKENS ==================== -->
-  <!-- Top Right Brace -->
-  <path d="M 506 48 Q 512.0 48 512.0 52 L 512.0 76.0 Q 512.0 80.0 518 80.0 Q 512.0 80.0 512.0 84.0 L 512.0 108 Q 512.0 112 506 112" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
-  <text x="550" y="62" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,N</tspan></text>
-  <text x="550" y="85" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,E</tspan></text>
-  <text x="550" y="108" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,T</tspan></text>
+    <rect x="18" y="390" width="244" height="60" rx="5" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="26" y="407" font-family="sans-serif" font-size="9" font-weight="700" fill="#065f46">Dynamic Representation Output:</text>
+    <text x="26" y="423" font-family="serif" font-size="10" font-weight="700" fill="#047857">z_uv(t) = MLP([h_u(t) || h_v(t) || e_uv(t)])</text>
+    <text x="26" y="440" font-family="sans-serif" font-size="8.5" fill="#065f46">Latency: <tspan font-weight="bold">8.15 ms/case</tspan> on NVIDIA A30 GPU</text>
+  </g>
 
-  <!-- Middle Right Brace -->
-  <path d="M 506 172 Q 512.0 172 512.0 176 L 512.0 193.0 Q 512.0 197.0 518 197.0 Q 512.0 197.0 512.0 201.0 L 512.0 218 Q 512.0 222 506 222" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
-  <text x="550" y="185" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u,C</tspan></text>
-  <text x="550" y="214" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,C</tspan></text>
+  <!-- Flow Arrow 2 -> 3 -->
+  <g transform="translate(612, 280)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrowPurple)"/>
+    <rect x="-8" y="-22" width="36" height="15" rx="3" fill="#faf5ff" stroke="#ddd6fe" stroke-width="0.8"/>
+    <text x="10" y="-11" text-anchor="middle" font-family="serif" font-size="8.5" font-weight="700" fill="#6d28d9">z_uv</text>
+  </g>
 
-  <!-- Bottom Right Brace -->
-  <path d="M 506 282 Q 512.0 282 512.0 286 L 512.0 310.0 Q 512.0 314.0 518 314.0 Q 512.0 314.0 512.0 318.0 L 512.0 342 Q 512.0 346 506 346" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
-  <text x="550" y="296" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,N</tspan></text>
-  <text x="550" y="319" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,E</tspan></text>
-  <text x="550" y="342" class="txt-serif math-lbl">X<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v,T</tspan></text>
+  <!-- ================= STAGE 3: ONTOLOGICAL REGULARIZATION ================= -->
+  <g transform="translate(636, 68)">
+    <rect width="280" height="472" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>
+    <path d="M 0 10 Q 0 0 10 0 L 270 0 Q 280 0 280 10 L 280 44 L 0 44 Z" fill="url(#headerGrad3)"/>
+    <rect x="12" y="10" width="62" height="22" rx="4" fill="#6d28d9"/>
+    <text x="43" y="25" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">STAGE 3</text>
+    <text x="84" y="27" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Ontological Arbiter</text>
+    <text x="14" y="40" font-family="sans-serif" font-size="9" fill="#ddd6fe">OWL 2 DL TBox Loss + Markovian State Gating</text>
 
-  <!-- Left Brace grouping 4 tokens into Top Patching Box -->
-  <path d="M 600 48 Q 593.5 48 593.5 54 L 593.5 115.0 Q 593.5 121.0 587 121.0 Q 593.5 121.0 593.5 127.0 L 593.5 188 Q 593.5 194 600 194" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
-  <line x1="587" y1="121" x2="620" y2="121" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+    <!-- Sub-card 3.1: VCLO Ontology -->
+    <rect x="12" y="56" width="256" height="186" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="75" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Vietnamese Civil Law Ontology (VCLO)</text>
 
-  <!-- Left Brace grouping 4 tokens into Bottom Patching Box -->
-  <path d="M 600 204 Q 593.5 204 593.5 210 L 593.5 271.0 Q 593.5 277.0 587 277.0 Q 593.5 277.0 593.5 283.0 L 593.5 344 Q 593.5 350 600 350" fill="none" stroke="#1E1E1E" stroke-width="1.25"/>
-  <line x1="587" y1="277" x2="620" y2="277" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+    <!-- Axioms Box -->
+    <rect x="18" y="86" width="244" height="90" rx="5" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1"/>
+    <text x="26" y="103" font-family="serif" font-size="9.5" font-weight="700" fill="#581c87">r_1: Lapsed &lt;= Extinguished (Art. 429)</text>
+    <text x="26" y="121" font-family="serif" font-size="9.5" font-weight="700" fill="#581c87">r_2: TimeBarred &lt;= ~EnforceableRelief</text>
+    <text x="26" y="139" font-family="serif" font-size="9.5" font-weight="700" fill="#581c87">r_3: Perf &gt;= 2/3 &lt;= CuredDefect (Art. 129.2)</text>
+    <text x="26" y="157" font-family="serif" font-size="9.5" font-weight="700" fill="#581c87">r_4: UsuriousRate &lt;= PartialVoid (Art. 468)</text>
+    <text x="26" y="171" font-family="sans-serif" font-size="7.5" font-style="italic" fill="#7e22ce">HermiT Reasoner: 100% Satisfiable (0 contradictions)</text>
 
-  <!-- ==================== 5. PATCHING & ALIGNMENT BOXES ==================== -->
-  <!-- Top Pink Box -->
-  <rect x="624" y="58" width="146" height="78" rx="8" fill="#FBDBD0" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="697" y="82" class="txt-sans box-title">Patching &amp;</text>
-  <text x="697" y="99" class="txt-sans box-title">Alignment &amp;</text>
-  <text x="697" y="116" class="txt-sans box-title">Concatenation</text>
+    <rect x="18" y="184" width="244" height="48" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="26" y="200" font-family="sans-serif" font-size="9" font-weight="700" fill="#1e293b">Normative Hierarchy Priority (NH-DA):</text>
+    <text x="26" y="214" font-family="sans-serif" font-size="8" fill="#475569">Lex Superior: Const. &gt; BLDS 2015 &gt; Decrees</text>
+    <text x="26" y="226" font-family="sans-serif" font-size="8" font-weight="700" fill="#6d28d9">Lex Specialis: Land Law 2024 &gt; BLDS 2015</text>
 
-  <!-- Bottom Pink Box -->
-  <rect x="624" y="256" width="146" height="78" rx="8" fill="#FBDBD0" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="697" y="280" class="txt-sans box-title">Patching &amp;</text>
-  <text x="697" y="297" class="txt-sans box-title">Alignment &amp;</text>
-  <text x="697" y="314" class="txt-sans box-title">Concatenation</text>
+    <!-- Sub-card 3.2: DL TBox Loss -->
+    <rect x="12" y="254" width="256" height="206" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="274" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Continuous Differentiable DL Loss</text>
 
-  <!-- Arrows to Z_u^t and Z_v^t -->
-  <line x1="770" y1="97" x2="796" y2="97" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <text x="812" y="102" class="txt-serif math-lbl">Z<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u</tspan></text>
+    <rect x="18" y="286" width="244" height="52" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="140" y="306" text-anchor="middle" font-family="serif" font-size="11" font-weight="700" fill="#6d28d9">L_onto = sum_k max( 0, psi_k^smooth(theta) )</text>
+    <text x="140" y="326" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#64748b">Lukasiewicz t-norm relaxation (No gradient void)</text>
 
-  <line x1="770" y1="295" x2="796" y2="295" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <text x="812" y="300" class="txt-serif math-lbl">Z<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v</tspan></text>
+    <rect x="18" y="346" width="244" height="52" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="140" y="364" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#1e293b">L_total = L_task + lambda_s L_state</text>
+    <text x="140" y="380" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#6d28d9">+ lambda_onto L_onto</text>
+    <text x="140" y="393" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#64748b">Joint Multi-Objective Optimization (lambda_onto = 1.0)</text>
 
-  <!-- Vertical Arrows between Z_u^t, Z_v^t and Joint Z^t -->
-  <line x1="812" y1="114" x2="812" y2="174" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <line x1="812" y1="282" x2="812" y2="218" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+    <!-- Certified Consistency Box -->
+    <rect x="18" y="406" width="244" height="44" rx="5" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+    <text x="26" y="423" font-family="sans-serif" font-size="9" font-weight="800" fill="#5b21b6">Logical Consistency Rate (LCR):</text>
+    <text x="26" y="440" font-family="sans-serif" font-size="11" font-weight="800" fill="#6d28d9">99.87% LCR (TOVR = 0.13%)</text>
+  </g>
 
-  <!-- Joint Z^t Label -->
-  <text x="812" y="198" class="txt-serif math-lbl">Z<tspan font-size="10" dy="-6">t</tspan><tspan font-size="13" dy="5"> = [Z</tspan><tspan font-size="9" dy="-4">t</tspan><tspan font-size="9" dy="8">u</tspan><tspan font-size="13" dy="-4">; Z</tspan><tspan font-size="9" dy="-4">t</tspan><tspan font-size="9" dy="8">v</tspan><tspan font-size="13" dy="-4">]</tspan></text>
+  <!-- Flow Arrow 3 -> 4 -->
+  <g transform="translate(920, 280)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#059669" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+    <rect x="-8" y="-22" width="36" height="15" rx="3" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="0.8"/>
+    <text x="10" y="-11" text-anchor="middle" font-family="serif" font-size="8" font-weight="700" fill="#047857">M_def</text>
+  </g>
 
-  <!-- ==================== 6. STACKED TRANSFORMER / TGAT BLOCK (× L) ==================== -->
-  <!-- Stack Card 2 (Back) -->
-  <rect x="918" y="18" width="170" height="340" rx="12" fill="#EDEDED" stroke="#555555" stroke-width="1.0"/>
-  <!-- Stack Card 1 (Middle) -->
-  <rect x="912" y="24" width="170" height="340" rx="12" fill="#E3E3E3" stroke="#444444" stroke-width="1.0"/>
-  <!-- Stack Card 0 (Front) -->
-  <rect x="906" y="30" width="170" height="340" rx="12" fill="#DADADA" stroke="#2B2B2B" stroke-width="1.25"/>
+  <!-- ================= STAGE 4: DEFEASIBLE ADJUDICATION ================= -->
+  <g transform="translate(944, 68)">
+    <rect width="276" height="472" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#cardShadow)"/>
+    <path d="M 0 10 Q 0 0 10 0 L 266 0 Q 276 0 276 10 L 276 44 L 0 44 Z" fill="url(#headerGrad4)"/>
+    <rect x="12" y="10" width="62" height="22" rx="4" fill="#047857"/>
+    <text x="43" y="25" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">STAGE 4</text>
+    <text x="84" y="27" font-family="sans-serif" font-size="12" font-weight="700" fill="#ffffff">Defeasible Adjudication</text>
+    <text x="14" y="40" font-family="sans-serif" font-size="9" fill="#a7f3d0">Phan Minh Dung Abstract Argumentation Framework</text>
 
-  <!-- × L text -->
-  <text x="1070" y="24" class="txt-serif" font-size="15" font-style="italic" font-weight="bold" fill="#222222">× L</text>
+    <!-- Sub-card 4.1: Dung Argument Graph -->
+    <rect x="12" y="56" width="252" height="186" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="75" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Defeasible Argument Graph AF = (Args, Att)</text>
 
-  <!-- Right bracket ] and Routing path into Transformer Block (DRAWN ON TOP OF CARD!) -->
-  <path d="M 860 185 L 872 185 L 872 388 L 991 388 L 991 306" fill="none" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
+    <!-- Argument A1 (Claimant) -->
+    <rect x="22" y="88" width="96" height="38" rx="5" fill="#fef2f2" stroke="#ef4444" stroke-width="1.2"/>
+    <text x="70" y="104" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#991b1b">A_1: Claim</text>
+    <text x="70" y="118" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#b91c1c">Art. 328 Forfeit</text>
 
-  <!-- Inside Front Card -->
-  <!-- Layer Normalization 1 (Bottom, Cream) -->
-  <rect x="928" y="270" width="126" height="36" rx="6" fill="#FFF2CC" stroke="#2B2B2B" stroke-width="1.15"/>
-  <text x="991" y="292" class="txt-sans box-title">Layer Normalization</text>
+    <!-- Argument A2 (Defendant) -->
+    <rect x="156" y="88" width="96" height="38" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="204" y="104" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#92400e">A_2: Defense</text>
+    <text x="204" y="118" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#b45309">Oral Extension</text>
 
-  <!-- Triple Arrows (Q, K, V) from LN1 to Multi-Head Attention -->
-  <line x1="960" y1="270" x2="960" y2="246" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
-  <line x1="991" y1="270" x2="991" y2="246" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
-  <line x1="1022" y1="270" x2="1022" y2="246" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
+    <!-- Rebuttal line -->
+    <line x1="120" y1="107" x2="152" y2="107" stroke="#f59e0b" stroke-width="1.4" marker-end="url(#arrowSlate)"/>
+    <text x="136" y="102" text-anchor="middle" font-family="sans-serif" font-size="7" font-style="italic" fill="#78350f">rebuts</text>
 
-  <!-- Multi-head Self-Attention (Terracotta/Orange) -->
-  <rect x="928" y="198" width="126" height="46" rx="6" fill="#EBB788" stroke="#2B2B2B" stroke-width="1.15"/>
-  <text x="991" y="217" class="txt-sans box-title">Multi-head</text>
-  <text x="991" y="233" class="txt-sans box-title">Self-Attention</text>
+    <!-- Argument A3 (Procedural Bar) -->
+    <rect x="24" y="152" width="228" height="42" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="138" y="169" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="800" fill="#15803d">A_3: Statute Bar (Article 429)</text>
+    <text x="138" y="184" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#166534">Delta tau &gt; 1,095d =&gt; Substantive claim barred</text>
 
-  <!-- Residual 1: Circle + -->
-  <circle cx="991" cy="174" r="7" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.15"/>
-  <line x1="986.5" y1="174" x2="995.5" y2="174" stroke="#2B2B2B" stroke-width="1.15"/>
-  <line x1="991" y1="169.5" x2="991" y2="178.5" stroke="#2B2B2B" stroke-width="1.15"/>
+    <!-- Asymmetric Undercut arrow -->
+    <path d="M 100 152 L 70 130" stroke="#dc2626" stroke-width="1.6" fill="none" marker-end="url(#arrowRed)"/>
+    <rect x="52" y="132" width="56" height="13" rx="2" fill="#ffffff" stroke="#fca5a5" stroke-width="0.7"/>
+    <text x="80" y="141" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="700" fill="#dc2626">UNDERCUTS</text>
 
-  <line x1="991" y1="198" x2="991" y2="183.5" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
+    <!-- Status pill -->
+    <rect x="22" y="202" width="232" height="30" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="138" y="221" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#047857">Grounded Extension: GE(AF) = [ A_3 ]</text>
 
-  <!-- Skip Connection 1 (around MHA) -->
-  <path d="M 991 324 L 1064 324 L 1064 174 L 1000 174" fill="none" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
+    <!-- Sub-card 4.2: Knaster-Tarski Fixed Point -->
+    <rect x="12" y="254" width="252" height="206" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#subCardShadow)"/>
+    <text x="24" y="274" font-family="sans-serif" font-size="11" font-weight="700" fill="#1e293b">Knaster-Tarski Adjudication &amp; SOTA</text>
 
-  <!-- Arrow from Residual 1 to LN2 -->
-  <line x1="991" y1="167" x2="991" y2="152" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
+    <rect x="18" y="286" width="240" height="42" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="138" y="303" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#1e293b">F_AF(empty) = [A_3] =&gt; GE(AF) = [A_3]</text>
+    <text x="138" y="320" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">Least Fixed Point Grounded Extension</text>
 
-  <!-- Layer Normalization 2 (Middle, Cream) -->
-  <rect x="928" y="116" width="126" height="36" rx="6" fill="#FFF2CC" stroke="#2B2B2B" stroke-width="1.15"/>
-  <text x="991" y="138" class="txt-sans box-title">Layer Normalization</text>
+    <!-- Algebraic Mask -->
+    <rect x="18" y="336" width="240" height="38" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="138" y="352" text-anchor="middle" font-family="serif" font-size="10" font-weight="700" fill="#047857">z_masked = z + log( M_defeasible )</text>
+    <text x="138" y="367" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#059669">Strict 100% Soundness Guarantee</text>
 
-  <!-- Arrow from LN2 to FFN -->
-  <line x1="991" y1="116" x2="991" y2="99" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
-
-  <!-- Feed Forward Network (Soft Blue) -->
-  <rect x="928" y="52" width="126" height="46" rx="6" fill="#B2D2EC" stroke="#2B2B2B" stroke-width="1.15"/>
-  <text x="991" y="71" class="txt-sans box-title">Feed Forward</text>
-  <text x="991" y="87" class="txt-sans box-title">Network</text>
-
-  <!-- Residual 2: Circle + -->
-  <circle cx="991" cy="38" r="7" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.15"/>
-  <line x1="986.5" y1="38" x2="995.5" y2="38" stroke="#2B2B2B" stroke-width="1.15"/>
-  <line x1="991" y1="33.5" x2="991" y2="42.5" stroke="#2B2B2B" stroke-width="1.15"/>
-
-  <line x1="991" y1="52" x2="991" y2="47" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
-
-  <!-- Skip Connection 2 (around FFN) -->
-  <path d="M 991 160 L 1064 160 L 1064 38 L 1000 38" fill="none" stroke="#1E1E1E" stroke-width="1.15" marker-end="url(#arr)"/>
-
-  <!-- ==================== 7. OUTPUT HEAD: POOLING & DOWNSTREAM ==================== -->
-  <!-- Continuous Exit Path from Top of Residual 2 to Average Pooling -->
-  <path d="M 991 31 L 991 10 L 1210 10 L 1210 68" fill="none" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-
-  <!-- H^t Label -->
-  <text x="1210" y="52" class="txt-serif math-lbl">H<tspan font-size="10" dy="-6">t</tspan></text>
-
-  <!-- Average Pooling Box (Pastel Mint/Teal) -->
-  <rect x="1146" y="72" width="128" height="48" rx="8" fill="#C4EEEA" stroke="#2B2B2B" stroke-width="1.25"/>
-  <text x="1210" y="93" class="txt-sans box-title">Average</text>
-  <text x="1210" y="109" class="txt-sans box-title">Pooling</text>
-
-  <!-- Downward Arrows from Pooling to Downstream Tasks -->
-  <line x1="1176" y1="120" x2="1176" y2="250" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-  <line x1="1244" y1="120" x2="1244" y2="250" stroke="#1E1E1E" stroke-width="1.25" marker-end="url(#arr)"/>
-
-  <!-- h_u^t and h_v^t Labels beside arrows -->
-  <text x="1158" y="186" class="txt-serif math-lbl">h<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">u</tspan></text>
-  <text x="1262" y="186" class="txt-serif math-lbl">h<tspan font-size="10" dy="-6">t</tspan><tspan font-size="10" dy="9">v</tspan></text>
-
-  <!-- Downstream Tasks Box (Clean White) -->
-  <rect x="1146" y="254" width="128" height="56" rx="8" fill="#FFFFFF" stroke="#2B2B2B" stroke-width="1.35"/>
-  <text x="1210" y="278" class="txt-sans box-title">Downstream</text>
-  <text x="1210" y="296" class="txt-sans box-title">Tasks</text>
+    <!-- Final Verdict Card -->
+    <rect x="18" y="382" width="240" height="68" rx="6" fill="#065f46" stroke="#047857" stroke-width="1.2"/>
+    <text x="138" y="401" text-anchor="middle" font-family="sans-serif" font-size="9.5" font-weight="800" fill="#ffffff">AUDITED VERDICT: DISMISSED (CODE 2)</text>
+    <text x="138" y="418" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#a7f3d0">Statute-Barred Claim Extinguished</text>
+    <text x="138" y="437" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#34d399">90.17% Hits@1 | 100% Statute Rec.</text>
+  </g>
 
 </svg>

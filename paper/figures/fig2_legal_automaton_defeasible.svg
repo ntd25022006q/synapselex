@@ -1,182 +1,220 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 620" width="1440" height="620">
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="560" viewBox="0 0 1240 560">
   <defs>
-    <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#1E293B"/>
+    <filter id="panelShadow" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <filter id="cardShadow" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+    
+    <!-- Markers -->
+    <marker id="mGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#16a34a"/>
     </marker>
-    <marker id="arrGreen" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#16A34A"/>
+    <marker id="mAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#d97706"/>
     </marker>
-    <marker id="arrAmber" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#D97706"/>
+    <marker id="mRed" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#dc2626"/>
     </marker>
-    <marker id="arrRed" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#DC2626"/>
+    <marker id="mGrey" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#475569"/>
     </marker>
-    <marker id="arrSlate" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 0 L 7 3.5 L 0 7 z" fill="#64748B"/>
+    <marker id="mBlue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1.5 L 6 4 L 0 6.5 z" fill="#2563eb"/>
     </marker>
   </defs>
 
-  <!-- Clean White Background -->
-  <rect x="0" y="0" width="1440" height="620" fill="#FFFFFF"/>
+  <!-- Canvas Background -->
+  <rect width="1240" height="560" fill="#f8fafc" rx="12"/>
 
-  <!-- ==================== SUBFIGURE (a): 4-STATE LEGAL AUTOMATON ==================== -->
-  <g transform="translate(30, 20)">
-    <!-- Subfigure Header -->
-    <text x="0" y="16" font-family="serif" font-size="14" font-weight="bold" fill="#0F172A">(a) Non-Monotonic Contract State-Transition Automaton <tspan font-style="italic">M_state</tspan> under BLDS 2015</text>
+  <!-- ==================== PANEL (A): 4-STATE CIVIL CONTRACT AUTOMATON ==================== -->
+  <g transform="translate(20, 20)">
+    <!-- Container -->
+    <rect width="590" height="520" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#panelShadow)"/>
+    
+    <!-- Header -->
+    <rect x="0" y="0" width="590" height="46" rx="10" fill="#0f172a"/>
+    <rect x="14" y="11" width="30" height="24" rx="5" fill="#3b82f6"/>
+    <text x="29" y="27" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="800" fill="#ffffff">A</text>
+    <text x="54" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">4-State Civil Contract Automaton M_state = (S, Sigma, delta, s0)</text>
+    <text x="54" y="40" font-family="sans-serif" font-size="9" fill="#94a3b8">Non-Monotonic Performance Curing &amp; Statutory Prescription under BLDS 2015</text>
 
-    <!-- State S0: Valid Contract (Soft Green) -->
-    <g transform="translate(40, 45)">
-      <rect x="0" y="0" width="260" height="95" rx="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.4"/>
-      <circle cx="22" cy="22" r="12" fill="#10B981"/>
-      <text x="22" y="26" font-family="serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">S<tspan font-size="8" dy="2">0</tspan></text>
-      <text x="42" y="26" font-family="sans-serif" font-size="11.5" font-weight="bold" fill="#065F46">VALID CONTRACT</text>
-      <text x="14" y="48" font-family="sans-serif" font-size="10" fill="#047857">• Mutual Consensus (Art. 385)</text>
-      <text x="14" y="64" font-family="sans-serif" font-size="10" fill="#047857">• Enforceable Delivery (Art. 398)</text>
-      <rect x="14" y="72" width="232" height="16" rx="3" fill="#D1FAE5"/>
-      <text x="130" y="84" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#065F46" text-anchor="middle">Presumption of Validity</text>
+    <!-- STATE S0: VALID -->
+    <g transform="translate(30, 70)">
+      <rect width="210" height="120" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="210" height="28" rx="8" fill="#16a34a"/>
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">S_0: Valid Contract</text>
+      <text x="14" y="48" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#15803d">- Fully enforceable obligations</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="9" fill="#334155">- Substantive relief granted</text>
+      <text x="14" y="84" font-family="sans-serif" font-size="9" fill="#334155">- Mutual consensus preserved</text>
+      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#bbf7d0" stroke-width="0.8"/>
+      <text x="105" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="#15803d">Legal Basis: BLDS 2015 Art. 117</text>
     </g>
 
-    <!-- State S1: Voidable / Inchoate (Soft Amber) -->
-    <g transform="translate(1080, 45)">
-      <rect x="0" y="0" width="260" height="95" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.4"/>
-      <circle cx="22" cy="22" r="12" fill="#F59E0B"/>
-      <text x="22" y="26" font-family="serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">S<tspan font-size="8" dy="2">1</tspan></text>
-      <text x="42" y="26" font-family="sans-serif" font-size="11.5" font-weight="bold" fill="#92400E">VOIDABLE / INCHOATE</text>
-      <text x="14" y="48" font-family="sans-serif" font-size="10" fill="#B45309">• Formal Defect or Breach Notice</text>
-      <text x="14" y="64" font-family="sans-serif" font-size="10" fill="#B45309">• Curable under Art. 129(2)</text>
-      <rect x="14" y="72" width="232" height="16" rx="3" fill="#FDE68A"/>
-      <text x="130" y="84" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#92400E" text-anchor="middle">Operative Procedural Clock Active</text>
+    <!-- STATE S1: VOIDABLE -->
+    <g transform="translate(340, 70)">
+      <rect width="210" height="120" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="210" height="28" rx="8" fill="#f59e0b"/>
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">S_1: Voidable Contract</text>
+      <text x="14" y="48" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#b45309">- Formal defect (Unnotarized)</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="9" fill="#334155">- Defect in writing / deed</text>
+      <text x="14" y="84" font-family="sans-serif" font-size="9" fill="#334155">- Subject to court invalidation</text>
+      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#fde68a" stroke-width="0.8"/>
+      <text x="105" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="#b45309">Legal Basis: BLDS 2015 Art. 129(1)</text>
     </g>
 
-    <!-- Transition S0 -> S1 (Material Breach) -->
-    <g transform="translate(300, 70)">
-      <line x1="10" y1="0" x2="770" y2="0" stroke="#D97706" stroke-width="1.8" marker-end="url(#arrAmber)"/>
-      <rect x="270" y="-12" width="240" height="22" rx="4" fill="#FFFFFF" stroke="#FDE68A" stroke-width="1"/>
-      <text x="390" y="3" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#B45309" text-anchor="middle">Material Breach or Formal Defect Notice</text>
+    <!-- STATE S3: EXTINGUISHED / TIME-BARRED -->
+    <g transform="translate(30, 340)">
+      <rect width="210" height="120" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.8" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="210" height="28" rx="8" fill="#475569"/>
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">S_3: Extinguished / Barred</text>
+      <text x="14" y="48" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#334155">- Procedural limitation lapsed</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="9" fill="#475569">- Substantive claims barred</text>
+      <text x="14" y="84" font-family="sans-serif" font-size="9" fill="#dc2626">- Summary lawsuit dismissal</text>
+      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+      <text x="105" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="#334155">BLDS 2015 Art. 429 (Delta tau &gt; 1095d)</text>
     </g>
 
-    <!-- Transition S1 -> S0 (NON-MONOTONIC CURING - GREEN DASHED) -->
-    <g transform="translate(300, 110)">
-      <line x1="770" y1="0" x2="10" y2="0" stroke="#16A34A" stroke-width="2.2" stroke-dasharray="6,4" marker-end="url(#arrGreen)"/>
-      <rect x="210" y="-12" width="360" height="22" rx="4" fill="#FFFFFF" stroke="#A7F3D0" stroke-width="1.2"/>
-      <text x="390" y="3" font-family="sans-serif" font-size="10" font-weight="bold" fill="#065F46" text-anchor="middle">Non-Monotonic Curing: ≥ 2/3 Obligation Executed (Art. 129(2))</text>
+    <!-- STATE S2: VOID AB INITIO -->
+    <g transform="translate(340, 340)">
+      <rect width="210" height="120" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.8" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="210" height="28" rx="8" fill="#dc2626"/>
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">S_2: Void Ab Initio</text>
+      <text x="14" y="48" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#991b1b">- Absolute nullity from inception</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="9" fill="#334155">- Prohibited object or fraud</text>
+      <text x="14" y="84" font-family="sans-serif" font-size="9" fill="#334155">- Mutual restitution of assets</text>
+      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#fecaca" stroke-width="0.8"/>
+      <text x="105" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="#dc2626">Legal Basis: BLDS 2015 Art. 122-123</text>
     </g>
 
-    <!-- State S2: Void ab initio (Soft Red) -->
-    <g transform="translate(40, 175)">
-      <rect x="0" y="0" width="260" height="95" rx="8" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.4"/>
-      <circle cx="22" cy="22" r="12" fill="#EF4444"/>
-      <text x="22" y="26" font-family="serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">S<tspan font-size="8" dy="2">2</tspan></text>
-      <text x="42" y="26" font-family="sans-serif" font-size="11.5" font-weight="bold" fill="#991B1B">VOID AB INITIO</text>
-      <text x="14" y="48" font-family="sans-serif" font-size="10" fill="#B91C1C">• Prohibited Subject Matter (Art. 123)</text>
-      <text x="14" y="64" font-family="sans-serif" font-size="10" fill="#B91C1C">• Restitution by Law (Art. 131)</text>
-      <rect x="14" y="72" width="232" height="16" rx="3" fill="#FECACA"/>
-      <text x="130" y="84" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#991B1B" text-anchor="middle">Irreversible Absolute Nullity</text>
-    </g>
+    <!-- TRANSITION ARROWS & LABELS -->
+    <!-- S0 -> S1 (Formal Defect) -->
+    <path d="M 240 115 L 338 115" stroke="#f59e0b" stroke-width="2" marker-end="url(#mAmber)"/>
+    <rect x="250" y="98" width="80" height="15" rx="3" fill="#ffffff" stroke="#fde68a" stroke-width="0.8"/>
+    <text x="290" y="109" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="700" fill="#b45309">Defect (Art. 502)</text>
 
-    <!-- State S3: Extinguished (Soft Slate) -->
-    <g transform="translate(1080, 175)">
-      <rect x="0" y="0" width="260" height="95" rx="8" fill="#F1F5F9" stroke="#64748B" stroke-width="1.4"/>
-      <circle cx="22" cy="22" r="12" fill="#64748B"/>
-      <text x="22" y="26" font-family="serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">S<tspan font-size="8" dy="2">3</tspan></text>
-      <text x="42" y="26" font-family="sans-serif" font-size="11.5" font-weight="bold" fill="#1E293B">EXTINGUISHED / BARRED</text>
-      <text x="14" y="48" font-family="sans-serif" font-size="10" fill="#475569">• Statute of Limitations Elapsed (Art. 429)</text>
-      <text x="14" y="64" font-family="sans-serif" font-size="10" fill="#475569">• Procedural Forfeiture of Right</text>
-      <rect x="14" y="72" width="232" height="16" rx="3" fill="#E2E8F0"/>
-      <text x="130" y="84" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#334155" text-anchor="middle">Elapsed Latency Δt &gt; 1,095 Days</text>
-    </g>
+    <!-- S1 -> S0 (STATUTORY CURE: Art. 129(2) Perf >= 2/3) -->
+    <path d="M 340 145 L 242 145" stroke="#16a34a" stroke-width="2.5" marker-end="url(#mGreen)"/>
+    <rect x="246" y="149" width="90" height="24" rx="4" fill="#16a34a"/>
+    <text x="291" y="161" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="800" fill="#ffffff">STATUTORY CURE</text>
+    <text x="291" y="170" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#ffffff">Perf &gt;= 2/3 (Art. 129.2)</text>
 
-    <!-- Transition S0 -> S2 (Art 123) -->
-    <line x1="170" y1="140" x2="170" y2="172" stroke="#EF4444" stroke-width="1.5" marker-end="url(#arrRed)"/>
-    <rect x="115" y="147" width="110" height="18" rx="3" fill="#FFFFFF" stroke="#FECACA" stroke-width="0.8"/>
-    <text x="170" y="160" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#B91C1C" text-anchor="middle">Art. 123 Prohibited</text>
+    <!-- S1 -> S2 (Court Decree) -->
+    <path d="M 445 190 L 445 338" stroke="#ef4444" stroke-width="2" marker-end="url(#mRed)"/>
+    <rect x="448" y="250" width="84" height="26" rx="3" fill="#ffffff" stroke="#fecaca" stroke-width="0.8"/>
+    <text x="490" y="262" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="700" fill="#dc2626">Court Invalidation</text>
+    <text x="490" y="272" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#64748b">Article 132 Decree</text>
 
-    <!-- Transition S1 -> S3 (Art 429) -->
-    <line x1="1210" y1="140" x2="1210" y2="172" stroke="#64748B" stroke-width="1.5" marker-end="url(#arrSlate)"/>
-    <rect x="1150" y="147" width="120" height="18" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="0.8"/>
-    <text x="1210" y="160" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#334155" text-anchor="middle">Art. 429 Time Bar</text>
+    <!-- S0 -> S3 (Prescription Bar) -->
+    <path d="M 135 190 L 135 338" stroke="#475569" stroke-width="2" marker-end="url(#mGrey)"/>
+    <rect x="52" y="250" width="80" height="26" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="92" y="262" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="700" fill="#1e293b">Limitation Bar</text>
+    <text x="92" y="272" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#dc2626">Delta tau &gt; 1,095d</text>
 
-    <!-- Curved Transition S1 -> S2 (Uncured Defect) -->
-    <path d="M 1080 225 Q 690 248 303 225" fill="none" stroke="#EF4444" stroke-width="1.5" marker-end="url(#arrRed)"/>
-    <rect x="560" y="226" width="260" height="20" rx="3" fill="#FFFFFF" stroke="#FECACA" stroke-width="0.8"/>
-    <text x="690" y="240" font-family="sans-serif" font-size="9" font-weight="bold" fill="#B91C1C" text-anchor="middle">Unconfirmed Defect After Statutory Demand (Art. 132)</text>
+    <!-- S0 -> S2 (Direct Nullity) -->
+    <path d="M 235 185 Q 290 265 345 345" stroke="#ef4444" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#mRed)"/>
+    <rect x="255" y="268" width="70" height="15" rx="3" fill="#ffffff" stroke="#fecaca" stroke-width="0.8"/>
+    <text x="290" y="279" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="700" fill="#dc2626">Unlawful (Art. 123)</text>
+
+    <!-- S2 -> S3 (Restitution Expired) -->
+    <path d="M 340 400 L 242 400" stroke="#64748b" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#mGrey)"/>
+    <rect x="250" y="403" width="80" height="15" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="290" y="414" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#475569">Restitution Expired</text>
+    
+    <!-- Legend Box at Bottom -->
+    <rect x="25" y="474" width="540" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+    <circle cx="45" cy="491" r="5" fill="#16a34a"/>
+    <text x="56" y="494" font-family="sans-serif" font-size="8.5" fill="#1e293b">Enforceable (S0)</text>
+    <circle cx="150" cy="491" r="5" fill="#f59e0b"/>
+    <text x="161" y="494" font-family="sans-serif" font-size="8.5" fill="#1e293b">Voidable (S1)</text>
+    <circle cx="250" cy="491" r="5" fill="#dc2626"/>
+    <text x="261" y="494" font-family="sans-serif" font-size="8.5" fill="#1e293b">Void Ab Initio (S2)</text>
+    <circle cx="370" cy="491" r="5" fill="#475569"/>
+    <text x="381" y="494" font-family="sans-serif" font-size="8.5" fill="#1e293b">Barred/Dismissed (S3)</text>
+    <line x1="495" y1="491" x2="520" y2="491" stroke="#16a34a" stroke-width="2"/>
+    <text x="525" y="494" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#16a34a">Non-monotonic Cure</text>
   </g>
 
-  <!-- Dividing Line between Subfigures -->
-  <line x1="40" y1="315" x2="1400" y2="315" stroke="#E2E8F0" stroke-width="1.2"/>
+  <!-- ==================== PANEL (B): DEFEASIBLE DUNG FRAMEWORK ==================== -->
+  <g transform="translate(630, 20)">
+    <!-- Container -->
+    <rect width="590" height="520" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#panelShadow)"/>
+    
+    <!-- Header -->
+    <rect x="0" y="0" width="590" height="46" rx="10" fill="#0f172a"/>
+    <rect x="14" y="11" width="30" height="24" rx="5" fill="#059669"/>
+    <text x="29" y="27" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="800" fill="#ffffff">B</text>
+    <text x="54" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">Defeasible Abstract Argumentation Framework AF = (Args, Att)</text>
+    <text x="54" y="40" font-family="sans-serif" font-size="9" fill="#94a3b8">Phan Minh Dung (1995) Adjudication with Asymmetric Procedural Undercutting</text>
 
-  <!-- ==================== SUBFIGURE (b): DEFEASIBLE DUNG ARGUMENTATION ==================== -->
-  <g transform="translate(30, 335)">
-    <!-- Subfigure Header -->
-    <text x="0" y="16" font-family="serif" font-size="14" font-weight="bold" fill="#0F172A">(b) Defeasible Abstract Argumentation Framework <tspan font-style="italic">AF = ⟨A, R_defeat⟩</tspan> (Dung 1995; Prakken 2010)</text>
-
-    <!-- Argument Card 1: Procedural Bar A_bar -->
-    <g transform="translate(40, 40)">
-      <rect x="0" y="0" width="360" height="175" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.4"/>
-      <circle cx="22" cy="22" r="12" fill="#1E293B"/>
-      <text x="22" y="26" font-family="serif" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">A<tspan font-size="8" dy="2">1</tspan></text>
-      <text x="42" y="26" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">Argument A_bar (Procedural Defense)</text>
-      <text x="14" y="50" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#334155">Claim: Limitation Period Extinguishment</text>
-      <text x="14" y="68" font-family="sans-serif" font-size="10" fill="#475569">• Breach date: 2021-04-10 | Lawsuit: 2024-09-15</text>
-      <text x="14" y="84" font-family="sans-serif" font-size="10" fill="#475569">• Operative Latency: Δt = 1,254 days &gt; 1,095 days</text>
-      <text x="14" y="100" font-family="sans-serif" font-size="10" fill="#475569">• Statutory Authority: Article 429 BLDS 2015</text>
-
-      <rect x="14" y="118" width="332" height="42" rx="5" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1"/>
-      <text x="180" y="136" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#166534" text-anchor="middle">STATUS: ACCEPTED (IN GROUNDED EXTENSION)</text>
-      <text x="180" y="150" font-family="sans-serif" font-size="9" fill="#15803D" text-anchor="middle">Unattacked Procedural Rule: Substantive Remedy Bar</text>
+    <!-- ARGUMENT A1: CLAIMANT -->
+    <g transform="translate(30, 70)">
+      <rect width="235" height="110" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.6" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="235" height="26" rx="8" fill="#dc2626"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="11" font-weight="800" fill="#ffffff">A_1: Claimant Substantive Claim</text>
+      <text x="12" y="44" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#991b1b">Remedy: Forfeit Deposit 500M VND</text>
+      <text x="12" y="60" font-family="sans-serif" font-size="8.5" fill="#475569">Basis: BLDS 2015 Art. 328 (Default Penalty)</text>
+      <text x="12" y="76" font-family="sans-serif" font-size="8.5" fill="#475569">Claimant performed consideration</text>
+      <rect x="10" y="86" width="105" height="16" rx="3" fill="#dc2626"/>
+      <text x="62" y="97" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="800" fill="#ffffff">STATUS: DEFEATED</text>
     </g>
 
-    <!-- Asymmetric Defeat Arrow -->
-    <g transform="translate(415, 115)">
-      <line x1="0" y1="0" x2="85" y2="0" stroke="#DC2626" stroke-width="2.5" marker-end="url(#arrRed)"/>
-      <rect x="-8" y="-26" width="102" height="22" rx="4" fill="#FFFFFF" stroke="#FECACA" stroke-width="0.8"/>
-      <text x="43" y="-12" font-family="sans-serif" font-size="9" font-weight="bold" fill="#DC2626" text-anchor="middle">Asymmetric Defeat</text>
+    <!-- ARGUMENT A2: DEFENDANT REBUTTAL -->
+    <g transform="translate(325, 70)">
+      <rect width="235" height="110" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="235" height="26" rx="8" fill="#f59e0b"/>
+      <text x="12" y="18" font-family="sans-serif" font-size="11" font-weight="800" fill="#ffffff">A_2: Defendant Merits Rebuttal</text>
+      <text x="12" y="44" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#b45309">Defense: Oral Extension Pact</text>
+      <text x="12" y="60" font-family="sans-serif" font-size="8.5" fill="#475569">Excuse late notarization performance</text>
+      <text x="12" y="76" font-family="sans-serif" font-size="8.5" fill="#475569">Counter-remedy: Refund deposit</text>
+      <rect x="10" y="86" width="105" height="16" rx="3" fill="#f59e0b"/>
+      <text x="62" y="97" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="800" fill="#ffffff">STATUS: REBUTTED</text>
     </g>
 
-    <!-- Argument Card 2: Substantive Claim A_claim -->
-    <g transform="translate(515, 40)">
-      <rect x="0" y="0" width="360" height="175" rx="8" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1.4"/>
-      <circle cx="22" cy="22" r="12" fill="#BE123C"/>
-      <text x="22" y="26" font-family="serif" font-size="10.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">A<tspan font-size="8" dy="2">2</tspan></text>
-      <text x="42" y="26" font-family="sans-serif" font-size="12" font-weight="bold" fill="#9F1239">Argument A_claim (Substantive Claim)</text>
-      <text x="14" y="50" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#334155">Claim: Demand Double Deposit Forfeiture</text>
-      <text x="14" y="68" font-family="sans-serif" font-size="10" fill="#475569">• Deposit agreement executed under Art. 328</text>
-      <text x="14" y="84" font-family="sans-serif" font-size="10" fill="#475569">• Seller refused title transfer at closing date</text>
-      <text x="14" y="100" font-family="sans-serif" font-size="10" fill="#475569">• Substantive Right: Double penalty compensation</text>
+    <!-- Symmetric Rebuttal line between A1 and A2 -->
+    <line x1="267" y1="120" x2="323" y2="120" stroke="#f59e0b" stroke-width="2" marker-end="url(#mAmber)" marker-start="url(#mAmber)"/>
+    <rect x="277" y="102" width="36" height="14" rx="2" fill="#ffffff" stroke="#fde68a" stroke-width="0.8"/>
+    <text x="295" y="112" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="700" fill="#b45309">rebuts</text>
 
-      <rect x="14" y="118" width="332" height="42" rx="5" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
-      <text x="180" y="136" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#991B1B" text-anchor="middle">STATUS: OVERRULED / DEFEATED</text>
-      <text x="180" y="150" font-family="sans-serif" font-size="9" fill="#B91C1C" text-anchor="middle">Substantive Merits Nullified by Procedural Limitation</text>
-    </g>
-
-    <!-- Resolution Arrow -->
-    <g transform="translate(890, 115)">
-      <line x1="0" y1="0" x2="70" y2="0" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arrGreen)"/>
-      <rect x="5" y="-20" width="60" height="18" rx="3" fill="#FFFFFF" stroke="#86EFAC" stroke-width="0.8"/>
-      <text x="35" y="-8" font-family="sans-serif" font-size="9" font-weight="bold" fill="#166534" text-anchor="middle">Resolve</text>
-    </g>
-
-    <!-- Panel Card 3: Grounded Extension Resolution -->
-    <g transform="translate(975, 40)">
-      <rect x="0" y="0" width="365" height="175" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1.4"/>
-      <circle cx="22" cy="22" r="12" fill="#16A34A"/>
-      <text x="22" y="26" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">✓</text>
-      <text x="42" y="26" font-family="sans-serif" font-size="12" font-weight="bold" fill="#166534">Grounded Extension Resolution</text>
+    <!-- ARGUMENT A3: STATUTORY LIMITATION BAR -->
+    <g transform="translate(60, 220)">
+      <rect width="470" height="120" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="470" height="28" rx="8" fill="#16a34a"/>
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">A_3: Statutory Limitation Defense (Article 429 BLDS 2015)</text>
       
-      <!-- Knaster Tarski Fixed Point Box -->
-      <rect x="14" y="44" width="337" height="38" rx="5" fill="#FFFFFF" stroke="#86EFAC" stroke-width="1"/>
-      <text x="182" y="62" font-family="serif" font-size="11.5" font-weight="bold" fill="#166534" text-anchor="middle">GE(AF) = lfp(F_AF) = { A_bar }</text>
-      <text x="182" y="74" font-family="sans-serif" font-size="8.5" fill="#15803D" text-anchor="middle">Unique Minimal Fixed Point of Characteristic Function F_AF</text>
-
-      <!-- Adjudication Decree -->
-      <rect x="14" y="90" width="337" height="38" rx="5" fill="#DCFCE7" stroke="#4ADE80" stroke-width="1"/>
-      <text x="182" y="108" font-family="sans-serif" font-size="10.5" font-weight="bold" fill="#14532D" text-anchor="middle">JUDICIAL DECREE: DISMISS CLAIM</text>
-      <text x="182" y="120" font-family="sans-serif" font-size="9" fill="#166534" text-anchor="middle">Statute of Limitations Lapsed under Art. 429 BLDS 2015</text>
-
-      <rect x="14" y="136" width="337" height="28" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
-      <text x="182" y="152" font-family="sans-serif" font-size="8.5" font-weight="bold" fill="#334155" text-anchor="middle">Certified 100% Invariance across 320 Counterfactual Scenarios</text>
+      <text x="16" y="50" font-family="sans-serif" font-size="10" font-weight="700" fill="#15803d">Procedural Fact: Elapsed Time Delta tau = 1,254 days &gt; 1,095 days (3-Year Statutory Bar)</text>
+      <text x="16" y="68" font-family="sans-serif" font-size="9" fill="#334155">- No Force Majeure Tolling proven under Art. 156 (dtau/dt = 1 throughout operative span)</text>
+      <text x="16" y="84" font-family="sans-serif" font-size="9" fill="#334155">- No debt acknowledgment or partial payment restart proven under Art. 157</text>
+      
+      <rect x="14" y="94" width="280" height="18" rx="3" fill="#16a34a"/>
+      <text x="154" y="106" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="800" fill="#ffffff">STATUS: ADMISSIBLE &amp; IN GROUNDED EXTENSION GE(AF)</text>
     </g>
-  </g>
 
+    <!-- Asymmetric Undercut Arrow A3 -> A1 -->
+    <path d="M 210 220 L 150 183" stroke="#dc2626" stroke-width="2.5" marker-end="url(#mRed)"/>
+    <rect x="120" y="194" width="105" height="18" rx="3" fill="#dc2626"/>
+    <text x="172" y="206" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="800" fill="#ffffff">ASYMMETRIC UNDERCUT</text>
+
+    <!-- Undercut Callout Bubble -->
+    <rect x="250" y="186" width="220" height="28" rx="4" fill="#fef2f2" stroke="#fca5a5" stroke-width="0.8"/>
+    <text x="256" y="198" font-family="sans-serif" font-size="7.5" font-weight="700" fill="#991b1b">Procedural Bar Priority:</text>
+    <text x="256" y="209" font-family="sans-serif" font-size="7" fill="#b91c1c">Art. 429 bar unconditionally defeats substantive claim A1</text>
+
+    <!-- KNASTER-TARSKI FIXED POINT ADJUDICATION BOX -->
+    <g transform="translate(30, 365)">
+      <rect width="530" height="135" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6" filter="url(#cardShadow)"/>
+      <rect x="0" y="0" width="530" height="28" rx="8" fill="#1e40af"/>
+      <text x="16" y="19" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">Knaster-Tarski Least Fixed Point Adjudication Closure</text>
+
+      <rect x="14" y="38" width="502" height="38" rx="5" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+      <text x="265" y="54" text-anchor="middle" font-family="serif" font-size="11" font-weight="700" fill="#1e3a8a">F_AF(empty) = [ A_3 ] ==&gt; F_AF^2(empty) = [ A_3 ] ==&gt; GE(AF) = [ A_3 ]</text>
+      <text x="265" y="69" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#475569">Unique Grounded Extension: Undefeated Procedural Defense Prevails</text>
+
+      <rect x="14" y="84" width="502" height="42" rx="5" fill="#1e3a8a"/>
+      <text x="265" y="101" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">FINAL JUDICIAL DECREE: LAWSUIT DISMISSED AS TIME-BARRED</text>
+      <text x="265" y="117" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#93c5fd">Civil Verdict Code 2 (Article 429 Procedural Extinguishment) | 100% Soundness</text>
+    </g>
+
+  </g>
 </svg>
