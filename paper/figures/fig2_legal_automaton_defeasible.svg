@@ -1,203 +1,176 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="560" viewBox="0 0 1240 560">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="490" viewBox="0 0 1200 490">
   <defs>
-    <!-- Shadow filters -->
-    <filter id="panelElevation" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06"/>
-    </filter>
-    <filter id="cardElevation" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.04"/>
-    </filter>
-    
-    <!-- Markers -->
-    <marker id="mGreen" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 1 L 5 3.5 L 0 6 z" fill="#059669"/>
+    <marker id="arrSlate" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 1 L 5 3 L 0 5 z" fill="#475569"/>
     </marker>
-    <marker id="mAmber" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 1 L 5 3.5 L 0 6 z" fill="#d97706"/>
+    <marker id="arrBlue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 1 L 5 3 L 0 5 z" fill="#2563eb"/>
     </marker>
-    <marker id="mRed" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 1 L 5 3.5 L 0 6 z" fill="#e11d48"/>
+    <marker id="arrEmerald" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 1 L 5 3 L 0 5 z" fill="#059669"/>
     </marker>
-    <marker id="mSlate" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 1 L 5 3.5 L 0 6 z" fill="#475569"/>
+    <marker id="arrRose" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 1 L 5 3 L 0 5 z" fill="#e11d48"/>
     </marker>
-    <marker id="mBlue" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-      <path d="M 0 1 L 5 3.5 L 0 6 z" fill="#2563eb"/>
+    <marker id="arrAmber" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M 0 1 L 5 3 L 0 5 z" fill="#d97706"/>
     </marker>
   </defs>
 
-  <!-- Background Canvas -->
-  <rect width="1240" height="560" fill="#f8fafc" rx="12"/>
+  <!-- Clean Canvas Background -->
+  <rect width="1200" height="490" fill="#ffffff"/>
 
-  <!-- ==================== PANEL (A): 4-STATE CIVIL CONTRACT AUTOMATON ==================== -->
-  <g transform="translate(20, 20)">
-    <!-- Container -->
-    <rect width="590" height="520" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2" filter="url(#panelElevation)"/>
+  <!-- ================= PANEL A: 4-STATE CIVIL AUTOMATON ================= -->
+  <g transform="translate(15, 15)">
+    <rect width="575" height="460" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
     
-    <!-- Header Banner -->
-    <rect x="0" y="0" width="590" height="46" rx="10" fill="#0f172a"/>
-    <rect x="14" y="11" width="28" height="24" rx="4" fill="#2563eb"/>
-    <text x="28" y="27" text-anchor="middle" font-family="sans-serif" font-size="12.5" font-weight="800" fill="#ffffff">A</text>
-    <text x="52" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">4-State Civil Contract Automaton M_state = (S, Σ, δ, s_0)</text>
-    <text x="52" y="40" font-family="sans-serif" font-size="8.5" fill="#94a3b8">Non-Monotonic Performance Curing &amp; Statutory Prescription under BLDS 2015</text>
+    <!-- Title Area -->
+    <text x="18" y="28" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">(a) 4-State Civil Procedural Automaton M_state = ⟨S, Σ, δ, s_0, F⟩</text>
+    <text x="18" y="44" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" fill="#64748b">Non-Monotonic Contract State-Transitions under Civil Code (BLDS 2015)</text>
+    <line x1="18" y1="52" x2="557" y2="52" stroke="#e2e8f0" stroke-width="1"/>
 
-    <!-- STATE S0: VALID -->
-    <g transform="translate(30, 68)">
-      <rect width="210" height="122" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="1.6" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="210" height="28" rx="8" fill="#059669"/>
-      <text x="14" y="19" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">S_0: Valid Contract</text>
-      
-      <text x="14" y="48" font-family="serif" font-size="10.5" font-weight="700" fill="#065f46">Enforceable Rights (Art. 117)</text>
-      <text x="14" y="66" font-family="sans-serif" font-size="8.5" fill="#334155">• Substantive damages granted</text>
-      <text x="14" y="82" font-family="sans-serif" font-size="8.5" fill="#334155">• Art. 328 Forfeit / Double refund</text>
-      
-      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#a7f3d0" stroke-width="0.8"/>
-      <text x="105" y="106" text-anchor="middle" font-family="serif" font-size="8" font-weight="700" fill="#047857">ValidContract ⊓ Voidable ⊑ ⊥</text>
-    </g>
+    <!-- State S_0: Valid Contract -->
+    <rect x="35" y="80" width="225" height="120" rx="6" fill="#f0fdf4" stroke="#059669" stroke-width="1.6"/>
+    <rect x="45" y="90" width="72" height="20" rx="3" fill="#dcfce7"/>
+    <text x="81" y="104" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#166534">State S_0</text>
+    <text x="125" y="105" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="700" fill="#047857">Valid Contract</text>
+    <line x1="45" y1="118" x2="250" y2="118" stroke="#bbf7d0" stroke-width="1"/>
+    <text x="45" y="135" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#065f46">• Full substantive enforceability (Art. 328)</text>
+    <text x="45" y="152" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#065f46">• Breach penalty: Double deposit refund</text>
+    <text x="45" y="169" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#065f46">• Procedural rights fully actionable</text>
+    <rect x="45" y="178" width="180" height="16" rx="2" fill="#bbf7d0"/>
+    <text x="135" y="190" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#14532d">Status: Prima Facie Enforceable</text>
 
-    <!-- STATE S1: VOIDABLE -->
-    <g transform="translate(340, 68)">
-      <rect width="210" height="122" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="210" height="28" rx="8" fill="#d97706"/>
-      <text x="14" y="19" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">S_1: Voidable / Formal Defect</text>
-      
-      <text x="14" y="48" font-family="serif" font-size="10.5" font-weight="700" fill="#92400e">Unnotarized Deed (Art. 129(1))</text>
-      <text x="14" y="66" font-family="sans-serif" font-size="8.5" fill="#334155">• Defective in writing / form</text>
-      <text x="14" y="82" font-family="sans-serif" font-size="8.5" fill="#334155">• Subject to court annulment</text>
-      
-      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#fde68a" stroke-width="0.8"/>
-      <text x="105" y="106" text-anchor="middle" font-family="serif" font-size="8" font-weight="700" fill="#b45309">VoidableContract ⊑ RealEstate</text>
-    </g>
+    <!-- State S_1: Voidable / Formal Defect -->
+    <rect x="315" y="80" width="225" height="120" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+    <rect x="325" y="90" width="72" height="20" rx="3" fill="#fef3c7"/>
+    <text x="361" y="104" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#92400e">State S_1</text>
+    <text x="405" y="105" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="700" fill="#b45309">Voidable Contract</text>
+    <line x1="325" y1="118" x2="530" y2="118" stroke="#fde68a" stroke-width="1"/>
+    <text x="325" y="135" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#78350f">• Formal defect: Unnotarized real estate</text>
+    <text x="325" y="152" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#78350f">• Violation of Land Law Art. 502</text>
+    <text x="325" y="169" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#78350f">• Subject to judicial curing or nullity</text>
+    <rect x="325" y="178" width="180" height="16" rx="2" fill="#fde68a"/>
+    <text x="415" y="190" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#78350f">Status: Provisionally Contestable</text>
 
-    <!-- STATE S3: EXTINGUISHED / TIME-BARRED -->
-    <g transform="translate(30, 338)">
-      <rect width="210" height="122" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.6" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="210" height="28" rx="8" fill="#334155"/>
-      <text x="14" y="19" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">S_3: Extinguished Action</text>
-      
-      <text x="14" y="48" font-family="serif" font-size="10.5" font-weight="700" fill="#1e293b">Statutory Bar (Art. 429)</text>
-      <text x="14" y="66" font-family="sans-serif" font-size="8.5" fill="#475569">• Δτ &gt; 1,095 days (3-Year Lapse)</text>
-      <text x="14" y="82" font-family="sans-serif" font-size="8.5" fill="#475569">• Preempts substantive action</text>
-      
-      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
-      <text x="105" y="106" text-anchor="middle" font-family="serif" font-size="8" font-weight="700" fill="#334155">Extinguished ⊑ ¬Enforceable</text>
-    </g>
+    <!-- Transition S_1 -> S_0 (Substantial Performance Curing) -->
+    <path d="M 315 130 L 265 130" stroke="#059669" stroke-width="1.8" marker-end="url(#arrowEmerald)"/>
+    <rect x="268" y="106" width="44" height="20" rx="3" fill="#ecfdf5" stroke="#059669" stroke-width="0.8"/>
+    <text x="290" y="116" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7" font-weight="700" fill="#047857">Art. 129(2)</text>
+    <text x="290" y="123" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="6.5" fill="#065f46">Perf ≥ 2/3</text>
 
-    <!-- STATE S2: VOID AB INITIO -->
-    <g transform="translate(340, 338)">
-      <rect width="210" height="122" rx="8" fill="#fef2f2" stroke="#e11d48" stroke-width="1.6" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="210" height="28" rx="8" fill="#be123c"/>
-      <text x="14" y="19" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">S_2: Void Ab Initio</text>
-      
-      <text x="14" y="48" font-family="serif" font-size="10.5" font-weight="700" fill="#991b1b">Absolute Nullity (Art. 122)</text>
-      <text x="14" y="66" font-family="sans-serif" font-size="8.5" fill="#475569">• Sham transaction (Art. 124)</text>
-      <text x="14" y="82" font-family="sans-serif" font-size="8.5" fill="#475569">• Restitution in integrum</text>
-      
-      <rect x="12" y="94" width="186" height="18" rx="3" fill="#ffffff" stroke="#fecdd3" stroke-width="0.8"/>
-      <text x="105" y="106" text-anchor="middle" font-family="serif" font-size="8" font-weight="700" fill="#9f1239">VoidAbInitio ⊑ Restitution</text>
-    </g>
+    <!-- State S_3: Statute-Barred Extinguished -->
+    <rect x="35" y="275" width="225" height="120" rx="6" fill="#f1f5f9" stroke="#475569" stroke-width="1.6"/>
+    <rect x="45" y="285" width="72" height="20" rx="3" fill="#e2e8f0"/>
+    <text x="81" y="299" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#334155">State S_3</text>
+    <text x="125" y="300" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="700" fill="#1e293b">Extinguished Bar</text>
+    <line x1="45" y1="313" x2="250" y2="313" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="45" y="330" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">• Procedural limitation elapsed (Art. 429)</text>
+    <text x="45" y="347" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">• Effective delay: Δτ &gt; 1,095 days (3 yrs)</text>
+    <text x="45" y="364" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">• Right of action annihilated ex lege</text>
+    <rect x="45" y="373" width="180" height="16" rx="2" fill="#cbd5e1"/>
+    <text x="135" y="385" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#1e293b">Status: Dismissed Preemptively</text>
 
-    <!-- ================= TRANSITIONS ================= -->
-    <!-- Transition S1 -> S0: Curing -->
-    <path d="M 340 108 L 248 108" stroke="#059669" stroke-width="2.2" marker-end="url(#mGreen)"/>
-    <rect x="254" y="88" width="76" height="18" rx="3" fill="#ffffff" stroke="#a7f3d0" stroke-width="0.8"/>
-    <text x="292" y="100" text-anchor="middle" font-family="serif" font-size="7.5" font-weight="700" fill="#047857">Art. 129(2) [≥2/3]</text>
+    <!-- Transition S_0 -> S_3 (Statutory Lapse) -->
+    <path d="M 147 200 L 147 270" stroke="#475569" stroke-width="1.8" marker-end="url(#arrowSlate)"/>
+    <rect x="90" y="228" width="114" height="22" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="0.8"/>
+    <text x="147" y="239" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#1e293b">Art. 429 BLDS 2015</text>
+    <text x="147" y="247" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7" fill="#64748b">Δτ &gt; 1095 days &amp; No Tolling</text>
 
-    <!-- Transition S1 -> S2: Annulment -->
-    <path d="M 445 192 L 445 330" stroke="#e11d48" stroke-width="2" marker-end="url(#mRed)"/>
-    <rect x="402" y="252" width="86" height="18" rx="3" fill="#ffffff" stroke="#fecdd3" stroke-width="0.8"/>
-    <text x="445" y="264" text-anchor="middle" font-family="serif" font-size="7.5" font-weight="700" fill="#be123c">Art. 132 [2y Lapse]</text>
+    <!-- State S_2: Void Ab Initio -->
+    <rect x="315" y="275" width="225" height="120" rx="6" fill="#fff1f2" stroke="#e11d48" stroke-width="1.6"/>
+    <rect x="325" y="285" width="72" height="20" rx="3" fill="#ffe4e6"/>
+    <text x="361" y="299" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#9f1239">State S_2</text>
+    <text x="405" y="300" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="700" fill="#be123c">Void Ab Initio</text>
+    <line x1="325" y1="313" x2="530" y2="313" stroke="#fecdd3" stroke-width="1"/>
+    <text x="325" y="330" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#881337">• Absolute statutory nullity (Art. 122)</text>
+    <text x="325" y="347" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#881337">• Remedy: Restitution in integrum (Art. 131)</text>
+    <text x="325" y="364" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#881337">• Penalty terms unenforceable ex tunc</text>
+    <rect x="325" y="373" width="180" height="16" rx="2" fill="#fecdd3"/>
+    <text x="415" y="385" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#881337">Status: Total Nullity Restitution</text>
 
-    <!-- Transition S0 -> S3: Prescription Lapse -->
-    <path d="M 135 192 L 135 330" stroke="#475569" stroke-width="2" marker-end="url(#mSlate)"/>
-    <rect x="76" y="252" width="118" height="18" rx="3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
-    <text x="135" y="264" text-anchor="middle" font-family="serif" font-size="7.5" font-weight="700" fill="#334155">Art. 429 [Δτ &gt; 1095d]</text>
+    <!-- Transition S_1 -> S_2 (Annulment) -->
+    <path d="M 427 200 L 427 270" stroke="#e11d48" stroke-width="1.8" marker-end="url(#arrowRose)"/>
+    <rect x="375" y="228" width="104" height="22" rx="3" fill="#ffffff" stroke="#fca5a5" stroke-width="0.8"/>
+    <text x="427" y="239" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#991b1b">Art. 132 BLDS</text>
+    <text x="427" y="247" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7" fill="#b91c1c">Annulment Action (Δt &gt; 2y)</text>
 
-    <!-- Non-monotonic Toll / Reset curve S3 -> S0 -->
-    <path d="M 100 338 C 55 268 55 208 100 192" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="3,3" marker-end="url(#mBlue)"/>
-    <rect x="18" y="235" width="86" height="26" rx="3" fill="#ffffff" stroke="#bfdbfe" stroke-width="0.8"/>
-    <text x="61" y="246" text-anchor="middle" font-family="serif" font-size="7.2" font-weight="700" fill="#1d4ed8">Art. 156 Tolling</text>
-    <text x="61" y="256" text-anchor="middle" font-family="serif" font-size="7.2" font-weight="700" fill="#1d4ed8">Art. 157 Reset</text>
+    <!-- Tolling / Reset Loop on S_0 -->
+    <path d="M 35 150 C 10 150, 10 170, 31 170" fill="none" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrowBlue)"/>
+    <rect x="6" y="195" width="130" height="20" rx="3" fill="#ffffff" stroke="#93c5fd" stroke-width="0.8"/>
+    <text x="71" y="205" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7" font-weight="700" fill="#1e40af">Art. 156/157: Tolling &amp; Reset</text>
+    <text x="71" y="212" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="6.5" fill="#3b82f6">T_freeze (stop) / R_restart (reset)</text>
+
+    <!-- Panel Footer -->
+    <rect x="35" y="415" width="505" height="30" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="287" y="428" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" font-weight="700" fill="#0f172a">Axiomatic Orthogonality: S_0 ⊓ S_1 ⊑ ⊥, S_0 ⊓ S_3 ⊑ ⊥, S_0 ⊓ S_2 ⊑ ⊥</text>
+    <text x="287" y="439" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" fill="#64748b">Markovian transitions prevent logical explosion while preserving non-monotonicity</text>
   </g>
 
-  <!-- ==================== PANEL (B): DEFEASIBLE ARGUMENTATION GRAPH ==================== -->
-  <g transform="translate(630, 20)">
-    <!-- Container -->
-    <rect width="590" height="520" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.2" filter="url(#panelElevation)"/>
+  <!-- ================= PANEL B: DUNG DEFEASIBLE ARGUMENTATION ================= -->
+  <g transform="translate(610, 15)">
+    <rect width="575" height="460" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
     
-    <!-- Header Banner -->
-    <rect x="0" y="0" width="590" height="46" rx="10" fill="#0f172a"/>
-    <rect x="14" y="11" width="28" height="24" rx="4" fill="#059669"/>
-    <text x="28" y="27" text-anchor="middle" font-family="sans-serif" font-size="12.5" font-weight="800" fill="#ffffff">B</text>
-    <text x="52" y="28" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">Dung Defeasible Argumentation Graph AF = (A, R_defeat)</text>
-    <text x="52" y="40" font-family="sans-serif" font-size="8.5" fill="#94a3b8">Adjudication on Judgment No. 12/2024/DS-ST (Long An Provincial Court)</text>
+    <!-- Title Area -->
+    <text x="18" y="28" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="700" fill="#0f172a">(b) Dung Defeasible Argumentation Graph AF = ⟨Args, Defeat⟩</text>
+    <text x="18" y="44" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" fill="#64748b">Asymmetric Procedural Undercutting &amp; Knaster-Tarski Grounded Extension</text>
+    <line x1="18" y1="52" x2="557" y2="52" stroke="#e2e8f0" stroke-width="1"/>
 
-    <!-- ARGUMENT A1: PLAINTIFF SUBSTANTIVE DEMAND -->
-    <g transform="translate(30, 68)">
-      <rect width="235" height="112" rx="8" fill="#fef2f2" stroke="#e11d48" stroke-width="1.6" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="235" height="26" rx="8" fill="#be123c"/>
-      <text x="12" y="18" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">A_1: Plaintiff Substantive Claim</text>
-      
-      <text x="12" y="44" font-family="serif" font-size="10" font-weight="700" fill="#991b1b">Deposit Forfeiture (Art. 328 Cl. 2)</text>
-      <text x="12" y="60" font-family="sans-serif" font-size="8" fill="#475569">Breach: Refusal to notarize transfer deed</text>
-      <text x="12" y="74" font-family="sans-serif" font-size="8" fill="#475569">Remedy: Forfeiture of 500,000,000 VND</text>
-      
-      <rect x="10" y="86" width="96" height="16" rx="3" fill="#e11d48"/>
-      <text x="58" y="97" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="800" fill="#ffffff">DEFEATED</text>
-    </g>
+    <!-- Argument A_1: Substantive Breach Claim -->
+    <rect x="35" y="80" width="225" height="110" rx="6" fill="#fff1f2" stroke="#e11d48" stroke-width="1.6"/>
+    <rect x="45" y="90" width="70" height="18" rx="3" fill="#ffe4e6"/>
+    <text x="80" y="103" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#9f1239">Arg A_1</text>
+    <text x="123" y="103" font-family="'Helvetica Neue', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#be123c">Substantive Claim</text>
+    <line x1="45" y1="114" x2="250" y2="114" stroke="#fecdd3" stroke-width="1"/>
+    <text x="45" y="130" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#881337">• Claim: Seller committed contractual default</text>
+    <text x="45" y="145" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#881337">• Statutory basis: Art. 328(2) BLDS</text>
+    <text x="45" y="160" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#881337">• Demands: Double deposit penalty refund</text>
+    <text x="45" y="175" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" font-weight="600" fill="#e11d48">Provisional Status: Warranted Substantively</text>
 
-    <!-- ARGUMENT A2: DEFENDANT MERITS REBUTTAL -->
-    <g transform="translate(325, 68)">
-      <rect width="235" height="112" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.6" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="235" height="26" rx="8" fill="#d97706"/>
-      <text x="12" y="18" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">A_2: Defendant Merits Rebuttal</text>
-      
-      <text x="12" y="44" font-family="serif" font-size="10" font-weight="700" fill="#92400e">Oral Extension Pact Defense</text>
-      <text x="12" y="60" font-family="sans-serif" font-size="8" fill="#475569">Excuses late notarization attendance</text>
-      <text x="12" y="74" font-family="sans-serif" font-size="8" fill="#475569">Counter-remedy: Return deposit without penalty</text>
-      
-      <rect x="10" y="86" width="96" height="16" rx="3" fill="#d97706"/>
-      <text x="58" y="97" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="800" fill="#ffffff">REBUTTED</text>
-    </g>
+    <!-- Argument A_2: Defendant Oral Defense -->
+    <rect x="315" y="80" width="225" height="110" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+    <rect x="325" y="90" width="70" height="18" rx="3" fill="#fef3c7"/>
+    <text x="360" y="103" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#92400e">Arg A_2</text>
+    <text x="403" y="103" font-family="'Helvetica Neue', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#b45309">Substantive Defense</text>
+    <line x1="325" y1="114" x2="530" y2="114" stroke="#fde68a" stroke-width="1"/>
+    <text x="325" y="130" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#78350f">• Defense: Mutual verbal standstill pact</text>
+    <text x="325" y="145" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#78350f">• Asserts unrecorded payment grace period</text>
+    <text x="325" y="160" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#78350f">• Demands: Retention of original deposit</text>
+    <text x="325" y="175" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" font-weight="600" fill="#d97706">Provisional Status: Contested</text>
 
-    <!-- Symmetric Rebuttal line between A1 and A2 -->
-    <line x1="267" y1="120" x2="323" y2="120" stroke="#f59e0b" stroke-width="2" marker-end="url(#mAmber)" marker-start="url(#mAmber)"/>
-    <rect x="277" y="103" width="36" height="14" rx="2" fill="#ffffff" stroke="#fde68a" stroke-width="0.8"/>
-    <text x="295" y="113" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="800" fill="#b45309">rebuts</text>
+    <!-- Symmetric Conflict Edge A_1 <-> A_2 -->
+    <path d="M 260 135 L 311 135" stroke="#d97706" stroke-width="1.5" marker-end="url(#arrAmber)"/>
+    <path d="M 315 145 L 264 145" stroke="#e11d48" stroke-width="1.5" marker-end="url(#arrRose)"/>
+    <rect x="270" y="118" width="36" height="16" rx="2" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+    <text x="288" y="130" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7" font-weight="700" fill="#475569">REBUT</text>
 
-    <!-- ARGUMENT A3: STATUTORY LIMITATION BAR -->
-    <g transform="translate(50, 218)">
-      <rect width="490" height="122" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="2" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="490" height="28" rx="8" fill="#059669"/>
-      <text x="14" y="19" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">A_3: Statutory Limitation Defense (Article 429 BLDS 2015)</text>
-      
-      <text x="16" y="50" font-family="serif" font-size="10.5" font-weight="700" fill="#065f46">Procedural Latency: Δτ = 1,254 days &gt; 1,095 days (3-Year Statutory Bar)</text>
-      <text x="16" y="68" font-family="sans-serif" font-size="8.5" fill="#334155">• No Force Majeure Tolling proven under Art. 156 (dτ/dt = 1 throughout operative span)</text>
-      <text x="16" y="84" font-family="sans-serif" font-size="8.5" fill="#334155">• No debt acknowledgment or partial payment restart proven under Art. 157</text>
-      
-      <rect x="14" y="94" width="280" height="18" rx="3" fill="#059669"/>
-      <text x="154" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="800" fill="#ffffff">STATUS: IN GROUNDED EXTENSION GE(AF)</text>
-    </g>
+    <!-- Argument A_3: Procedural Statute Limitation Bar -->
+    <rect x="35" y="240" width="505" height="85" rx="6" fill="#f0fdf4" stroke="#059669" stroke-width="1.8"/>
+    <rect x="45" y="250" width="70" height="18" rx="3" fill="#dcfce7"/>
+    <text x="80" y="263" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#166534">Arg A_3</text>
+    <text x="125" y="263" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="700" fill="#047857">Procedural Prescription Bar (Article 429 BLDS 2015)</text>
+    <line x1="45" y1="274" x2="530" y2="274" stroke="#bbf7d0" stroke-width="1"/>
+    <text x="45" y="290" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#065f46">• Factual condition: Effective duration Δτ = 1,180 days &gt; 1,095 days statutory threshold (3 years)</text>
+    <text x="45" y="305" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#065f46">• Absence of valid tolling events under Art. 156 / reset acknowledgment under Art. 157</text>
+    <text x="45" y="318" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#15803d">Legal Force: Absolute Procedural Preemption — Annihilates Cause of Action ex lege</text>
 
-    <!-- Asymmetric Undercut Arrow A3 -> A1 -->
-    <path d="M 210 218 L 150 182" stroke="#e11d48" stroke-width="2.5" marker-end="url(#mRed)"/>
-    <rect x="116" y="193" width="112" height="18" rx="3" fill="#e11d48"/>
-    <text x="172" y="205" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="800" fill="#ffffff">ASYMMETRIC UNDERCUT</text>
+    <!-- Undercut Arrow A_3 -> A_1 -->
+    <path d="M 147 238 L 147 195" stroke="#e11d48" stroke-width="2" marker-end="url(#arrRose)"/>
+    <rect x="100" y="205" width="94" height="20" rx="3" fill="#fef2f2" stroke="#fca5a5" stroke-width="0.8"/>
+    <text x="147" y="215" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="800" fill="#991b1b">UNDERCUTS A_1</text>
+    <text x="147" y="222" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="6.5" fill="#b91c1c">Procedural Priority</text>
 
-    <!-- KNASTER-TARSKI FIXED POINT ADJUDICATION BOX -->
-    <g transform="translate(30, 362)">
-      <rect width="530" height="138" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.6" filter="url(#cardElevation)"/>
-      <rect x="0" y="0" width="530" height="28" rx="8" fill="#1e40af"/>
-      <text x="16" y="19" font-family="sans-serif" font-size="11.5" font-weight="800" fill="#ffffff">Knaster-Tarski Least Fixed Point Adjudication Closure</text>
+    <!-- Mathematical Grounding Box -->
+    <rect x="35" y="340" width="505" height="105" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <text x="45" y="358" font-family="'Helvetica Neue', Arial, sans-serif" font-size="10" font-weight="700" fill="#0f172a">Dung Characteristic Operator &amp; Fixed Point Adjudication Closure</text>
+    
+    <rect x="45" y="368" width="485" height="28" rx="3" fill="#eff6ff" stroke="#bfdbfe" stroke-width="0.8"/>
+    <text x="287" y="382" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#1e40af">Γ_AF(S) = { A ∈ Args ∣ ∀ B ∈ Args, (B, A) ∈ Defeat ⟹ ∃ C ∈ S, (C, B) ∈ Defeat }</text>
+    <text x="287" y="392" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" fill="#2563eb">Theorem 2: Complete Lattice Knaster-Tarski Monotonic Operator Guarantee</text>
 
-      <rect x="14" y="38" width="502" height="40" rx="5" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
-      <text x="265" y="55" text-anchor="middle" font-family="serif" font-size="11" font-weight="700" fill="#1e3a8a">F_AF(∅) = [ A_3 ] ➔ F_AF^2(∅) = [ A_3 ] ➔ GE(AF) = [ A_3 ]</text>
-      <text x="265" y="70" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#475569">Unique Grounded Extension: Procedural Defense Preempts Substantive Claim</text>
-
-      <rect x="14" y="86" width="502" height="42" rx="5" fill="#1e3a8a"/>
-      <text x="265" y="103" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="800" fill="#ffffff">FINAL JUDICIAL DECREE: LAWSUIT DISMISSED AS TIME-BARRED</text>
-      <text x="265" y="119" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#93c5fd">Civil Verdict Code 2 (Article 429 Procedural Extinguishment) | 100% Soundness</text>
-    </g>
-
+    <rect x="45" y="402" width="485" height="34" rx="3" fill="#065f46" stroke="#047857" stroke-width="1"/>
+    <text x="287" y="416" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="800" fill="#ffffff">GROUNDED EXTENSION: GE(AF) = lfp( Γ_AF ) = { A_3 }</text>
+    <text x="287" y="429" text-anchor="middle" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#a7f3d0">Substantive claims A_1 and A_2 defeated ⟹ Final Adjudicated Decree: DISMISSED AS STATUTE-BARRED</text>
   </g>
+
 </svg>

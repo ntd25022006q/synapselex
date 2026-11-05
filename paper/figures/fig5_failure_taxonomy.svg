@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380">
+  <defs>
+    <!-- Crisp drop shadows -->
+    <filter id="cardShadow" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.05"/>
+    </filter>
+  </defs>
+
+  <!-- Clean Canvas Background -->
+  <rect width="1200" height="380" fill="#ffffff"/>
+
+  <!-- ================= CARD 1: MULTI-STATUTE COLLISIONS ================= -->
+  <g transform="translate(15, 15)">
+    <rect width="375" height="350" rx="6" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.4" filter="url(#cardShadow)"/>
+    
+    <!-- Header Badge -->
+    <rect x="16" y="16" width="343" height="42" rx="4" fill="#ffffff" stroke="#fecdd3" stroke-width="1"/>
+    <text x="26" y="34" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="700" fill="#be123c">Failure Mode 1: Multi-Statute Collisions</text>
+    <text x="26" y="48" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="600" fill="#e11d48">Frequency: 48.9% of residual errors (44 cases)</text>
+
+    <!-- Content Sections -->
+    <rect x="16" y="68" width="343" height="82" rx="4" fill="#ffffff" stroke="#fecdd3" stroke-width="0.8"/>
+    <text x="26" y="85" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#9f1239">Statutory Root Cause:</text>
+    <text x="26" y="102" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">Inter-statute priority collisions between general civil provisions</text>
+    <text x="26" y="117" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">(Civil Code 2015, Article 328) and specialized sectoral statutes</text>
+    <text x="26" y="132" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">(Land Law 2013 and Law on Real Estate Business 2014).</text>
+
+    <rect x="16" y="158" width="343" height="98" rx="4" fill="#ffffff" stroke="#fecdd3" stroke-width="0.8"/>
+    <text x="26" y="175" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#9f1239">Representative Real Case Study:</text>
+    <text x="26" y="192" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">Article 57 of the Law on Real Estate Business restricts advance</text>
+    <text x="26" y="207" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">deposit collection to at most 5% before foundation permits.</text>
+    <text x="26" y="222" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">Some chambers declare contracts void ab initio rather than</text>
+    <text x="26" y="237" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">enforcing double forfeiture under Article 328.</text>
+
+    <rect x="16" y="264" width="343" height="70" rx="4" fill="#ffe4e6" stroke="#fca5a5" stroke-width="0.8"/>
+    <text x="26" y="281" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#881337">Architectural Remediation in SynapseLex:</text>
+    <text x="26" y="298" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#4c0519">• Hierarchical Lex Specialis topological weighting via NH-DA</text>
+    <text x="26" y="312" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#4c0519">• Differentiable TBox subgradient hinge regularization loss</text>
+  </g>
+
+  <!-- ================= CARD 2: LATENT ORAL WAIVERS ================= -->
+  <g transform="translate(412, 15)">
+    <rect width="375" height="350" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.4" filter="url(#cardShadow)"/>
+    
+    <!-- Header Badge -->
+    <rect x="16" y="16" width="343" height="42" rx="4" fill="#ffffff" stroke="#fde68a" stroke-width="1"/>
+    <text x="26" y="34" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="700" fill="#b45309">Failure Mode 2: Latent Oral Waivers</text>
+    <text x="26" y="48" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="600" fill="#d97706">Frequency: 32.2% of residual errors (29 cases)</text>
+
+    <!-- Content Sections -->
+    <rect x="16" y="68" width="343" height="82" rx="4" fill="#ffffff" stroke="#fde68a" stroke-width="0.8"/>
+    <text x="26" y="85" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#92400e">Statutory Root Cause:</text>
+    <text x="26" y="102" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">Litigants execute unrecorded oral standstill agreements or</text>
+    <text x="26" y="117" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">informal payment deferrals during grassroots conciliation sessions</text>
+    <text x="26" y="132" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">without timestamped written documentation in trial records.</text>
+
+    <rect x="16" y="158" width="343" height="98" rx="4" fill="#ffffff" stroke="#fde68a" stroke-width="0.8"/>
+    <text x="26" y="175" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#92400e">Representative Real Case Study:</text>
+    <text x="26" y="192" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">Trial court minutes report conflicting witness statements regarding</text>
+    <text x="26" y="207" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">informal debt forbearance. The judge admits debtor oral</text>
+    <text x="26" y="222" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">acknowledgment to reset the 3-year clock under Article 157,</text>
+    <text x="26" y="237" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">whereas zero-oracle extractors detect no written reset event.</text>
+
+    <rect x="16" y="264" width="343" height="70" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="0.8"/>
+    <text x="26" y="281" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#78350f">Architectural Remediation in SynapseLex:</text>
+    <text x="26" y="298" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#451a03">• Evidential credibility discounting over disputed verbal testimony</text>
+    <text x="26" y="312" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#451a03">• Dung grounded reasoner with counterfactual rebuttals</text>
+  </g>
+
+  <!-- ================= CARD 3: DISCRETIONARY BOUNDARY MARGINS ================= -->
+  <g transform="translate(810, 15)">
+    <rect width="375" height="350" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.4" filter="url(#cardShadow)"/>
+    
+    <!-- Header Badge -->
+    <rect x="16" y="16" width="343" height="42" rx="4" fill="#ffffff" stroke="#bfdbfe" stroke-width="1"/>
+    <text x="26" y="34" font-family="'Helvetica Neue', Arial, sans-serif" font-size="11.5" font-weight="700" fill="#1d4ed8">Failure Mode 3: Discretionary Boundary Margins</text>
+    <text x="26" y="48" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="600" fill="#2563eb">Frequency: 18.9% of residual errors (17 cases)</text>
+
+    <!-- Content Sections -->
+    <rect x="16" y="68" width="343" height="82" rx="4" fill="#ffffff" stroke="#bfdbfe" stroke-width="0.8"/>
+    <text x="26" y="85" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#1e40af">Statutory Root Cause:</text>
+    <text x="26" y="102" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">Subjective judicial valuation of informal construction investments</text>
+    <text x="26" y="117" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">under the Article 129 Clause 2 curing threshold requiring</text>
+    <text x="26" y="132" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">tender of at least two-thirds (66.67%) of contractual consideration.</text>
+
+    <rect x="16" y="158" width="343" height="98" rx="4" fill="#ffffff" stroke="#bfdbfe" stroke-width="0.8"/>
+    <text x="26" y="175" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#1e40af">Representative Real Case Study:</text>
+    <text x="26" y="192" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">When cash tender is 63% and the buyer made land reclamation</text>
+    <text x="26" y="207" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">or tree planting investments, Southern provincial courts often</text>
+    <text x="26" y="222" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">credit in-kind improvements to exceed 66.7%, whereas</text>
+    <text x="26" y="237" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="#334155">Northern courts strictly require monetary installments.</text>
+
+    <rect x="16" y="264" width="343" height="70" rx="4" fill="#dbeafe" stroke="#93c5fd" stroke-width="0.8"/>
+    <text x="26" y="281" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#1e3a8a">Architectural Remediation in SynapseLex:</text>
+    <text x="26" y="298" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#172554">• Continuous fuzzy degree membership modeling over in-kind tender</text>
+    <text x="26" y="312" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#172554">• Regional judicial prior calibration via learned embedding bias</text>
+  </g>
+
+</svg>

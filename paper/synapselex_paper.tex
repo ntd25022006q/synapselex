@@ -5,6 +5,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \hypersetup{
@@ -93,7 +94,7 @@ SynapseLex introduces five foundational scientific contributions: (1) \textbf{Th
 \label{sec:intro}
 Civil legal adjudication is inherently temporal and non-monotonic \citep{hogan2021knowledge, prakken2002law}. Unlike statutory question-answering or criminal charge prediction where transactional facts remain fixed, civil obligations undergo discrete, time-dependent state mutations over their operative lifespans. Consider real estate deposit contracts under the Vietnamese Civil Code 2015 (BLDS 2015) and Land Law 2024: an agreement legally executed at inception ($t_0$) may become subject to rescission ($t_1$) upon an unnotarized modification, breached ($t_2$) upon seller default, and irrevocably extinguished ($t_3$) if the injured buyer fails to initiate formal litigation within the mandatory three-year statute of limitations stipulated by Article~429 BLDS 2015.
 
-Recent foundational investigations, notably \textit{LexKairos} \citep{oxford2026lexkairos} and \textit{NitiBench+} \citep{nitibench2026}, have illuminated a catastrophic pathology in modern legal artificial intelligence: large language models (LLMs) and flat Knowledge Graphs fail completely when reasoning over procedural deadlines, temporal decay, and statutory evolution. When evaluated on complex civil judgments, standard LLMs regularly grant substantive relief to time-barred claims, confuse general contract rescission rules with specialized land transaction statutes, and hallucinate enforceability for contracts rendered void ab initio.
+Recent investigations, notably \textit{LexKairos} \citep{oxford2026lexkairos} and \textit{NitiBench+} \citep{nitibench2026}, have illuminated a catastrophic pathology in modern legal artificial intelligence: large language models (LLMs) and flat Knowledge Graphs fail completely when reasoning over procedural deadlines, temporal decay, and statutory evolution. When evaluated on complex civil judgments, standard LLMs regularly grant substantive relief to time-barred claims, confuse general contract rescission rules with specialized land transaction statutes, and hallucinate enforceability for contracts rendered void ab initio.
 
 This failure stems from three intrinsic architectural deficiencies:
 \begin{enumerate}[label=(\roman*)]
@@ -1560,32 +1561,7 @@ In accordance with Popperian falsification and open scientific inquiry, we condu
 
 \begin{figure}[!ht]
 \centering
-\begin{tikzpicture}[
-    scale=0.95,
-    box/.style={rectangle, draw=darkslate!80, fill=white, rounded corners=6pt, inner sep=8pt, text width=4.5cm, align=left, font=\footnotesize, drop shadow},
-    header/.style={font=\bfseries\small, text=darkslate}
-]
-% Box 1
-\node[box, fill=rosesoft!40, draw=rose!60] (b1) at (0, 0) {
-    \textbf{\textcolor{rose}{Failure Mode 1: Multi-Statute Collisions (48.9\% of errors)}} \\[4pt]
-    \textbf{Root Cause:} Inter-statute priority between BLDS 2015 (General Civil Code) and specialized legislation (Land Law 2013, Law on Real Estate Business 2014, Law on Credit Institutions 2010). \\
-    \textbf{Example:} Article 57 of the Law on Real Estate Business restricts deposit collection to $\le 5\%$ before construction foundation permits, creating statutory priority tension with Article 328 BLDS 2015.
-};
-
-% Box 2
-\node[box, fill=ambersoft!40, draw=amber!60] (b2) at (5.5, 0) {
-    \textbf{\textcolor{amber}{Failure Mode 2: Latent Oral Waivers (32.2\% of errors)}} \\[4pt]
-    \textbf{Root Cause:} Litigants frequently execute undocumented oral standstill agreements or informal payment deferrals during family mediation. \\
-    \textbf{Example:} Trial court records contain conflicting oral testimonies regarding verbal debt forbearance, where judges exercise discretionary credibility weighting that cannot be extracted from written trial summaries.
-};
-
-% Box 3
-\node[box, fill=royalsoft!40, draw=royal!60] (b3) at (11.0, 0) {
-    \textbf{\textcolor{royal}{Failure Mode 3: Discretionary Boundary Margins (18.9\% of errors)}} \\[4pt]
-    \textbf{Root Cause:} Subjective judicial valuation of informal construction investments under Article 129 Clause 2 curing threshold ($\text{Perf} \ge 2/3$). \\
-    \textbf{Example:} When cash tender is $62\%$ and the buyer made land reclamation improvements, some judges credit improvements to exceed $66.7\%$, while others strictly require cash consideration.
-};
-\end{tikzpicture}
+\includegraphics[width=\textwidth]{figures/fig5_failure_taxonomy.pdf}
 \caption{Taxonomy of Residual Failure Modes on SynapseCivil-Bench Test Split ($N=920$ cases, $90$ residual errors).}
 \label{fig:failure_taxonomy}
 \end{figure}
@@ -1642,7 +1618,7 @@ To ensure complete empirical reproducibility, Table~\ref{tab:hyperparameters} do
 \caption{Exhaustive Hyperparameter and Training Specifications for SynapseLex.}
 \label{tab:hyperparameters}
 \small
-\begin{tabular}{lll}
+\begin{tabularx}{\textwidth}{@{}l p{5.5cm} X@{}}
 \toprule
 \textbf{Category} & \textbf{Hyperparameter} & \textbf{Value / Specification} \\
 \midrule
@@ -1675,7 +1651,7 @@ To ensure complete empirical reproducibility, Table~\ref{tab:hyperparameters} do
 & Deep Learning Framework & PyTorch $2.14.1\text{+cu126}$ \\
 & Graph Neural Framework & PyTorch Geometric $2.5.0$ \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 
