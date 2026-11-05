@@ -15,6 +15,7 @@ files_to_upload = [
     ("data/benchmarks/synapse_civil_bench_val.json", "benchmarks/synapse_civil_bench_val.json"),
     ("data/benchmarks/synapse_civil_bench_test.json", "benchmarks/synapse_civil_bench_test.json"),
     ("data/benchmarks/synapse_civil_bench_quarantine.jsonl", "benchmarks/synapse_civil_bench_quarantine.jsonl"),
+    ("data/benchmarks/synapse_civil_bench_counterfactual_320.json", "benchmarks/synapse_civil_bench_counterfactual_320.json"),
     ("data/benchmarks/synapse_civil_bench_full.jsonl", "benchmarks/synapse_civil_bench_full.jsonl"),
     ("ontology/vclo_core.owl", "ontology/vclo_core.owl"),
     ("ontology/vclo_core.ttl", "ontology/vclo_core.ttl"),
