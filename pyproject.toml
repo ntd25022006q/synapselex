@@ -46,9 +46,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/datbazuka2502/synapselex"
-Repository = "https://github.com/datbazuka2502/synapselex"
-Affiliation = "International School, Vietnam National University, Hanoi (VNU-IS), Hanoi, Vietnam"
+Homepage = "https://github.com/ntd25022006q/synapselex"
+Repository = "https://github.com/ntd25022006q/synapselex"
+"Hugging Face Dataset" = "https://huggingface.co/datasets/datbazuka2502/synapse-civil-bench"
 
 [project.scripts]
 synapselex-predict = "synapselex.cli:main"

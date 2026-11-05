@@ -344,11 +344,14 @@ class SynapseLexTGAT(nn.Module):
         h_graph = self.nh_arbiter(h_graph, is_land)
 
         # 6. Combined Adjudication Verdict via Defeasible Deontic Reasoning
+        # ZERO ORACLE OVERRIDE: We pass is_statute_lapsed=None so that adjudication relies
+        # entirely on the continuous, differentiable Knaster-Tarski Dung defeat driven by the
+        # predicted state_logits (derived from graph representations).
         h_combined = torch.cat([h_graph, h_contract, state_logits], dim=-1) # [1, 2*hidden_dim + 4]
         if self.use_ontology:
             verdict_logits = self.defeasible_head(
                 h_combined,
-                is_statute_lapsed=is_statute_lapsed,
+                is_statute_lapsed=None,
                 state_logits=state_logits
             )
         else:

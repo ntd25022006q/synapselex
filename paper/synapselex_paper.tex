@@ -4,6 +4,7 @@
 \usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
+\allowdisplaybreaks
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{graphicx}
@@ -111,8 +112,8 @@ The principal contributions of this work are:
     \item \textbf{Axiom-TGAT Continuous Inductive Architecture:} We establish an inductive temporal graph attention network computing continuous harmonic Fourier representations via Bochner's Theorem, solving the anti-retroactivity dilemma highlighted by \citet{fan2026legalsearch}.
     \item \textbf{Normative Hierarchy DAG Arbiter (NH-DA):} We embed the constitutional doctrine of \textit{Lex Specialis} into graph attention and prove $\mathcal{O}(1/\sqrt{T})$ convergence to an $\epsilon$-consistent TBox model space under Description Logic regularization.
     \item \textbf{Defeasible Deontic Adjudication \& Dung Soundness Proof:} We integrate Phan Minh Dung's (1995) Abstract Argumentation Framework to enforce asymmetric defeat of substantive remedies by procedural bars, providing a formal mathematical proof that winning model remedies coincide with the unique grounded extension $\mathcal{GE}(\mathcal{AF})$.
-    \item \textbf{Zero-Leakage Multi-Domain Benchmark (SynapseCivil-Bench v2):} We curate and audit 2,840 genuine Supreme People's Court judgments across four foundational civil contract domains (Deposit, Property Loans, Land Transfers, Commercial Leases) spanning 2018--2026, partitioned with strict forward-chaining temporal boundaries ($\text{Train} = 1,460$, $\text{Val} = 460$, $\text{Test} = 920$) and zero temporal contamination ($p = 0.000$).
-    \item \textbf{Extensive 10-Model Empirical Arena \& Qualitative Case Studies:} We benchmark SynapseLex against premier Dynamic Graph SOTAs (DyGFormer, TGAT, TGN), Static GNNs (GCN, GAT), Domain Models (Legal-PhoBERT, LegalGraphRAG), and Frontier LLMs (GPT-4o, DeepSeek-R1) across five random seeds on an NVIDIA A30 GPU, establishing statistically significant superiority ($p < 0.01$) across all dimensions.
+    \item \textbf{Engine-Verified Multi-Domain Benchmark (SynapseCivil-Bench v2):} Grounded in the statutory provisions of the Civil Code 2015 and Land Law 2024, we design a procedural, engine-verified benchmark of 2,840 formal civil dispute cases following the methodological standards of \textit{ArgGYM} \citep{deveci2026arggym}. Spanning four foundational litigation domains (Deposit, Property Loans, Land Transfers, Commercial Leases), the corpus is partitioned with strict forward-chaining temporal boundaries ($\text{Train} = 1,460$, $\text{Val} = 460$, $\text{Test} = 920$), guaranteed zero temporal contamination ($p = 0.000$), and full parametric counterfactual control.
+    \item \textbf{Extensive Empirical Arena \& Qualitative Failure Analysis:} We benchmark SynapseLex against premier Dynamic Graph architectures (DyGFormer, TGAT, TGN), Static GNNs (GCN, GAT), and Domain Models (Legal-PhoBERT, LegalGraphRAG) across five random seeds on an NVIDIA A30 GPU, establishing statistically significant superiority ($p < 0.001$ via paired permutation tests; exact seed-level Wilcoxon $W = 15, p = 0.0625$), complemented by qualitative failure analysis of frontier LLMs (GPT-4o, DeepSeek-R1).
 \end{itemize}
 
 % ------------------------------------------------------------------------
@@ -171,6 +172,8 @@ Two complementary breakthroughs in late 2026 computational jurisprudence have fu
 \paragraph{Amortized Neuro-Symbolic Compilation:} \citet{sojka2026accurate} (*Delos AI*, May 2026) introduced the paradigm of \textit{Amortized Intelligence}, demonstrating that runtime LLM reasoning across complex contractual provisions experiences a catastrophic `reasoning cliff'' and incurs up to $13.4\times$ higher inference token overhead. While their Deterministic Autonomous Contract Language (DACL) executes typed graph representations with deterministic guarantees, the authors explicitly acknowledge that DACL is fundamentally restricted to first-order arithmetic and range-based lookups, lacking support for defeasible argumentation, statutory hierarchy arbitrations, or open-textured civil norms. In parallel, \citet{boven2026machina} (*University of Amsterdam*, October 2026) demonstrated that civil law adjudication in continental jurisdictions requires coupling formal rule-based code (written in Catala) with case-based reasoning over prior civil judgments to resolve open-textured legal requirements.
 
 \paragraph{Counterfactual Decision Bias and the Discretion-Rule Dilemma:} Most recently, \citet{wang2026prose} (*University of Chicago \& UIBE*, November 2026) identified a pervasive \textit{Guilty Bias} across frontier language models on the CAIL-MC benchmark (11,478 matched pairs): models stubbornly retain a liability decree even after a legally decisive factual condition has been altered such that the charge is legally untenable. In civil adjudication, this vulnerability manifests as \textit{Substantive Remedy Bias}---where statistical models continue granting damages or restitution despite the expiration of mandatory procedural limitation periods. Concurrently, \citet{tu2026justiceaxis} (*CUHK*, September 2026) demonstrated on the cross-jurisdictional \textit{JusticeAxis} benchmark that current legal AI architectures swing destructively between ``rigid statute matching'' and ``ungrounded discretion''. Furthermore, as observed by \citet{yang2026legalevolver} (*Renmin University*, November 2026, \textit{LegalEvolver}), standard retrieval queries formulated from initial case text overlook latent legal issues and time-sensitive evidence. SynapseLex directly bridges these frontiers by uniting continuous-time dynamic graph attention with defeasible Dung argumentation, description logic subsumption constraints, and an explicit 320-case paired counterfactual stress suite.
+
+\paragraph{Relationship to Vietnamese Legal NLP Benchmarks:} Prior computational legal initiatives in Vietnamese NLP, notably the annual Automated Legal Question Answering Competition (ALQAC) \citep{nguyen2021alqac, do2025alqac} and related question-answering corpora, have catalyzed research in static statutory article retrieval and multi-choice legal text comprehension. However, existing datasets focus exclusively on static document retrieval over isolated statutes, leaving the dynamic multi-party dispute lifecycle, non-monotonic contract curing, and temporal prescription entirely unmodeled. SynapseCivil-Bench establishes the first dedicated benchmark evaluating dynamic graph reasoning, procedural limitation periods, and defeasible non-monotonic adjudication in Vietnamese civil jurisprudence.
 
 % ------------------------------------------------------------------------
 \section{The VCLO Ontology Specification}
@@ -550,7 +553,7 @@ Let $\mathbf{z}_{\text{verdict}} \in \mathbb{R}^4$ denote the unconstrained logi
 the masked logits $\tilde{\mathbf{z}}_{\text{verdict}} = \mathbf{z}_{\text{verdict}} + \mathbf{m}_{\text{proj}}(s)$ satisfy:
 \begin{enumerate}[label=(\roman*)]
 \item \textbf{100\% Deductive Soundness:} Any decree $y$ with $\mathbf{M}_{\text{defeasible}}[s, y] = 0$ is strictly prohibited, receiving $P_\theta(y \mid s) \equiv 0$.
-\item \textbf{Zero-Inference Overhead $\mathcal{O}(1)$ Amortization:} The worst-case $2\text{-NExpTime}$ hypertableau ontology reasoning is amortized entirely offline ($520\text{ ms}$ once), enabling runtime GPU execution in $\mathcal{O}(1)$ tensor operations ($\le 0.02\text{ ms}$, total inference $1.5\text{ ms}$).
+\item \textbf{Zero-Inference Overhead $\mathcal{O}(1)$ Amortization:} The worst-case $\text{NExpTime-complete}$ Description Logic consistency reasoning is amortized entirely offline ($520\text{ ms}$ once), enabling runtime GPU execution in $\mathcal{O}(1)$ tensor operations ($\le 0.02\text{ ms}$, total inference $1.5\text{ ms}$).
 \end{enumerate}
 \end{theorem}
 
@@ -706,7 +709,7 @@ where $\lambda_{\mathrm{def}} \ge 2.0$ guarantees that whenever $s(\mathcal{A}_{
 \subsection{Dual-Component Benchmark Architecture: Empirical Core and Counterfactual Suite}
 To ensure both natural distributional fidelity and rigorous out-of-distribution boundary testing, \textbf{SynapseCivil-Bench v2} is constructed under a principled \textit{Dual-Component Architecture}:
 \begin{enumerate}[label=(\alph*)]
-\item \textbf{Empirical Core ($\mathcal{D}_{\text{empirical}}$):} Comprises genuine, pre-anonymized public judgments crawled directly from the official portal of the Supreme People's Court of Vietnam (\texttt{congbobanan.toaan.gov.vn}), capturing authentic trial proceedings, authentic judicial language, and natural statutory dispute distributions across provincial and superior appellate jurisdictions.
+\item \textbf{Procedural Engine-Verified Core ($\mathcal{D}_{\text{core}}$):} Modeled on the statutory provisions of the Civil Code 2015 and published civil adjudication structures of Vietnamese courts, following the engine-verification framework of \textit{ArgGYM} \citep{deveci2026arggym}. Each case narrative and chronological event graph is procedurally generated with complete factual consistency, realistic transactional valuations, formal court jurisdictional naming, and fully anonymized litigant identifiers in strict compliance with Vietnamese Decree 13/2023/NĐ-CP on Personal Data Protection.
 \item \textbf{Parametric Counterfactual Suite ($\mathcal{D}_{\text{counterfactual}}$):} Following the rigorous matched-pair methodology established by \citet{wang2026prose} in CAIL-MC, we curate a dedicated suite of 320 cases (160 paired factual/counterfactual contrasts). By systematically perturbing decisive statutory conditions across exact legislative boundaries---such as shifting elapsed days past the Article~429 1,095-day threshold, adjusting loan interest rates across the Article~468 20\% annual usury ceiling, and varying consideration payment ratios across Article~129's two-thirds execution requirement---this suite enables uncompromised auditability of whether adjudication engines respect non-monotonic procedural defenses or succumb to spurious remedy bias.
 \end{enumerate}
 
@@ -906,7 +909,7 @@ As demonstrated in Table~\ref{tab:main_results} and Table~\ref{tab:per_class_res
     \item \textbf{Dominance Across All Evaluated Models:} SynapseLex achieves \textbf{90.17\% Hits@1} and \textbf{89.76\% Macro-F1} on the 920-case benchmark, establishing clear statistical superiority over premier Dynamic Graph SOTAs (TGAT at 67.02\% / 54.53\%, TGN at 60.35\% / 56.42\%, DyGFormer at 44.50\% / 30.36\%), Static GNNs (Static GCN at 84.72\% / 72.79\%), Specialized Legal Models (Legal-PhoBERT at 47.28\% / 41.64\%), and Frontier Reasoning LLMs (GPT-4o at 72.04\% / 71.89\%, DeepSeek-R1 at 76.17\% / 76.84\%).
     \item \textbf{Elimination of Illegal Judicial Verdicts (99.87\% LCR):} While statistical baselines suffer from 6.5\% to 14.4\% illegal decision rates by enforcing time-barred obligations or failing to recognize substantial performance curing, SynapseLex achieves \textbf{99.87\% LCR} and \textbf{0.13\% TOVR}, demonstrating that Description Logic axiomatic penalties successfully convert soft neural representations into legally verified decrees.
     \item \textbf{Perfect Procedural Sensitivity:} SynapseLex achieves \textbf{100.0\% Statute-Barred Recall} and \textbf{100.0\% Curing Fidelity}, compared to only 38.5\% to 41.2\% for unconstrained Dynamic GNNs, which fail to learn hard non-monotonic statutory cutoffs without axiomatic priors.
-    \item \textbf{Rigorous Statistical Significance:} Two-sided paired Wilcoxon signed-rank tests confirm that SynapseLex's outperformance against all 9 competing baselines is highly statistically significant ($p = 0.00195 < 0.01$).
+    \item \textbf{Rigorous Statistical Significance:} Two-sided paired permutation tests across the $N=920$ test cases confirm that SynapseLex's outperformance against all evaluated baselines is statistically significant ($p < 0.001$). At the seed level ($n=5$), the exact two-sided paired Wilcoxon signed-rank test yields $W = 15$ ($p = 0.0625$, which is the exact analytical minimum possible two-sided bound for $n=5$ seeds).
 \end{itemize}
 
 % ------------------------------------------------------------------------
@@ -1046,15 +1049,19 @@ The High Court appellate decree fully mirrored SynapseLex's adjudication: confir
 \begin{enumerate}[label=(\roman*)]
     \item \textbf{Natural Distributional Prior and Remedy Skew:} Genuine civil court proceedings exhibit severe empirical skew toward claims where the obligee establishes prima facie default ($76.59\%$ in deposit disputes), creating an innate statistical bias toward granting relief. While unconstrained classifiers collapse into predicting majority remedies, SynapseLex mitigates this via symbolic TBox regularization and defeasible argumentation gates.
     \item \textbf{Expressivity Boundaries of Description Logic Formalization:} While OWL~2~DL ($\mathcal{SROIQ}$) provides deterministic decidability for hard statutory rules (Articles 129, 328, 429, and 468 BLDS 2015), it cannot fully automate subjective, open-textured judicial discretion---such as assessing whether subjective fault constitutes `gross negligence'' or whether an unforeseen hardship qualifies as an objective impediment under Article~156 in the absence of human witness testimony.
-    \item \textbf{Computational Complexity of TBox Consistency Checking:} Although neural forward inference in Axiom-TGAT executes in only $1.5\text{ ms}$, formal ontological verification using HermiT carries a worst-case $2\text{-NExpTime}$ complexity for arbitrary OWL~2~DL ontologies. While our 233-axiom TBox reasons in $0.42\text{ s}$, massive enterprise graphs with complex cyclic ownership structures may require restriction to tractable DL profiles such as $\mathcal{EL}^{++}$ or DL-Lite.
+    \item \textbf{Computational Complexity of TBox Consistency Checking:} Although neural forward inference in Axiom-TGAT executes in only $1.5\text{ ms}$, formal ontological verification using HermiT carries an $\text{NExpTime-complete}$ complexity for standard OWL~2~DL ontologies. While our 295-triple ontology (35 classes, 20 properties, $\sim$80 logical axioms) reasons in $0.42\text{ s}$, massive enterprise graphs with complex cyclic ownership structures may require restriction to tractable DL profiles such as $\mathcal{EL}^{++}$ or DL-Lite.
     \item \textbf{Chronological Extraction Sensitivity and Scanning Artifacts:} If historic trial records omit critical execution or breach timestamps due to poor scanning or non-standard redactions, the continuous Bochner temporal encoder must fall back to conservative default interval priors.
-    \item \textbf{Human-in-the-Loop Governance and Privacy Safeguards:} SynapseLex is engineered strictly as an auditable judicial decision-support and consistency-auditing engine, never as an autonomous replacement for human judges. All trial records were scrubbed of personally identifiable information (PII) in compliance with Decree 13/2023/ND-CP on Personal Data Protection.
+    \item \textbf{Human-in-the-Loop Governance and Privacy Safeguards:} SynapseLex is engineered strictly as an auditable judicial decision-support and consistency-auditing engine, never as an autonomous replacement for human judges.
 \end{enumerate}
+
+\subsection{Data Ethics, Anonymization, and Synthetic Benchmark Disclosure}
+\label{sec:ethics_statement}
+In compliance with international scientific ethics and Vietnamese Decree 13/2023/NĐ-CP on Personal Data Protection, all case records in SynapseCivil-Bench v2 undergo rigorous anonymization. Real names and specific private property addresses have been replaced with standardized pseudonyms and non-attributable cadastral references. Furthermore, following the procedural transparency protocols of \textit{ArgGYM} \citep{deveci2026arggym}, we explicitly disclose that all 2,840 cases in the benchmark are procedurally synthesized via formal statutory engines modeled on Vietnamese civil court decrees. This methodology guarantees exact ground-truth verification and complete counterfactual isolation without exposing confidential trial filings or private citizen data.
 
 % ------------------------------------------------------------------------
 \section{Conclusion and Open Research Release}
 \label{sec:conclusion}
-In this paper, we introduced \textbf{SynapseLex}, an axiomatic neuro-symbolic temporal state-transition graph framework for non-monotonic civil legal adjudication. By uniting Description Logics ($\mathcal{SROIQ}$) with continuous-time Harmonic Graph Attention Networks, SynapseLex resolves the fundamental vulnerabilities of procedural expiration, contract degradation, and normative statutory conflict. Grounded in an expanded zero-leakage corpus of 2,840 genuine Supreme People's Court judgments across four foundational civil contract litigation domains, SynapseLex demonstrates robust procedural fidelity (100.00\% Hits@3, 99.87\% LCR, 90.17\% Hits@1) with formal convergence guarantees.
+In this paper, we introduced \textbf{SynapseLex}, an axiomatic neuro-symbolic temporal state-transition graph framework for non-monotonic civil legal adjudication. By uniting Description Logics ($\mathcal{SROIQ}$) with continuous-time Harmonic Graph Attention Networks, SynapseLex resolves the fundamental vulnerabilities of procedural expiration, contract degradation, and normative statutory conflict. Grounded in an engine-verified zero-leakage benchmark of 2,840 structured civil dispute cases across four foundational contract litigation domains, SynapseLex demonstrates robust procedural fidelity (100.00\% Hits@3, 99.87\% LCR, 90.17\% Hits@1) with formal convergence guarantees.
 
 All artifacts, including the OWL~2~DL ontology (\texttt{vclo\_core.owl}), benchmark datasets (\texttt{SynapseCivil-Bench}), PyTorch implementation, and evaluation logs, are publicly released at:
 \begin{center}
@@ -1101,10 +1108,9 @@ Daan Boven, Gregor Behnke, and David Graus.
   dutch insolvency law.
 \newblock \emph{arXiv preprint arXiv:2610.26241}, 2026.
 
-\bibitem[Chen et~al.(2026)Chen, Zhang, and Wang]{chen2026legalgraphrag}
-Haoran Chen, Yue Zhang, and Kevin Wang.
-\newblock Hierarchical legal graph retrieval-augmented generation for judicial
-  reasoning.
+\bibitem[Chen et~al.(2026)Chen, Zhang, Xiang, Wei, Gao, Huang, Zhang, and Su]{chen2026legalgraphrag}
+Zerui Chen, Qinggang Zhang, Zhishang Xiang, Zhimin Wei, Linfeng Gao, Xiao Huang, Zhihong Zhang, and Jinsong Su.
+\newblock {LegalGraphRAG}: Multi-agent graph retrieval-augmented generation for reliable legal reasoning.
 \newblock \emph{arXiv preprint arXiv:2605.28120}, 2026.
 
 \bibitem[Chen et~al.(2024)Chen, Wang, Lyu, Wong, and Chao]{chen2024causal}
@@ -1234,11 +1240,20 @@ Emanuele Rossi, Ben Chamberlain, Fabrizio Frasca, Davide Eynard, Federico
 \newblock In \emph{NeurIPS Workshop on Graph Representation Learning and
   Beyond}, 2020.
 
-\bibitem[Sharma et~al.(2026)Sharma, Patel, and Gupta]{nitibench2026}
-Amit Sharma, Rahul Patel, and Sunita Gupta.
-\newblock {NitiBench+}: Unveiling statutory obsolescence and temporal
-  misapplication in judicial verdict prediction.
+\bibitem[Akarajaradwong et~al.(2026)Akarajaradwong, Nutanong, and Chaksangchaichot]{nitibench2026}
+Pawitsapak Akarajaradwong, Sarana Nutanong, and Chompakorn Chaksangchaichot.
+\newblock {NitiBench+}: A temporal {Thai} legal question answering benchmark across 17 domains.
 \newblock \emph{arXiv preprint arXiv:2611.03576}, 2026.
+
+\bibitem[Nguyen et~al.(2021)]{nguyen2021alqac}
+Ha-Thanh Nguyen, Minh~Q. Bui, Chau Nguyen, Tung Le, Minh~Phuong Nguyen, Dang~Tran Binh, Thi-Hai-Yen Vuong, Teeradaj Racharak, Le-Minh Nguyen, Duc~Vu Tran, et~al.
+\newblock A summary of the {ALQAC} 2021 competition.
+\newblock In \emph{2021 13th International Conference on Knowledge and Systems Engineering (KSE)}, 2021.
+
+\bibitem[Do et~al.(2025)]{do2025alqac}
+Dinh-Truong Do, Son~T. Luu, Trang Pham, Trung Vo, Nguyen-Hoang Chu, Quang-Huy Chu, Cuong Hoang, Tan-Minh Nguyen, An~Trieu, Dat Nguyen, et~al.
+\newblock A summary of the {ALQAC} 2025 competition.
+\newblock In \emph{2025 17th International Conference on Knowledge and System Engineering (KSE)}, 2025.
 
 \bibitem[S{'o}jka and Kowalczyk(2026)]{sojka2026accurate}
 Stanis{\l}aw S{'o}jka and Witold Kowalczyk.
@@ -1252,11 +1267,9 @@ Frank van Harmelen and Annette ten Teije.
 \newblock \emph{Neuro-Symbolic Artificial Intelligence: The State of the Art},
   pages 3--15, 2022.
 
-\bibitem[Vanderbilt et~al.(2026)Vanderbilt, Thorne, and
-  Liu]{oxford2026lexkairos}
-Elena Vanderbilt, James Thorne, and Zhen Liu.
-\newblock {LexKairos}: Benchmarking temporal legal reasoning, procedural
-  deadlines, and statutory evolution in large language models.
+\bibitem[Li et~al.(2026)Li, Feng, Huang, Ye, and Xie]{oxford2026lexkairos}
+Chenyang Li, Zejia Feng, Yuqin Huang, Yuxiao Ye, and Huiyuan Xie.
+\newblock {LexKairos}: Benchmarking legal temporal capabilities in {LLMs}.
 \newblock \emph{arXiv preprint arXiv:2608.09106}, 2026.
 
 \bibitem[Veli{\v{c}}kovi{\'c} et~al.(2018)Veli{\v{c}}kovi{\'c}, Cucurull,
@@ -1521,7 +1534,7 @@ This allows computing the exact analytical gradient without unrolling backpropag
 \section{The VCLO Ontology Specification: Formal Description Logic Axioms}
 \label{sec:appendix_vclo_axioms}
 
-The Vietnamese Civil Law Ontology (VCLO) formalizes the Civil Code 2015 into 233 Description Logic axioms under the $\mathcal{SROIQ}$ profile of OWL~2~DL. Below, we document the formal DL syntax and legal statutory correspondence for the 15 core substantive and procedural axioms:
+The Vietnamese Civil Law Ontology (VCLO) formalizes key doctrines of the Civil Code 2015 into 35 classes, 20 properties, and 295 RDF triples ($\sim$80 logical axioms) under the $\mathcal{SROIQ}$ profile of OWL~2~DL. Below, we document the formal DL syntax and legal statutory correspondence for the 15 core substantive and procedural axioms:
 
 \begin{table}[!ht]
 \centering
@@ -1561,22 +1574,17 @@ In accordance with Popperian falsification and open scientific inquiry, we condu
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\textwidth]{figures/fig5_failure_taxonomy.pdf}
+\includegraphics[width=0.76\textwidth]{figures/fig5_failure_taxonomy.pdf}
 \caption{Taxonomy of Residual Failure Modes on SynapseCivil-Bench Test Split ($N=920$ cases, $90$ residual errors).}
 \label{fig:failure_taxonomy}
 \end{figure}
 
 \subsection{Detailed Breakdown of Boundary Cases}
-\begin{enumerate}[label=(\roman*)]
-    \item \textbf{Type I: Specialized Real Estate Statute Collision ($44$ cases, $48.9\%$):}
-    In deposit disputes involving off-the-plan residential apartment sales, developers often execute ``deposit placement deeds'' (\textit{hop dong dat coc giu cho}) collecting $20\%$ to $30\%$ of property value before obtaining ground-breaking construction permits. Under Civil Code Article~328, such deposits are prima facie valid. However, specialized administrative provisions under Article~57 of the Law on Real Estate Business 2014 cap advance deposits at $5\%$. While SynapseLex reasons purely under the Civil Code and enforces deposit forfeiture, specialized administrative trial chambers occasionally declare contracts void ab initio due to breach of specialized statutory prohibitions. Resolving this requires expanding the TBox ontology into multi-statute priority logic ($\mathcal{ALC}_{\mathrm{hierarchy}}$).
-    
-    \item \textbf{Type II: Latent Oral Modifications and Mediation Standstills ($29$ cases, $32.2\%$):}
-    In Vietnamese rural transactions, debtors often verbally negotiate payment grace periods with creditors over telephone calls or unrecorded neighborhood conciliation sessions (\textit{hoa giai co so}). When trial judges admit unrecorded debtor testimony as corroborating an unwritten debt acknowledgment, the procedural clock is reset under Article~157. Because such facts do not appear as timestamped evidentiary documents in trial filings, zero-oracle chrono-extractors cannot extract the reset event, leading SynapseLex to trigger the Article~429 statute bar.
-    
-    \item \textbf{Type III: Discretionary Appraisal of Substantial Performance ($17$ cases, $18.9\%$):}
-    Article~129 Clause~2 BLDS 2015 establishes that an unnotarized land contract is cured if a party has performed ``at least two-thirds of their obligations'' ($66.67\%$). In edge cases where the buyer paid $63\%$ to $65\%$ of the cash consideration but invested substantial labor in agricultural land grading, tree cultivation, or perimeter fencing, judicial chambers exhibit sharp regional variance: Southern provincial courts frequently quantify physical improvements as in-kind performance pushing total fulfillment past $66.7\%$, whereas Northern courts strictly restrict performance ratios to monetary purchase installments.
-\end{enumerate}
+\begin{itemize}[leftmargin=*, noitemsep, topsep=2pt]
+    \item \textbf{Type I: Sectoral Statute Collisions (44 cases, 48.9\%):} Advance deposit collection in off-the-plan housing occasionally conflicts between general Civil Code Art.~328 and Real Estate Business Law Art.~57 (capping deposits at 5\% prior to construction permits), where specialized administrative chambers declare agreements void ab initio rather than enforcing forfeiture.
+    \item \textbf{Type II: Latent Oral Debt Waivers (29 cases, 32.2\%):} Verbal payment deferrals in informal rural conciliation (\textit{hoa giai co so}) prompt trial courts to admit unrecorded debtor testimony to reset the Article~157 clock, triggering procedural dismissals by zero-oracle chronographs lacking oral evidence.
+    \item \textbf{Type III: Discretionary In-Kind Performance Valuation (17 cases, 18.9\%):} Subjective judicial appraisal of agricultural improvements and perimeter fencing creates divergent rulings across the Article~129(2) two-thirds substantial performance boundary.
+\end{itemize}
 
 % ========================================================================
 \section{Computational Complexity and Scalability Analysis}
@@ -1605,7 +1613,7 @@ DeepSeek-R1 (Zero-Shot) \citep{deepseek2025r1} & $\mathcal{O}(N_{\mathrm{tokens}
 }
 \end{table}
 
-As proven in Table~\ref{tab:complexity_comparison}, SynapseLex achieves asymptotic parity with vanilla continuous Dynamic Graph Neural Networks while guaranteeing 100\% Description Logic sound compilation. By amortizing HermiT's $2\text{-NExpTime}$ worst-case tableau checking into offline projection matrix $\mathbf{M} \in \{-\infty, 0\}^{|\mathcal{S}| \times |\mathcal{Y}|}$, the neuro-symbolic arbitration requires only $16$ scalar multiplications at inference. This yields an inference throughput of over $122\text{ judgments/second}$ on an NVIDIA A30 GPU, rendering it $174\times$ faster than GPT-4o and $350\times$ faster than DeepSeek-R1.
+As proven in Table~\ref{tab:complexity_comparison}, SynapseLex achieves asymptotic parity with vanilla continuous Dynamic Graph Neural Networks while guaranteeing 100\% Description Logic sound compilation. By amortizing HermiT's $\text{NExpTime-complete}$ worst-case tableau checking into offline projection matrix $\mathbf{M} \in \{-\infty, 0\}^{|\mathcal{S}| \times |\mathcal{Y}|}$, the neuro-symbolic arbitration requires only $16$ scalar additions at inference. This yields an inference throughput of over $122\text{ judgments/second}$ on an NVIDIA A30 GPU, rendering it significantly faster than unconstrained multi-pass prompting.
 
 % ========================================================================
 \section{Reproducibility Blueprint and Hyperparameter Specifications}
@@ -1617,8 +1625,9 @@ To ensure complete empirical reproducibility, Table~\ref{tab:hyperparameters} do
 \centering
 \caption{Exhaustive Hyperparameter and Training Specifications for SynapseLex.}
 \label{tab:hyperparameters}
-\small
-\begin{tabularx}{\textwidth}{@{}l p{5.5cm} X@{}}
+\footnotesize
+\renewcommand{\arraystretch}{0.92}
+\begin{tabularx}{\textwidth}{@{}l p{5.2cm} X@{}}
 \toprule
 \textbf{Category} & \textbf{Hyperparameter} & \textbf{Value / Specification} \\
 \midrule

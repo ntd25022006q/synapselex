@@ -417,12 +417,13 @@ class TextLegalMLP(nn.Module):
         device = g["x"].device
         feats = torch.zeros(1, self.feat_dim, device=device)
 
-        # 1. Timeline & Latency features (dim 0..7)
+        # 1. Timeline & Latency features (dim 0..7) - Zero Oracle Leakage
+        # We do NOT pass is_lapsed or explicit >1095 binary indicator.
+        # Only normalized observable interval from case filing date is provided.
         elapsed_days = float(g.get("elapsed_days", 0.0))
-        is_lapsed = float(g.get("is_statute_lapsed", 0.0))
         feats[0, 0] = elapsed_days / 1000.0
-        feats[0, 1] = is_lapsed
-        feats[0, 2] = 1.0 if elapsed_days > 1095.0 else 0.0
+        feats[0, 1] = 0.0  # Zeroed out: target oracle removed
+        feats[0, 2] = 0.0  # Zeroed out: threshold shortcut removed
         feats[0, 3] = math.log1p(max(0.0, elapsed_days)) / 10.0
         feats[0, 4] = math.exp(-elapsed_days / 365.0)
 

@@ -189,13 +189,14 @@ class LegalGraphBuilder:
             edge_types.append(RELATION_MAP["REVERSED_EDGE"])
             edge_times.append(edge_times[i])
 
-        # Node initial feature vectors: one-hot of node type + observable facts
+        # Node initial feature vectors: one-hot of node type + intrinsic transaction facts
+        # STRICT LEAKAGE PREVENTION: We do NOT pass raw_elapsed, eff_elapsed, or scalar time_days
+        # into static node features. The model must deduce temporal interval Delta tau strictly from
+        # continuous harmonic edge timestamps (Bochner Fourier embeddings) across the dynamic graph.
         num_nodes = len(nodes)
         node_feats = torch.zeros(num_nodes, self.feature_dim)
         for i, nt in enumerate(node_types):
             node_feats[i, nt % 10] = 1.0
-            if "time_days" in nodes[i]:
-                node_feats[i, 23] = float(nodes[i]["time_days"]) / 1000.0
 
         # Observable legal transaction variables (NO TARGET LEAKAGE / NO SHORTCUTS)
         perf_ratio = float(case_record.get("performed_ratio", 0.25))
@@ -210,13 +211,10 @@ class LegalGraphBuilder:
         node_feats[contract_node_idx, 11] = is_notarized
         node_feats[contract_node_idx, 12] = has_fraud
 
-        # Breach & Filing events (observable temporal markers)
+        # Observable legal markers: Tolling duration marker at breach (Art. 156 BLDS)
         for i, nt in enumerate(node_types):
             if nt == NODE_TYPE_MAP["EVENT_BREACH"]:
                 node_feats[i, 14] = tolling_val / 365.0
-            elif nt == NODE_TYPE_MAP["EVENT_FILING"]:
-                node_feats[i, 15] = raw_elapsed / 1000.0
-                node_feats[i, 16] = eff_elapsed / 1000.0
 
         # Litigants (0: Plaintiff, 1: Defendant)
         node_feats[0, 17] = 1.0
