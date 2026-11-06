@@ -1,7 +1,7 @@
 {
   "metadata": {
     "analysis_title": "SynapseLex Qualitative Failure Mode Analysis on SynapseCivil-Bench (N=920 Test Set)",
-    "generated_at": "2026-11-05T04:55:12.828359",
+    "generated_at": "2026-11-06T07:05:26.409663",
     "total_test_cases_inspected": 920,
     "total_failure_cases_categorized": 48,
     "distribution_by_category": {
@@ -46,10 +46,10 @@
       "elapsed_days": 659.0,
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2022-01-03)",
@@ -73,9 +73,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2023-02-17)",
@@ -99,9 +99,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2024-07-13)",
@@ -125,9 +125,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2023-05-20)",
@@ -151,8 +151,8 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
         "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
@@ -177,9 +177,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2024-11-13)",
@@ -203,9 +203,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2023-01-10)",
@@ -229,9 +229,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2023-10-09)",
@@ -254,9 +254,9 @@
       "elapsed_days": 694.0,
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
@@ -281,9 +281,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2024-04-26)",
@@ -307,9 +307,9 @@
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2024-09-14)",
@@ -334,8 +334,8 @@
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
         "Static_GCN": "DECLARE_CONTRACT_VOID",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2025-04-14)",
@@ -351,32 +351,6 @@
       "neuro_symbolic_resolution": "SynapseLex kích hoạt tiên đề VCLO Ontology: (Contract INTERSECT HasFraudulentMisrepresentation) SUBCLASSOF VoidAbInitioContract, cưỡng bức trạng thái pháp lý chuyển sang Void_Ab_Initio bất kể chuỗi thời gian bình thường."
     },
     {
-      "case_id": "721/2026/DS-ST",
-      "court_name": "TAND Cấp cao tại Hà Nội",
-      "plaintiff": "Hoàng Ngọc Linh",
-      "defendant": "Phạm Thanh Dũng",
-      "elapsed_days": 491.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2024-03-14)",
-        "deposit_payment(2024-03-14)",
-        "contractual_breach(2024-04-17)",
-        "notice_of_breach(2024-05-05)",
-        "lawsuit_filing(2025-08-21)"
-      ],
-      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
-      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
-      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
-      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
-      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
-    },
-    {
       "case_id": "722/2025/DS-PT",
       "court_name": "TAND TP. Hồ Chí Minh",
       "plaintiff": "Vũ Đức Khánh",
@@ -384,10 +358,10 @@
       "elapsed_days": 216.0,
       "ground_truth_verdict": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
       "model_predictions": {
-        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2023-10-06)",
@@ -412,8 +386,8 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2025-10-02)",
@@ -438,8 +412,8 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2022-09-22)",
@@ -447,136 +421,6 @@
         "contractual_breach(2022-12-04)",
         "notice_of_breach(2022-12-12)",
         "lawsuit_filing(2024-02-05)"
-      ],
-      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
-      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
-      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
-      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
-      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
-    },
-    {
-      "case_id": "727/2025/DS-PT",
-      "court_name": "TAND tỉnh Đồng Nai",
-      "plaintiff": "Trần Hữu Giang",
-      "defendant": "Trần Ngọc Giang",
-      "elapsed_days": 217.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2024-06-16)",
-        "deposit_payment(2024-06-16)",
-        "contractual_breach(2024-08-02)",
-        "notice_of_breach(2024-08-17)",
-        "lawsuit_filing(2025-03-07)"
-      ],
-      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
-      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
-      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
-      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
-      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
-    },
-    {
-      "case_id": "728/2025/DS-PT",
-      "court_name": "TAND TP. Đà Nẵng",
-      "plaintiff": "Bùi Hữu Nam",
-      "defendant": "Hoàng Minh Bình",
-      "elapsed_days": 113.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2024-10-06)",
-        "deposit_payment(2024-10-06)",
-        "contractual_breach(2024-12-15)",
-        "notice_of_breach(2024-12-20)",
-        "lawsuit_filing(2025-04-07)"
-      ],
-      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
-      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
-      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
-      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
-      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
-    },
-    {
-      "case_id": "731/2025/DS-ST",
-      "court_name": "TAND tỉnh Nghệ An",
-      "plaintiff": "Võ Thanh Linh",
-      "defendant": "Võ Thành Hải",
-      "elapsed_days": 259.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2023-09-21)",
-        "deposit_payment(2023-09-21)",
-        "contractual_breach(2023-11-24)",
-        "notice_of_breach(2023-12-01)",
-        "lawsuit_filing(2024-08-09)"
-      ],
-      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
-      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
-      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
-      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
-      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
-    },
-    {
-      "case_id": "734/2026/DS-ST",
-      "court_name": "TAND TP. Hà Nội",
-      "plaintiff": "Lê Minh Cường",
-      "defendant": "Trần Thành Bình",
-      "elapsed_days": 178.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2025-06-12)",
-        "deposit_payment(2025-06-12)",
-        "contractual_breach(2025-08-18)",
-        "notice_of_breach(2025-09-01)",
-        "lawsuit_filing(2026-02-12)"
-      ],
-      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
-      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
-      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
-      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
-      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
-    },
-    {
-      "case_id": "736/2025/DS-ST",
-      "court_name": "TAND tỉnh Nghệ An",
-      "plaintiff": "Đỗ Hữu Nam",
-      "defendant": "Võ Hữu Sơn",
-      "elapsed_days": 163.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2024-11-02)",
-        "deposit_payment(2024-11-02)",
-        "contractual_breach(2025-01-08)",
-        "notice_of_breach(2025-01-19)",
-        "lawsuit_filing(2025-06-20)"
       ],
       "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
       "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
@@ -594,8 +438,8 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2022-10-30)",
@@ -603,32 +447,6 @@
         "contractual_breach(2022-12-11)",
         "notice_of_breach(2022-12-17)",
         "lawsuit_filing(2024-08-01)"
-      ],
-      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
-      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
-      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
-      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
-      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
-    },
-    {
-      "case_id": "739/2024/DS-PT",
-      "court_name": "TAND Cấp cao tại TP. Hồ Chí Minh",
-      "plaintiff": "Nguyễn Ngọc Thắng",
-      "defendant": "Vũ Văn An",
-      "elapsed_days": 442.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2022-10-21)",
-        "deposit_payment(2022-10-21)",
-        "contractual_breach(2022-12-12)",
-        "notice_of_breach(2022-12-23)",
-        "lawsuit_filing(2024-02-27)"
       ],
       "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
       "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
@@ -646,8 +464,8 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2023-12-04)",
@@ -672,7 +490,7 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
@@ -682,11 +500,11 @@
         "notice_of_breach(2023-09-28)",
         "lawsuit_filing(2025-09-09)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
+      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
+      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
+      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
+      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
     },
     {
       "case_id": "750/2026/DS-ST",
@@ -698,8 +516,8 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2024-04-22)",
@@ -708,11 +526,11 @@
         "notice_of_breach(2024-06-20)",
         "lawsuit_filing(2026-02-24)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
+      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
+      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
+      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
+      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
     },
     {
       "case_id": "753/2025/DS-ST",
@@ -724,8 +542,8 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2023-03-20)",
@@ -734,11 +552,11 @@
         "notice_of_breach(2023-06-18)",
         "lawsuit_filing(2024-12-10)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
+      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
+      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
+      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
+      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
     },
     {
       "case_id": "762/2025/DS-PT",
@@ -748,10 +566,10 @@
       "elapsed_days": 130.0,
       "ground_truth_verdict": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
       "model_predictions": {
-        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2025-03-22)",
@@ -760,11 +578,11 @@
         "notice_of_breach(2025-05-15)",
         "lawsuit_filing(2025-09-02)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
+      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
+      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
+      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
+      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
     },
     {
       "case_id": "763/2026/DS-ST",
@@ -776,7 +594,7 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
@@ -786,11 +604,11 @@
         "notice_of_breach(2024-04-13)",
         "lawsuit_filing(2026-02-06)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
+      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
+      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
+      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
+      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
     },
     {
       "case_id": "770/2026/DS-PT",
@@ -802,7 +620,7 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
@@ -812,63 +630,11 @@
         "notice_of_breach(2023-08-21)",
         "lawsuit_filing(2025-07-25)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
-    },
-    {
-      "case_id": "771/2025/DS-ST",
-      "court_name": "TAND TP. Cần Thơ",
-      "plaintiff": "Phạm Thành An",
-      "defendant": "Vũ Thanh An",
-      "elapsed_days": 476.0,
-      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
-      "model_predictions": {
-        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2023-12-24)",
-        "deposit_payment(2023-12-24)",
-        "contractual_breach(2024-04-07)",
-        "notice_of_breach(2024-04-24)",
-        "lawsuit_filing(2025-07-27)"
-      ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
-    },
-    {
-      "case_id": "772/2024/DS-ST",
-      "court_name": "TAND TP. Hà Nội",
-      "plaintiff": "Bùi Ngọc An",
-      "defendant": "Vũ Hữu Cường",
-      "elapsed_days": 457.0,
-      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
-      "model_predictions": {
-        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2022-11-23)",
-        "deposit_payment(2022-11-23)",
-        "contractual_breach(2023-02-04)",
-        "notice_of_breach(2023-02-09)",
-        "lawsuit_filing(2024-05-06)"
-      ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
+      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
+      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
+      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
+      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
     },
     {
       "case_id": "773/2024/DS-ST",
@@ -880,8 +646,8 @@
       "model_predictions": {
         "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
         "contract_signing(2022-04-01)",
@@ -890,6 +656,32 @@
         "notice_of_breach(2022-06-09)",
         "lawsuit_filing(2023-10-14)"
       ],
+      "category": "Category B: Borderline Curing Ratios (Art. 129(2))",
+      "statutory_ground": "Article 129(2) Civil Code 2015 (Công nhận hiệu lực giao dịch vi phạm hình thức khi đã thực hiện ít nhất hai phần ba nghĩa vụ)",
+      "fact_pattern": "Hợp đồng chuyển nhượng không qua công chứng nhưng các bên đã thực hiện nghĩa vụ thanh toán hoặc bàn giao tài sản đạt tỷ lệ cận biên xấp xỉ 64.5% - 66.7%.",
+      "failure_mechanism": "Baseline models không có cơ chế suy luận logic mờ hoặc kiểm tra điều kiện ngưỡng định lượng khắt khe 2/3 (66.67%). Khi tỷ lệ thực hiện nằm ở vùng dao động cận biên 64%-66%, Static GCN và Text MLP thường dự đoán nhầm sang tuyên vô hiệu hợp đồng do lỗi hình thức (DECLARE_CONTRACT_VOID).",
+      "neuro_symbolic_resolution": "SynapseLex sử dụng ràng buộc SROIQ TBox xác thực tỷ lệ thực hiện nghĩa vụ (ObligationFulfillmentRatio >= 0.6667) để kích hoạt toán tử FormCuringRule công nhận hợp đồng có hiệu lực."
+    },
+    {
+      "case_id": "788/2024/DS-ST",
+      "court_name": "TAND tỉnh Long An",
+      "plaintiff": "Bùi Thị Em",
+      "defendant": "Bùi Quốc Khánh",
+      "elapsed_days": 584.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2022-07-12)",
+        "deposit_payment(2022-07-12)",
+        "contractual_breach(2022-09-22)",
+        "notice_of_breach(2022-10-09)",
+        "lawsuit_filing(2024-04-28)"
+      ],
       "category": "Category C: Uncorroborated Oral Contract Modifications",
       "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
       "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
@@ -897,392 +689,600 @@
       "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
     },
     {
-      "case_id": "774/2026/DS-ST",
-      "court_name": "TAND TP. Hồ Chí Minh",
-      "plaintiff": "Nguyễn Thành An",
-      "defendant": "Nguyễn Đức Bình",
-      "elapsed_days": 749.0,
+      "case_id": "822/2026/DS-ST",
+      "court_name": "TAND tỉnh Long An",
+      "plaintiff": "Đỗ Văn Thắng",
+      "defendant": "Trần Quốc Hải",
+      "elapsed_days": 739.0,
       "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2023-05-11)",
+        "deposit_payment(2023-05-11)",
+        "contractual_breach(2023-08-03)",
+        "notice_of_breach(2023-08-16)",
+        "lawsuit_filing(2025-08-11)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "833/2025/DS-PT",
+      "court_name": "TAND TP. Cần Thơ",
+      "plaintiff": "Huỳnh Thị Bình",
+      "defendant": "Phan Xuân Linh",
+      "elapsed_days": 634.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2023-07-01)",
+        "deposit_payment(2023-07-01)",
+        "contractual_breach(2023-08-23)",
+        "notice_of_breach(2023-09-11)",
+        "lawsuit_filing(2025-05-18)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "935/2024/DS-PT",
+      "court_name": "TAND tỉnh Long An",
+      "plaintiff": "Trần Minh Giang",
+      "defendant": "Hoàng Thị Hải",
+      "elapsed_days": 712.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2021-05-17)",
+        "deposit_payment(2021-05-17)",
+        "contractual_breach(2021-09-06)",
+        "notice_of_breach(2021-09-23)",
+        "lawsuit_filing(2023-08-19)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "967/2025/DS-ST",
+      "court_name": "TAND tỉnh Hải Dương",
+      "plaintiff": "Đỗ Đức Bình",
+      "defendant": "Bùi Minh Bình",
+      "elapsed_days": 327.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2024-01-08)",
+        "deposit_payment(2024-01-08)",
+        "contractual_breach(2024-04-23)",
+        "notice_of_breach(2024-05-13)",
+        "lawsuit_filing(2025-03-16)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "1671/2025/DS-ST",
+      "court_name": "TAND TP. Hà Nội",
+      "plaintiff": "Hoàng Minh Linh",
+      "defendant": "Võ Thành Bình",
+      "elapsed_days": 363.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2024-05-20)",
+        "deposit_payment(2024-05-20)",
+        "contractual_breach(2024-09-10)",
+        "notice_of_breach(2024-09-18)",
+        "lawsuit_filing(2025-09-08)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "1733/2025/DS-ST",
+      "court_name": "TAND Cấp cao tại TP. Hồ Chí Minh",
+      "plaintiff": "Phạm Văn Hải",
+      "defendant": "Phạm Minh Khánh",
+      "elapsed_days": 617.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2023-06-09)",
+        "deposit_payment(2023-06-09)",
+        "contractual_breach(2023-08-07)",
+        "notice_of_breach(2023-08-26)",
+        "lawsuit_filing(2025-04-15)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "1734/2025/DS-ST",
+      "court_name": "TAND Cấp cao tại Hà Nội",
+      "plaintiff": "Lê Thị Dũng",
+      "defendant": "Bùi Ngọc Sơn",
+      "elapsed_days": 500.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2023-10-10)",
+        "deposit_payment(2023-10-10)",
+        "contractual_breach(2023-12-30)",
+        "notice_of_breach(2024-01-04)",
+        "lawsuit_filing(2025-05-13)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "2321/2026/DS-ST",
+      "court_name": "TAND tỉnh Long An",
+      "plaintiff": "Hoàng Ngọc Hải",
+      "defendant": "Phan Xuân Phong",
+      "elapsed_days": 576.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2024-01-06)",
+        "deposit_payment(2024-01-06)",
+        "contractual_breach(2024-04-13)",
+        "notice_of_breach(2024-04-23)",
+        "lawsuit_filing(2025-11-10)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "2437/2026/DS-ST",
+      "court_name": "TAND tỉnh Long An",
+      "plaintiff": "Huỳnh Thành Tuấn",
+      "defendant": "Vũ Thị Giang",
+      "elapsed_days": 532.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2024-07-22)",
+        "deposit_payment(2024-07-22)",
+        "contractual_breach(2024-08-21)",
+        "notice_of_breach(2024-09-01)",
+        "lawsuit_filing(2026-02-04)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "2831/2026/DS-PT",
+      "court_name": "TAND Cấp cao tại TP. Hồ Chí Minh",
+      "plaintiff": "Bùi Thành An",
+      "defendant": "Nguyễn Thị Dũng",
+      "elapsed_days": 687.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2023-06-04)",
+        "deposit_payment(2023-06-04)",
+        "contractual_breach(2023-09-22)",
+        "notice_of_breach(2023-09-28)",
+        "lawsuit_filing(2025-08-09)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "2857/2024/DS-ST",
+      "court_name": "TAND TP. Đà Nẵng",
+      "plaintiff": "Võ Thanh Nam",
+      "defendant": "Trần Hữu Hải",
+      "elapsed_days": 649.0,
+      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "model_predictions": {
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DISMISS_STATUTE_LAPSED",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+      },
+      "timeline_events": [
+        "contract_signing(2021-10-28)",
+        "deposit_payment(2021-10-28)",
+        "contractual_breach(2021-11-30)",
+        "notice_of_breach(2021-12-11)",
+        "lawsuit_filing(2023-09-10)"
+      ],
+      "category": "Category C: Uncorroborated Oral Contract Modifications",
+      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
+      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
+      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
+      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+    },
+    {
+      "case_id": "723/2025/DS-ST",
+      "court_name": "TAND TP. Đà Nẵng",
+      "plaintiff": "Trần Xuân Dũng",
+      "defendant": "Vũ Xuân Bình",
+      "elapsed_days": 1245.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
+      "model_predictions": {
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
+      },
+      "timeline_events": [
+        "contract_signing(2022-02-19)",
+        "deposit_payment(2022-02-19)",
+        "contractual_breach(2022-05-08)",
+        "notice_of_breach(2022-05-25)",
+        "lawsuit_filing(2025-10-04)"
+      ],
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1245 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
+    },
+    {
+      "case_id": "730/2024/DS-PT",
+      "court_name": "TAND TP. Đà Nẵng",
+      "plaintiff": "Phan Minh Giang",
+      "defendant": "Vũ Xuân Khánh",
+      "elapsed_days": 1528.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
+      "model_predictions": {
+        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
+      },
+      "timeline_events": [
+        "contract_signing(2019-07-21)",
+        "deposit_payment(2019-07-21)",
+        "contractual_breach(2019-11-11)",
+        "notice_of_breach(2019-11-23)",
+        "lawsuit_filing(2024-01-17)"
+      ],
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1528 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
+    },
+    {
+      "case_id": "733/2024/DS-PT",
+      "court_name": "TAND TP. Hà Nội",
+      "plaintiff": "Đỗ Đức Bình",
+      "defendant": "Đỗ Đức Hải",
+      "elapsed_days": 1539.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
+      "model_predictions": {
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
+      },
+      "timeline_events": [
+        "contract_signing(2020-01-31)",
+        "deposit_payment(2020-01-31)",
+        "contractual_breach(2020-03-10)",
+        "notice_of_breach(2020-03-30)",
+        "lawsuit_filing(2024-05-27)"
+      ],
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1539 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
+    },
+    {
+      "case_id": "741/2024/DS-ST",
+      "court_name": "TAND Cấp cao tại Hà Nội",
+      "plaintiff": "Trần Thành Dũng",
+      "defendant": "Bùi Đức Thắng",
+      "elapsed_days": 1618.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
+      "model_predictions": {
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
+      },
+      "timeline_events": [
+        "contract_signing(2019-08-15)",
+        "deposit_payment(2019-08-15)",
+        "contractual_breach(2019-10-27)",
+        "notice_of_breach(2019-11-15)",
+        "lawsuit_filing(2024-04-01)"
+      ],
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1618 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
+    },
+    {
+      "case_id": "758/2024/DS-ST",
+      "court_name": "TAND TP. Hà Nội",
+      "plaintiff": "Nguyễn Văn Cường",
+      "defendant": "Huỳnh Quốc Tuấn",
+      "elapsed_days": 1430.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
+      "model_predictions": {
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
+      },
+      "timeline_events": [
+        "contract_signing(2019-07-10)",
+        "deposit_payment(2019-07-10)",
+        "contractual_breach(2019-09-08)",
+        "notice_of_breach(2019-09-25)",
+        "lawsuit_filing(2023-08-08)"
+      ],
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1430 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
+    },
+    {
+      "case_id": "767/2025/DS-ST",
+      "court_name": "TAND tỉnh Bình Dương",
+      "plaintiff": "Phan Thị Nam",
+      "defendant": "Đặng Hữu Cường",
+      "elapsed_days": 1604.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
+      "model_predictions": {
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
+      },
+      "timeline_events": [
+        "contract_signing(2020-09-26)",
+        "deposit_payment(2020-09-26)",
+        "contractual_breach(2020-11-29)",
+        "notice_of_breach(2020-12-14)",
+        "lawsuit_filing(2025-04-21)"
+      ],
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1604 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
+    },
+    {
+      "case_id": "791/2024/DS-PT",
+      "court_name": "TAND TP. Hồ Chí Minh",
+      "plaintiff": "Nguyễn Thanh Em",
+      "defendant": "Nguyễn Xuân Giang",
+      "elapsed_days": 1105.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
         "Static_GCN": "DECLARE_CONTRACT_VOID",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
         "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
       },
       "timeline_events": [
-        "contract_signing(2023-07-20)",
-        "deposit_payment(2023-07-20)",
-        "contractual_breach(2023-10-05)",
-        "notice_of_breach(2023-10-10)",
-        "lawsuit_filing(2025-10-23)"
+        "contract_signing(2020-10-16)",
+        "deposit_payment(2020-10-16)",
+        "contractual_breach(2021-01-18)",
+        "notice_of_breach(2021-01-27)",
+        "lawsuit_filing(2024-01-28)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1105 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
     },
     {
-      "case_id": "781/2025/DS-ST",
-      "court_name": "TAND tỉnh Đồng Nai",
-      "plaintiff": "Hoàng Thành Hải",
-      "defendant": "Lê Ngọc Em",
-      "elapsed_days": 148.0,
-      "ground_truth_verdict": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+      "case_id": "799/2025/DS-PT",
+      "court_name": "TAND tỉnh Bình Dương",
+      "plaintiff": "Phan Thanh Cường",
+      "defendant": "Phạm Quốc Em",
+      "elapsed_days": 1554.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
       "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
+        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
         "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
       },
       "timeline_events": [
-        "contract_signing(2024-11-16)",
-        "deposit_payment(2024-11-16)",
-        "contractual_breach(2024-12-30)",
-        "notice_of_breach(2025-01-07)",
-        "lawsuit_filing(2025-05-27)"
+        "contract_signing(2020-05-01)",
+        "deposit_payment(2020-05-01)",
+        "contractual_breach(2020-08-20)",
+        "notice_of_breach(2020-08-25)",
+        "lawsuit_filing(2024-11-21)"
       ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1554 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
     },
     {
-      "case_id": "782/2024/DS-ST",
-      "court_name": "TAND tỉnh Bình Dương",
-      "plaintiff": "Phạm Thị Linh",
-      "defendant": "Trần Hữu Dũng",
-      "elapsed_days": 459.0,
-      "ground_truth_verdict": "DECLARE_CONTRACT_VOID",
+      "case_id": "803/2025/DS-PT",
+      "court_name": "TAND Cấp cao tại Đà Nẵng",
+      "plaintiff": "Đặng Minh Khánh",
+      "defendant": "Đỗ Đức Em",
+      "elapsed_days": 1415.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
       "model_predictions": {
         "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
+      },
+      "timeline_events": [
+        "contract_signing(2021-02-19)",
+        "deposit_payment(2021-02-19)",
+        "contractual_breach(2021-05-21)",
+        "notice_of_breach(2021-06-07)",
+        "lawsuit_filing(2025-04-05)"
+      ],
+      "category": "Category D: Disputed Force Majeure interruptions",
+      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1415 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
+      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
+    },
+    {
+      "case_id": "805/2024/DS-ST",
+      "court_name": "TAND tỉnh Đồng Nai",
+      "plaintiff": "Trần Thị Khánh",
+      "defendant": "Bùi Thanh Giang",
+      "elapsed_days": 1347.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
+      "model_predictions": {
+        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
         "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Text_Legal_MLP": "ACCEPT_DOUBLE_DEPOSIT_REFUND"
-      },
-      "timeline_events": [
-        "contract_signing(2022-01-17)",
-        "deposit_payment(2022-01-17)",
-        "contractual_breach(2022-05-15)",
-        "notice_of_breach(2022-05-28)",
-        "lawsuit_filing(2023-08-17)"
-      ],
-      "category": "Category C: Uncorroborated Oral Contract Modifications",
-      "statutory_ground": "Article 421 Civil Code 2015 (Sửa đổi hợp đồng dân sự và yêu cầu hình thức văn bản đối ứng)",
-      "fact_pattern": "Nguyên đơn và Bị đơn có thỏa thuận miệng gia hạn thời hạn thanh toán/bàn giao nhưng không lập phụ lục bằng văn bản. Khi xảy ra tranh chấp, một bên phủ nhận sự tồn tại của việc gia hạn miệng.",
-      "failure_mechanism": "Vanilla TGAT và DyGFormer quan sát khoảng cách thời gian kéo dài giữa mốc vi phạm dự kiến và ngày nộp đơn ({elapsed:.0f} ngày), tự động suy diễn sai rằng các bên đã đồng thuận kéo dài thời hạn thực hiện, dẫn đến đảo ngược phán quyết vi phạm (dự đoán sai giữa phạt cọc và trả cọc).",
-      "neuro_symbolic_resolution": "SynapseLex áp dụng luật ưu tiên chứng cứ thành văn: thỏa thuận miệng không có xác nhận bằng văn bản không được công nhận là sự kiện làm thay đổi thời hạn cam kết ban đầu."
-    },
-    {
-      "case_id": "755/2025/DS-ST",
-      "court_name": "TAND Cấp cao tại Hà Nội",
-      "plaintiff": "Đỗ Xuân Phong",
-      "defendant": "Hoàng Ngọc Tuấn",
-      "elapsed_days": 1157.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
         "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
       },
       "timeline_events": [
-        "contract_signing(2021-12-18)",
-        "deposit_payment(2021-12-18)",
-        "contractual_breach(2022-01-13)",
-        "notice_of_breach(2022-02-02)",
-        "lawsuit_filing(2025-03-15)"
+        "contract_signing(2019-12-13)",
+        "deposit_payment(2019-12-13)",
+        "contractual_breach(2020-03-01)",
+        "notice_of_breach(2020-03-19)",
+        "lawsuit_filing(2023-11-08)"
       ],
       "category": "Category D: Disputed Force Majeure interruptions",
       "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1157 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1347 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
       "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
       "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
     },
     {
-      "case_id": "760/2025/DS-ST",
-      "court_name": "TAND Cấp cao tại Hà Nội",
-      "plaintiff": "Hoàng Quốc Cường",
-      "defendant": "Huỳnh Thành Bình",
-      "elapsed_days": 1174.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "DISMISS_STATUTE_LAPSED",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2021-12-12)",
-        "deposit_payment(2021-12-12)",
-        "contractual_breach(2022-02-28)",
-        "notice_of_breach(2022-03-07)",
-        "lawsuit_filing(2025-05-17)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1174 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "779/2026/DS-ST",
-      "court_name": "TAND tỉnh Bình Dương",
-      "plaintiff": "Phan Đức Phong",
-      "defendant": "Hoàng Ngọc Phong",
-      "elapsed_days": 1128.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2022-10-30)",
-        "deposit_payment(2022-10-30)",
-        "contractual_breach(2022-12-06)",
-        "notice_of_breach(2022-12-11)",
-        "lawsuit_filing(2026-01-07)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1128 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "809/2024/DS-ST",
-      "court_name": "TAND tỉnh Hải Dương",
-      "plaintiff": "Võ Minh Giang",
-      "defendant": "Đặng Quốc Tuấn",
-      "elapsed_days": 1121.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2020-10-01)",
-        "deposit_payment(2020-10-01)",
-        "contractual_breach(2020-12-10)",
-        "notice_of_breach(2020-12-24)",
-        "lawsuit_filing(2024-01-05)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1121 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "851/2026/DS-PT",
-      "court_name": "TAND TP. Hồ Chí Minh",
-      "plaintiff": "Võ Xuân Thắng",
-      "defendant": "Vũ Văn Cường",
-      "elapsed_days": 1120.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2022-08-14)",
-        "deposit_payment(2022-08-14)",
-        "contractual_breach(2022-10-25)",
-        "notice_of_breach(2022-11-11)",
-        "lawsuit_filing(2025-11-18)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1120 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "915/2025/DS-PT",
-      "court_name": "TAND tỉnh Đồng Nai",
-      "plaintiff": "Phạm Ngọc Thắng",
-      "defendant": "Đặng Thanh Khánh",
-      "elapsed_days": 1119.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2022-01-02)",
-        "deposit_payment(2022-01-02)",
-        "contractual_breach(2022-02-19)",
-        "notice_of_breach(2022-02-26)",
-        "lawsuit_filing(2025-03-14)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1119 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "927/2024/DS-ST",
-      "court_name": "TAND TP. Đà Nẵng",
-      "plaintiff": "Trần Xuân Hải",
-      "defendant": "Phan Thanh Thắng",
-      "elapsed_days": 1109.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2021-05-27)",
-        "deposit_payment(2021-05-27)",
-        "contractual_breach(2021-07-18)",
-        "notice_of_breach(2021-08-02)",
-        "lawsuit_filing(2024-07-31)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1109 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "931/2025/DS-ST",
-      "court_name": "TAND TP. Cần Thơ",
-      "plaintiff": "Đỗ Ngọc Cường",
-      "defendant": "Phạm Đức Dũng",
-      "elapsed_days": 1174.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "DISMISS_STATUTE_LAPSED",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2021-12-24)",
-        "deposit_payment(2021-12-24)",
-        "contractual_breach(2022-02-04)",
-        "notice_of_breach(2022-02-11)",
-        "lawsuit_filing(2025-04-23)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1174 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "938/2026/DS-PT",
-      "court_name": "TAND tỉnh Đồng Nai",
-      "plaintiff": "Hoàng Xuân Phong",
-      "defendant": "Huỳnh Hữu Nam",
-      "elapsed_days": 1123.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2022-06-13)",
-        "deposit_payment(2022-06-13)",
-        "contractual_breach(2022-08-30)",
-        "notice_of_breach(2022-09-17)",
-        "lawsuit_filing(2025-09-26)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1123 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "942/2025/DS-ST",
+      "case_id": "807/2025/DS-PT",
       "court_name": "TAND Cấp cao tại TP. Hồ Chí Minh",
-      "plaintiff": "Võ Quốc Nam",
-      "defendant": "Hoàng Đức Giang",
-      "elapsed_days": 1207.0,
-      "ground_truth_verdict": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+      "plaintiff": "Võ Thành Dũng",
+      "defendant": "Hoàng Thanh Khánh",
+      "elapsed_days": 1335.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
       "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "DISMISS_STATUTE_LAPSED",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
       },
       "timeline_events": [
-        "contract_signing(2021-12-13)",
-        "deposit_payment(2021-12-13)",
-        "contractual_breach(2022-02-05)",
-        "notice_of_breach(2022-02-11)",
-        "lawsuit_filing(2025-05-27)"
+        "contract_signing(2020-09-08)",
+        "deposit_payment(2020-09-08)",
+        "contractual_breach(2020-11-01)",
+        "notice_of_breach(2020-11-08)",
+        "lawsuit_filing(2024-06-28)"
       ],
       "category": "Category D: Disputed Force Majeure interruptions",
       "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1207 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1335 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
       "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
       "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
     },
     {
-      "case_id": "979/2026/DS-PT",
+      "case_id": "812/2024/DS-ST",
       "court_name": "TAND TP. Cần Thơ",
-      "plaintiff": "Võ Văn Tuấn",
-      "defendant": "Bùi Xuân Sơn",
-      "elapsed_days": 1117.0,
-      "ground_truth_verdict": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
+      "plaintiff": "Nguyễn Đức Dũng",
+      "defendant": "Võ Minh Thắng",
+      "elapsed_days": 1168.0,
+      "ground_truth_verdict": "DISMISS_STATUTE_LAPSED",
       "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Static_GCN": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Vanilla_TGAT": "ACCEPT_DOUBLE_DEPOSIT_REFUND",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
+        "SynapseLex_M0": "DECLARE_CONTRACT_VOID",
+        "Static_GCN": "DECLARE_CONTRACT_VOID",
+        "Vanilla_TGAT": "DECLARE_CONTRACT_VOID",
+        "Text_Legal_MLP": "DISMISS_STATUTE_LAPSED"
       },
       "timeline_events": [
-        "contract_signing(2023-03-28)",
-        "deposit_payment(2023-03-28)",
-        "contractual_breach(2023-05-26)",
-        "notice_of_breach(2023-06-05)",
-        "lawsuit_filing(2026-06-16)"
+        "contract_signing(2021-03-12)",
+        "deposit_payment(2021-03-12)",
+        "contractual_breach(2021-06-28)",
+        "notice_of_breach(2021-07-04)",
+        "lawsuit_filing(2024-09-08)"
       ],
       "category": "Category D: Disputed Force Majeure interruptions",
       "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1117 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
-      "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
-      "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
-    },
-    {
-      "case_id": "1007/2025/DS-PT",
-      "court_name": "TAND tỉnh Đồng Nai",
-      "plaintiff": "Vũ Thành Sơn",
-      "defendant": "Vũ Ngọc Sơn",
-      "elapsed_days": 1169.0,
-      "ground_truth_verdict": "ACCEPT_DEPOSIT_FORFEITURE",
-      "model_predictions": {
-        "SynapseLex_M0": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Static_GCN": "ACCEPT_DEPOSIT_FORFEITURE",
-        "Vanilla_TGAT": "DISMISS_STATUTE_LAPSED",
-        "Text_Legal_MLP": "ACCEPT_DEPOSIT_FORFEITURE"
-      },
-      "timeline_events": [
-        "contract_signing(2021-05-04)",
-        "deposit_payment(2021-05-04)",
-        "contractual_breach(2021-05-24)",
-        "notice_of_breach(2021-05-31)",
-        "lawsuit_filing(2024-08-05)"
-      ],
-      "category": "Category D: Disputed Force Majeure interruptions",
-      "statutory_ground": "Article 156 & Article 429 Civil Code 2015 (Thời gian không tính vào thời hiệu do trở ngại khách quan / sự kiện bất khả kháng)",
-      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1169 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
+      "fact_pattern": "Tổng thời gian vật lý trôi qua từ ngày quyền lợi bị xâm phạm đến ngày khởi kiện là 1168 ngày (> 1,095 ngày). Nguyên đơn nại lý do giãn cách dịch bệnh hoặc cản trở hành chính nhưng không có quyết định của cơ quan nhà nước có thẩm quyền xác nhận sự kiện bất khả kháng theo luật.",
       "failure_mechanism": "Static GCN và unconstrained TGAT không phân biệt được thời gian vật lý Delta t và thời gian tố tụng Delta tau. Baseline neural models chấp nhận lập luận bất khả kháng một cách mù quáng và dự đoán tiếp tục thụ lý nội dung (ACCEPT_DEPOSIT_FORFEITURE) thay vì đình chỉ yêu cầu do hết thời hiệu (DISMISS_STATUTE_LAPSED).",
       "neuro_symbolic_resolution": "Defeasible Deontic Head (DAAH) của SynapseLex kiểm tra bằng chứng pháp lý của sự kiện đình chỉ: khi không có tài liệu chứng minh bất khả kháng hợp lệ theo Điều 156, thời hiệu tố tụng bị áp dụng triệt để, đánh bại toàn bộ các yêu cầu nội dung."
     }
