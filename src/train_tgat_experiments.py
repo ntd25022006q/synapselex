@@ -315,8 +315,6 @@ def train_and_eval_single_run(
                     out,
                     g["y_verdict"],
                     g["y_state"],
-                    g["elapsed_days"],
-                    g["is_statute_lapsed"],
                     class_weights=weight_tensor
                 )
             (loss / accum_steps).backward()

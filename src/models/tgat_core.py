@@ -369,13 +369,16 @@ class SynapseLexTGAT(nn.Module):
         outputs: Dict[str, torch.Tensor],
         target_verdict: torch.Tensor,
         target_state: torch.Tensor,
-        elapsed_days: float,
-        is_statute_lapsed: float,
         class_weights: Optional[torch.Tensor] = None
     ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         """
         Multi-task Loss with Description Logic SROIQ Axiom Constraints.
         L_total = L_verdict_CE + lambda_state * L_state_CE + lambda_onto * L_axiom
+
+        ORACLE-FREE DESIGN: is_statute_lapsed is NOT an input parameter.
+        Axiom 1 (Art. 429) is enforced via predicted state_logits (state 3 =
+        extinguished), which the model learns from edge timestamps, NOT from
+        the raw dataset label. This eliminates training-time oracle leakage.
         """
         verdict_logits = outputs["verdict_logits"]
         state_logits = outputs["state_logits"]
@@ -389,13 +392,17 @@ class SynapseLexTGAT(nn.Module):
             probs_v = F.softmax(verdict_logits, dim=-1)
             probs_s = F.softmax(state_logits, dim=-1)
 
-            # Axiom 1: Article 429 - If lapsed, penalize non-dismissal and non-extinguished state
-            if is_statute_lapsed > 0.5:
-                # Probability of NOT dismissing
-                p_non_dismiss = 1.0 - probs_v[0, 2]
-                # Probability of NOT being extinguished
-                p_non_extinguished = 1.0 - probs_s[0, 3]
-                l_axiom = l_axiom + p_non_dismiss + p_non_extinguished
+            # Axiom 1: Article 429 - Oracle-free statute enforcement.
+            # Instead of using the raw dataset label (oracle leakage), we apply
+            # a soft consistency penalty: if the model predicts state = Extinguished (3),
+            # it must also predict verdict = Dismissed (2). This is enforced via the
+            # predicted-state entropy signal derived from dynamic edge timestamps only.
+            # The model learns when limitation has lapsed from the Bochner Fourier
+            # temporal embeddings of edge_times, not from any dataset flag.
+            p_extinguished = probs_s[0, 3]  # predicted prob of extinguished state
+            p_non_dismiss = 1.0 - probs_v[0, 2]  # prob of NOT predicting dismissal
+            # Soft: if model predicts extinguished, strongly penalise non-dismissal
+            l_axiom = l_axiom + p_extinguished * p_non_dismiss
 
             # Axiom 2: Article 328 Mutual Exclusivity - Cannot simultaneously predict Forfeit and DoubleRefund
             p_forfeit = probs_v[0, 0]
