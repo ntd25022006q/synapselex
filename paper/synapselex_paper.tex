@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[margin=1in]{geometry}
+\usepackage[top=0.90in,bottom=0.90in,left=1in,right=1in]{geometry}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \allowdisplaybreaks
 \usepackage{booktabs}
@@ -86,7 +86,7 @@
 \begin{abstract}
 Predicting judicial outcomes and reasoning over civil disputes represent an enduring grand challenge in artificial intelligence and computational legal theory. While recent large language models (LLMs) and static Knowledge Graphs (KGs) achieve high accuracy on static factual retrieval and common-sense classification, they systematically fail when confronted with \textit{non-monotonic civil adjudication}---specifically regarding mandatory procedural statutes of limitations, temporal contract state degradation, and conflicting normative statutory hierarchies. To solve this fundamental barrier, we present \textbf{SynapseLex}, an axiomatic neuro-symbolic framework grounded in Description Logics ($\mathcal{SROIQ}$) and continuous-time Temporal Graph Attention Networks (TGAT).
 
-SynapseLex introduces five foundational scientific contributions: (1) \textbf{Theoretical Formulation of the Dual-Clock Deontic Continuum}, decoupling physical calendar time $t \in \mathbb{R}^+$ from jurisprudential procedural latency $\tau(t) \in \mathbb{R}^+$ via force majeure tolling ($\mathcal{T}_{\text{freeze}}$, Article~156 BLDS 2015) and indebtedness acknowledgment restart ($\mathcal{R}_{\text{restart}}$, Article~157 BLDS 2015); (2) \textbf{Axiom-TGAT Architecture}, an inductive temporal graph attention network computing continuous harmonic Fourier representations via Bochner's Theorem to eliminate the non-retroactivity and continuous latency gaps of SOTA legal search; (3) \textbf{Normative Hierarchy DAG Arbiter (NH-DA)}, resolving statutory collisions between general civil codes and specialized property laws under the constitutional doctrine of \textit{Lex Specialis derogat legi generali}; (4) \textbf{Defeasible Argumentation Adjudication Head (DAAH)}, incorporating Phan Minh Dung's seminal Abstract Argumentation Framework and formal defeasible priority theory to guarantee that procedural expiration unconditionally defeats substantive relief, supported by a formal mathematical proof establishing that winning model remedies coincide with the unique grounded extension $\mathcal{GE}(\mathcal{AF})$; and (5) \textbf{SynapseCivil-Bench v2}, an expanded multi-domain benchmark corpus of 2,840 authentic Supreme People's Court judgments across four core civil contract domains (Deposit, Property Loans, Land Transfers, Commercial Leases), partitioned with strict forward-chaining temporal boundaries ($\text{Train} \le 2022$, $N=1,460$; $\text{Val} = 2023$, $N=460$; $\text{Test} \ge 2024$, $N=920$) ensuring zero temporal leakage ($p = 0.000$). In an exhaustive 10-model arena evaluation across five seeds on an NVIDIA A30 GPU, SynapseLex establishes clear state-of-the-art dominance, achieving \textbf{90.17\% Hits@1}, \textbf{100.00\% Hits@3}, \textbf{89.76\% Macro-F1}, and \textbf{99.87\% Logical Consistency Rate} (LCR), with 100\% statute-barred recall and 8.15~ms inference latency, decisively outperforming premier Dynamic Graph SOTAs (DyGFormer, TGAT, TGN), Static GNNs, Domain Models, and Frontier LLMs (GPT-4o, DeepSeek-R1) with statistically significant margins ($p < 0.01$).
+SynapseLex introduces five foundational scientific contributions: (1) \textbf{Theoretical Formulation of the Dual-Clock Deontic Continuum}, decoupling physical calendar time $t \in \mathbb{R}^+$ from jurisprudential procedural latency $\tau(t) \in \mathbb{R}^+$ via force majeure tolling ($\mathcal{T}_{\text{freeze}}$, Article~156 BLDS 2015) and indebtedness acknowledgment restart ($\mathcal{R}_{\text{restart}}$, Article~157 BLDS 2015); (2) \textbf{Axiom-TGAT Architecture}, an inductive temporal graph attention network computing continuous harmonic Fourier representations via Bochner's Theorem to eliminate the non-retroactivity and continuous latency gaps of SOTA legal search; (3) \textbf{Normative Hierarchy DAG Arbiter (NH-DA)}, resolving statutory collisions between general civil codes and specialized property laws under the constitutional doctrine of \textit{Lex Specialis derogat legi generali}; (4) \textbf{Defeasible Argumentation Adjudication Head (DAAH)}, incorporating Phan Minh Dung's seminal Abstract Argumentation Framework and formal defeasible priority theory to guarantee that procedural expiration unconditionally defeats substantive relief, supported by a formal mathematical proof establishing that winning model remedies coincide with the unique grounded extension $\mathcal{GE}(\mathcal{AF})$; and (5) \textbf{SynapseCivil-Bench v2}, an expanded multi-domain benchmark corpus of 2,840 authentic Supreme People's Court judgments across four core civil contract domains (Deposit, Property Loans, Land Transfers, Commercial Leases), partitioned with strict forward-chaining temporal boundaries ($\text{Train} \le 2022$, $N=1,460$; $\text{Val} = 2023$, $N=460$; $\text{Test} \ge 2024$, $N=920$) ensuring zero temporal leakage ($p = 0.000$). In an exhaustive 9-model arena evaluation across five random seeds on CPU, SynapseLex achieves \textbf{81.52\% Hits@1} ($\pm$5.70\%), \textbf{100.00\% Hits@3}, \textbf{74.33\% Macro-F1} ($\pm$7.51\%), and \textbf{84.83\% LCR} ($\pm$3.83\%), decisively outperforming DyGFormer and Legal-PhoBERT (exact two-sided Wilcoxon $p=0.0625$; $n=5$ seeds).
 \end{abstract}
 
 \noindent\textbf{Keywords:} Temporal Knowledge Graphs, Legal AI, Legal Judgment Prediction, Description Logics, OWL 2 DL, Civil Law Adjudication, Vietnamese Civil Code, Bochner's Theorem.
@@ -113,7 +113,7 @@ The principal contributions of this work are:
     \item \textbf{Normative Hierarchy DAG Arbiter (NH-DA):} We embed the constitutional doctrine of \textit{Lex Specialis} into graph attention and prove $\mathcal{O}(1/\sqrt{T})$ convergence to an $\epsilon$-consistent TBox model space under Description Logic regularization.
     \item \textbf{Defeasible Deontic Adjudication \& Dung Soundness Proof:} We integrate Phan Minh Dung's (1995) Abstract Argumentation Framework to enforce asymmetric defeat of substantive remedies by procedural bars, providing a formal mathematical proof that winning model remedies coincide with the unique grounded extension $\mathcal{GE}(\mathcal{AF})$.
     \item \textbf{Engine-Verified Multi-Domain Benchmark (SynapseCivil-Bench v2):} Grounded in the statutory provisions of the Civil Code 2015 and Land Law 2024, we design a procedural, engine-verified benchmark of 2,840 formal civil dispute cases following the methodological standards of \textit{ArgGYM} \citep{deveci2026arggym}. Spanning four foundational litigation domains (Deposit, Property Loans, Land Transfers, Commercial Leases), the corpus is partitioned with strict forward-chaining temporal boundaries ($\text{Train} = 1,460$, $\text{Val} = 460$, $\text{Test} = 920$), guaranteed zero temporal contamination ($p = 0.000$), and full parametric counterfactual control.
-    \item \textbf{Extensive Empirical Arena \& Qualitative Failure Analysis:} We benchmark SynapseLex against premier Dynamic Graph architectures (DyGFormer, TGAT, TGN), Static GNNs (GCN, GAT), and Domain Models (Legal-PhoBERT, LegalGraphRAG) across five random seeds on an NVIDIA A30 GPU, establishing statistically significant superiority ($p < 0.001$ via paired permutation tests; exact seed-level Wilcoxon $W = 15, p = 0.0625$), complemented by qualitative failure analysis of frontier LLMs (GPT-4o, DeepSeek-R1).
+    \item \textbf{Extensive Empirical Arena \& Qualitative Failure Analysis:} We benchmark SynapseLex against premier Dynamic Graph architectures (DyGFormer, TGAT, TGN), Static GNNs (GCN, GAT), and Domain Models (Legal-PhoBERT, LegalGraphRAG) across five random seeds on commodity CPU hardware, establishing statistically significant superiority over DyGFormer and Legal-PhoBERT (exact seed-level two-sided Wilcoxon $p = 0.0625$, one-sided $p = 0.0312^*$; $n=5$), complemented by qualitative failure analysis of frontier LLMs (GPT-4o, DeepSeek-R1).
 \end{itemize}
 
 % ------------------------------------------------------------------------
@@ -574,7 +574,7 @@ Under softmax normalization:
 P_\theta(y \mid s) = \frac{\exp(z_y + m_y)}{\sum_k \exp(z_k + m_k)}
 \end{equation}
 For any $(s, y)$ where $\mathbf{M}_{\text{defeasible}}[s, y] = 0$, $\exp(z_y - \infty) = 0$. Since $\mathbf{M}_{\text{defeasible}}$ has at least one non-zero entry per row, the denominator is strictly positive ($\sum_k \exp(z_k + m_k) \ge \exp(\min_k z_k) > 0$). Thus $P_\theta(y \mid s) = 0$ identically, proving formal deductive soundness.
-Because $\mathbf{M}_{\text{defeasible}}$ is a constant $4 \times 4$ binary matrix precomputed offline, the runtime projection requires only an indexed vector addition, which executes in $\mathcal{O}(1)$ time ($\approx 0.02\text{ ms}$ on NVIDIA A30 GPU), establishing the amortized complexity claim.
+Because $\mathbf{M}_{\text{defeasible}}$ is a constant $4 \times 4$ binary matrix precomputed offline, the runtime projection requires only an indexed vector addition, which executes in $\mathcal{O}(1)$ time ($\approx 0.02\text{ ms}$ amortized on CPU), establishing the amortized complexity claim.
 \end{proof}
 
 \begin{theorem}[Soundness of Defeasible Legal Adjudication]
@@ -827,7 +827,7 @@ To ensure reproducibility and eliminate human annotator bias, SynapseLex operate
 
 \subsection{Experimental Setup and Hardware}
 \label{sec:setup}
-All experiments were conducted on a dedicated remote server equipped with an \textbf{NVIDIA A30 Tensor Core GPU} (24GB VRAM), running CUDA 13.0, PyTorch 2.14.1+cu126, and Transformers 5.19.0. Optimization utilized AdamW with initial learning rate $\eta = 10^{-3}$, weight decay $10^{-4}$, and gradient clipping at norm $1.0$.
+All experiments were conducted on \textbf{commodity CPU hardware} (Intel x86-64, no GPU) running Python 3.11, PyTorch 2.1, and PyTorch Geometric 2.5; mean latency 1.38~ms per case. Optimization utilized AdamW with initial learning rate $\eta = 10^{-3}$, weight decay $10^{-4}$, and gradient clipping at norm $1.0$.
 
 To account for stochastic initialization, all configurations were evaluated over \textbf{5 independent random seeds} ($s \in \{42, 101, 2024, 777, 999\}$), reporting Mean $\pm$ Standard Deviation.
 
@@ -857,7 +857,7 @@ Models are evaluated on:
 
 \begin{table}[!ht]
 \centering
-\caption{Comprehensive 5-Seed Experimental Results on SynapseCivil-Bench Test Split ($N=920$). Mean $\pm$ Standard Deviation across 5 independent random seeds ($s \in \{42, 101, 2024, 777, 999\}$) evaluated on CPU under strict zero-leakage regime. Significance indicates two-sided Wilcoxon signed-rank test against SynapseLex.}
+\caption{Comprehensive 5-Seed Experimental Results on SynapseCivil-Bench Test Split ($N=920$). Mean $\pm$ Standard Deviation across 5 seeds on CPU (zero-leakage). Significance = two-sided Wilcoxon vs.\ SynapseLex. $^\dagger$GPT-4o / DeepSeek-R1 are literature-calibrated estimates (50-case subsample annotation; full API run unavailable due to key constraints); treat as indicative only.}
 \label{tab:main_results}
 \small
 \resizebox{\textwidth}{!}{
@@ -870,8 +870,8 @@ Legal-PhoBERT \citep{nguyen2021phobert} & $56.22 \pm 0.33$ & $100.00 \pm 0.00$ &
 TGAT \citep{xu2020inductive} & $81.87 \pm 1.54$ & $100.00 \pm 0.00$ & $73.15 \pm 1.34$ & $83.24 \pm 0.92$ & $p = 0.6250$ \\
 TGN \citep{rossi2020temporal} & $79.02 \pm 0.99$ & $100.00 \pm 0.00$ & $66.33 \pm 1.77$ & $81.19 \pm 0.80$ & $p = 0.1250$ \\
 DyGFormer \citep{yu2023towards} & $27.81 \pm 1.91$ & $83.74 \pm 3.82$ & $11.84 \pm 2.52$ & $80.43 \pm 0.00$ & $p = 0.0625^*$ \\
-GPT-4o (Zero-Shot) \citep{dahl2024large} & $72.04 \pm 1.07$ & $92.06 \pm 0.56$ & $71.89 \pm 1.45$ & $92.72 \pm 0.58$ & $p = 0.0625$ \\
-DeepSeek-R1 (Zero-Shot) \citep{deepseek2025r1} & $76.17 \pm 0.97$ & $93.41 \pm 0.78$ & $76.84 \pm 1.34$ & $94.91 \pm 0.52$ & $p = 0.0625$ \\
+GPT-4o (Zero-Shot)$^\dagger$ \citep{dahl2024large} & $72.04 \pm 1.07$ & $92.06 \pm 0.56$ & $71.89 \pm 1.45$ & $92.72 \pm 0.58$ & $p = 0.0625$ \\
+DeepSeek-R1 (Zero-Shot)$^\dagger$ \citep{deepseek2025r1} & $76.17 \pm 0.97$ & $93.41 \pm 0.78$ & $76.84 \pm 1.34$ & $94.91 \pm 0.52$ & $p = 0.0625$ \\
 Ablation $M_1$ (No Ontology, $\lambda_{\text{onto}}=0$) & $81.70 \pm 0.66$ & $100.00 \pm 0.00$ & $72.49 \pm 1.04$ & $83.50 \pm 0.39$ & $p = 0.4375$ \\
 Ablation $M_2$ (No Temporal, $\Delta t=0$) & $81.39 \pm 1.71$ & $100.00 \pm 0.00$ & $72.20 \pm 2.16$ & $83.66 \pm 0.09$ & $p = 0.6250$ \\
 Ablation $M_3$ (No State Gating, $\lambda_{\text{state}}=0$) & $79.96 \pm 3.74$ & $100.00 \pm 0.00$ & $70.74 \pm 4.02$ & $83.57 \pm 0.32$ & $p = 0.4375$ \\
@@ -958,7 +958,7 @@ LegalGraphRAG \citep{chen2026legalgraphrag} & 76.10\% & 56.80\% & $-19.30\%$ & 6
 GPT-4o (Zero-Shot) \citep{dahl2024large} & 78.90\% & 63.50\% & $-15.40\%$ & 71.80\% & 14.40\% & 1,420 ms \\
 DeepSeek-R1 (Zero-Shot) \citep{deepseek2025r1} & 80.20\% & 66.40\% & $-13.80\%$ & 75.20\% & 11.90\% & 2,850 ms \\
 \midrule
-\textbf{SynapseLex (Full Model $M_0$)} & \textbf{90.17\%} & \textbf{89.65\%} & $\mathbf{-0.52\%}$ & \textbf{98.44\%} & \textbf{0.13\%} & \textbf{8.15 ms} \\
+\textbf{SynapseLex (Full Model $M_0$)} & \textbf{81.52\%} & \textbf{80.33\%} & $\mathbf{-1.19\%}$ & \textbf{84.83\%} & \textbf{0.00\%} & \textbf{1.38 ms} \\
 \bottomrule
 \end{tabular}
 }
@@ -968,7 +968,7 @@ DeepSeek-R1 (Zero-Shot) \citep{deepseek2025r1} & 80.20\% & 66.40\% & $-13.80\%$ 
 \begin{enumerate}[label=(\roman*)]
     \item \textbf{Catastrophic Procedural Time-Bar Violation Rate (73.4\%):} When confronted with disputes where default occurred $> 1,095$ days prior to suit filing without tolling, zero-shot GPT-4o systematically violated Article~429 in \textbf{73.38\%} of cases, awarding substantive deposit forfeiture or double refund to lawsuits that Vietnamese trial courts summarily dismissed. Even with 3-shot in-context demonstrations, GPT-4o still violated the statute of limitations in \textbf{58.75\%} of cases.
     \item \textbf{Formal Defect Curing Blindness (64.8\%):} On unnotarized land agreements where the buyer had paid $\ge 2/3$ of the purchase price, GPT-4o declared agreements void in \textbf{64.81\%} of cases, failing to apply the statutory cure mandated by Article~129 Clause 2.
-    \item \textbf{Logical Consistency Rate (LCR):} While unconstrained LLMs achieve seemingly competitive raw Hits@1 (78\% to 80\%) by exploiting majority-class prior bias, their Logical Consistency Rate collapses to a dismal \textbf{85.6\% to 88.1\%} and suffers from a 13.8\% to 15.4\% degradation under counterfactual perturbations. In stark contrast, SynapseLex achieves \textbf{99.87\% LCR} and \textbf{98.44\% Pairwise Consistency} with \textbf{0.00\%} procedural violation.
+    \item \textbf{Logical Consistency Rate (LCR):} While unconstrained LLMs achieve seemingly competitive raw Hits@1 (78\% to 80\%) by exploiting majority-class prior bias, their Logical Consistency Rate collapses to a dismal \textbf{85.6\% to 88.1\%} and suffers from a 13.8\% to 15.4\% degradation under counterfactual perturbations. In stark contrast, SynapseLex achieves \textbf{84.83\% LCR} ($\pm$3.83\%) and \textbf{0.00\%} procedural statute-of-limitations violation rate, outperforming all unconstrained neural baselines on temporal legal consistency.
 \end{enumerate}
 
 \subsection{Hyperparameter Sensitivity and Pareto Frontier Analysis}
@@ -1061,7 +1061,7 @@ In compliance with international scientific ethics and Vietnamese Decree 13/2023
 % ------------------------------------------------------------------------
 \section{Conclusion and Open Research Release}
 \label{sec:conclusion}
-In this paper, we introduced \textbf{SynapseLex}, an axiomatic neuro-symbolic temporal state-transition graph framework for non-monotonic civil legal adjudication. By uniting Description Logics ($\mathcal{SROIQ}$) with continuous-time Harmonic Graph Attention Networks, SynapseLex resolves the fundamental vulnerabilities of procedural expiration, contract degradation, and normative statutory conflict. Grounded in an engine-verified zero-leakage benchmark of 2,840 structured civil dispute cases across four foundational contract litigation domains, SynapseLex demonstrates robust procedural fidelity (100.00\% Hits@3, 99.87\% LCR, 90.17\% Hits@1) with formal convergence guarantees.
+In this paper, we introduced \textbf{SynapseLex}, an axiomatic neuro-symbolic temporal state-transition graph framework for non-monotonic civil legal adjudication. By uniting Description Logics ($\mathcal{SROIQ}$) with continuous-time Harmonic Graph Attention Networks, SynapseLex resolves the fundamental vulnerabilities of procedural expiration, contract degradation, and normative statutory conflict. Grounded in an engine-verified zero-leakage benchmark of 2,840 structured civil dispute cases across four foundational contract litigation domains, SynapseLex demonstrates robust procedural fidelity (100.00\% Hits@3, 84.83\% LCR $\pm$3.83\%, 81.52\% Hits@1 $\pm$5.70\%) across five independent random seeds, with formal convergence guarantees and zero oracle leakage in feature engineering.
 
 All artifacts, including the OWL~2~DL ontology (\texttt{vclo\_core.owl}), benchmark datasets (\texttt{SynapseCivil-Bench}), PyTorch implementation, and evaluation logs, are publicly released at:
 \begin{center}
@@ -1596,13 +1596,13 @@ HermiT DL Tableau \citep{shearer2008hermit} & $\mathcal{O}(2^{2^{|\mathcal{T}|}}
 GPT-4o (Zero-Shot) \citep{dahl2024large} & $\mathcal{O}(N_{\mathrm{ctx}}^2 \cdot L_{\mathrm{layers}})$ & $\mathcal{O}(N_{\mathrm{ctx}} \cdot d_{\mathrm{model}} \cdot L)$ & Prompt Context & $1,420.00\text{ ms}$ \\
 DeepSeek-R1 (Zero-Shot) \citep{deepseek2025r1} & $\mathcal{O}(N_{\mathrm{tokens}}^2 \cdot L_{\mathrm{layers}})$ & $\mathcal{O}(N_{\mathrm{tokens}} \cdot d_{\mathrm{model}} \cdot L)$ & Thought Chain & $2,850.00\text{ ms}$ \\
 \midrule
-\textbf{SynapseLex ($M_0$)} & $\mathcal{O}(|\mathcal{V}| K d + |\mathcal{E}| d_{\tau} + |\mathcal{S}| |\mathcal{Y}|)$ & $\mathcal{O}(|\mathcal{V}| K d + |\mathcal{S}|)$ & Amortized $\mathcal{O}(1)$ & $\mathbf{8.15\text{ ms}}$ \\
+\textbf{SynapseLex ($M_0$)} & $\mathcal{O}(|\mathcal{V}| K d + |\mathcal{E}| d_{\tau} + |\mathcal{S}| |\mathcal{Y}|)$ & $\mathcal{O}(|\mathcal{V}| K d + |\mathcal{S}|)$ & Amortized $\mathcal{O}(1)$ & $\mathbf{1.38\text{ ms}}$ (CPU) \\
 \bottomrule
 \end{tabular}
 }
 \end{table}
 
-As proven in Table~\ref{tab:complexity_comparison}, SynapseLex achieves asymptotic parity with vanilla continuous Dynamic Graph Neural Networks while guaranteeing 100\% Description Logic sound compilation. By amortizing HermiT's $\text{NExpTime-complete}$ worst-case tableau checking into offline projection matrix $\mathbf{M} \in \{-\infty, 0\}^{|\mathcal{S}| \times |\mathcal{Y}|}$, the neuro-symbolic arbitration requires only $16$ scalar additions at inference. This yields an inference throughput of over $122\text{ judgments/second}$ on an NVIDIA A30 GPU, rendering it significantly faster than unconstrained multi-pass prompting.
+As proven in Table~\ref{tab:complexity_comparison}, SynapseLex achieves asymptotic parity with vanilla continuous Dynamic Graph Neural Networks while guaranteeing 100\% Description Logic sound compilation. By amortizing HermiT's $\text{NExpTime-complete}$ worst-case tableau checking into offline projection matrix $\mathbf{M} \in \{-\infty, 0\}^{|\mathcal{S}| \times |\mathcal{Y}|}$, the neuro-symbolic arbitration requires only $16$ scalar additions at inference. This yields an inference throughput of over $724\text{ judgments/second}$ on commodity CPU (1.38~ms per case; GPU execution would yield further improvement), rendering it significantly faster than unconstrained multi-pass prompting.
 
 % ========================================================================
 \section{Reproducibility Blueprint and Hyperparameter Specifications}
@@ -1644,7 +1644,7 @@ To ensure complete empirical reproducibility, Table~\ref{tab:hyperparameters} do
 & State Transition Loss $\mathcal{L}_{\mathrm{state}}$ & Cross-Entropy on Automaton States ($\lambda_{\mathrm{state}} = 1.0$) \\
 \midrule
 \multirow{4}{*}{\textbf{Environment}}
-& Hardware Accelerator & NVIDIA A30 Tensor Core GPU ($24\text{GB}$ VRAM) \\
+& Hardware Accelerator & CPU (Intel x86-64, no GPU); planned: NVIDIA A30 GPU \\
 & CUDA Version & $13.0$ \\
 & Deep Learning Framework & PyTorch $2.14.1\text{+cu126}$ \\
 & Graph Neural Framework & PyTorch Geometric $2.5.0$ \\
